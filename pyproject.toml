@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fpl-claude"
+version = "0.1.0"
+description = "Moneyball for FPL: a Claude-managed Fantasy Premier League team (2026/27)"
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.31",
+    "pandas>=2.1",
+    "duckdb>=0.10",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+# Phase 2+ (models) and Phase 3 (optimizer) — install when those phases start
+models = ["lightgbm>=4.0", "scikit-learn>=1.4", "penaltyblog>=1.0"]
+optimize = ["pulp>=2.8", "highspy>=1.7"]
+dev = ["pytest>=8.0", "ruff>=0.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

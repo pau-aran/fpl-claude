@@ -1,0 +1,68 @@
+# Curated sources for news sweeps, team-week reports, and strategy consensus.
+# Skills reach these via WebSearch/WebFetch. X/Twitter content is reached via web
+# search (e.g. searching `site:x.com <account> <topic>` or the account name + topic)
+# — there is NO paid X API dependency.
+#
+# Tier meaning: 1 = check every sweep · 2 = check pre-deadline and weekly · 3 = as needed.
+
+official:
+  - {name: "FPL official site news", url: "https://fantasy.premierleague.com", tier: 1,
+     use: "player status flags, prices, deadlines — also via API"}
+  - {name: "Premier League news", url: "https://www.premierleague.com/news", tier: 2,
+     use: "official club/league announcements"}
+  - {name: "UEFA fixtures/results", url: "https://www.uefa.com", tier: 2,
+     use: "UCL/UEL/UECL schedules for congestion tracking"}
+
+injuries_and_team_news:
+  - {name: "Premier Injuries", url: "https://www.premierinjuries.com", tier: 1,
+     use: "injury table + return dates; the standard tracker"}
+  - {name: "Fantasy Football Scout team news", url: "https://www.fantasyfootballscout.co.uk", tier: 1,
+     use: "aggregated press-conference notes, predicted lineups"}
+  - {name: "BBC Sport football", url: "https://www.bbc.com/sport/football", tier: 2,
+     use: "match reports incl. cups/Europe, injury reporting"}
+  - {name: "Sky Sports PL news", url: "https://www.skysports.com/premier-league-news", tier: 2,
+     use: "press conferences, transfer/injury news"}
+
+strategy_and_analytics:
+  - {name: "Fantasy Football Scout", url: "https://www.fantasyfootballscout.co.uk", tier: 1,
+     use: "the reference strategy site: articles, stats, community"}
+  - {name: "LiveFPL", url: "https://www.livefpl.net", tier: 2,
+     use: "live ranks, effective ownership, template composition"}
+  - {name: "FPL Statistics", url: "http://www.fplstatistics.co.uk", tier: 2,
+     use: "price change predictions"}
+  - {name: "r/FantasyPL", url: "https://www.reddit.com/r/FantasyPL", tier: 2,
+     use: "community consensus, rage threads = sentiment signal, lineup leaks"}
+  - {name: "Fantasy Football Hub", url: "https://www.fantasyfootballhub.co.uk", tier: 3,
+     use: "projections, articles"}
+  - {name: "FPL Review", url: "https://fplreview.com", tier: 3,
+     use: "the benchmark projection service (paid tiers); sanity-check our xPts"}
+  - {name: "The Athletic FPL coverage", url: "https://www.nytimes.com/athletic", tier: 3,
+     use: "deeper tactical/rotation reporting"}
+
+x_accounts:   # reached via web search, never a paid API
+  - {handle: "OfficialFPL", tier: 1, use: "official announcements, price changes, deadlines"}
+  - {handle: "FPLStatus", tier: 1, use: "the fastest player-flag/status change alerts"}
+  - {handle: "BenCrellin", tier: 1, use: "THE fixture-planning authority: DGW/BGW projections"}
+  - {handle: "FFScout_", tier: 2, use: "Fantasy Football Scout feed"}
+  - {handle: "LiveFPL", tier: 2, use: "effective ownership, rank analytics"}
+  - {handle: "FplRichard", tier: 3, use: "FPL Review author commentary"}
+  # Club beat reporters resolved per-team at sweep time (search "<club> team news x.com").
+
+congestion_competitions:   # competitions that affect PL rotation — track all of them
+  - "Premier League"
+  - "UEFA Champions League"
+  - "UEFA Europa League"
+  - "UEFA Conference League"
+  - "FA Cup"
+  - "EFL Cup (Carabao)"
+  - "FIFA Club World Cup (if applicable)"
+
+datasets:
+  - {name: "FPL-Core-Insights", url: "https://github.com/olbauday/FPL-Core-Insights",
+     use: "actively updated FPL dataset: match stats + Club Elo, FPL-ID-keyed"}
+  - {name: "vaastav/Fantasy-Premier-League", url: "https://github.com/vaastav/Fantasy-Premier-League",
+     use: "historical per-GW data 2016-17 → 2024-25 (training/backtests)"}
+  - {name: "football-data.co.uk", url: "https://www.football-data.co.uk/englandm.php",
+     use: "odds CSVs for market signal"}
+  - {name: "football-data.org", url: "https://www.football-data.org",
+     use: "free-tier API for UCL/cup fixtures (congestion tracking)"}
