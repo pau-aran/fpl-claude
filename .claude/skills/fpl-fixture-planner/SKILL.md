@@ -29,6 +29,13 @@ half: reading the runs, planning paths, and writing the reasoning down.
    GW n run") and check each step is affordable at plausible prices. A path
    that needs a hit must clear the marginal EV threshold per hit — each -4
    judged on its own, never smuggled inside a package.
+   The plan is a PERSISTENT artifact (`plan.md` beside the decision memos),
+   updated every week: current path, target GWs, funds and FT budget each
+   step needs. Any proposed transfer — especially a hit — is checked against
+   it BEFORE the EV question: a this-week gain that burns the bank or FT a
+   planned move depends on is a net loss even when the gate passes it.
+   Breaking the plan is allowed only with new information and a written
+   reason; drifting out of it silently is not.
 
 4. Feed the manager overlay (models propose, we dispose):
    - `lock` players whose run is about to turn good (refuse the algorithm's

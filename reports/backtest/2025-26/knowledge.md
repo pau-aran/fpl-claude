@@ -41,6 +41,11 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   one GW before a run turns good (Haaland queued for City's GW6 BUR(H)).
 - Never re-buy what you just sold without new information — churn admits the
   first move was wrong and pays spread twice (GW3 veto of Wood buy-back).
+- A hit that clears the EV gate can still be WRONG if it damages the
+  standing multi-week plan (burns the bank a planned double-move needs,
+  spends a banking FT, buys what the plan replaces). Every hit is checked
+  against `plan.md` before approval; plan-conflicting hits need BOTH the EV
+  gate and an explicit written reason why breaking the plan is worth it.
 - [WATCH] Playable-bench EV: positive but small; mixed evidence (GW1 zero
   coverage cost an autosub; GW2 best enabler scored −1). Bought Gudmundsson
   GW3 as 15th man.
