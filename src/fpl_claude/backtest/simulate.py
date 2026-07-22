@@ -31,6 +31,26 @@ from ..rules.engine import Ruleset
 from .data import SeasonStore
 
 
+@dataclass(frozen=True)
+class ManagerDecision:
+    """The human layer's call on top of the optimizer proposal (CLAUDE.md
+    rule 4: models propose, we dispose). Every field is an explicit deviation
+    with `reasoning` recorded in the memo — never a silent override.
+
+    lock: players we refuse to sell (or insist on buying) this GW
+    ban:  players we refuse to own this GW (e.g. rotation trap, news doubt)
+    captain/vice: override the solver's pick (must be in the final XI)
+    max_transfers: cap moves below the solver's allowance (e.g. force a roll)
+    """
+
+    lock: frozenset[int] = frozenset()
+    ban: frozenset[int] = frozenset()
+    captain: int | None = None
+    vice: int | None = None
+    max_transfers: int | None = None
+    reasoning: str = ""
+
+
 @dataclass
 class SquadState:
     """What we own between deadlines. buy_costs/bank in API tenths."""
@@ -88,8 +108,11 @@ def project_gw(
     )
 
 
-def initial_build(projections: pd.DataFrame, rules: Ruleset) -> tuple[OptimizedSquad, SquadState]:
-    squad = optimize(projections, rules=rules)
+def initial_build(
+    projections: pd.DataFrame, rules: Ruleset, decision: ManagerDecision | None = None
+) -> tuple[OptimizedSquad, SquadState]:
+    d = decision or ManagerDecision()
+    squad = optimize(projections, rules=rules, lock=d.lock, ban=d.ban)
     prices = projections.drop_duplicates("id").set_index("id")["price"]
     buy_costs = {i: int(round(prices.loc[i] * 10)) for i in squad.squad}
     budget = int(rules.raw["budget"]["initial"] * 10)
@@ -103,29 +126,60 @@ def decide_transfers(
     rules: Ruleset,
     state: SquadState,
     max_extra_transfers: int = 1,
-) -> OptimizedSquad:
-    """Optimizer proposes; the hit policy disposes.
+    decision: ManagerDecision | None = None,
+) -> tuple[OptimizedSquad, dict]:
+    """Optimizer proposes; the hit policy and manager overlay dispose.
 
-    Allows up to free_transfers + max_extra_transfers moves; if the proposal
-    takes hits but its ev_delta doesn't clear policies.hit_ev_threshold, we
-    re-solve hit-free — never a hit below the EV threshold (CLAUDE.md rule 5).
+    Hits are gated on their MARGINAL value: the hit-taking solution must beat
+    the best hit-free solution by (hit_ev_threshold - hit_cost) net per hit —
+    i.e. each -4 must gross at least the policy threshold ON ITS OWN. Gating
+    the whole package let a +2.5 hit ride in on a +13 free move (GW2 review).
+
+    Returns (squad, audit) — audit records the gate outcome for the memo.
     """
+    d = decision or ManagerDecision()
     current = CurrentSquad(
         buy_costs=dict(state.buy_costs),
         bank=state.bank,
         free_transfers=state.free_transfers,
     )
+    allowance = state.free_transfers + max_extra_transfers
+    if d.max_transfers is not None:
+        allowance = min(allowance, d.max_transfers)
     result = optimize(
-        projections,
-        rules=rules,
-        current=current,
-        max_transfers=state.free_transfers + max_extra_transfers,
+        projections, rules=rules, current=current, max_transfers=allowance,
+        lock=d.lock, ban=d.ban,
     )
-    if result.hits > 0 and (result.ev_delta or 0) < float(rules.policy("hit_ev_threshold")):
-        result = optimize(
-            projections, rules=rules, current=current, max_transfers=state.free_transfers
+    audit: dict = {"hit_gate": "n/a", "hit_marginal": None}
+    if result.hits > 0:
+        free = optimize(
+            projections, rules=rules, current=current,
+            max_transfers=min(state.free_transfers, allowance),
+            lock=d.lock, ban=d.ban,
         )
-    return result
+        threshold = float(rules.policy("hit_ev_threshold"))
+        hit_cost = float(rules.raw["transfers"]["hit_cost"])
+        marginal = result.objective - free.objective  # already net of hit cost
+        audit["hit_marginal"] = round(marginal + hit_cost * result.hits, 2)  # gross
+        if marginal < (threshold - hit_cost) * result.hits:
+            audit["hit_gate"] = (
+                f"rejected: gross {audit['hit_marginal']} < {threshold}/hit"
+            )
+            result = free
+        else:
+            audit["hit_gate"] = f"kept: gross {audit['hit_marginal']} >= {threshold}/hit"
+    return result, audit
+
+
+def apply_captaincy(squad: OptimizedSquad, decision: ManagerDecision) -> OptimizedSquad:
+    """Manager captain/vice override — only within the solver's XI."""
+    captain = decision.captain if decision.captain in squad.xi else squad.captain
+    vice = decision.vice if decision.vice in squad.xi else squad.vice
+    if vice == captain:  # keep them distinct, demote to solver's alternative
+        vice = squad.captain if squad.captain != captain else squad.vice
+    if captain == squad.captain and vice == squad.vice:
+        return squad
+    return OptimizedSquad(**{**squad.__dict__, "captain": captain, "vice": vice})
 
 
 def apply_transfers(
@@ -259,15 +313,18 @@ def run_gameweek(
     rules: Ruleset,
     state: SquadState | None,
     overlays: dict[int, dict[str, Any]] | None = None,
+    decision: ManagerDecision | None = None,
 ) -> tuple[GWResult, SquadState]:
-    """One full deadline cycle: project -> decide -> (apply) -> score."""
+    """One full deadline cycle: project -> propose -> manager call -> score."""
     projections = project_gw(store, gw, rules, overlays=overlays)
 
     if state is None:
-        squad, state = initial_build(projections, rules)
+        squad, state = initial_build(projections, rules, decision=decision)
     else:
-        squad = decide_transfers(projections, rules, state)
+        squad, _ = decide_transfers(projections, rules, state, decision=decision)
         state = apply_transfers(state, squad, projections, rules)
+    if decision is not None:
+        squad = apply_captaincy(squad, decision)
 
     raw_pts, subs, eff_captain, player_rows = score_gw(store, gw, squad, projections, rules)
     hit_cost = int(rules.raw["transfers"]["hit_cost"])

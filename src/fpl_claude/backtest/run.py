@@ -28,7 +28,14 @@ from pathlib import Path
 from ..rules.engine import Ruleset
 from .data import SeasonStore
 from .overlays import availability_overlays, merge
-from .simulate import GWResult, SquadState, run_gameweek
+from .simulate import (
+    GWResult,
+    ManagerDecision,
+    SquadState,
+    decide_transfers,
+    project_gw,
+    run_gameweek,
+)
 
 
 def load_state(path: Path) -> SquadState | None:
@@ -60,6 +67,55 @@ def save_state(state: SquadState, path: Path, gw: int) -> None:
     )
 
 
+def load_decision(path: Path | None) -> ManagerDecision | None:
+    """Manager decision JSON: {lock: [ids], ban: [ids], captain: id,
+    vice: id, max_transfers: int, reasoning: str} — all fields optional."""
+    if path is None:
+        return None
+    raw = json.loads(path.read_text())
+    return ManagerDecision(
+        lock=frozenset(int(i) for i in raw.get("lock", [])),
+        ban=frozenset(int(i) for i in raw.get("ban", [])),
+        captain=raw.get("captain"),
+        vice=raw.get("vice"),
+        max_transfers=raw.get("max_transfers"),
+        reasoning=str(raw.get("reasoning", "")),
+    )
+
+
+def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
+            overlays: dict | None, decision: ManagerDecision | None) -> None:
+    """Print the optimizer proposal + multi-GW fixture context. NO state is
+    written: this is the 'models propose' half; the manager call comes after."""
+    projections = project_gw(store, gw, rules, overlays=overlays)
+    squad, audit = decide_transfers(projections, rules, state, decision=decision)
+    by_id = projections.drop_duplicates("id").set_index("id")
+    outlook = store.fixture_outlook(gw)
+
+    def nm(pid: int) -> str:
+        return str(by_id.loc[pid, "web_name"]) if pid in by_id.index else str(pid)
+
+    print(f"=== GW{gw} PROPOSAL (nothing saved) ===")
+    if squad.transfers_in:
+        for o, i in zip(squad.transfers_out, squad.transfers_in):
+            print(f"transfer: {nm(o)} ({by_id.loc[o, 'team']}) -> {nm(i)} ({by_id.loc[i, 'team']})")
+        print(f"hits: {squad.hits} | ev_delta vs roll: {squad.ev_delta} | gate: {audit['hit_gate']}")
+    else:
+        print("transfers: roll")
+    print(f"captain: {nm(squad.captain)} | vice: {nm(squad.vice)}")
+    cols = [c for c in (f"xpts_gw{gw}", "xpts_horizon", "price", "exp_minutes_gw") if c in by_id.columns]
+    rows = by_id.loc[squad.squad, ["web_name", "team", "position", *cols]]
+    rows["fixtures_next"] = rows["team"].map(outlook)
+    rows["role"] = ["C" if i == squad.captain else "V" if i == squad.vice
+                    else "XI" if i in squad.xi else "bench" for i in rows.index]
+    print(rows.to_string())
+    print("\nTop 12 by horizon xPts outside squad (with fixture runs):")
+    outside = by_id[~by_id.index.isin(squad.squad)].nlargest(12, "xpts_horizon")
+    out_rows = outside[["web_name", "team", "position", "price", "xpts_horizon"]].copy()
+    out_rows["fixtures_next"] = out_rows["team"].map(outlook)
+    print(out_rows.to_string())
+
+
 def _name(result: GWResult, pid: int) -> str:
     match = result.player_rows[result.player_rows["id"] == pid]
     if len(match):
@@ -72,6 +128,8 @@ def write_memo(
     state: SquadState,
     out_dir: Path,
     overlays_used: dict[int, dict] | None,
+    decision: ManagerDecision | None = None,
+    outlook: dict[str, str] | None = None,
 ) -> Path:
     r, rows = result, result.player_rows
     lines = [
@@ -91,6 +149,29 @@ def write_memo(
         lines.append(f"- Transfers: {moves}{hit_note}{ev}")
     else:
         lines.append("- Transfers: none (initial build)" if r.gw == 1 else "- Transfers: roll")
+    if decision is not None and (
+        decision.lock or decision.ban or decision.captain or decision.vice
+        or decision.max_transfers is not None or decision.reasoning
+    ):
+        lines += ["", "## Manager overlay (the human call, outside the algorithm)", ""]
+        if decision.reasoning:
+            lines.append(decision.reasoning.strip())
+            lines.append("")
+        if decision.lock:
+            lines.append("- Locked (refused to sell/insisted on): "
+                         + ", ".join(_name(r, i) for i in sorted(decision.lock)))
+        if decision.ban:
+            lines.append("- Banned (refused to own): "
+                         + ", ".join(_name(r, i) for i in sorted(decision.ban)))
+        if decision.captain is not None:
+            lines.append(f"- Captain override: {_name(r, decision.captain)}")
+        if decision.max_transfers is not None:
+            lines.append(f"- Transfer cap imposed: {decision.max_transfers}")
+    if outlook:
+        squad_teams = list(dict.fromkeys(rows["team"]))
+        lines += ["", "## Fixture outlook (squad clubs, next 5 GWs)", ""]
+        for team in squad_teams:
+            lines.append(f"- {team}: {outlook.get(team, '—')}")
     if overlays_used:
         lines += ["", "## Overlays applied (written reasons)", ""]
         for pid, ov in sorted(overlays_used.items()):
@@ -134,6 +215,10 @@ def main() -> None:
     parser.add_argument("--overlays", default=None, help="hand-written overlay JSON for this GW")
     parser.add_argument("--season", default="2025-26")
     parser.add_argument("--force", action="store_true", help="allow re-running a completed GW")
+    parser.add_argument("--decision", default=None,
+                        help="manager decision JSON (lock/ban/captain/max_transfers/reasoning)")
+    parser.add_argument("--propose", action="store_true",
+                        help="print the optimizer proposal + fixture outlook and exit; no writes")
     args = parser.parse_args()
 
     out_dir = Path(args.out)
@@ -143,7 +228,7 @@ def main() -> None:
     state = load_state(state_path)
     if state_path.exists():
         last = json.loads(state_path.read_text())["last_gw"]
-        if args.gw != last + 1 and not args.force:
+        if args.gw != last + 1 and not args.force and not args.propose:
             raise SystemExit(
                 f"state is at GW{last}; next is GW{last + 1}, not GW{args.gw} "
                 "(pass --force to rewrite history deliberately)"
@@ -159,10 +244,21 @@ def main() -> None:
         hand = {int(k): v for k, v in json.loads(Path(args.overlays).read_text()).items()}
     overlays = merge(availability_overlays(store, args.gw), hand)
 
-    result, state = run_gameweek(store, args.gw, rules, state, overlays=overlays or None)
+    decision = load_decision(Path(args.decision) if args.decision else None)
+
+    if args.propose:
+        if state is None:
+            raise SystemExit("--propose needs an existing state.json (GW2 onward)")
+        propose(store, args.gw, rules, state, overlays or None, decision)
+        return
+
+    result, state = run_gameweek(
+        store, args.gw, rules, state, overlays=overlays or None, decision=decision
+    )
 
     result.player_rows.to_csv(out_dir / f"gw{args.gw:02d}_players.csv", index=False)
-    memo = write_memo(result, state, out_dir, overlays)
+    memo = write_memo(result, state, out_dir, overlays, decision,
+                      store.fixture_outlook(args.gw))
     save_state(state, state_path, args.gw)
 
     print(f"GW{args.gw}: predicted {result.predicted_xi_pts} | actual {result.actual_pts} "

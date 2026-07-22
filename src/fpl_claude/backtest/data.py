@@ -244,6 +244,26 @@ class SeasonStore:
         ]
         return pd.concat(frames, ignore_index=True)
 
+    # ------------------------------------------------------------------ outlook
+
+    def fixture_outlook(self, gw: int, horizon: int = 5) -> dict[str, str]:
+        """Compact next-`horizon` fixture run per team, from GW `gw` onward:
+        {"Arsenal": "LEE(H)2 LIV(A)4 ...", ...} with each opponent's FDR from
+        this team's perspective. Decision-layer context: transfers should buy
+        RUNS of fixtures, not one gameweek (a great single fixture followed by
+        four top-six away days is a trap the horizon objective can see but a
+        human reading one GW column cannot)."""
+        short = self.teams.set_index("id")["short_name"]
+        names = self.teams.set_index("id")["name"]
+        runs: dict[int, list[str]] = {int(t): [] for t in self.teams["id"]}
+        for f in self.fixtures.itertuples():
+            if pd.isna(f.event) or not (gw <= int(f.event) < gw + horizon):
+                continue
+            h, a = int(f.team_h), int(f.team_a)
+            runs[h].append(f"{short[a]}(H){int(f.team_h_difficulty)}")
+            runs[a].append(f"{short[h]}(A){int(f.team_a_difficulty)}")
+        return {names[t]: " ".join(r) if r else "—" for t, r in runs.items()}
+
     # ------------------------------------------------------------------ actuals
 
     def actuals(self, gw: int) -> pd.DataFrame:
