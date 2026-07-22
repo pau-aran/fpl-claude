@@ -22,7 +22,7 @@ dependencies = [
 #   pip install scipy tqdm pulp networkx matplotlib plotly ipywidgets
 # models/team.py imports it lazily and falls back to FDR expectations if absent.
 models = ["lightgbm>=4.0", "scikit-learn>=1.4", "scipy>=1.11", "tqdm"]
-optimize = ["pulp>=2.8", "highspy>=1.7"]
+optimize = ["pulp>=3.3", "highspy>=1.7"]  # >=3.3 for the PuLP-4.0-safe variable API
 dev = ["pytest>=8.0", "ruff>=0.4"]
 
 [tool.setuptools.packages.find]
