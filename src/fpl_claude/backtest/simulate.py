@@ -130,10 +130,12 @@ def decide_transfers(
 ) -> tuple[OptimizedSquad, dict]:
     """Optimizer proposes; the hit policy and manager overlay dispose.
 
-    Hits are gated on their MARGINAL value: the hit-taking solution must beat
-    the best hit-free solution by (hit_ev_threshold - hit_cost) net per hit —
-    i.e. each -4 must gross at least the policy threshold ON ITS OWN. Gating
-    the whole package let a +2.5 hit ride in on a +13 free move (GW2 review).
+    Hits are gated on their MARGINAL NET value: the hit-taking solution must
+    beat the best hit-free solution by hit_ev_threshold PER HIT, with the -4
+    already charged — a hit that merely breaks even on paper is noise-chasing
+    (early-season projections are not horizon-stable truth). Gating the whole
+    package let a +2.5 hit ride in on a +13 free move (GW2 review); gating at
+    net +0.5 would still have passed it (GW3 review).
 
     Returns (squad, audit) — audit records the gate outcome for the memo.
     """
@@ -158,16 +160,13 @@ def decide_transfers(
             lock=d.lock, ban=d.ban,
         )
         threshold = float(rules.policy("hit_ev_threshold"))
-        hit_cost = float(rules.raw["transfers"]["hit_cost"])
         marginal = result.objective - free.objective  # already net of hit cost
-        audit["hit_marginal"] = round(marginal + hit_cost * result.hits, 2)  # gross
-        if marginal < (threshold - hit_cost) * result.hits:
-            audit["hit_gate"] = (
-                f"rejected: gross {audit['hit_marginal']} < {threshold}/hit"
-            )
+        audit["hit_marginal"] = round(marginal, 2)
+        if marginal < threshold * result.hits:
+            audit["hit_gate"] = f"rejected: net {audit['hit_marginal']} < {threshold}/hit"
             result = free
         else:
-            audit["hit_gate"] = f"kept: gross {audit['hit_marginal']} >= {threshold}/hit"
+            audit["hit_gate"] = f"kept: net {audit['hit_marginal']} >= {threshold}/hit"
     return result, audit
 
 

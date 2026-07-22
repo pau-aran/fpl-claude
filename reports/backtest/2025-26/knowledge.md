@@ -17,7 +17,9 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   knock is priced as an 8-GW absence, inflating forced-move EV ~4x (GW2:
   "+15.45" that was really ~+4). Needs per-GW minutes structure.
 - [OPEN] Minutes model turns 1 start into p_start=1.0 for no-prior players
-  (`_start_share` trusts any team_games>0 without a prior). Ballard GW2.
+  (`_start_share` trusts any team_games>0 without a prior). Ballard: bought
+  on it GW2, benched GW2 AND GW3 while we fielded him at 3.95 — two weeks of
+  direct cost, now the top open defect.
 - [OPEN] `low_sample` is flagged but nothing consumes it: a newcomer's
   one-match rates outrank an established player's blended prior (Ekitiké 71'
   vs Wood's 20-goal season). Confidence haircut on horizons wanted.
@@ -26,8 +28,11 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 
 ## Decision policy
 
-- [DONE] Hits are gated on MARGINAL EV per hit (gross ≥ threshold each);
-  package deltas smuggle sub-threshold hits (GW2's Wood sale). In code.
+- [DONE] Hits are gated on MARGINAL NET EV per hit: the hit solution must
+  beat the best hit-free solution by ≥4.5 per hit WITH the -4 already
+  charged. Package deltas smuggle sub-threshold hits (GW2's Wood sale), and
+  a first implementation at net ≥0.5 would have re-passed it (GW3 review
+  catch) — semantics now in code and both rules files.
 - [DONE] The optimizer output is a proposal. Manager overlay (lock/ban/
   captain/cap, written reasoning) is mechanical via `--decision`.
 - Premium assets are holds through short knocks — never sell a talisman at

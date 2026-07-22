@@ -70,7 +70,7 @@ scoring:
     FWD: {points: 2, threshold: 12, stat: "CBIRT"}
 
 policies:                   # our own guardrails, not FPL rules
-  hit_ev_threshold: 4.5     # min expected gain over horizon to justify a -4
+  hit_ev_threshold: 4.5     # min NET horizon gain (after the -4) required PER hit, judged marginally
   planning_horizon_gws: 8
   horizon_decay: 0.85
   flagged_player_max_doubt: 0.75  # never carry >75%-doubt players without a written plan
