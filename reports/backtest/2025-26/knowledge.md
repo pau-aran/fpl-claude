@@ -30,13 +30,13 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 - [OPEN] `low_sample` is flagged but nothing consumes it: a newcomer's
   one-match rates outrank an established player's blended prior (Ekitiké 71'
   vs Wood's 20-goal season). Confidence haircut on horizons wanted.
-- [WATCH] Level calibration: 5-GW mean error +2.9 (excl GW1: −3.6, n=4) —
-  no level bias, no adjustment. Predictions sit flat 51–59 while actuals
-  track the LEAGUE environment (official avgs 54/51/48/63/42 vs our
-  84/44/54/61/40): big misses are slate-wide hot/cold weeks, not model
-  level. Bonus proxy: no new signal since GW1. DC: first threshold points
-  banked GW5 (Gudmundsson +2, Semenyo +2, three near-misses) — the
-  "DEF picks under-index CBIT" worry weakened, watch continues.
+- [WATCH] Level calibration: 6-GW mean error +2.7, mean |error| 11.6
+  (excl GW1: −2.5, n=5) — no level bias, no adjustment. Predictions sit
+  flat 51–59 while actuals track the LEAGUE environment (official avgs
+  54/51/48/63/42/46 vs our 84/44/54/61/40/55): big misses are slate-wide
+  hot/cold weeks, not model level. GW6's +1.9 near-exact aggregate was
+  OFFSETTING errors (defence −11.6, Haaland(C) +14.7), not per-player
+  accuracy. Bonus proxy: no new signal since GW1. DC watch continues.
 
 ## Decision policy
 
@@ -52,7 +52,8 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 - Premium assets are holds through short knocks — never sell a talisman at
   the bottom of his value on 1-2 week news (GW3: held Palmer).
 - Buy RUNS of fixtures, not single GWs; plan 2-3 week transfer paths; enter
-  one GW before a run turns good (Haaland queued for City's GW6 BUR(H)).
+  one GW before a run turns good (Haaland entered GW6 BUR(H) ahead of the
+  865k rush: 16 pts, captained — the pattern's first full payoff).
 - Never re-buy what you just sold without new information — churn admits the
   first move was wrong and pays spread twice (GW3 veto of Wood buy-back).
 - A hit that clears the EV gate can still be WRONG if it damages the
@@ -64,21 +65,28 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   coverage cost an autosub; GW2 best enabler scored −1). Bought Gudmundsson
   GW3 as 15th man.
 - A lock/cap re-solve can silently redirect the transfer away from the move
-  the written reasoning described (GW4: approval text argued for Senesi, the
-  constrained solve bought Calafiori) — re-read the constrained solution and
-  amend the memo before sign-off.
-- Captaincy = highest projection unless news says otherwise: passed review
-  5/5 weeks (Salah ×5). The rule handles form shifts by itself — the model
-  already cooled Salah (27.7 horizon) through his four single-digit weeks
-  and hands Haaland the GW6 armband mechanically once he enters. No recency
-  overrides.
+  the written reasoning described — twice now (GW4 Senesi→Calafiori; GW6
+  reasoned Ekitiké route → plan-primary Salah route). The post-solve
+  re-read + signed addendum caught both; control judged SUFFICIENT. No
+  lock-the-reasoned-route solver mode: GW6's redirect was arithmetically
+  FORCED (Ekitiké £8.7 + bank £0.5 = £9.2 vs Haaland £14.3; no 2-FT repair
+  passes the FWD quota) — a locked route would deadlock at the deadline or
+  force a forbidden hit. Instead: a written funding route must SHOW ITS
+  ARITHMETIC (sells + bank ≥ buys; resulting squad quota-legal) before the
+  solve runs. Re-judge only if a redirect ever slips through un-caught.
+- Captaincy = highest projection unless news says otherwise: 6/6 (Salah ×5,
+  Haaland GW6). The armband migrated mechanically the week Haaland entered
+  (8.65 top of board → returned 16→32) — the rule handles form shifts by
+  itself. No recency overrides.
 - Community consensus (X strategy accounts, r/FantasyPL GW threads, FFScout
   polls) is a decision INPUT from GW6: a candidate roadmap plus effective-
   ownership risk context (a template move we skip is a rank bet; a
   differential we take needs conviction). Never an order — diverging from a
   clear template move requires a written reason in the memo, and so does
   following one the models dislike. Weekly `consensus/gwNN.md`, pre-deadline
-  sources only.
+  sources only. First live week (GW6) was too convergent to test it
+  (model and 67% poll agreed on Haaland); its first real test is the one
+  divergence taken — Palmer hold vs mass sells — resolving GW8.
 
 ## Season context (2025/26 replay, verified)
 
