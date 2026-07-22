@@ -104,15 +104,23 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   bench-order calls. It NEVER overrides the EV gate, the plan, or minutes
   risk — it's the creative overlay on top, and the duel named must be
   written in the memo so the review can grade it.
-  [WATCH] First live outing GW7 (3 duels named): all reads were
-  matchup-correct (Mbeumo v Reinildo-less Sunderland +6; Ekitiké-fade
-  congruent with the benching; Semenyo home 18) BUT every one only agreed
-  with signals we already had (FDR, ownership, overlay) — it has not yet
-  surfaced a player the model UNDERRATED, which is its purpose. The real
-  test is the first DIVERGENCE (lens says buy, model is cold). Cost nothing;
-  keep grading live.
-- Captaincy = highest projection unless news says otherwise: 8/8 (Salah ×5,
-  Haaland ×3). GW8 Haaland v EVE(H) — 71% poll, goal+assist+bonus, doubled 26.
+  [WATCH] Reads are 4-for-4 matchup-correct through GW9 (GW9: Mbeumo v
+  Brighton-1-CS-in-8 named as favourable → 15). BUT every call has only
+  agreed with signals we already had (FDR, ownership, a hold we already
+  owned) — it has NOT yet surfaced a player the model UNDERRATED, which is
+  its purpose. Strong as a hold-conviction / captaincy-context tool; unproven
+  as a buy-side EDGE. Real test = the first DIVERGENCE (lens says buy where
+  the model is cold). Cost nothing; keep grading live.
+- Captaincy = highest projection unless news says otherwise: 9/9 rule
+  adherence (Salah ×5, Haaland ×4). GW9 Haaland away at AVL BLANKED (doubled
+  4) — first low captain return, but he was model top + ~90% elite EO; not
+  captaining would have been a bigger rank gamble <10% shared. Process over
+  outcome: the rule is judged on adherence, not one variance week.
+- Transfer SEQUENCING: enter a fixture run one GW early, but NOT into the
+  target's worst fixture. GW9 deferred Ekitiké→Mateta because Mateta's GW9
+  was ARS(A) (his worst) — outcome Mateta 2 = Ekitiké 2 (zero cost), banked a
+  2nd FT for GW10 where his run turns green. Don't pay a hit or take a bad
+  entry week for a horizon edge that lives later in the run.
 - Value over reputation beats consensus template adds when the model
   disagrees on minutes/underlying: GW8 faded the most-bought Saka (model
   horizon 17.0) for B.Fernandes (23.95) — the crowd was SELLING Fernandes

@@ -1,5 +1,5 @@
 {
-  "last_gw": 8,
+  "last_gw": 9,
   "buy_costs": {
     "1": 55,
     "470": 40,
@@ -18,7 +18,7 @@
     "449": 90
   },
   "bank": 5,
-  "free_transfers": 1,
-  "points_total": 491,
+  "free_transfers": 2,
+  "points_total": 549,
   "hits_total": 1
 }

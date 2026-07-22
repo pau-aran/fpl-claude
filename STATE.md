@@ -7,15 +7,16 @@ GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 ## Where things stand
 
 - **The PLAN §4 backtest gate is RUNNING and passing.** Point-in-time replay
-  of 2025/26 GW1–10; now through **GW8 on branch
-  `claude/fpl-data-sources-architecture-5tvqet`**: **491 pts vs 420
-  average-manager baseline (+71)**, no leakage (stats through GW n−1 only,
-  prices at GW n, prior season via cross-season `code`). GW8 was a forced
-  triple-out (Palmer/Gudmundsson/Brooks) handled on 2 FT no hit
-  (Palmer→B.Fernandes + Gudmundsson→Senesi), faded the template Saka for the
-  crowd-sold Fernandes → 82 vs avg 56 (+26), best week of the season.
-  Shipped a model fix mid-run: newcomer confidence haircut (shrink_newcomers,
-  GW8+). Goal is now TOP 1% (not just beat-average) — GW9-10 to go.
+  of 2025/26 GW1–10; now through **GW9 on branch
+  `claude/fpl-data-sources-architecture-5tvqet`**: **549 pts vs 466
+  average-manager baseline (+83)**, no leakage (stats through GW n−1 only,
+  prices at GW n, prior season via cross-season `code`). GW9 rolled the FT
+  (2 banked for GW10), deferring Ekitiké→Mateta to time the run entry (Mateta
+  2 = Ekitiké 2, zero cost); 58 vs avg 46 (+12) despite Haaland's captain
+  blank — Mbeumo 15 (a duel-lens call) + Szoboszlai 10 carried it. Shipped a
+  model fix mid-run: newcomer confidence haircut (shrink_newcomers, GW8+).
+  Goal is TOP 1% (not just beat-average) — GW10 (queued Ekitiké→Mateta double
+  move) then the final verdict to go.
 - **New: `src/fpl_claude/backtest/`** — SeasonStore (vaastav point-in-time
   reconstruction), simulator (real FPL mechanics: sell prices, FT banking,
   autosubs, hit gate), per-GW CLI with persisted state, availability-proxy +
@@ -38,13 +39,14 @@ GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 
 ## What the next session should do
 
-1. **Finish the backtest**: GW9–10 (same weekly cadence: overlay agent →
-   propose → manager decision vs plan.md → run → reviewer agent). State
+1. **Finish the backtest**: GW10 (final week; same cadence: overlay →
+   consensus → propose → manager decision vs plan.md → run → review). State
    lives in `reports/backtest/2025-26/state.json` (resume with
-   `python -m fpl_claude.backtest.run --gw 9`; data via
-   `python -m fpl_claude.backtest.fetch --dest <scratch>`). GW9: 1 FT,
-   ~£0.1m bank; no forced move; Brooks (out) is the cash-raise lever. See
-   plan.md "Active path — GW9 → GW10".
+   `python -m fpl_claude.backtest.run --gw 10`; data via
+   `python -m fpl_claude.backtest.fetch --dest <scratch>`). GW10: 2 FT,
+   ~£0.1m bank; queued Ekitiké→Mateta upgrade + a 2nd value/bench leg. See
+   plan.md "Active path — GW10". Then the 10-GW gate verdict + top-1%
+   assessment.
 2. **Final gate verdict + report** (10-GW total vs 531 baseline; process
    audit from `reviews/`), fold into NEXT-STEPS §2 and drop the "ungated"
    label if passed.
@@ -63,7 +65,8 @@ GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 | 6 | 55 | 46 | Haaland lands on plan + 67% consensus; captained |
 | 7 | 71 | 60 | Rolled FT (2 banked); Haaland C g+a; refused plan-conflict −4; Semenyo 18 |
 | 8 | 82 | 56 | Triple-out (Palmer/Gud/Brooks); 2 FT no hit; faded Saka→Fernandes; Haaland C 26 |
-| **Σ** | **491** | **420** | **+71; hits: 1; captaincy rule 8/8** |
+| 9 | 58 | 46 | Rolled FT (deferred Ekitiké→Mateta); Haaland C blank; Mbeumo 15, Szoboszlai 10 |
+| **Σ** | **549** | **466** | **+83; hits: 1; captaincy rule 9/9** |
 
 ## Recent session log
 
