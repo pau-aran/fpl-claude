@@ -19,6 +19,21 @@ Composition per player per fixture:
 attack_scale = fixture expected goals / league average — how much easier or
 harder this opponent makes scoring than the player's per-90 baseline.
 
+Component applicability is ENFORCED by position, never assumed from the data:
+
+  component     GKP  DEF  MID  FWD   enforced by
+  appearance     x    x    x    x    —
+  goals          -    x    x    x    STRUCTURALLY_ZERO (a keeper isn't scoring;
+                                     rates can't be trusted to guarantee that)
+  assists        x    x    x    x    rate-driven (keeper assists are real, rare)
+  clean sheet    x    x    x    -    YAML clean_sheet points (FWD: 0)
+  conceded       x    x    -    -    YAML goals_conceded_per_2 position list
+  saves          x    -    -    -    GKP-only branch
+  def. contrib   -    x    x    x    YAML defensive_contribution position list
+  bonus          x    x    x    x    —
+
+Unknown positions raise rather than silently score as outfielders.
+
 Not modeled in v1 (documented, small, roughly netting out): cards, own goals,
 penalty saves/misses. The backtest gate decides if that stays acceptable.
 """
@@ -34,6 +49,12 @@ from .minutes import MinutesEstimate
 from .team import LEAGUE_AVG_GOALS, FixtureExpectation
 
 MAX_GOALS = 15  # Poisson truncation, matches the team model's score grid
+
+POSITIONS = frozenset({"GKP", "DEF", "MID", "FWD"})
+
+# Components forced to zero regardless of what the rates data claims — the
+# structural truths of the game the pipeline must not depend on clean data for.
+STRUCTURALLY_ZERO: dict[str, frozenset[str]] = {"GKP": frozenset({"goals"})}
 
 
 def poisson_pmf(k: int, lam: float) -> float:
@@ -99,6 +120,8 @@ def expected_points(
     decomposition — an opaque final number is exactly what we refused to
     extract from third-party sites.
     """
+    if position not in POSITIONS:
+        raise ValueError(f"unknown position {position!r}; expected one of {sorted(POSITIONS)}")
     team_xg = fixture.home_xg if is_home else fixture.away_xg
     opp_xg = fixture.away_xg if is_home else fixture.home_xg
     cs_prob = fixture.home_cs_prob if is_home else fixture.away_cs_prob
@@ -139,5 +162,7 @@ def expected_points(
         "defensive_contribution": defensive_contribution,
         "bonus": bonus,
     }
+    for name in STRUCTURALLY_ZERO.get(position, ()):
+        components[name] = 0.0
     components["total"] = sum(components.values())
     return {k: round(v, 3) for k, v in components.items()}

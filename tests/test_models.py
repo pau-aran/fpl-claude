@@ -214,6 +214,34 @@ def test_expected_points_scales_with_rules_yaml(bootstrap):
     assert boosted["goals"] == pytest.approx(2 * base["goals"], rel=0.01)
 
 
+def test_positional_enforcement_is_structural(bootstrap):
+    """The same (corrupted) rates give position-appropriate points: a keeper
+    never earns goal expectation even if the data claims striker-level xG."""
+    scoring = ScoringMap.from_ruleset(Ruleset.load("2026-27"))
+    fixture = fdr_expectation(3, 3)
+    est = minutes_model.estimate(_player(1, 1, 3, minutes=900, starts=10), 10)
+    dirty_rates = {"xg90": 0.6, "xa90": 0.3, "saves90": 3.0, "dc90": 13.0, "bonus90": 0.2}
+
+    by_pos = {
+        pos: expected_points(pos, dirty_rates, est, fixture, True, scoring)
+        for pos in ("GKP", "DEF", "MID", "FWD")
+    }
+    assert by_pos["GKP"]["goals"] == 0.0  # keepers don't score, whatever the data says
+    assert by_pos["DEF"]["goals"] > by_pos["GKP"]["goals"]
+    assert by_pos["FWD"]["clean_sheet"] == 0.0  # YAML: FWD CS = 0
+    assert by_pos["MID"]["conceded"] == 0.0 and by_pos["FWD"]["conceded"] == 0.0
+    assert by_pos["DEF"]["saves"] == 0.0 and by_pos["MID"]["saves"] == 0.0
+    assert by_pos["GKP"]["defensive_contribution"] == 0.0  # no GKP DC category
+    assert by_pos["DEF"]["defensive_contribution"] > 0.0
+    # Same goal involvement is worth more for DEF than FWD (6 vs 4 pts):
+    assert by_pos["DEF"]["goals"] > by_pos["FWD"]["goals"]
+    # And the totals genuinely differ by position:
+    assert len({round(v["total"], 3) for v in by_pos.values()}) == 4
+
+    with pytest.raises(ValueError, match="unknown position"):
+        expected_points("WING", dirty_rates, est, fixture, True, scoring)
+
+
 def test_gk_and_def_specific_components(bootstrap):
     scoring = ScoringMap.from_ruleset(Ruleset.load("2026-27"))
     fixture = fdr_expectation(3, 3)
