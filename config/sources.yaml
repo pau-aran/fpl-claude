@@ -23,6 +23,10 @@ injuries_and_team_news:
   - {name: "Sky Sports PL news", url: "https://www.skysports.com/premier-league-news", tier: 2,
      use: "press conferences, transfer/injury news"}
 
+underlying_stats:
+  - {name: "FBref Premier League", url: "https://fbref.com/en/comps/9/Premier-League-Stats", tier: 1,
+     use: "Opta xG/xA/npxG, per-90s, possession-adjusted defensive stats, keeper PSxG — the rates-layer sanity check and DC-potential screen"}
+
 strategy_and_analytics:
   - {name: "Fantasy Football Scout", url: "https://www.fantasyfootballscout.co.uk", tier: 1,
      use: "the reference strategy site: articles, stats, community"}

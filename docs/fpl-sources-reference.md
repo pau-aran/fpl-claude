@@ -31,10 +31,11 @@ that stops earning its slot.*
 | FPL Dave, FPL Pulse, AllAboutFPL | Independent per-GW average corroboration |
 | LiveFPL | Effective ownership, top-10k template (NOT reachable headless — search snippets only) |
 
-## 3. Datasets (backtests, priors, training)
+## 3. Underlying numbers & datasets (backtests, priors, training)
 
 | Source | Proven for |
 |---|---|
+| FBref — Premier League (fbref.com/en/comps/9/) | THE reference for underlying stats: Opta xG/xA/npxG, per-90s, shooting, progressive actions, possession-adjusted defensive stats (tackles+interceptions ≈ DC-relevant), keeper PSxG. Use to sanity-check our rates layer and to price DC potential; owner-suggested, added GW5. Headless fetch may be blocked — read via search snippets or its StatHead tables |
 | vaastav/Fantasy-Premier-League | Per-GW history: merged_gw, players_raw, fixtures — the backtest backbone. CAUTION: players_raw is end-of-season state (team/position/price leak January moves); point-in-time values must come from merged_gw |
 | FPL-Core-Insights | bootstrap-static mirrors incl. event averages, FPL-ID-keyed |
 
