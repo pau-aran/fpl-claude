@@ -20,6 +20,16 @@ import pandas as pd
 # Sample size (in full matches) at which current-season rates get full weight.
 FULL_WEIGHT_MATCHES = 6
 
+# Percentile of established players' rates (per position) that a priorless
+# newcomer's rates are regressed TOWARD until he has earned full weight. A low
+# percentile = "replacement level": a summer signing's two-game hot streak
+# should not outrank an established player whose rate is shrunk toward his
+# prior. 0.30 keeps it conservative without zeroing genuine early signal.
+NEWCOMER_BASELINE_QUANTILE = 0.30
+
+# Minimum established players at a position before its baseline is trustworthy.
+MIN_BASELINE_POPULATION = 5
+
 # Pseudo-minutes added to every per-90 denominator: shrinks tiny samples toward
 # zero instead of letting them explode (a 1-minute cameo with 0.06 xG is NOT a
 # 5.4 xG/90 player — backtest GW1 2025/26 captained exactly that artifact).
@@ -70,9 +80,12 @@ def blend(current: pd.DataFrame, prior: pd.DataFrame | None) -> pd.DataFrame:
     evidence is under one full match — projections there are essentially priors
     or noise and skills must treat them as such.
     """
+    weight_all = (current["minutes_sample"] / (FULL_WEIGHT_MATCHES * 90)).clip(0, 1)
     if prior is None or prior.empty:
         out = current.copy()
         out["low_sample"] = out["minutes_sample"] < 90
+        out["has_prior"] = False
+        out["evidence"] = weight_all.values
         return out
 
     merged = current.merge(
@@ -93,4 +106,49 @@ def blend(current: pd.DataFrame, prior: pd.DataFrame | None) -> pd.DataFrame:
         blended = weight * merged[col] + (1 - weight) * merged[f"{col}_prior"]
         merged[col] = blended.where(has_prior, merged[col])
     merged["low_sample"] = ~has_prior & (merged["minutes_sample"] < 90)
-    return merged[["id", "minutes_sample", *RATE_COLUMNS, "low_sample"]]
+    merged["has_prior"] = has_prior
+    # evidence = how much current-season weight the player has earned; for
+    # priorless players this drives the newcomer haircut (shrink_newcomers).
+    merged["evidence"] = weight
+    return merged[
+        ["id", "minutes_sample", *RATE_COLUMNS, "low_sample", "has_prior", "evidence"]
+    ]
+
+
+def shrink_newcomers(blended: pd.DataFrame, element_type: pd.Series) -> pd.DataFrame:
+    """Regress priorless newcomers' rates toward a positional replacement
+    baseline by their evidence weight.
+
+    `blend` shrinks a player WITH a prior toward that prior; a player with NO
+    prior (a genuine newcomer to the data — a fresh signing) has nothing to
+    regress toward, so `blend` leaves his small-sample rates at full trust and
+    a two-game hot streak outranks an established player's blended prior
+    (knowledge.md: Ekitiké 71' vs Wood's 20-goal season). Here we regress those
+    newcomers toward replacement level — a low percentile of established
+    players at their position — by `evidence` (= min(1, mins/(6*90))), so the
+    haircut is heaviest with the least evidence and decays to nothing once the
+    newcomer has a full sample. Established (has_prior) players are untouched.
+
+    `element_type` is a Series indexed by player id (FPL element_type 1-4).
+    """
+    if not {"has_prior", "evidence"}.issubset(blended.columns):
+        return blended
+    out = blended.copy()
+    et = out["id"].map(element_type)
+    established = out[out["has_prior"]]
+    est_et = established["id"].map(element_type)
+    baselines: dict[Any, dict[str, float]] = {}
+    for pos, grp in established.groupby(est_et):
+        if len(grp) >= MIN_BASELINE_POPULATION:
+            baselines[pos] = {
+                c: float(grp[c].quantile(NEWCOMER_BASELINE_QUANTILE)) for c in RATE_COLUMNS
+            }
+    newcomer = ~out["has_prior"]
+    for col in RATE_COLUMNS:
+        base = et.map(lambda p: baselines.get(p, {}).get(col))
+        apply = newcomer & base.notna()
+        if not apply.any():
+            continue
+        w = out.loc[apply, "evidence"]
+        out.loc[apply, col] = w * out.loc[apply, col] + (1 - w) * base[apply]
+    return out

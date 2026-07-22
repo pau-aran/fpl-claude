@@ -124,9 +124,15 @@ def build_projections(
         if overlays
         else minutes_df
     )
-    rates_df = rates_model.blend(
-        rates_model.from_bootstrap(bootstrap),
-        rates_model.from_bootstrap(prior_bootstrap) if prior_bootstrap else None,
+    element_type = pd.Series(
+        {int(p["id"]): int(p["element_type"]) for p in bootstrap["elements"]}
+    )
+    rates_df = rates_model.shrink_newcomers(
+        rates_model.blend(
+            rates_model.from_bootstrap(bootstrap),
+            rates_model.from_bootstrap(prior_bootstrap) if prior_bootstrap else None,
+        ),
+        element_type,
     ).set_index("id")
 
     def _estimate_from(df: pd.DataFrame, pid: int) -> minutes_model.MinutesEstimate:

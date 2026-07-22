@@ -188,6 +188,39 @@ def test_rates_low_sample_flag_without_prior():
     assert bool(df.set_index("id").loc[60, "low_sample"])
 
 
+def test_shrink_newcomers_regresses_priorless_hot_streak():
+    # A priorless newcomer (id 91) with a hot 2-game sample must be regressed
+    # toward the position's replacement baseline, not left outranking the
+    # established population. Build 6 established MIDs (with a prior) plus the
+    # newcomer, all element_type 3.
+    established = [
+        _player(i, 1, 3, minutes=540, expected_goals=str(0.3 + 0.05 * i))
+        for i in range(1, 7)
+    ]
+    newcomer = _player(91, 2, 3, minutes=180, expected_goals="4.0")  # 2 games, hot
+    current = rates_model.from_bootstrap({"elements": established + [newcomer]})
+    prior = rates_model.from_bootstrap({"elements": established})  # newcomer absent
+    blended = rates_model.blend(current, prior)
+    element_type = pd.Series({p["id"]: p["element_type"] for p in established + [newcomer]})
+    shrunk = rates_model.shrink_newcomers(blended, element_type).set_index("id")
+
+    raw_new = current.set_index("id").loc[91, "xg90"]
+    # Newcomer flagged priorless, evidence = 180/540 = 1/3.
+    assert not bool(shrunk.loc[91, "has_prior"])
+    assert shrunk.loc[91, "evidence"] == pytest.approx(1 / 3)
+    # Regressed strictly below his raw rate...
+    assert shrunk.loc[91, "xg90"] < raw_new
+    # ...and established players are untouched.
+    est_blended = blended.set_index("id").loc[3, "xg90"]
+    assert shrunk.loc[3, "xg90"] == pytest.approx(est_blended)
+    # The shrink is the evidence-weighted mix toward the position baseline.
+    baseline = pd.Series(
+        [rates_model.from_bootstrap({"elements": established}).set_index("id").loc[i, "xg90"]
+         for i in range(1, 7)]
+    ).quantile(rates_model.NEWCOMER_BASELINE_QUANTILE)
+    assert shrunk.loc[91, "xg90"] == pytest.approx(raw_new / 3 + baseline * 2 / 3)
+
+
 # ---------------------------------------------------------------- xpts math
 
 

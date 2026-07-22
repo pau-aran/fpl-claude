@@ -27,9 +27,17 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   (`_start_share`). Ballard: fielded 0-min GW2–4 (10.47 predicted pts for
   8 real minutes) — but self-correcting (4.10→2.42 as team_games grows)
   and hasn't driven a transfer since GW2. Demoted behind overlay-horizon.
-- [OPEN] `low_sample` is flagged but nothing consumes it: a newcomer's
-  one-match rates outrank an established player's blended prior (Ekitiké 71'
-  vs Wood's 20-goal season). Confidence haircut on horizons wanted.
+- [DONE] Newcomer confidence haircut (`shrink_newcomers`, rates.py, from
+  GW8): a priorless newcomer has nothing for `blend` to regress toward, so
+  his small-sample rates rode at full trust and a 2-game hot streak outranked
+  an established player's blended prior. Now priorless players are regressed
+  toward a positional replacement baseline (30th-pct of established players
+  at that position) by their `evidence` weight (min(1, mins/540)), heaviest
+  with least evidence, decaying to nothing at a full sample. Verified GW8:
+  Woltemade xg90 0.44→0.27 (ev .56), Ekitiké 0.37→0.27 (ev .71); Gyökeres
+  (full sample) and Isak (has a prior → blend handled him, NOT double-shrunk)
+  untouched — exactly the set that should/shouldn't move. Directly de-risks
+  the Woltemade-type bandwagon the market pushed at GW8.
 - [WATCH] Level calibration: 6-GW mean error +2.7, mean |error| 11.6
   (excl GW1: −2.5, n=5) — no level bias, no adjustment. Predictions sit
   flat 51–59 while actuals track the LEAGUE environment (official avgs
