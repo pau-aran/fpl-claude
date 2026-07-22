@@ -31,7 +31,14 @@ applies it manually; you never touch their FPL account.
 5. **Overlay (the part only you can do):** deviate from the optimizer only with a
    written reason (presser tone, rotation pattern from the weekly report, tactical
    change). Check every recommended player against the risk table — a flagged
-   player needs a documented plan.
+   player needs a documented plan. Include the **positional-duel read** (owner
+   directive, 2026-07-22): name the in-form players facing a weak direct
+   counterpart this GW (winger vs slow/exposed fullback, striker vs error-prone
+   or stand-in CBs, attacking fullback vs a non-tracking winger, defence/GK vs a
+   blunt attack) — team FDR hides soft individual duels. Use it to seed
+   shortlists the model underrates and to tilt close calls (captaincy tiebreak,
+   near-equal targets, bench order); it never overrides the EV gate, the plan,
+   or minutes risk. Write the named duel into the memo so the review can grade it.
 6. **Policies:** hits only if EV gain > `policies.hit_ev_threshold`; captain from
    an EV table (show top 3 with ceiling/floor); respect chip calendar. Price
    pressure (from the refresh radar) may pull a decided transfer earlier in the

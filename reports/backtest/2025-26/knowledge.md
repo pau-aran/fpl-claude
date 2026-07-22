@@ -81,6 +81,18 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   force a forbidden hit. Instead: a written funding route must SHOW ITS
   ARITHMETIC (sells + bank ≥ buys; resulting squad quota-legal) before the
   solve runs. Re-judge only if a redirect ever slips through un-caught.
+- Purist matchup lens (owner directive, 2026-07-22): every deadline, write a
+  short POSITIONAL-DUEL read alongside the quant inputs — in-form players who
+  come up against a weak direct counterpart in their position (winger vs a
+  slow/exposed fullback, striker vs an error-prone CB pairing or a stand-in,
+  attacking fullback vs a winger who doesn't track back, defence/GK vs a
+  blunt attack). Team-level FDR misses these: a "hard" fixture can hide a
+  soft individual duel and vice versa. Use it (a) to seed candidate
+  shortlists the model underrates, (b) as the tilt on close calls —
+  captaincy tiebreaks, ordering between near-equal transfer targets, XI
+  bench-order calls. It NEVER overrides the EV gate, the plan, or minutes
+  risk — it's the creative overlay on top, and the duel named must be
+  written in the memo so the review can grade it.
 - Captaincy = highest projection unless news says otherwise: 6/6 (Salah ×5,
   Haaland GW6). The armband migrated mechanically the week Haaland entered
   (8.65 top of board → returned 16→32) — the rule handles form shifts by
