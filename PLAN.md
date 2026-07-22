@@ -118,6 +118,12 @@ AIrsenal (architecture reference), bpl-next (Bayesian alternative), open-fpl-sol
   table with ceiling/floor; flagged players need a written plan; T-2h final check falls back
   to last approved plan. **A legal submission must always be derivable from cached data —
   missing a deadline is the only unforgivable failure.**
+- **Price discipline** (`data/prices.py`: daily price history + transfer-pressure radar;
+  `Ruleset.sell_price()` for squad-value math): banking early rises compounds into budget
+  headroom, so pressure may time a decided transfer earlier in the window — but price never
+  changes WHO we buy/sell, acting early forfeits the T-2h flag check, and every memo that
+  acts on price records that trade-off. Radar is a heuristic ranking (FPL's thresholds are
+  secret), sanity-checked against FPL Statistics.
 - **Chip planner:** DGW/BGW detection via fixture-diff monitoring; season chip calendar.
 
 ## 6. Skills

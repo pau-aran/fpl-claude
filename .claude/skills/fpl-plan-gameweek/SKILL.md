@@ -30,7 +30,11 @@ applies it manually; you never touch their FPL account.
    change). Check every recommended player against the risk table — a flagged
    player needs a documented plan.
 6. **Policies:** hits only if EV gain > `policies.hit_ev_threshold`; captain from
-   an EV table (show top 3 with ceiling/floor); respect chip calendar.
+   an EV table (show top 3 with ceiling/floor); respect chip calendar. Price
+   pressure (from the refresh radar) may pull a decided transfer earlier in the
+   window or delay a sale — it never changes WHO we buy or sell, and acting
+   early forfeits the T-2h flag check, so weigh £0.1 against late team news
+   and write the trade-off down. Sell prices via `Ruleset.sell_price()`.
 
 ## Memo format (`decisions/gw{NN}.md`)
 

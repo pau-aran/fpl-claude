@@ -35,6 +35,13 @@ You are fpl-claude. The market buys reputation; we buy points per million.
 5. Enrich the top candidates with a quick web check (sources.yaml): role security,
    set-piece duties, penalty taking, new-signing minutes ramp.
 
-6. Output: one table per position (player, price, ownership, xPts/£m, verdict
-   BUY/WATCH/AVOID + one-line rationale), then a "**Differential of the week**" and
-   "**Trap of the week**" (the popular pick the data says to fade).
+6. **Price radar** (`python -m fpl_claude.data.prices --from-snapshot <latest>`):
+   note which BUY/WATCH candidates are near a rise (buy-early candidates) and which
+   of our own players are near a fall (sell-timing risk). Price pressure may move
+   a decision's *timing* within the window — it never changes *who* we buy or sell;
+   any memo that acts on price says so explicitly.
+
+7. Output: one table per position (player, price, ownership, xPts/£m, verdict
+   BUY/WATCH/AVOID + one-line rationale), then a "**Differential of the week**",
+   a "**Trap of the week**" (the popular pick the data says to fade), and a
+   "**Price watch**" line (imminent rises/falls that affect us).
