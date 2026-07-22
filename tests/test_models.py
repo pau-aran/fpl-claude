@@ -135,15 +135,18 @@ def test_priors_from_previous_season_bootstrap():
 def test_rates_per90_and_blending(bootstrap):
     current = rates_model.from_bootstrap(bootstrap)
     premium = current.set_index("id").loc[10]
-    assert premium["xg90"] == pytest.approx(0.6)
-    assert premium["xa90"] == pytest.approx(0.3)
+    # Per-90 rates are shrunk toward zero by SHRINKAGE_MINUTES of pseudo-time:
+    # 6.0 xG over 900' -> 6.0 * 90 / (900 + 90), not a raw 0.6.
+    shrunk = 90.0 / (900 + rates_model.SHRINKAGE_MINUTES)
+    assert premium["xg90"] == pytest.approx(6.0 * shrunk)
+    assert premium["xa90"] == pytest.approx(3.0 * shrunk)
 
     # Prior season: same player ran hotter; a 900-min current sample should
     # dominate (weight >= 1 at 6 full matches).
     prior = current.copy()
     prior.loc[prior["id"] == 10, "xg90"] = 1.2
     blended = rates_model.blend(current, prior).set_index("id")
-    assert blended.loc[10, "xg90"] == pytest.approx(0.6)
+    assert blended.loc[10, "xg90"] == pytest.approx(6.0 * shrunk)
 
     # Zero-minute player with a prior: takes the prior wholesale.
     zero = _player(50, 1, 4)
@@ -154,6 +157,14 @@ def test_rates_per90_and_blending(bootstrap):
     blended2 = rates_model.blend(cur2, prior2).set_index("id")
     assert blended2.loc[50, "xg90"] == pytest.approx(0.5)
     assert not blended2.loc[50, "low_sample"]  # has a prior -> not flagged
+
+
+def test_rates_tiny_sample_does_not_explode():
+    # Regression: 1 minute with 0.06 xG must not become a 5.4 xG/90 "player"
+    # (2025/26 backtest GW1 captained exactly that artifact pre-shrinkage).
+    bs = {"elements": [_player(70, 1, 4, minutes=1, expected_goals="0.06")]}
+    rates = rates_model.from_bootstrap(bs).set_index("id")
+    assert rates.loc[70, "xg90"] < 0.1
 
 
 def test_rates_low_sample_flag_without_prior():

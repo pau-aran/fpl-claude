@@ -20,6 +20,12 @@ import pandas as pd
 # Sample size (in full matches) at which current-season rates get full weight.
 FULL_WEIGHT_MATCHES = 6
 
+# Pseudo-minutes added to every per-90 denominator: shrinks tiny samples toward
+# zero instead of letting them explode (a 1-minute cameo with 0.06 xG is NOT a
+# 5.4 xG/90 player — backtest GW1 2025/26 captained exactly that artifact).
+# A full season barely notices (~3%); a single cameo is damped ~99%.
+SHRINKAGE_MINUTES = 90
+
 RATE_COLUMNS = ["xg90", "xa90", "saves90", "dc90", "bonus90"]
 
 
@@ -32,7 +38,7 @@ def _num(value: Any) -> float:
 
 
 def _per90(total: Any, minutes: int) -> float:
-    return _num(total) * 90.0 / minutes if minutes > 0 else 0.0
+    return _num(total) * 90.0 / (minutes + SHRINKAGE_MINUTES) if minutes > 0 else 0.0
 
 
 def from_bootstrap(bootstrap: dict[str, Any]) -> pd.DataFrame:

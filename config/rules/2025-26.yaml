@@ -1,0 +1,77 @@
+# FPL ruleset — season 2025/26 (HISTORICAL, for backtesting)
+#
+# The 2025/26 season is complete; these rules are final and verified against how
+# the season was actually played: budget 100.0, transfer banking to 5, hit -4,
+# two chip sets per half-season, defensive contribution points (DEF 10 CBIT,
+# MID/FWD 12 CBIRT). Used by src/fpl_claude/backtest/ for point-in-time season
+# replays — never edit to "improve" backtest results.
+
+season: "2025-26"
+verified_against_official: true
+
+budget:
+  verify_at_season_launch: false
+  initial: 100.0          # £m
+  sell_price_rule: "half_profit_rounded_down"   # sell = buy + floor(profit/2)
+
+squad:
+  verify_at_season_launch: false
+  size: 15
+  goalkeepers: 2
+  defenders: 5
+  midfielders: 5
+  forwards: 3
+  max_per_club: 3
+
+lineup:
+  verify_at_season_launch: false
+  starting: 11
+  min_goalkeepers: 1
+  min_defenders: 3
+  min_midfielders: 2
+  min_forwards: 1
+  bench_order_matters: true
+  auto_subs: true
+
+transfers:
+  verify_at_season_launch: false
+  free_per_gameweek: 1
+  max_banked: 5            # 2024/25 rule; verify unchanged
+  hit_cost: 4              # points per extra transfer
+
+chips:
+  verify_at_season_launch: false
+  # 2025/26 ran two sets per half-season (WC/FH/BB/TC each half). Whether 2026/27
+  # repeats this, reverts, or brings back the assistant-manager chip MUST be checked.
+  wildcard: {count: 2, windows: "one_per_half_unverified"}
+  free_hit: {count: "unverified"}
+  bench_boost: {count: "unverified"}
+  triple_captain: {count: "unverified"}
+  assistant_manager: {count: "unverified", note: "existed 2024/25; verify status"}
+  one_chip_per_gameweek: true
+
+scoring:
+  verify_at_season_launch: false
+  appearance: {lt_60_min: 1, gte_60_min: 2}
+  goals: {GKP: 10, DEF: 6, MID: 5, FWD: 4}
+  assists: 3
+  clean_sheet: {GKP: 4, DEF: 4, MID: 1, FWD: 0}
+  goals_conceded_per_2: {GKP: -1, DEF: -1}
+  saves_per_3: 1
+  penalty_save: 5
+  penalty_miss: -2
+  yellow_card: -1
+  red_card: -3
+  own_goal: -2
+  bonus: [3, 2, 1]
+  defensive_contribution:   # introduced 2025/26; thresholds/points must be verified
+    DEF: {points: 2, threshold: 10, stat: "CBIT"}
+    MID: {points: 2, threshold: 12, stat: "CBIRT"}
+    FWD: {points: 2, threshold: 12, stat: "CBIRT"}
+
+policies:                   # our own guardrails, not FPL rules
+  hit_ev_threshold: 4.5     # min expected gain over horizon to justify a -4
+  planning_horizon_gws: 8
+  horizon_decay: 0.85
+  flagged_player_max_doubt: 0.75  # never carry >75%-doubt players without a written plan
+  deadline_final_check_hours: 2

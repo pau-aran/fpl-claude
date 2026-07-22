@@ -59,13 +59,20 @@ def fdr_expectation(home_fdr: int, away_fdr: int) -> FixtureExpectation:
     )
 
 
+# A team's Dixon-Coles rating is noise below this many matches in the training
+# data: a promoted side that opened with one 3-0 win otherwise gets a rating
+# that captains its defenders (2025/26 backtest, GW2). Below it -> FDR fallback.
+MIN_TEAM_MATCHES = 5
+
+
 class TeamModel:
     """Dixon-Coles fitted on historical results (columns: date, home, away,
     home_goals, away_goals — FPL team names)."""
 
-    def __init__(self, model, teams: set[str]):
+    def __init__(self, model, teams: set[str], match_counts: dict[str, int] | None = None):
         self._model = model
         self.teams = teams
+        self.match_counts = match_counts or {t: MIN_TEAM_MATCHES for t in teams}
 
     @classmethod
     def fit(cls, results: pd.DataFrame, xi: float = DEFAULT_XI) -> "TeamModel":
@@ -82,7 +89,10 @@ class TeamModel:
             weights=weights.copy(),
         )
         model.fit()
-        return cls(model, set(results["home"]) | set(results["away"]))
+        counts = (
+            pd.concat([results["home"], results["away"]]).value_counts().to_dict()
+        )
+        return cls(model, set(counts), match_counts=counts)
 
     def fixture(self, home: str, away: str) -> FixtureExpectation:
         pred = self._model.predict(home, away)
@@ -98,6 +108,8 @@ class TeamModel:
         )
 
     def covers(self, *teams: str) -> bool:
-        """Whether every named team appeared in the training data (promoted
-        teams won't have — fall back to FDR for their fixtures)."""
-        return all(t in self.teams for t in teams)
+        """Whether every named team has a USABLE rating: present in the
+        training data with at least MIN_TEAM_MATCHES matches. Promoted teams
+        fail this until ~GW5 — their fixtures use the FDR fallback instead of
+        a rating fitted on one or two results."""
+        return all(self.match_counts.get(t, 0) >= MIN_TEAM_MATCHES for t in teams)
