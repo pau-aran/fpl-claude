@@ -22,9 +22,12 @@ applies it manually; you never touch their FPL account.
    at least two public sources (LiveFPL, FPL Review free, FFScout). Big divergence →
    investigate (stale minutes intel? fix overlay and rerun) and record the verdict
    in the memo's "Consensus check" line. Benchmark, never input.
-4. **Optimize:** Phase 3+ — run the MILP (refuses if ruleset unverified). Until
-   then, reason the transfer/captain/bench decisions explicitly against
-   `config/rules/2026-27.yaml` constraints and policies by hand.
+4. **Optimize:** run the MILP (`fpl_claude.optimize.milp.optimize`) on the
+   projections table — initial-build mode for GW1/wildcard, transfer mode
+   (CurrentSquad with buy costs, bank, free transfers) otherwise. It refuses
+   while the ruleset is unverified: before season-launch verification pass
+   `allow_unverified=True` and label the memo "rules unverified — dry run".
+   Quote its `ev_delta` against `policies.hit_ev_threshold` for any hit.
 5. **Overlay (the part only you can do):** deviate from the optimizer only with a
    written reason (presser tone, rotation pattern from the weekly report, tactical
    change). Check every recommended player against the risk table — a flagged

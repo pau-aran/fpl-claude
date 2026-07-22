@@ -175,10 +175,10 @@ Projects/
 
 | Phase | When | Deliverable |
 |---|---|---|
-| **0. Scaffold** ✅ | Now | This structure, FPL API client, snapshotting, rules YAML, sources YAML, skills, first team-week report dry run |
-| **1. Data** | Week 1–2 | All pipelines live; historical data loaded; ID mapping |
-| **2. Models** | Week 2 | Minutes + team + player models; backtest gate passed |
-| **3. Optimizer** | Week 2–3 | MILP + rules engine + policies; GW1 draft squad with EV analysis |
+| **0. Scaffold** ✅ | Done | This structure, FPL API client, snapshotting, rules YAML, sources YAML, skills, first team-week report dry run |
+| **1. Data** | Week 1–2 | All pipelines live; historical data loaded; ID mapping — **needs a networked session** (see NEXT-STEPS.md) |
+| **2. Models** 🔶 | Code ✅ / gate ⬜ | Minutes v1 + Dixon-Coles wrapper + rules-driven xPts + price radar **built & tested offline**; backtest gate still pending Phase 1 data |
+| **3. Optimizer** 🔶 | Code ✅ | MILP (squad/XI/captain/transfers/hits) built & tested; chip planning and multi-period path = Phase 3b; GW1 draft squad awaits live data |
 | **4. Skills live** | Week 3 | Full `/fpl-plan-gameweek` dry run; chip calendar v1; weekly reports in steady state |
 | **5. Automation** | Week 4 (pre-GW1) | Scheduled sessions armed; recommend-mode for GW1 |
 | **6. Optional dashboard** | In-season | footy-api-based serving layer if wanted |
