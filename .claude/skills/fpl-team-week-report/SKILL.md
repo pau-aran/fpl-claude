@@ -10,7 +10,7 @@ teams** — the Moneyball scouting document that feeds every other decision.
 
 ## Steps
 
-1. **Snapshot + skeletons.** From `fpl-claude/`:
+1. **Snapshot + skeletons.** From the repo root:
    ```bash
    python -m fpl_claude.data.fpl_api snapshot
    python -m fpl_claude.reports.team_week
@@ -19,7 +19,7 @@ teams** — the Moneyball scouting document that feeds every other decision.
    results (last 7d), PL fixtures (next 14d, with FDR), and FPL-flagged players.
 
 2. **Enrich every team file** — fill the three `<!-- skill: ... -->` sections using
-   WebSearch/WebFetch over `fpl-claude/config/sources.yaml` sources:
+   WebSearch/WebFetch over `config/sources.yaml` sources:
    - **Other competitions:** which UCL/UEL/UECL/FA Cup/EFL Cup matches did the team
      play this week, and what's scheduled in the next 14 days? Note minutes given to
      key FPL assets and any surprise rests/starts. (BBC Sport + UEFA.com + club news.)

@@ -148,27 +148,26 @@ makes the moves in the FPL app manually.
 ## 8. Repo Structure (this repo)
 
 ```
-Projects/
+fpl-claude/                       # repo root
 ├── CLAUDE.md                     # persona: expert football manager, Moneyball rules
 ├── .claude/skills/fpl-*/         # the 7 skills
-└── fpl-claude/
-    ├── PLAN.md                   # this file
-    ├── README.md
-    ├── pyproject.toml
-    ├── config/
-    │   ├── rules/2026-27.yaml    # FPL ruleset (verify at season launch)
-    │   └── sources.yaml          # curated web/X sources
-    ├── src/fpl_claude/
-    │   ├── data/                 # fpl_api.py, snapshot.py (+ understat, insights, odds later)
-    │   ├── models/               # minutes, team_dc, xpts (Phase 2)
-    │   ├── optimize/             # milp.py (Phase 3)
-    │   ├── rules/                # engine.py — YAML ruleset loader
-    │   └── reports/              # team_week.py — weekly report builder
-    ├── decisions/                # gw01.md … gw38.md (season audit trail)
-    ├── reports/weekly/           # {YYYY-WW}/{team}.md
-    ├── db/                       # DuckDB + raw snapshots (gitignored except schema)
-    ├── notebooks/                # backtests, validation
-    └── tests/
+├── PLAN.md                       # this file
+├── README.md
+├── pyproject.toml
+├── config/
+│   ├── rules/2026-27.yaml        # FPL ruleset (verify at season launch)
+│   └── sources.yaml              # curated web/X sources
+├── src/fpl_claude/
+│   ├── data/                     # fpl_api.py, snapshot.py (+ understat, insights, odds later)
+│   ├── models/                   # minutes, team_dc, xpts (Phase 2)
+│   ├── optimize/                 # milp.py (Phase 3)
+│   ├── rules/                    # engine.py — YAML ruleset loader
+│   └── reports/                  # team_week.py — weekly report builder
+├── decisions/                    # gw01.md … gw38.md (season audit trail)
+├── reports/weekly/               # {YYYY-WW}/{team}.md
+├── db/                           # DuckDB + raw snapshots (gitignored except schema)
+├── notebooks/                    # backtests, validation
+└── tests/
 ```
 
 ## 9. Build Phases (GW1 ≈ mid-August 2026)

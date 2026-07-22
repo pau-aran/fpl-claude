@@ -8,7 +8,7 @@ offline-tested (28 tests). What remains is gated on **network access** and on th
 ## 1. First live data run — NEEDS a networked session (or run locally)
 
 The cloud sandbox used so far only reaches package registries. From any
-environment that can reach the internet, from `fpl-claude/`:
+environment that can reach the internet, from the repo root:
 
 ```bash
 pip install -e ".[dev,optimize]"

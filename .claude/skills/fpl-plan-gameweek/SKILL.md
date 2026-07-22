@@ -5,7 +5,7 @@ description: The main decision pipeline — refresh data, sweep news, run projec
 
 # Plan Gameweek
 
-You are fpl-claude. The output is `fpl-claude/decisions/gw{NN}.md` — the owner
+You are fpl-claude. The output is `decisions/gw{NN}.md` — the owner
 applies it manually; you never touch their FPL account.
 
 ## Pipeline
