@@ -6,13 +6,14 @@ burns the bank or FT a planned step depends on is a net loss even if the EV
 gate passes it. Breaking the plan requires new information + written reason
 in the decision memo.*
 
-## State after GW6
+## State after GW7
 
-- Bank £0.2m | **1 FT for GW7** | season 338 pts (+34 vs average-manager
-  baseline) | 1 hit taken all season
-- Squad now holds **Haaland + Brooks** (Salah, Mheuka out); Palmer benched
-  until ~GW8; Ekitiké's one-match ban served
-- NOTE: bank sits £0.1m below the £0.3m standing buffer — rebuild it with
+- Bank £0.2m | **2 FT for GW8** (rolled at GW7) | season 409 pts (+45 vs
+  average-manager baseline) | 1 hit taken all season
+- Squad unchanged since GW6: holds **Haaland + Brooks** (no Salah); Palmer
+  benched, back GW8; **Ekitiké held** (benched by Liverpool at Chelsea, 16' —
+  Isak now the lead striker, the Ekitiké→Isak branch is live for GW8)
+- NOTE: bank still £0.1m below the £0.3m standing buffer — rebuild it with
   the next move that frees cash; no purchase may cut it further.
 
 ## Executed
@@ -25,20 +26,22 @@ in the decision memo.*
   The solve redirected from the memo's (infeasible) Ekitiké funding route
   to this plan's primary route — accepted via signed addendum
   (reviews/gw06.md §3–4).
+- **GW7 — EXECUTED AS PLANNED: rolled the FT** → 2 banked for GW8. Refused
+  the optimizer's −4 (Saliba→Timber + Palmer→Enzo): sideways fit-DEF churn +
+  a phantom Palmer sale, both plan-conflicting. Captain Haaland at BRE(A) →
+  goal+assist, doubled 16. GW **71 vs official avg 60 (+11)**, season 409
+  (+45). Process PASS; the refused hit would have won by ~3 on an
+  unforecastable Timber CB goal (reviews/gw07.md §3) — variance, not a
+  regrade. First outing of the purist duel lens: all reads matchup-correct
+  but none surfaced a model-underrated player yet (§4, [WATCH]).
 
-## Active path — consolidate through the October break (GW7 → GW9)
+## Active path — the GW8 decision window (post-October-break)
 
-The Haaland run continues (BRE(A)3 GW7, EVE(H)3 GW8) and the squad needs
-nothing this week. The next real decision window is GW8, AFTER the
-international break, when three unknowns resolve at once: Palmer's return,
-Isak's minutes ramp, and any break knocks. Position for it; don't spend
-before it.
+We arrive at GW8 with **2 FT, no hit, £0.2m bank** — exactly as planned. GW8
+is the real decision point: three unknowns resolve at once — Palmer's return,
+Isak's confirmed minutes, and any international-break knocks. Spend here, not
+before.
 
-- **GW7 (last deadline before the break) — default: ROLL the FT** → 2
-  banked into GW8. No transfer unless forced by news (see refusals).
-  Captain: **Haaland at BRE(A)** — expected highest projection; mechanical
-  rule, confirm against the solve. Ekitiké back from ban at CHE(A);
-  Palmer stays benched (out through GW7 per Maresca timeline, overlay d2).
 - **International break — full availability re-verify.** Every one of the
   15 gets a fresh news check before GW8; post-break knocks and late
   returners are exactly where deadline information beats the field.
@@ -50,11 +53,13 @@ before it.
     there's a setback/re-injury, the branch flips: Palmer becomes the
     funding leg for the Isak route below (decide on the pre-GW8 presser,
     duration-scoped).
-  - **Isak entry branch — only on confirmed starts.** Ramp watch stays
-    live through the break; the natural route is **Ekitiké → Isak**
-    (like-for-like LIV FWD swap, needs roughly £1–2m from the second FT's
-    downgrade room or the Palmer branch). Do NOT enter on cameo minutes;
-    Slot's word + a first 60'+ start is the trigger.
+  - **Isak entry branch — trigger now CLOSER.** At GW7 Isak took his first
+    PL start (Chelsea A) with Ekitiké dropping to a 16' cameo — the "first
+    60'+ start" trigger is nearly met, pending he backs it up out of the
+    break (Slot's pre-GW8 word + a second start). The natural route stays
+    **Ekitiké → Isak** (like-for-like LIV FWD swap, ~£1–2m from the second
+    FT's downgrade room or the Palmer branch). Still no entry on a single
+    cameo — want the starter status confirmed, not one-off.
   - Whatever the branches leave over: rebuild bank to ≥ £0.3m before any
     luxury move.
 - **GW9+ sketch (revisit at GW8):** Haaland holds through AVL(A)4 — one
@@ -62,25 +67,29 @@ before it.
   captaincy stays mechanical.
 - Chips: out of scope (not simulated in this backtest).
 
-## Conflicts to refuse at GW7
+## Conflicts to refuse at GW8
 
-- Any hit — GW8's two FTs cover every planned branch; a GW7 hit buys what
-  the break gives us free (the exact GW5 pattern, which graded PASS).
+- A hit that only clears the EV gate on a duration-scoped blank (the GW7
+  Palmer→Enzo pattern): re-verify every candidate's horizon is clean before
+  the arithmetic, not a one-week suppression inflating the delta.
 - Any transfer that spends the bank below £0.2m or blocks the Ekitiké→Isak
   route's funding room.
-- Any Palmer action before the break resolves his timeline — the hold is a
-  taken position; churning it mid-bet realizes the loss.
+- Sideways churn of a fit premium asset funded by a −4 (the GW7 Saliba→Timber
+  pattern) — a −4 needs net ≥ 4.5 AND plan-fit AND a real upgrade, not a
+  clone swap.
 
 ## Watch list (news-dependent branches)
 
-- **Palmer (groin, rested to ~GW8) — BRANCH LIVE**: Maresca 26 Sept: "two
-  or three weeks, probably until after the international break". Overlay
-  d2 (GW6–7), back GW8. Start = hold vindicated; setback = he funds Isak.
-- **Isak (Liverpool, minutes ramp)**: no entry until confirmed starts;
-  route and funding above.
-- **Ekitiké**: ban served, back GW7. Hold — but he is the designated
-  like-for-like sale IF Isak's starts are confirmed; avoid price-drop
-  surprises by checking transfer-out momentum weekly.
+- **Palmer (groin) — BRANCH RESOLVES GW8**: rested until after the October
+  break, targeted return v Forest 18 Oct (GW8). Re-verify on the pre-GW8
+  presser. Start = the GW6 hold-vs-sell bet is won, he walks into the XI
+  free; setback = he funds the Isak route.
+- **Isak (Liverpool)**: first PL start banked at GW7 (Chelsea A). Entry
+  trigger nearly met — confirm a SECOND start out of the break before the
+  Ekitiké→Isak swap; watch Slot's pre-GW8 word.
+- **Ekitiké**: held; dropped to a cameo behind Isak at GW7. The designated
+  like-for-like sale once Isak's starter status is confirmed. Watch
+  transfer-out momentum for price-drop surprises.
 
 ## Standing constraints
 

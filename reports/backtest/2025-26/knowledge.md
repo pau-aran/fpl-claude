@@ -93,8 +93,15 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   bench-order calls. It NEVER overrides the EV gate, the plan, or minutes
   risk — it's the creative overlay on top, and the duel named must be
   written in the memo so the review can grade it.
-- Captaincy = highest projection unless news says otherwise: 6/6 (Salah ×5,
-  Haaland GW6). The armband migrated mechanically the week Haaland entered
+  [WATCH] First live outing GW7 (3 duels named): all reads were
+  matchup-correct (Mbeumo v Reinildo-less Sunderland +6; Ekitiké-fade
+  congruent with the benching; Semenyo home 18) BUT every one only agreed
+  with signals we already had (FDR, ownership, overlay) — it has not yet
+  surfaced a player the model UNDERRATED, which is its purpose. The real
+  test is the first DIVERGENCE (lens says buy, model is cold). Cost nothing;
+  keep grading live.
+- Captaincy = highest projection unless news says otherwise: 7/7 (Salah ×5,
+  Haaland ×2). GW7 Haaland at BRE(A) — model top + 60% poll, goal+assist. The armband migrated mechanically the week Haaland entered
   (8.65 top of board → returned 16→32) — the rule handles form shifts by
   itself. No recency overrides.
 - Community consensus (X strategy accounts, r/FantasyPL GW threads, FFScout
