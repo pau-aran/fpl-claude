@@ -7,6 +7,25 @@ the live sweep config; this file is the evidence-based reference behind it.
 Keep it FPL-only and current: add a source when it proves out, remove one
 that stops earning its slot.*
 
+## 0. Core data architecture (owner-set, 2026-07-22)
+
+**Official FPL API + Understat cover ~90% of the signal** (form, fixtures,
+ownership, prices, underlying xG/xA). Community sources (Reddit, X) are the
+**last-mile layer** — press-conference nuggets, rotation risk, set-piece order
+changes — wired in as a lightweight news check before the transfer/captain
+decision, never as the core pipeline.
+
+| Layer | Source | What it carries |
+|---|---|---|
+| Core | `fantasy.premierleague.com/api/bootstrap-static/` | Whole player pool: form, basic xG/xA, ownership, price, ICT — single unauthenticated JSON call |
+| Core | `…/api/fixtures/` | Fixture difficulty, kickoffs, blank/double GW detection |
+| Core | `…/api/entry/{id}/` + `/history/` | Any team's picks/history (public read-only; we never authenticate — owner submits moves manually) |
+| Core | Understat | Free per-shot xG/xA depth beyond the FPL API's basics; JSON embedded in page, scrapable |
+| Last-mile | r/FantasyPL, curated X list (§5) | Team-news sentiment, rotation eye-test, consensus |
+
+Typed/GraphQL wrappers exist if raw JSON ever grates (`fpl-api` by flavnat;
+`fplscrapR` for R) — not currently used; raw JSON + pandas is fine.
+
 ## 1. Availability & team news (the biggest single edge)
 
 | Source | Proven for | Notes from the replay |
@@ -29,29 +48,39 @@ that stops earning its slot.*
 |---|---|
 | FPL-Core-Insights (github.com/olbauday/FPL-Core-Insights) | Official per-GW averages/highest scores via API mirror — reachable when the FPL API isn't |
 | FPL Dave, FPL Pulse, AllAboutFPL | Independent per-GW average corroboration |
-| LiveFPL | Effective ownership, top-10k template (NOT reachable headless — search snippets only) |
+| LiveFPL | Effective ownership, top-10k template (NOT reachable headless — search snippets only). **Also the de facto standard for price-change prediction** (rise/fall tonight, from net transfers) — the price radar for a live season |
+| r/FantasyPL | Team-news sentiment, rotation-risk eye-test, captaincy polls that surface consensus fast. Programmatic access is straightforward via the Reddit API (PRAW) if the sweep ever needs to pull top posts/comments instead of web search |
 
 ## 3. Underlying numbers & datasets (backtests, priors, training)
 
 | Source | Proven for |
 |---|---|
-| FBref — Premier League (fbref.com/en/comps/9/) | THE reference for underlying stats: Opta xG/xA/npxG, per-90s, shooting, progressive actions, possession-adjusted defensive stats (tackles+interceptions ≈ DC-relevant), keeper PSxG. Use to sanity-check our rates layer and to price DC potential; owner-suggested, added GW5. Headless fetch may be blocked — read via search snippets or its StatHead tables |
+| xG Stat (xgstat.com) | **The live-season advanced-stats reference from 2026/27**: FBref killed its advanced-stats feed in Jan 2026 and xG Stat is where most of the community moved (owner-flagged, 2026-07-22). Verify coverage (xG/xA, per-90s, defensive stats) at season launch |
+| Understat | Free per-shot xG/xA — depth the FPL API lacks; JSON embedded in the page, scrapable. Core layer (§0), also the priors/training feed |
+| FBref — Premier League (fbref.com/en/comps/9/) | HISTORICAL ONLY since Jan 2026 (advanced-stats feed discontinued). Still the reference for pre-2026 underlying stats used in backtests/priors: Opta xG/xA/npxG, per-90s, possession-adjusted defensive stats, keeper PSxG |
 | vaastav/Fantasy-Premier-League | Per-GW history: merged_gw, players_raw, fixtures — the backtest backbone. CAUTION: players_raw is end-of-season state (team/position/price leak January moves); point-in-time values must come from merged_gw |
 | FPL-Core-Insights | bootstrap-static mirrors incl. event averages, FPL-ID-keyed |
 
 ## 4. Retired from the active list (kept in sources.yaml only if re-proven)
 
 - Generic tactical long-reads (The Athletic) — never decided an overlay in 4 weeks.
-- FPL Statistics price predictor — price moves are IN the vaastav replay data;
-  for live seasons re-evaluate at season start.
+- FPL Statistics price predictor — superseded: LiveFPL is the de facto
+  price-prediction standard (owner call, 2026-07-22); price moves are IN the
+  vaastav replay data anyway.
 - football-data.org API — congestion tracking never fed a decision yet;
   re-add when European weeks begin (GW6+ of a live season).
 
 ## 5. X/Twitter accounts (community strategy & consensus)
 
 *Vetted July 2026 against the 2025/26 season. Reached via web search only
-(`site:x.com <handle> <topic>` or handle + topic) — no paid API. TIER 1 = read
-every deadline; 2 = pre-deadline and weekly; 3 = as needed.*
+(`site:x.com <handle> <topic>` or handle + topic) — no paid API. X's API is
+paid-tier and rate-limited, and direct scraping is fragile/ToS-risky, so this
+stays a curated-list-via-search operation; if team-news SPEED ever becomes the
+bottleneck in a live season, the stable upgrade path is RSS/Discord relay bots
+that repost verified beat-reporter tweets, not the X API (owner note,
+2026-07-22). X's role: team-news breakers and set-piece-order updates faster
+than any API reflects them — last-mile input, never the core pipeline. TIER 1 =
+read every deadline; 2 = pre-deadline and weekly; 3 = as needed.*
 
 | Handle | Tier | Category | What it uniquely provides (evidence of quality) |
 |---|---|---|---|

@@ -64,6 +64,13 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 - [WATCH] Playable-bench EV: positive but small; mixed evidence (GW1 zero
   coverage cost an autosub; GW2 best enabler scored −1). Bought Gudmundsson
   GW3 as 15th man.
+- Bench policy (owner directive, 2026-07-22): the second GK is a dead slot
+  most weeks — spend the minimum there. Outfield bench occasionally matters:
+  when a transfer choice is otherwise close, prefer budget players whose
+  fixtures COMPLEMENT an existing bench piece across GWs (bench rotation) —
+  and a single signing that completes such a pair gets the nod over an
+  equivalent one that doesn't. Strictly a tie-breaker: bench rotation never
+  outranks XI quality ("team sanity" first).
 - A lock/cap re-solve can silently redirect the transfer away from the move
   the written reasoning described — twice now (GW4 Senesi→Calafiori; GW6
   reasoned Ekitiké route → plan-primary Salah route). The post-solve

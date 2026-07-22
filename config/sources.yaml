@@ -24,18 +24,20 @@ injuries_and_team_news:
      use: "press conferences, transfer/injury news"}
 
 underlying_stats:
-  - {name: "FBref Premier League", url: "https://fbref.com/en/comps/9/Premier-League-Stats", tier: 1,
-     use: "Opta xG/xA/npxG, per-90s, possession-adjusted defensive stats, keeper PSxG — the rates-layer sanity check and DC-potential screen"}
+  - {name: "xG Stat", url: "https://xgstat.com", tier: 1,
+     use: "the live-season advanced-stats reference: FBref killed its advanced feed Jan 2026, xgstat is the community's replacement — verify coverage at season launch"}
+  - {name: "Understat", url: "https://understat.com", tier: 1,
+     use: "free per-shot xG/xA, JSON embedded in page (scrapable) — core layer alongside the official API"}
+  - {name: "FBref Premier League", url: "https://fbref.com/en/comps/9/Premier-League-Stats", tier: 3,
+     use: "HISTORICAL ONLY (advanced-stats feed dead since Jan 2026): pre-2026 Opta xG/xA/npxG, per-90s, PSxG for backtests/priors"}
 
 strategy_and_analytics:
   - {name: "Fantasy Football Scout", url: "https://www.fantasyfootballscout.co.uk", tier: 1,
      use: "the reference strategy site: articles, stats, community"}
   - {name: "LiveFPL", url: "https://www.livefpl.net", tier: 2,
-     use: "live ranks, effective ownership, template composition"}
-  - {name: "FPL Statistics", url: "http://www.fplstatistics.co.uk", tier: 2,
-     use: "price change predictions"}
+     use: "live ranks, effective ownership, template composition — AND the de facto standard for price rise/fall predictions (replaced FPL Statistics)"}
   - {name: "r/FantasyPL", url: "https://www.reddit.com/r/FantasyPL", tier: 2,
-     use: "community consensus, rage threads = sentiment signal, lineup leaks"}
+     use: "community consensus, team-news sentiment, rotation eye-test, captaincy polls; PRAW (Reddit API) available for programmatic pulls"}
   - {name: "Fantasy Football Hub", url: "https://www.fantasyfootballhub.co.uk", tier: 3,
      use: "projections, articles"}
   - {name: "FPL Review", url: "https://fplreview.com", tier: 3,
@@ -44,6 +46,10 @@ strategy_and_analytics:
      use: "deeper tactical/rotation reporting"}
 
 x_accounts:   # reached via web search, never a paid API — vetted July 2026 vs 2025/26 season
+  # X = last-mile team-news breakers / set-piece-order changes, never core pipeline.
+  # X API is paid + rate-limited; scraping is fragile/ToS-risky. If live-season news
+  # SPEED becomes the bottleneck, upgrade path = RSS/Discord relays of verified beat
+  # reporters, not the X API (owner note, 2026-07-22).
   # --- data / official / speed (mechanical inputs) ---
   - {handle: "OfficialFPL", tier: 1, use: "official announcements, price changes, deadlines"}
   - {handle: "FPLStatus", tier: 1, use: "automated flag/status alerts, confirmed lineups, provisional bonus, price changes — fastest mechanical feed"}
