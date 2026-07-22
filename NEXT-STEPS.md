@@ -28,20 +28,33 @@ Sanity checks on that first run: promoted-team names map cleanly (extend
 `--prior-snapshot` (grab the last 2025/26 bootstrap from vaastav or
 FPL-Core-Insights if we never snapshotted it ourselves).
 
-## 2. Backtest gate (PLAN §4 — non-negotiable, before GW1) — IN PROGRESS, PASSING
+## 2. Backtest gate (PLAN §4 — non-negotiable, before GW1) — PASSED ✅
 
-The 2025/26 GW1–10 season replay is running (`src/fpl_claude/backtest/`,
-artifacts in `reports/backtest/2025-26/`): through GW6, **338 pts vs the 304
-average-manager baseline (+34)**, strictly point-in-time. The loop already
-shipped five model/policy fixes (rates shrinkage, team-model sample floor,
-DC phantom prior, marginal-net hit gate, duration-scoped overlays) and grew
-the decision architecture (manager overlay, plan.md path discipline,
-community consensus input). Remaining:
+The 2025/26 GW1–10 season replay is COMPLETE (`src/fpl_claude/backtest/`,
+artifacts in `reports/backtest/2025-26/`, verdict in `VERDICT.md`):
+**624 pts vs the 531 average-manager baseline (+93)**, strictly point-in-time,
+1 hit all season, captaincy 10/10. Beat the field in 7/10 weeks; back half
+(GW6–10) +68 as the pipeline matured. On a **top-1% trajectory** (+9.3/GW over
+average; exact rank an honest estimate — top-10k tier totals weren't
+retrievable, see baseline.md/VERDICT.md). The "ungated" label is DROPPED.
 
-- GW7–10 of the replay, then the gate verdict vs the 531 10-GW baseline and
-  a process audit from `reviews/` — pass → drop the "ungated" label.
-- Optional depth later: extend to 2023/24–2024/25 replays for more seasons
-  of calibration data; seed the FPL↔Understat ID map for Minutes v2.
+The loop shipped six model/policy fixes (rates shrinkage, team-model sample
+floor, DC phantom prior, marginal-net hit gate, duration-scoped overlays, and
+the newcomer confidence haircut) and grew the decision architecture (manager
+overlay, plan.md path discipline, community consensus input, the purist
+positional-duel lens).
+
+Defects found, carried to the LIVE pipeline (VERDICT.md + reviews/gw10.md §4):
+- **[OPEN] Level calibration** — model under-predicts totals ~15–25% in strong
+  weeks (ranking unaffected; an EV-reporting/hit-gate issue). Fix: an
+  environment-level calibration term and/or better captain-ceiling + bonus
+  modelling.
+- **[OPEN] Bench-order ignores fixture softness** — weight FDR/CS probability
+  in XI ordering, or expose a manager bench-order override.
+- **[PROCESS] Suspension verification** — confirm a ban was actually
+  upheld/served against the team sheet; default AVAILABLE on ambiguity.
+- Optional depth later: extend to 2023/24–2024/25 replays for more calibration
+  seasons; seed the FPL↔Understat ID map for Minutes v2.
 
 ## 3. Season-launch rules verification (the day the 2026/27 game opens)
 

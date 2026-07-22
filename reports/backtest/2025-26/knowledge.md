@@ -38,16 +38,26 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   (full sample) and Isak (has a prior → blend handled him, NOT double-shrunk)
   untouched — exactly the set that should/shouldn't move. Directly de-risks
   the Woltemade-type bandwagon the market pushed at GW8.
-- [WATCH] Level calibration: 8-GW mean error +7.2, mean |error| 13.9. Two
-  large UNDER-predictions in a row (GW7 +13, GW8 +28) as the environment ran
-  hot (official avgs 60, 56) and our captain+defence hauled. Predictions sit
-  flat 51–59 while actuals swing with the league (official
-  54/51/48/63/42/46/60/56 vs our 84/44/54/61/40/55/71/82). This is
-  totals-COMPRESSION, not ranking bias — the model still ordered buys right
-  (Fernandes>Saka confirmed GW8), so no adjustment yet. IF under-prediction
-  persists a 3rd week, test whether horizon decay / a minutes ceiling is
-  systematically clipping high-scorers. Bonus proxy: no new signal. DC watch
-  continues.
+- [OPEN] Level calibration — CONFIRMED bias by backtest end (10-GW mean error
+  +8.3; back half GW7–10 +13/+28/+4/+21, mean +16.6). The model under-predicts
+  TOTALS ~15–25% in strong weeks: predictions sit flat ~51–59 while a strong
+  squad's actuals climb into the 70s–80s. It is NOT a ranking bias — every
+  relative call was validated (Fernandes>Saka, the Mateta/Konaté upgrades,
+  captaincy 10/10) — so it never hurt a DECISION, but it distorts EV reporting
+  and the hit-gate margin. LIVE FIX: an environment-level calibration term
+  (scale raw xPts toward the realised league level) and/or better
+  captain-ceiling + bonus modelling (the bonus proxy has had no new signal
+  since GW1). Applies post-backtest (forward-only rule).
+- [OPEN] Bench-order model ignores fixture softness: GW10 started Senesi
+  (MCI away) over Saliba (BUR away) on flat near-equal projections, −3. Weight
+  FDR / team-model CS probability in XI ordering, or expose a manager
+  bench-order override.
+- [PROCESS] Suspension verification: a ban needs the OFFENCE **and**
+  confirmation it was upheld/served against the team sheet — not an aggregator
+  headline. The GW9–10 Ballard "3-match ban" was misapplied (he played both
+  weeks; harmless only because he was benched/outscored anyway). Default to
+  AVAILABLE when the primary source is ambiguous — an erroneous 0.0 could bench
+  a real starter in a costlier spot.
 
 ## Decision policy
 
@@ -111,11 +121,10 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   its purpose. Strong as a hold-conviction / captaincy-context tool; unproven
   as a buy-side EDGE. Real test = the first DIVERGENCE (lens says buy where
   the model is cold). Cost nothing; keep grading live.
-- Captaincy = highest projection unless news says otherwise: 9/9 rule
-  adherence (Salah ×5, Haaland ×4). GW9 Haaland away at AVL BLANKED (doubled
-  4) — first low captain return, but he was model top + ~90% elite EO; not
-  captaining would have been a bigger rank gamble <10% shared. Process over
-  outcome: the rule is judged on adherence, not one variance week.
+- Captaincy = highest projection unless news says otherwise: 10/10 rule
+  adherence over the backtest (Salah ×5, Haaland ×5). One blank (GW9 Haaland
+  away) — still the correct ~90%-EO shield. The rule is judged on adherence,
+  not one variance week.
 - Transfer SEQUENCING: enter a fixture run one GW early, but NOT into the
   target's worst fixture. GW9 deferred Ekitiké→Mateta because Mateta's GW9
   was ARS(A) (his worst) — outcome Mateta 2 = Ekitiké 2 (zero cost), banked a
