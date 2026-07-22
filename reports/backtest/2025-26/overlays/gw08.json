@@ -1,0 +1,427 @@
+{
+ "1": {
+  "start_share": 0.9,
+  "reason": "David Raya (Arsenal GK): undisputed No.1, started every league game and named in the XI at Fulham (arsenal.com / lineups, 18 Oct 2025). NEW — our-squad nailed keeper.",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.9,
+  "reason": "William Saliba (Arsenal DEF): nailed centre-back, no injury/suspension note in Arteta's pre-Fulham presser, started GW8 (arsenal.com / Sky, 17-18 Oct 2025). NEW — our-squad nailed starter.",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.82,
+  "reason": "Riccardo Calafiori (Arsenal DEF): fit and first-choice LB, in the side out of the international break v Fulham (arsenal.com / lineups, 17-18 Oct 2025). NEW — our-squad starter, minor rotation risk with Lewis-Skelly only.",
+  "duration_gws": 1
+ },
+ "16": {
+  "start_share": 0.85,
+  "reason": "Bukayo Saka (Arsenal MID): fully back from the hamstring, started and scored v Fulham (Sky Sports / arsenal.com, 18 Oct 2025). Carried at 0.85 — sharpness caveat gone.",
+  "duration_gws": 1
+ },
+ "17": {
+  "start_share": 0.0,
+  "reason": "Martin Odegaard (Arsenal MID): ruptured/strained MCL suffered v West Ham (4 Oct), confirmed out ~6 weeks in the pre-Fulham build-up — listed among Arsenal's injured ahead of GW8 (ESPN / Sky / arsenal.com, 16-18 Oct 2025). UPDATED from 0.8 (was a confirmed GW7 starter) — the 30' MCL substitution is now public and rules him out.",
+  "duration_gws": 6
+ },
+ "18": {
+  "start_share": 0.0,
+  "reason": "Noni Madueke (Arsenal MID): knee injury (v Man City 21 Sept), out ~2 months, return pencilled ~north London derby 23 Nov (SI / dailycannon, Sept-Oct 2025). Carried, duration down to 4 — still weeks away.",
+  "duration_gws": 4
+ },
+ "725": {
+  "start_share": 0.15,
+  "reason": "Piero Hincapie (Arsenal DEF): loan signing still working toward full fitness, not yet in the XI picture around GW8 (arseblog / ESPN, Oct 2025). Carried at 0.15.",
+  "duration_gws": 1
+ },
+ "30": {
+  "start_share": 0.0,
+  "reason": "Kai Havertz (Arsenal FWD): still out following late-Aug knee surgery, named among Arsenal's injured in the pre-Fulham reporting (arsenal.com / ESPN, Oct 2025). Carried.",
+  "duration_gws": 4
+ },
+ "31": {
+  "start_share": 0.0,
+  "reason": "Gabriel Jesus (Arsenal FWD): ACL tear Jan 2025, ~9-month recovery, no involvement expected (Arsenal/Sky). Carried."
+ },
+ "2": {
+  "start_share": 0.1,
+  "reason": "Kepa Arrizabalaga (Arsenal GK): back-up to Raya (GW1-7 lineups). Carried."
+ },
+ "235": {
+  "start_share": 0.0,
+  "reason": "Cole Palmer (Chelsea MID): groin — Maresca's pre-Forest presser confirmed a SETBACK, 'he needs to be out for probably six more weeks' (out since aggravating it v Man Utd 20 Sept) (chelseafc.com / Sky, 17 Oct 2025). UPDATED from 0.0 (dur1, targeted GW8 return) — the pencilled GW8 comeback is OFF; he does NOT return. The GW6 hold-vs-sell bet now runs longer.",
+  "duration_gws": 6
+ },
+ "237": {
+  "start_share": 0.15,
+  "reason": "Enzo Fernandez (Chelsea MID): knee pain from the start of the international window forced his withdrawal from Argentina duty; a major doubt for Forest and unable to recover in time (Maresca pre-Forest presser, 17 Oct 2025). NEW — heavy doubt/out GW8.",
+  "duration_gws": 1
+ },
+ "232": {
+  "start_share": 0.4,
+  "reason": "Tosin Adarabioyo (Chelsea DEF): back from the calf, available after the international break per Maresca, but Chalobah/Acheampong hold the CB berths — rotation option (Maresca presser / lineups, 17 Oct 2025). UPDATED from 0.0 — absence served, not a nailed starter.",
+  "duration_gws": 1
+ },
+ "230": {
+  "start_share": 0.35,
+  "reason": "Wesley Fofana (Chelsea DEF): available again per Maresca but not starting v Forest (Chalobah + Acheampong preferred) — rotation/bench (Maresca presser / lineups, 17-18 Oct 2025). UPDATED down from 0.55 — fit but out of the first-choice pair.",
+  "duration_gws": 1
+ },
+ "244": {
+  "start_share": 0.55,
+  "reason": "Romeo Lavia (Chelsea MID): worked back from the muscular problem and returned to the starting midfield v Forest (chelseafc.com / lineups, Oct 2025). UPDATED up from 0.2 — now starting with Caicedo/Enzo doubts.",
+  "duration_gws": 1
+ },
+ "453": {
+  "start_share": 0.7,
+  "reason": "Alejandro Garnacho (Chelsea MID): with Palmer out he keeps a wide starting berth, started v Forest (chelseafc.com / lineups, Oct 2025). Carried at 0.7.",
+  "duration_gws": 1
+ },
+ "168": {
+  "start_share": 0.25,
+  "reason": "Facundo Buonanotte (Chelsea MID, on loan): eligible but a squad rotation option, not in the Forest XI (chelseafc.com / lineups, Oct 2025). UPDATED down from 0.3 — behind the first-choice attack.",
+  "duration_gws": 1
+ },
+ "229": {
+  "start_share": 0.2,
+  "reason": "Benoit Badiashile (Chelsea DEF): available but behind the first-choice CBs, bench/rotation (chelseafc.com, Oct 2025). Carried at 0.2.",
+  "duration_gws": 1
+ },
+ "247": {
+  "start_share": 0.0,
+  "reason": "Dario Essugo (Chelsea MID): thigh injury requiring surgery, no return timeline (chelseafc.com, Sept 2025). Carried."
+ },
+ "250": {
+  "start_share": 0.0,
+  "reason": "Liam Delap (Chelsea FWD): hamstring, out ~10-12 weeks from 30 Aug per Maresca — return pencilled mid-November; still sidelined v Forest with Joao Pedro leading the line (chelseafc.com / lineups, Oct 2025). Carried, duration down to 4.",
+  "duration_gws": 4
+ },
+ "227": {
+  "start_share": 0.0,
+  "reason": "Levi Colwill (Chelsea DEF): ACL rupture, surgery 7 Aug 2025, out ~6-9 months (Sky Sports). Carried."
+ },
+ "245": {
+  "start_share": 0.0,
+  "reason": "Mykhailo Mudryk (Chelsea MID): provisional doping suspension since Dec 2024, FA charge Jun 2025 — ineligible (FA/Sky). Carried."
+ },
+ "815": {
+  "start_share": 0.05,
+  "reason": "Axel Disasi (Chelsea DEF): exiled from the first team, no move in the window (Goal/ESPN, Sept 2025). Carried."
+ },
+ "431": {
+  "start_share": 0.15,
+  "reason": "Altay Bayindir (Man Utd GK): lost the gloves — Lammens kept a clean sheet on debut v Sunderland (GW7) and Amorim hinted he starts again at Liverpool (manutd.com / Amorim pre-Liverpool presser, 17 Oct 2025). UPDATED down from 0.45 — now the back-up.",
+  "duration_gws": 1
+ },
+ "733": {
+  "start_share": 0.8,
+  "reason": "Senne Lammens (Man Utd GK): impressed on his GW7 debut (clean sheet v Sunderland) and Amorim hinted he 'could be in line to start again' at Liverpool — the keeper switch is complete (manutd.com / Amorim presser, 17 Oct 2025). UPDATED up from 0.5 — now the established No.1.",
+  "duration_gws": 1
+ },
+ "457": {
+  "start_share": 0.7,
+  "reason": "Casemiro (Man Utd MID): available and in the starting picture after his GW6 ban and GW7 return (manutd.com / lineups, Oct 2025). Carried at 0.7.",
+  "duration_gws": 1
+ },
+ "452": {
+  "start_share": 0.6,
+  "reason": "Amad Diallo (Man Utd MID): available, competing for the wing-back/attacking berth (manutd.com, Oct 2025). Carried at 0.6.",
+  "duration_gws": 1
+ },
+ "438": {
+  "start_share": 0.2,
+  "reason": "Noussair Mazraoui (Man Utd DEF): doubtful for Liverpool — hasn't played since the Chelsea game (Sept) and Amorim flagged him as a doubt in the pre-match presser (manutd.com / Amorim, 17 Oct 2025). UPDATED from 0.0 (dur1, expected back GW8) — still not certain, lingering knock.",
+  "duration_gws": 1
+ },
+ "440": {
+  "start_share": 0.75,
+  "reason": "Diogo Dalot (Man Utd DEF): established in the side (manutd.com / lineups, Oct 2025). Carried at 0.75.",
+  "duration_gws": 1
+ },
+ "450": {
+  "start_share": 0.7,
+  "reason": "Matheus Cunha (Man Utd FWD): fit and in the starting picture (manutd.com, Oct 2025). Carried at 0.7.",
+  "duration_gws": 1
+ },
+ "455": {
+  "start_share": 0.7,
+  "reason": "Mason Mount (Man Utd MID): fit and in the XI — started and scored v Sunderland GW7 (manutd.com / Amorim, Oct 2025). Carried at 0.7.",
+  "duration_gws": 1
+ },
+ "437": {
+  "start_share": 0.0,
+  "reason": "Lisandro Martinez (Man Utd DEF): approaching a return from the February knee injury but NOT yet back in full training — Amorim ruled him out of Liverpool (manutd.com / Amorim presser, 17 Oct 2025). Carried.",
+  "duration_gws": 2
+ },
+ "119": {
+  "start_share": 0.8,
+  "reason": "Bryan Mbeumo (Man Utd MID): nailed starter, no injury/suspension flag ahead of the Liverpool trip (manutd.com / lineups, Oct 2025). NEW — our-squad starter.",
+  "duration_gws": 1
+ },
+ "421": {
+  "start_share": 0.0,
+  "reason": "Rodri (Man City MID): hamstring picked up v Brentford (<20', 5 Oct), missed two Spain WC qualifiers, and Guardiola's pre-Everton presser ruled him out with NO return date, 'weeks' away (ESPN / mancity.com / Guardiola, 17 Oct 2025). UPDATED from 0.75 (was a GW7 starter) — the in-match Brentford injury is now public and rules him out of GW8.",
+  "duration_gws": 3
+ },
+ "413": {
+  "start_share": 0.25,
+  "reason": "Omar Marmoush (Man City FWD): knee — returned to first-team training and back in the matchday squad per Guardiola, but eased in off the bench v Everton (mancity.com / Guardiola presser, 17-18 Oct 2025). UPDATED down from 0.35 — available but a substitute on return.",
+  "duration_gws": 1
+ },
+ "422": {
+  "start_share": 0.2,
+  "reason": "Mateo Kovacic (Man City MID): available for his first appearance of the season after Achilles surgery, but bench on return (mancity.com / Guardiola, 17-18 Oct 2025). Carried at 0.2.",
+  "duration_gws": 1
+ },
+ "406": {
+  "start_share": 0.0,
+  "reason": "Abdukodir Khusanov (Man City DEF): out of the Everton game through injury per the pre-match team news (mancity.com / Guardiola, 17-18 Oct 2025). UPDATED from 0.3 — fresh knock, unspecified short absence.",
+  "duration_gws": 2
+ },
+ "402": {
+  "start_share": 0.2,
+  "reason": "Rayan Ait-Nouri (Man City DEF): ankle — returned to first-team training and in contention per Guardiola, but bench on return v Everton (mancity.com / Guardiola, 17-18 Oct 2025). UPDATED up from 0.1 — back in the squad, not yet starting.",
+  "duration_gws": 1
+ },
+ "417": {
+  "start_share": 0.05,
+  "reason": "Rayan Cherki (Man City MID): thigh — 7-8 week layoff from end-Aug, return pencilled ~early Nov; nearing availability but not yet a starter (OneFootball / FFScout, Sept-Oct 2025). Carried at 0.05.",
+  "duration_gws": 1
+ },
+ "736": {
+  "start_share": 0.9,
+  "reason": "Gianluigi Donnarumma (Man City GK): established No.1, started v Everton (mancity.com / lineups, Oct 2025). Carried."
+ },
+ "182": {
+  "start_share": 0.05,
+  "reason": "James Trafford (Man City GK): back-up behind Donnarumma (lineups, Oct 2025). Carried."
+ },
+ "430": {
+  "start_share": 0.9,
+  "reason": "Erling Haaland (Man City FWD): fit and leading the line v Everton, 'feels really good' per Guardiola (mancity.com / Guardiola, 17-18 Oct 2025). NEW — our-squad captain pick, nailed.",
+  "duration_gws": 1
+ },
+ "499": {
+  "start_share": 0.0,
+  "reason": "Alexander Isak (Liverpool FWD): fresh groin injury picked up in training over the break — Slot's pre-Man Utd presser ruled him OUT of the Old Trafford trip, ~2-4 weeks (Sky Sports / liverpool.com / Slot, 17 Oct 2025). UPDATED from 0.65 — the Ekitike->Isak entry branch is now DEAD for GW8; Isak out.",
+  "duration_gws": 3
+ },
+ "661": {
+  "start_share": 0.85,
+  "reason": "Hugo Ekitike (Liverpool FWD): with Isak ruled out (groin), he is Liverpool's lead striker at Old Trafford — Slot's clear first choice up front (liverpool.com / Slot presser, 17 Oct 2025). UPDATED up from 0.3 — Isak's absence reinstates Ekitike as the nailed No.9. Our-squad hold pays off as a starter, not a sale.",
+  "duration_gws": 1
+ },
+ "387": {
+  "start_share": 0.85,
+  "reason": "Dominik Szoboszlai (Liverpool MID): nailed starter (midfield/RB), no injury flag in Slot's pre-Man Utd presser (liverpool.com / lineups, Oct 2025). NEW — our-squad starter.",
+  "duration_gws": 1
+ },
+ "370": {
+  "start_share": 0.3,
+  "reason": "Jeremie Frimpong (Liverpool DEF): fit but competing with Bradley/Szoboszlai at RB — rotation option (Liverpool team news, Oct 2025). Carried at 0.3.",
+  "duration_gws": 1
+ },
+ "692": {
+  "start_share": 0.0,
+  "reason": "Giovanni Leoni (Liverpool DEF): ACL on debut v Southampton 23 Sept, surgery, out ~a year (liverpoolfc.com, 26 Sept 2025). Carried."
+ },
+ "82": {
+  "start_share": 0.85,
+  "reason": "Antoine Semenyo (Bournemouth MID): nailed starter, in Bournemouth's XI v Crystal Palace (Sports Mole / lineups, 18 Oct 2025). NEW — our-squad starter.",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.0,
+  "reason": "David Brooks (Bournemouth MID): ankle injury — unavailable for GW8 per Iraola, one of a run of matches missed (returned only as a late-Oct sub) (Sports Mole / afcb.co.uk, 17-18 Oct 2025). NEW — our-squad player OUT; ~2-3 weeks.",
+  "duration_gws": 2
+ },
+ "714": {
+  "start_share": 0.85,
+  "reason": "Nick Woltemade (Newcastle FWD): leading the line with Wissa still out — started v Brighton (Howe team news / lineups, 18 Oct 2025). Carried at 0.85.",
+  "duration_gws": 1
+ },
+ "474": {
+  "start_share": 0.8,
+  "reason": "Fabian Schar (Newcastle DEF): fit and in the side out of the break (Shields Gazette / lineups, Oct 2025). Carried at 0.8.",
+  "duration_gws": 1
+ },
+ "135": {
+  "start_share": 0.0,
+  "reason": "Yoane Wissa (Newcastle FWD): PCL knee — Howe's pre-Brighton presser said he is only just 'back on the grass for the first time... stepping him up gradually', NOT ready for GW8 (themag / soccerway / Howe, 17 Oct 2025). UPDATED from 0.0 (dur1, ~18 Oct pencilled) — the return has slipped; still out.",
+  "duration_gws": 2
+ },
+ "52": {
+  "start_share": 0.15,
+  "reason": "Jacob Ramsey (Newcastle MID): edging back — trained well over the break and 'looks good' per Howe, but not pushed too early, bench/doubt (themag / Howe presser, 17 Oct 2025). UPDATED up from 0.0 — closing in, not a starter.",
+  "duration_gws": 1
+ },
+ "469": {
+  "start_share": 0.9,
+  "reason": "Nick Pope (Newcastle GK): No.1 (lineups through Oct 2025). Carried."
+ },
+ "674": {
+  "start_share": 0.1,
+  "reason": "Aaron Ramsdale (Newcastle GK): back-up to Pope (lineups, Oct 2025). Carried."
+ },
+ "256": {
+  "start_share": 0.85,
+  "reason": "Daniel Munoz (Crystal Palace DEF): nailed wing-back, no injury/suspension flag ahead of Bournemouth (cpfc.co.uk / lineups, 18 Oct 2025). NEW — our-squad starter.",
+  "duration_gws": 1
+ },
+ "347": {
+  "start_share": 0.0,
+  "reason": "Gabriel Gudmundsson (Leeds DEF): hamstring injury — Farke confirmed pre-Burnley he 'faces a spell on the sidelines' (Yahoo/Leeds team news / Farke, 17 Oct 2025). NEW — our-squad player OUT; hamstring spell ~3-4 weeks.",
+  "duration_gws": 4
+ },
+ "354": {
+  "start_share": 0.7,
+  "reason": "Ethan Ampadu (Leeds MID): back from the MCL problem and in the side out of the break (leedsunited.com / lineups, Oct 2025). UPDATED up from 0.6.",
+  "duration_gws": 1
+ },
+ "665": {
+  "start_share": 0.9,
+  "reason": "Lucas Perri (Leeds GK): No.1, started GW1-7 (lineups). Carried."
+ },
+ "341": {
+  "start_share": 0.05,
+  "reason": "Karl Darlow (Leeds GK): back-up behind Perri (lineups). Carried."
+ },
+ "531": {
+  "start_share": 0.85,
+  "reason": "Daniel Ballard (Sunderland DEF): available and starting v Wolves — in Le Bris's confirmed XI at the GW8 deadline (Sunderland Echo / Sports Mole, 18 Oct 2025). NEW — our-squad starter. NOTE: his violent-conduct red card and subsequent 3-match ban occur DURING this match and are POST-deadline — NOT applied here.",
+  "duration_gws": 1
+ },
+ "541": {
+  "start_share": 0.0,
+  "reason": "Reinildo Mandava (Sunderland DEF): serving the FINAL game of a three-match violent-conduct ban (Forest GW6, Man Utd GW7, Wolves GW8) (Sunderland Echo / Le Bris pre-match, 17 Oct 2025). Carried, game 3 of 3 — duration down to 1, free from GW9.",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.9,
+  "reason": "Robin Roefs (Sunderland GK): No.1, started GW1-7 (lineups). Carried."
+ },
+ "528": {
+  "start_share": 0.05,
+  "reason": "Anthony Patterson (Sunderland GK): back-up behind Roefs (lineups). Carried."
+ },
+ "470": {
+  "start_share": 0.9,
+  "reason": "Martin Dubravka (Burnley GK): No.1, started GW1-7 (lineups). Carried — our-squad keeper.",
+  "duration_gws": 1
+ },
+ "183": {
+  "start_share": 0.05,
+  "reason": "Max Weiss (Burnley GK): back-up behind Dubravka (lineups). Carried."
+ },
+ "599": {
+  "start_share": 0.05,
+  "reason": "Dane Scarlett (Spurs FWD): deep fringe/back-up striker behind Richarlison/Kolo Muani, not in the matchday picture (tottenhamhotspur.com / lineups, Oct 2025). NEW — our-squad depth, effectively non-playing.",
+  "duration_gws": 1
+ },
+ "717": {
+  "start_share": 0.8,
+  "reason": "Xavi Simons (Spurs MID): established starter (lineups through Oct 2025). Carried."
+ },
+ "726": {
+  "start_share": 0.5,
+  "reason": "Randal Kolo Muani (Spurs FWD): available, competing with Richarlison for the striker role (tottenhamhotspur.com / FFScout, Oct 2025). Carried at 0.5.",
+  "duration_gws": 1
+ },
+ "596": {
+  "start_share": 0.0,
+  "reason": "Dominic Solanke (Spurs FWD): still out following the ankle procedure, no return date (tottenhamhotspur.com team news, Oct 2025). Carried."
+ },
+ "581": {
+  "start_share": 0.0,
+  "reason": "James Maddison (Spurs MID): ACL rupture in pre-season, season-long absence (Sky/BBC, 7 Aug 2025). Carried."
+ },
+ "583": {
+  "start_share": 0.0,
+  "reason": "Dejan Kulusevski (Spurs MID): knee/patella surgery May 2025, still out (Sky/Goal). Carried."
+ },
+ "572": {
+  "start_share": 0.0,
+  "reason": "Radu Dragusin (Spurs DEF): ACL rehab, months from match fitness (tottenhamhotspur.com, Oct 2025). Carried."
+ },
+ "567": {
+  "start_share": 0.1,
+  "reason": "Antonin Kinsky (Spurs GK): Vicario the clear No.1 (GW1-7 lineups). Carried."
+ },
+ "679": {
+  "start_share": 0.1,
+  "reason": "Mads Hermansen (West Ham GK): behind Areola since the GW5 recall (team sheets). Carried."
+ },
+ "600": {
+  "start_share": 0.85,
+  "reason": "Alphonse Areola (West Ham GK): No.1 since the GW5 recall (team sheets, Oct 2025). Carried."
+ },
+ "290": {
+  "start_share": 0.35,
+  "reason": "Jarrad Branthwaite (Everton DEF): hamstring — working back toward contention through the break, edging in but not certain to start v Man City (goodisonnews / Moyes pressers, Oct 2025). Carried ~0.35 — still ramping.",
+  "duration_gws": 1
+ },
+ "456": {
+  "start_share": 0.3,
+  "reason": "Jadon Sancho (Aston Villa MID): still building sharpness, cameo appearances rather than starts under Emery (Villa reporting, Oct 2025). Carried."
+ },
+ "153": {
+  "start_share": 0.0,
+  "reason": "Adam Webster (Brighton DEF): knee ligament surgery Jul 2025, long-term (Brighton official / FFScout, Oct 2025). Carried."
+ },
+ "399": {
+  "start_share": 0.0,
+  "reason": "Ederson (GK): permanent transfer to Fenerbahce 2 Sept 2025 — left the PL. Carried."
+ },
+ "432": {
+  "start_share": 0.0,
+  "reason": "Andre Onana (GK): loan to Trabzonspor mid-Sept 2025 — left the PL. Carried."
+ },
+ "240": {
+  "start_share": 0.0,
+  "reason": "Christopher Nkunku (MID): sold to AC Milan late Aug 2025 — left the PL. Carried."
+ },
+ "251": {
+  "start_share": 0.0,
+  "reason": "Nicolas Jackson (FWD): season-long loan to Bayern Munich 1 Sept 2025 — left the PL. Carried."
+ },
+ "604": {
+  "start_share": 0.0,
+  "reason": "Emerson Palmieri (DEF): joined Marseille 1 Sept 2025 — left the PL. Carried."
+ },
+ "454": {
+  "start_share": 0.0,
+  "reason": "Antony (MID): sold to Real Betis 1 Sept 2025 — left the PL. Carried."
+ },
+ "448": {
+  "start_share": 0.0,
+  "reason": "Tyrell Malacia (DEF): loan to Eyupspor mid-Sept 2025 — left the PL. Carried."
+ },
+ "465": {
+  "start_share": 0.0,
+  "reason": "Rasmus Hojlund (FWD): loan to Napoli 1 Sept 2025 — left the PL. Carried."
+ },
+ "404": {
+  "start_share": 0.0,
+  "reason": "Manuel Akanji (DEF): loan to Inter Milan 1 Sept 2025 — left the PL. Carried."
+ },
+ "383": {
+  "start_share": 0.0,
+  "reason": "Luis Diaz (MID): sold to Bayern Munich 30 Jul 2025 — left the PL. Carried."
+ },
+ "397": {
+  "start_share": 0.0,
+  "reason": "Darwin Nunez (FWD): transfer to Al-Hilal 9 Aug 2025 — left the PL. Carried."
+ },
+ "451": {
+  "start_share": 0.0,
+  "reason": "Marcus Rashford (MID): season-long loan to Barcelona 23 Jul 2025 — left the PL. Carried."
+ },
+ "579": {
+  "start_share": 0.0,
+  "reason": "Son Heung-min (MID): transfer to LAFC 6 Aug 2025 — left the PL. Carried."
+ },
+ "71": {
+  "start_share": 0.0,
+  "reason": "Illia Zabarnyi (DEF): transfer to PSG 12 Aug 2025 — left the PL. Carried."
+ }
+}
