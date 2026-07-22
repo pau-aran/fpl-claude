@@ -65,6 +65,13 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   amend the memo before sign-off.
 - Captaincy = highest projection unless news says otherwise: passed review
   4/4 weeks (Salah ×4).
+- Community consensus (X strategy accounts, r/FantasyPL GW threads, FFScout
+  polls) is a decision INPUT from GW6: a candidate roadmap plus effective-
+  ownership risk context (a template move we skip is a rank bet; a
+  differential we take needs conviction). Never an order — diverging from a
+  clear template move requires a written reason in the memo, and so does
+  following one the models dislike. Weekly `consensus/gwNN.md`, pre-deadline
+  sources only.
 
 ## Season context (2025/26 replay, verified)
 
