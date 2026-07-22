@@ -13,18 +13,26 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   on FDR fallback until ~GW6 — one opening 3-0 is not a rating.
 - [DONE] A stat with no prior era (DC before 2025/26) must not be shrunk
   toward its phantom-zero prior column.
-- [OPEN] One-GW availability overlays zero the ENTIRE horizon: a 1-2 week
-  knock is priced as an 8-GW absence, inflating forced-move EV ~4x (GW2:
-  "+15.45" that was really ~+4). Needs per-GW minutes structure.
+- [DONE] Overlays are time-scoped via `duration_gws` (projections.py, from
+  GW5): a one-week doubt suppresses 1 horizon GW, clean estimate beyond.
+  Was the binding constraint — three phantom-sell scalps in four weeks
+  (Gvardiol, Palmer, Saliba "+5.76 net" through the fixed gate). SAFETY
+  DEFAULT differs from the review spec: omitted duration = whole horizon
+  (an ACL/departure must not "recover" after one GW) — short durations are
+  OPT-IN per entry; news overlays must tag them (knock → 1-2, "weeks" → 3-4,
+  ban → matches left, structural/long-term → omit).
 - [OPEN] Minutes model turns 1 start into p_start=1.0 for no-prior players
-  (`_start_share` trusts any team_games>0 without a prior). Ballard: bought
-  on it GW2, benched GW2 AND GW3 while we fielded him at 3.95 — two weeks of
-  direct cost, now the top open defect.
+  (`_start_share`). Ballard: fielded 0-min GW2–4 (10.47 predicted pts for
+  8 real minutes) — but self-correcting (4.10→2.42 as team_games grows)
+  and hasn't driven a transfer since GW2. Demoted behind overlay-horizon.
 - [OPEN] `low_sample` is flagged but nothing consumes it: a newcomer's
   one-match rates outrank an established player's blended prior (Ekitiké 71'
   vs Wood's 20-goal season). Confidence haircut on horizons wanted.
-- [WATCH] bonus90 prior-proxy runs light (XI took 12 bonus in GW1); DC now
-  flows post-fix. Log per-component bias each week before touching levels.
+- [WATCH] Level calibration: 4-GW mean error +7.5 but GW1-dominated (excl
+  GW1: +0.5, n=3) — NOT systematically low, no adjustment. Components: bonus
+  proxy no new signal since GW1; DC flows mechanically but the squad banked
+  ZERO DC threshold points GW2–4 (our DEF picks may under-index CBIT-heavy
+  profiles — Senesi hit 12 the week the cap squeezed him out).
 
 ## Decision policy
 
@@ -32,7 +40,9 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   beat the best hit-free solution by ≥4.5 per hit WITH the -4 already
   charged. Package deltas smuggle sub-threshold hits (GW2's Wood sale), and
   a first implementation at net ≥0.5 would have re-passed it (GW3 review
-  catch) — semantics now in code and both rules files.
+  catch) — semantics now in code and both rules files. Verified live GW4
+  (quoted net +5.76 correctly); remaining exposure is poisoned INPUTS from
+  the overlay-horizon defect, not the gate.
 - [DONE] The optimizer output is a proposal. Manager overlay (lock/ban/
   captain/cap, written reasoning) is mechanical via `--decision`.
 - Premium assets are holds through short knocks — never sell a talisman at
@@ -49,8 +59,12 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 - [WATCH] Playable-bench EV: positive but small; mixed evidence (GW1 zero
   coverage cost an autosub; GW2 best enabler scored −1). Bought Gudmundsson
   GW3 as 15th man.
+- A lock/cap re-solve can silently redirect the transfer away from the move
+  the written reasoning described (GW4: approval text argued for Senesi, the
+  constrained solve bought Calafiori) — re-read the constrained solution and
+  amend the memo before sign-off.
 - Captaincy = highest projection unless news says otherwise: passed review
-  3/3 weeks (Salah ×3).
+  4/4 weeks (Salah ×4).
 
 ## Season context (2025/26 replay, verified)
 

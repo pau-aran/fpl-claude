@@ -344,3 +344,22 @@ def test_projections_end_to_end(bootstrap, fixtures):
 
 def test_upcoming_gameweeks_respects_horizon(bootstrap):
     assert upcoming_gameweeks(bootstrap, 2) == [11, 12]
+
+
+def test_overlay_duration_scopes_to_horizon_gws(bootstrap, fixtures):
+    """A duration-scoped overlay suppresses only its first N horizon GWs; an
+    unscoped overlay covers the whole horizon (safe for ACLs/departures).
+    One-week doubts priced as 8-GW absences drove three phantom sells."""
+    one_week = {10: {"start_share": 0.0, "reason": "knock: misses next match",
+                     "duration_gws": 1}}
+    whole = {10: {"start_share": 0.0, "reason": "ACL"}}
+    scoped = build_projections(bootstrap, fixtures, overlays=one_week, horizon=4).set_index("id")
+    unscoped = build_projections(bootstrap, fixtures, overlays=whole, horizon=4).set_index("id")
+    clean = build_projections(bootstrap, fixtures, horizon=4).set_index("id")
+
+    assert scoped.loc[10, "xpts_gw11"] < 1.0  # overlaid week: near-zero
+    # Beyond duration the clean estimate returns:
+    assert scoped.loc[10, "xpts_gw12"] == pytest.approx(clean.loc[10, "xpts_gw12"], rel=0.01)
+    # Unscoped stays suppressed across the horizon:
+    assert unscoped.loc[10, "xpts_gw12"] < 1.0
+    assert scoped.loc[10, "xpts_horizon"] > unscoped.loc[10, "xpts_horizon"]
