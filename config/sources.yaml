@@ -43,13 +43,29 @@ strategy_and_analytics:
   - {name: "The Athletic FPL coverage", url: "https://www.nytimes.com/athletic", tier: 3,
      use: "deeper tactical/rotation reporting"}
 
-x_accounts:   # reached via web search, never a paid API
+x_accounts:   # reached via web search, never a paid API — vetted July 2026 vs 2025/26 season
+  # --- data / official / speed (mechanical inputs) ---
   - {handle: "OfficialFPL", tier: 1, use: "official announcements, price changes, deadlines"}
-  - {handle: "FPLStatus", tier: 1, use: "the fastest player-flag/status change alerts"}
-  - {handle: "BenCrellin", tier: 1, use: "THE fixture-planning authority: DGW/BGW projections"}
-  - {handle: "FFScout_", tier: 2, use: "Fantasy Football Scout feed"}
-  - {handle: "LiveFPL", tier: 2, use: "effective ownership, rank analytics"}
-  - {handle: "FplRichard", tier: 3, use: "FPL Review author commentary"}
+  - {handle: "FPLStatus", tier: 1, use: "automated flag/status alerts, confirmed lineups, provisional bonus, price changes — fastest mechanical feed"}
+  - {handle: "BenCrellin", tier: 1, use: "THE fixture-planning authority: DGW/BGW projections; also an elite manager (all-time #1 overall)"}
+  - {handle: "FFScout_", tier: 1, use: "Fantasy Football Scout feed: presser aggregation, predicted lineups, deadline articles"}
+  - {handle: "FPLPriceChanges", tier: 2, use: "nightly predicted price rises/falls (LiveFPL-powered) — feeds the price-change radar"}
+  - {handle: "theFPLkiwi", tier: 2, use: "open xPts/xMins projection model, npxG/finishing analysis — best public model to sanity-check ours"}
+  - {handle: "LiveFPL", tier: 2, use: "effective ownership, top-10k template composition, rank analytics"}
+  - {handle: "FPL_Rockstar", tier: 2, use: "deadline-day only: earliest reliable lineup leaks ('the OG of team leaks'); 7x top-40k"}
+  # --- strategy with transparent reasoning ---
+  - {handle: "LetsTalk_FPL", tier: 1, use: "Andy: full decision reasoning every GW; 588th overall 2025/26, 3x top-10k in last 6 seasons — the strategy benchmark"}
+  - {handle: "FPL_Harry", tier: 2, use: "deadline decision threads with reasoning; 5 straight top-10k finishes before 2025/26"}
+  - {handle: "FPL_Heisenberg", tier: 2, use: "Wes Prickett (BBC Sport FPL expert): talking-point analysis; 7x top-30k, best 836th"}
+  - {handle: "allaboutfpl", tier: 3, use: "presser-update aggregation, captain-metrics and wildcard-draft articles"}
+  # --- elite-manager transparency (their moves + why) ---
+  - {handle: "FPL_Salah", tier: 2, use: "Abdul Rehman: posts his own team/transfer plans with reasoning; consistent elite ranks, FFHub reveal contributor"}
+  - {handle: "BigManBakar", tier: 2, use: "posts own team with reasoning; 4th in the world 2024/25"}
+  - {handle: "FPLGeneral", tier: 3, use: "FFScout trusted veteran (multiple top-500s); weekly team reveal + transfer plans = template proxy"}
+  - {handle: "FplRichard", tier: 3, use: "FPL Review author commentary — solver-adjacent thinking"}
+  - {handle: "robtFPL", tier: 3, use: "betting spread-market data graphics — market-implied goals/cards signal"}
+  # Dropped after vetting (2025/26): FPLFamily, FPLMate, FPLHints (activity/decision-grade
+  # content unverified); AlwaysCheating (podcast wound down its run May 2025).
   # Club beat reporters resolved per-team at sweep time (search "<club> team news x.com").
 
 congestion_competitions:   # competitions that affect PL rotation — track all of them

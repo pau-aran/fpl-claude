@@ -47,6 +47,43 @@ that stops earning its slot.*
 - football-data.org API — congestion tracking never fed a decision yet;
   re-add when European weeks begin (GW6+ of a live season).
 
+## 5. X/Twitter accounts (community strategy & consensus)
+
+*Vetted July 2026 against the 2025/26 season. Reached via web search only
+(`site:x.com <handle> <topic>` or handle + topic) — no paid API. TIER 1 = read
+every deadline; 2 = pre-deadline and weekly; 3 = as needed.*
+
+| Handle | Tier | Category | What it uniquely provides (evidence of quality) |
+|---|---|---|---|
+| @OfficialFPL | 1 | Official | Announcements, deadlines, price changes — primary source |
+| @FPLStatus | 1 | Data/speed | Automated flags, confirmed lineups, provisional bonus, price changes — fastest mechanical feed |
+| @BenCrellin | 1 | Data | The DGW/BGW fixture-planning authority (legendary spreadsheets); also all-time #1 ranked manager |
+| @FFScout_ | 1 | Team news | FFScout feed: presser aggregation + predicted lineups — proven decisive in our GW2/GW4 backtest overlays |
+| @LetsTalk_FPL | 1 | Strategy | Andy: transparent full-reasoning decision content; 588th overall 2025/26, 3x top-10k in last 6 seasons |
+| @theFPLkiwi | 2 | Data/model | Open xPts/xMins projection model, npxG & finishing analysis — best public model to cross-check ours |
+| @FPLPriceChanges | 2 | Data | Nightly predicted risers/fallers (LiveFPL engine) — the live price-change radar |
+| @LiveFPL | 2 | Data | Effective ownership + top-10k template composition — the EO-risk input |
+| @FPL_Rockstar | 2 | Speed | Earliest reliable lineup leaks pre-deadline ("the OG of team leaks"); 7x top-40k |
+| @FPL_Harry | 2 | Strategy | Deadline decision threads with reasoning; 5 consecutive top-10k finishes before 2025/26 |
+| @FPL_Heisenberg | 2 | Strategy | BBC Sport FPL expert (Wes Prickett); 7x top-30k, best 836th |
+| @FPL_Salah | 2 | Elite transparency | Abdul Rehman: posts own team + transfer plans with reasoning; consistent elite ranks |
+| @BigManBakar | 2 | Elite transparency | Posts own team with reasoning; 4th in the world 2024/25 |
+| @FPLGeneral | 3 | Elite transparency | FFScout trusted veteran (multiple top-500s); weekly reveal = a template proxy |
+| @FplRichard | 3 | Strategy/model | FPL Review author — solver-adjacent commentary |
+| @robtFPL | 3 | Data | Betting spread-market graphics — market-implied goals/cards |
+| @allaboutfpl | 3 | Strategy | Presser aggregation, captain-metric and wildcard-draft articles |
+
+Dropped after vetting: FPLFamily, FPLMate, FPLHints (activity or decision-grade
+content unverifiable for 2025/26); AlwaysCheating (podcast ended its run May 2025).
+
+**Method note — consensus is an input, never an order.** Community/elite
+consensus from these accounts is a roadmap for effective-ownership risk
+management: it tells us what the market will punish us for missing (e.g. a
+67%-polled captain) and where crowds are moving before price changes. It never
+decides a move by itself. Any divergence from a clear template move — and any
+follow of one against our model — requires a written reason in the gameweek
+decision memo, with the EV at decision time.
+
 ## Method notes (what made facts usable)
 
 - A fact is only usable if PUBLIC BEFORE the deadline — every overlay entry
