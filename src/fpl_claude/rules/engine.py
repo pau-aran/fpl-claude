@@ -53,6 +53,20 @@ class Ruleset:
     def policy(self, name: str) -> Any:
         return self.raw["policies"][name]
 
+    def sell_price(self, buy_cost: int, current_cost: int) -> int:
+        """Sell price in API tenths of £m under budget.sell_price_rule.
+
+        half_profit_rounded_down: sell = buy + floor(profit / 2); losses are
+        passed through in full (sell = current when current <= buy).
+        """
+        rule = self.raw["budget"]["sell_price_rule"]
+        if rule != "half_profit_rounded_down":
+            raise NotImplementedError(f"unknown sell_price_rule: {rule}")
+        profit = current_cost - buy_cost
+        if profit <= 0:
+            return current_cost
+        return buy_cost + profit // 2
+
 
 if __name__ == "__main__":
     rules = Ruleset.load()
