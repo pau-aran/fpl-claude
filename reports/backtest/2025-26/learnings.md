@@ -13,3 +13,4 @@ the full evidence trail behind a point.*
 | GW2 | `reviews/gw02.md` | 44 pts; package-EV gate let a +2.5 hit through — marginal gate proposed |
 | GW3 | `reviews/gw03.md` | 54 pts; first manager veto (PASS, +10 cf); gate needs NET semantics |
 | GW4 | `reviews/gw04.md` | 61 pts; Saliba veto PASS (+1 cf); overlay-horizon = binding defect → duration_gws fix |
+| GW5 | `reviews/gw05.md` | 40 pts (avg 42); plan veto PASS (−4 cf, honest); duration fix verified live; null proposal |

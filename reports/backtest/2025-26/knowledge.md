@@ -15,12 +15,14 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   toward its phantom-zero prior column.
 - [DONE] Overlays are time-scoped via `duration_gws` (projections.py, from
   GW5): a one-week doubt suppresses 1 horizon GW, clean estimate beyond.
-  Was the binding constraint — three phantom-sell scalps in four weeks
-  (Gvardiol, Palmer, Saliba "+5.76 net" through the fixed gate). SAFETY
-  DEFAULT differs from the review spec: omitted duration = whole horizon
-  (an ACL/departure must not "recover" after one GW) — short durations are
-  OPT-IN per entry; news overlays must tag them (knock → 1-2, "weeks" → 3-4,
-  ban → matches left, structural/long-term → omit).
+  Fixed the season's binding constraint (three phantom-sell scalps GW2–4).
+  First live week (GW5) clean: Saliba scoped 1 GW at 0.55 → predicted 1.96
+  / actual 2, horizon recovered, NO phantom sale proposed — first proposal
+  in five weeks with unpoisoned inputs. SAFETY DEFAULT: omitted duration =
+  whole horizon (an ACL/departure must not "recover") — short durations are
+  OPT-IN per entry (knock → 1-2, "weeks" → 3-4, ban → matches left,
+  structural/long-term → omit; scoping only matters for suppressions,
+  near-1.0 confirmations may omit).
 - [OPEN] Minutes model turns 1 start into p_start=1.0 for no-prior players
   (`_start_share`). Ballard: fielded 0-min GW2–4 (10.47 predicted pts for
   8 real minutes) — but self-correcting (4.10→2.42 as team_games grows)
@@ -28,11 +30,13 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 - [OPEN] `low_sample` is flagged but nothing consumes it: a newcomer's
   one-match rates outrank an established player's blended prior (Ekitiké 71'
   vs Wood's 20-goal season). Confidence haircut on horizons wanted.
-- [WATCH] Level calibration: 4-GW mean error +7.5 but GW1-dominated (excl
-  GW1: +0.5, n=3) — NOT systematically low, no adjustment. Components: bonus
-  proxy no new signal since GW1; DC flows mechanically but the squad banked
-  ZERO DC threshold points GW2–4 (our DEF picks may under-index CBIT-heavy
-  profiles — Senesi hit 12 the week the cap squeezed him out).
+- [WATCH] Level calibration: 5-GW mean error +2.9 (excl GW1: −3.6, n=4) —
+  no level bias, no adjustment. Predictions sit flat 51–59 while actuals
+  track the LEAGUE environment (official avgs 54/51/48/63/42 vs our
+  84/44/54/61/40): big misses are slate-wide hot/cold weeks, not model
+  level. Bonus proxy: no new signal since GW1. DC: first threshold points
+  banked GW5 (Gudmundsson +2, Semenyo +2, three near-misses) — the
+  "DEF picks under-index CBIT" worry weakened, watch continues.
 
 ## Decision policy
 
@@ -64,7 +68,10 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   constrained solve bought Calafiori) — re-read the constrained solution and
   amend the memo before sign-off.
 - Captaincy = highest projection unless news says otherwise: passed review
-  4/4 weeks (Salah ×4).
+  5/5 weeks (Salah ×5). The rule handles form shifts by itself — the model
+  already cooled Salah (27.7 horizon) through his four single-digit weeks
+  and hands Haaland the GW6 armband mechanically once he enters. No recency
+  overrides.
 - Community consensus (X strategy accounts, r/FantasyPL GW threads, FFScout
   polls) is a decision INPUT from GW6: a candidate roadmap plus effective-
   ownership risk context (a template move we skip is a rank bet; a
