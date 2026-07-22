@@ -29,6 +29,8 @@ python -m fpl_claude.reports.team_week       # build this week's team report ske
 - `config/rules/2026-27.yaml` — FPL ruleset (every rule flagged for verification at season launch)
 - `config/sources.yaml` — curated FPL news/strategy/X sources used by news sweeps
 - `src/fpl_claude/data/` — FPL API client + append-only snapshotting (DuckDB/JSON)
-- `src/fpl_claude/models/` — minutes / team-strength / xPts models (Phase 2)
+- `src/fpl_claude/models/` — minutes (built, v1) / team-strength (penaltyblog
+  Dixon-Coles + FDR fallback) / rates + rules-driven xPts / projections CLI —
+  see PLAN §4 for the build-vs-extract split and the pending backtest gate
 - `src/fpl_claude/optimize/` — MILP squad optimizer (Phase 3)
 - `src/fpl_claude/reports/` — weekly all-team report builder

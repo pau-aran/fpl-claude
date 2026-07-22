@@ -1,5 +1,6 @@
 # data artifacts — raw snapshots and the DuckDB build are local; schema/code is enough
 db/raw/
+db/projections/
 db/*.duckdb
 __pycache__/
 *.egg-info/

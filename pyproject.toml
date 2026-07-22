@@ -15,8 +15,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Phase 2+ (models) and Phase 3 (optimizer) — install when those phases start
-models = ["lightgbm>=4.0", "scikit-learn>=1.4", "penaltyblog>=1.0"]
+# Phase 2+ (models) and Phase 3 (optimizer) — install when those phases start.
+# penaltyblog (team model) is NOT listed because its PyPI metadata pins a broken
+# `socks` package; install it manually instead:
+#   pip install penaltyblog --no-deps
+#   pip install scipy tqdm pulp networkx matplotlib plotly ipywidgets
+# models/team.py imports it lazily and falls back to FDR expectations if absent.
+models = ["lightgbm>=4.0", "scikit-learn>=1.4", "scipy>=1.11", "tqdm"]
 optimize = ["pulp>=2.8", "highspy>=1.7"]
 dev = ["pytest>=8.0", "ruff>=0.4"]
 

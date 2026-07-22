@@ -82,17 +82,26 @@ the candidate base for an optional later dashboard phase — not needed for the 
 
 Storage: DuckDB + append-only snapshots so backtests only ever use point-in-time data.
 
-## 4. Model Layer (build order = importance)
+## 4. Model Layer — build vs extract (decided Jul 2026)
 
-1. **Minutes model** — P(start)/P(60+)/P(cameo): rolling starts, rotation vs congestion
-   (European weeks!), flags, price signals, post-WC-2026 fatigue. LightGBM on vaastav history.
-2. **Team model** — penaltyblog Dixon-Coles blended with bookmaker odds → expected goals
-   for/against, clean-sheet probabilities per fixture.
-3. **Player event model** — per-90 xG/xA × team share × opponent adj → expected
-   goals/assists/CS/saves/defensive-contribution + BPS proxy.
-4. **xPts aggregation** — scoring-rule mapping per position; 8-GW horizon, ~0.85/GW decay.
-5. **Backtest gate (non-negotiable):** point-in-time backtests on 2023/24–2025/26; must
-   beat template baseline in full-season simulation before going live.
+**Principle: extract the commodity layers, build the layers that carry our edge.**
+Third-party projection sites (FPL Review, FFH, LiveFPL) are *benchmarks only*: paywalled,
+opaque final numbers (no component decomposition to overlay minutes intel on), no
+point-in-time history for backtests, and a season-long scraping dependency we refuse.
+
+| xPts component | Build/Extract | Status | Notes |
+|---|---|---|---|
+| Minutes model (`models/minutes.py`) | **BUILD** | ✅ v1 heuristic | Our edge. P(start)/P(60+)/P(cameo) from flags + start shares, pre-season priors from last season's snapshot, and the **news-overlay hook** (every override carries a written reason). v2: LightGBM on vaastav history + congestion features. |
+| Team model (`models/team.py`) | **EXTRACT** | ✅ wrapped | penaltyblog Dixon-Coles (time-decay weighted, football-data.co.uk results via `data/football_data.py`) → per-fixture xG + CS probs off the score grid. FDR-based fallback (self-labeling) whenever history/deps are missing. Odds blend: Phase 2b. |
+| Player event rates (`models/rates.py`) | Hybrid | ✅ v1 | Per-90 xG/xA/saves/DC/bonus from FPL bootstrap, shrunk toward last-season priors; `low_sample` flag where evidence is thin. OpenFPL's per-position ensembles remain the warm-start candidate for v2 if the backtest gate demands more. |
+| Scoring map + horizon (`models/xpts.py`, `models/projections.py`) | **BUILD** | ✅ | Every value read from `config/rules/2026-27.yaml` (incl. 2025/26 defensive contributions) — verified rule changes at season launch propagate by editing YAML, not code. 8-GW horizon, 0.85 decay, decomposed output per component. |
+| **Backtest gate (non-negotiable)** | — | ⬜ pending Phase 1 data | Point-in-time backtests on 2023/24–2025/26; must beat template baseline in full-season simulation before any number feeds a decision memo. Applies equally to extracted layers. |
+
+Pipeline CLI: `python -m fpl_claude.models.projections [--from-snapshot D] [--prior-snapshot P]
+[--overlays J] [--horizon N]` → ranked table + CSV under `db/projections/` (the audit trail
+`/fpl-review` calibrates against). **Consensus cross-check:** skills compare our top
+projections against public numbers (LiveFPL, FPL Review free tier, FFScout) and flag big
+disagreements for investigation before any decision memo — benchmark, never input.
 
 References (researched & verified): OpenFPL (per-position ensembles, warm start candidate),
 AIrsenal (architecture reference), bpl-next (Bayesian alternative), open-fpl-solver (MILP formulation).
