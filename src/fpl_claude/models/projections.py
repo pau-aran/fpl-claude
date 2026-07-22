@@ -108,23 +108,30 @@ def build_projections(
             sources[fx["team_h"]].add(exp.source)
             sources[fx["team_a"]].add(exp.source)
 
+    team_games = minutes_model.team_games_played(fixtures)
+    priors = minutes_model.priors_from_bootstrap(prior_bootstrap) if prior_bootstrap else None
     minutes_df = minutes_model.estimate_all(
-        bootstrap,
-        minutes_model.team_games_played(fixtures),
-        priors=minutes_model.priors_from_bootstrap(prior_bootstrap) if prior_bootstrap else None,
-        overlays=overlays,
+        bootstrap, team_games, priors=priors, overlays=overlays
     ).set_index("id")
+    # Overlays are TIME-SCOPED: an entry may carry duration_gws (how many
+    # horizon GWs the news covers — 1 for a this-week knock, more for longer
+    # absences; omitted = whole horizon, the safe default for ACLs/departures).
+    # Beyond its duration the player projects on his CLEAN estimate — a
+    # one-week doubt priced as an 8-GW absence inflated forced-move EV ~4x
+    # and drove three phantom sells in four backtest weeks.
+    clean_df = (
+        minutes_model.estimate_all(bootstrap, team_games, priors=priors).set_index("id")
+        if overlays
+        else minutes_df
+    )
     rates_df = rates_model.blend(
         rates_model.from_bootstrap(bootstrap),
         rates_model.from_bootstrap(prior_bootstrap) if prior_bootstrap else None,
     ).set_index("id")
 
-    rows = []
-    for p in bootstrap["elements"]:
-        pid = int(p["id"])
-        position = POSITION_BY_ELEMENT_TYPE[p["element_type"]]
-        m_row = minutes_df.loc[pid]
-        est = minutes_model.MinutesEstimate(
+    def _estimate_from(df: pd.DataFrame, pid: int) -> minutes_model.MinutesEstimate:
+        m_row = df.loc[pid]
+        return minutes_model.MinutesEstimate(
             player_id=pid,
             p_start=m_row["p_start"],
             p_cameo=m_row["p_cameo"],
@@ -132,13 +139,24 @@ def build_projections(
             exp_minutes=m_row["exp_minutes"],
             confidence=m_row["minutes_confidence"],
         )
+
+    rows = []
+    for p in bootstrap["elements"]:
+        pid = int(p["id"])
+        position = POSITION_BY_ELEMENT_TYPE[p["element_type"]]
+        est = _estimate_from(minutes_df, pid)
+        overlay = (overlays or {}).get(pid)
+        duration = len(gameweeks)
+        if overlay is not None and overlay.get("duration_gws") is not None:
+            duration = max(0, int(overlay["duration_gws"]))
         rates = rates_df.loc[pid].to_dict()
 
         per_gw: dict[str, float] = {}
         horizon_total = 0.0
         for i, gw in enumerate(gameweeks):
+            gw_est = est if i < duration else _estimate_from(clean_df, pid)
             gw_points = sum(
-                expected_points(position, rates, est, exp, is_home, scoring)["total"]
+                expected_points(position, rates, gw_est, exp, is_home, scoring)["total"]
                 for exp, is_home in by_gw_team.get((gw, p["team"]), [])
             )
             per_gw[f"xpts_gw{gw}"] = round(gw_points, 2)

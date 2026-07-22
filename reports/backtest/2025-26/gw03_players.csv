@@ -1,0 +1,16 @@
+id,web_name,team,position,price,predicted,actual,minutes,role,played_after_subs
+1,Raya,Arsenal,GKP,5.5,3.6,2,90,XI,True
+470,Dúbravka,Burnley,GKP,4.0,2.33,2,90,bench,False
+6,Saliba,Arsenal,DEF,6.1,3.14,1,4,XI,True
+531,Ballard,Sunderland,DEF,4.6,3.95,0,0,XI,True
+347,Gudmundsson,Leeds,DEF,4.0,3.83,9,79,XI,True
+256,Muñoz,Crystal Palace,DEF,5.5,3.4,9,90,XI,True
+402,Aït-Nouri,Man City,DEF,6.0,3.2,0,90,XI,True
+381,M.Salah,Liverpool,MID,14.5,5.67,3,90,C,True
+82,Semenyo,Bournemouth,MID,7.3,4.63,2,90,XI,True
+119,Mbeumo,Man Utd,MID,8.0,5.15,10,90,XI,True
+387,Szoboszlai,Liverpool,MID,6.5,3.43,13,90,XI,True
+235,Palmer,Chelsea,MID,10.4,0.54,0,0,bench,False
+661,Ekitiké,Liverpool,FWD,8.7,5.39,2,78,V,True
+599,Scarlett,Spurs,FWD,4.5,0.51,0,0,bench,False
+840,Mheuka,Chelsea,FWD,4.5,0.32,0,0,bench,False

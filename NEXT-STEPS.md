@@ -28,13 +28,20 @@ Sanity checks on that first run: promoted-team names map cleanly (extend
 `--prior-snapshot` (grab the last 2025/26 bootstrap from vaastav or
 FPL-Core-Insights if we never snapshotted it ourselves).
 
-## 2. Backtest gate (PLAN §4 — non-negotiable, before GW1)
+## 2. Backtest gate (PLAN §4 — non-negotiable, before GW1) — IN PROGRESS, PASSING
 
-- Load vaastav 2016–25 history + FPL-Core-Insights; seed the FPL↔Understat ID map.
-- Point-in-time backtests of xPts v1 on 2023/24–2025/26 vs the template baseline.
-- Pass → xPts numbers may drive memos (drop the "ungated" label).
-  Fail → pull in OpenFPL per-position ensembles as the warm start (the decision
-  we deferred; see PLAN §4 table) and re-gate.
+The 2025/26 GW1–10 season replay is running (`src/fpl_claude/backtest/`,
+artifacts in `reports/backtest/2025-26/`): through GW6, **338 pts vs the 304
+average-manager baseline (+34)**, strictly point-in-time. The loop already
+shipped five model/policy fixes (rates shrinkage, team-model sample floor,
+DC phantom prior, marginal-net hit gate, duration-scoped overlays) and grew
+the decision architecture (manager overlay, plan.md path discipline,
+community consensus input). Remaining:
+
+- GW7–10 of the replay, then the gate verdict vs the 531 10-GW baseline and
+  a process audit from `reviews/` — pass → drop the "ungated" label.
+- Optional depth later: extend to 2023/24–2024/25 replays for more seasons
+  of calibration data; seed the FPL↔Understat ID map for Minutes v2.
 
 ## 3. Season-launch rules verification (the day the 2026/27 game opens)
 

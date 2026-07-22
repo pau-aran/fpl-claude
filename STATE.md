@@ -1,66 +1,70 @@
-# Session State — updated 2026-07-22
+# Session State — updated 2026-07-22 (backtest session)
 
-*Handoff snapshot for the next session. Read this first, then `NEXT-STEPS.md`
-for the full roadmap. GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
+*Handoff snapshot. Read this first, then `NEXT-STEPS.md` for the roadmap and
+`reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge.
+GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 
 ## Where things stand
 
-- **Code: done and green.** 29/29 tests pass, 0 skipped (Dixon-Coles fit test
-  now runs — penaltyblog installs via the SessionStart hook). Ruff clean.
-- **Sessions bootstrap themselves.** `.claude/hooks/session-start.sh` (on
-  `main`) installs `dev`/`models`/`optimize` extras + penaltyblog at web-session
-  start. No manual pip steps.
-- **No live data has ever been pulled.** No `db/`, no snapshots, no decision
-  memos, no weekly reports. Everything downstream of the first snapshot is
-  still pending.
-- **Ruleset unverified.** `config/rules/2026-27.yaml` has
-  `verified_against_official: false`; the optimizer refuses real runs until
-  season-launch verification (correct behavior — game hasn't opened).
+- **The PLAN §4 backtest gate is RUNNING and passing.** Point-in-time replay
+  of 2025/26 GW1–10 built and executing on branch
+  `claude/simulate-10gw-parallel-agents-l7im5c`: through GW6 we have
+  **338 pts vs 304 average-manager baseline (+34)**, no leakage (stats
+  through GW n−1 only, prices at GW n, prior season via cross-season `code`).
+- **New: `src/fpl_claude/backtest/`** — SeasonStore (vaastav point-in-time
+  reconstruction), simulator (real FPL mechanics: sell prices, FT banking,
+  autosubs, hit gate), per-GW CLI with persisted state, availability-proxy +
+  researched news overlays (duration-scoped), decision memos.
+- **The decision architecture matured during the run** (owner-steered):
+  models PROPOSE, the manager DISPOSES — `--propose` / `--decision`
+  (lock/ban/captain/cap + written reasoning), a standing multi-week
+  transfer-path plan (`plan.md`, hits must fit the plan, not just the EV
+  gate), community consensus as a weekly input (`consensus/gwNN.md`), and
+  per-week reviews + a living `knowledge.md` (DONE/OPEN/WATCH).
+- **Five pipeline defects found and fixed via the weekly review loop** (all
+  live-pipeline relevant): tiny-sample per-90 explosion, Dixon-Coles trusting
+  1-match teams, DC phantom-zero prior, package-EV hit gate (now marginal
+  NET per hit), overlay-horizon poisoning (now duration_gws). 35 tests, ruff
+  clean.
+- **Sources refined:** `docs/fpl-sources-reference.md` (field-tested,
+  FPL-only, incl. FBref) + 17 vetted X accounts in `config/sources.yaml`.
+- **Network reality unchanged** (see `docs/environment.md`): FPL API/news
+  domains still blocked; GitHub + WebSearch carry everything above.
 
-## Network reality (tested 2026-07-22, details in `docs/environment.md`)
+## What the next session should do
 
-| Route | Status |
-|---|---|
-| PyPI / package registries | ✅ works |
-| github.com + raw.githubusercontent.com | ✅ works — vaastav/FPL-Core-Insights pulls possible **today** |
-| WebSearch (server-side) | ✅ works |
-| FPL API, football-data.co.uk, all news domains, WebFetch | ❌ egress-policy 403 |
+1. **Finish the backtest**: GW7–10 (same weekly cadence: overlay agent →
+   propose → manager decision vs plan.md → run → reviewer agent). State
+   lives in `reports/backtest/2025-26/state.json` (resume with
+   `python -m fpl_claude.backtest.run --gw <next>`; data via
+   `python -m fpl_claude.backtest.fetch --dest <scratch>`).
+2. **Final gate verdict + report** (10-GW total vs 531 baseline; process
+   audit from `reviews/`), fold into NEXT-STEPS §2 and drop the "ungated"
+   label if passed.
+3. Then the pre-GW1-2026/27 items in NEXT-STEPS §§1,3 (network allowlist
+   re-test, season-launch rules verification).
 
-**Owner action pending:** allowlist `fantasy.premierleague.com` and
-`www.football-data.co.uk` (full list in `docs/environment.md`) in the
-environment settings on claude.ai/code. Re-test with the curl one-liner in that
-doc at the start of the next session — if 200, NEXT-STEPS §1 (first live
-snapshot) is unblocked.
+## Backtest scoreboard (2025/26 replay)
 
-## What the next session should do (in order)
-
-1. **Re-test network.** If unblocked → run NEXT-STEPS §1 (first snapshot,
-   DuckDB build, football-data fetch, first projections, price radar) with its
-   sanity checks.
-2. **Regardless of network:** start NEXT-STEPS §2 (backtest gate) — the
-   vaastav + FPL-Core-Insights data is on GitHub and reachable now. This is
-   the non-negotiable pre-GW1 gate and needs no policy change.
-3. When the 2026/27 game opens: rules verification (NEXT-STEPS §3).
-
-## Intelligence gathered this session (verify before relying on it)
-
-WebSearch on announced 2026/27 rule changes (sources: premierleague.com
-2026-07, Fantasy Football Scout 2026-07-20) — pre-verification signal for the
-`config/rules/2026-27.yaml` reconciliation:
-
-- Chips **unchanged**: two sets (WC/FH/TC/BB) per half-season.
-- Transfer bank kept at **5**; no extra December transfers (no AFCON this season).
-- BPS rebalanced: CBI threshold 3 (was 2), no BPS penalty for being tackled —
-  aimed at reducing overlap with defensive-contribution points.
-- New: real-time league/bonus updates, official price predictions in-app.
-- Assistant-manager chip: **no mention** in announcements — likely gone, confirm.
+| GW | Ours | Avg | Note |
+|---|---|---|---|
+| 1 | 84 | 54 | Overlay-informed build; Salah C |
+| 2 | 44 | 51 | Bad hit (pre-gate) — the week that built the hit policy |
+| 3 | 54 | 48 | First manager veto (held Palmer) |
+| 4 | 61 | 63 | Held Saliba; forced move only |
+| 5 | 40 | 42 | Plan discipline: rolled FT for Haaland window |
+| 6 | 55 | 46 | Haaland lands on plan + 67% consensus; captained |
+| **Σ** | **338** | **304** | **+34; hits: 1; captaincy rule 6/6** |
 
 ## Recent session log
 
-- **2026-07-22** (this session): verified project state; fixed `fpl-claude/`
-  subfolder path drift across docs/skills; added SessionStart hook +
-  `docs/environment.md`; merged as PR #1 (`f98248f`). A parallel session added
-  `docs/brand/bio.md`.
+- **2026-07-22 (this session):** built the season-replay backtest harness;
+  ran GW1–6 with parallel agents (news replay, reviews, consensus); shipped
+  5 model/policy fixes; added manager decision layer, plan.md, fixture
+  planner skill, sources reference, X account vetting. Merged to main after
+  GW6 per owner instruction.
+- **2026-07-22 (earlier):** project state verified; SessionStart hook;
+  environment doc; PR #1/#2.
 
-*Keep this file current: overwrite the "Where things stand" / "next session"
-sections each session and append to the session log.*
+*Keep this file current: overwrite "Where things stand"/"next session" each
+session; append to the log.*

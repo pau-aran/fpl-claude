@@ -87,6 +87,8 @@ def _solve(
     score_col: str,
     current: CurrentSquad | None,
     max_transfers: int | None,
+    lock: frozenset[int] = frozenset(),
+    ban: frozenset[int] = frozenset(),
 ) -> OptimizedSquad:
     shape = rules.squad_shape()
     lineup = rules.raw["lineup"]
@@ -106,6 +108,15 @@ def _solve(
     x = prob.add_variable_dicts("xi", ids, cat="Binary")
     c = prob.add_variable_dicts("captain", ids, cat="Binary")
     v = prob.add_variable_dicts("vice", ids, cat="Binary")
+
+    # Manager overlay constraints (CLAUDE.md rule 4): the human layer can pin
+    # players in (lock: refuse to sell / must buy) or out (ban: refuse to own).
+    for i in lock:
+        if i in s:
+            prob += s[i] == 1
+    for i in ban:
+        if i in s:
+            prob += s[i] == 0
 
     # Squad shape and club limit
     prob += pulp.lpSum(s[i] for i in ids) == sum(shape.values())
@@ -198,6 +209,8 @@ def optimize(
     max_transfers: int | None = None,
     score_col: str = "xpts_horizon",
     allow_unverified: bool = False,
+    lock: frozenset[int] = frozenset(),
+    ban: frozenset[int] = frozenset(),
 ) -> OptimizedSquad:
     """Optimal squad from a projections table.
 
@@ -223,7 +236,7 @@ def optimize(
                 f"owned players missing from projections table: {sorted(missing)}"
             )
 
-    result = _solve(players, rules, score_col, current, max_transfers)
+    result = _solve(players, rules, score_col, current, max_transfers, lock, ban)
     if current is not None:
         baseline = _solve(players, rules, score_col, current, max_transfers=0)
         result = OptimizedSquad(

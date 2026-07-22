@@ -1,22 +1,21 @@
-# FPL ruleset — season 2026/27
+# FPL ruleset — season 2025/26 (HISTORICAL, for backtesting)
 #
-# FPL changes rules nearly every season (2024/25: transfer banking to 5, assistant
-# manager chip; 2025/26: doubled chip sets, defensive contribution points). Every
-# section below carries `verify_at_season_launch: true` until reconciled against
-# https://fantasy.premierleague.com/help/rules once the 2026/27 game opens.
-# The rules engine (src/fpl_claude/rules/engine.py) refuses to run the optimizer
-# while any section is unverified, unless explicitly overridden.
+# The 2025/26 season is complete; these rules are final and verified against how
+# the season was actually played: budget 100.0, transfer banking to 5, hit -4,
+# two chip sets per half-season, defensive contribution points (DEF 10 CBIT,
+# MID/FWD 12 CBIRT). Used by src/fpl_claude/backtest/ for point-in-time season
+# replays — never edit to "improve" backtest results.
 
-season: "2026-27"
-verified_against_official: false
+season: "2025-26"
+verified_against_official: true
 
 budget:
-  verify_at_season_launch: true
+  verify_at_season_launch: false
   initial: 100.0          # £m
   sell_price_rule: "half_profit_rounded_down"   # sell = buy + floor(profit/2)
 
 squad:
-  verify_at_season_launch: true
+  verify_at_season_launch: false
   size: 15
   goalkeepers: 2
   defenders: 5
@@ -25,7 +24,7 @@ squad:
   max_per_club: 3
 
 lineup:
-  verify_at_season_launch: true
+  verify_at_season_launch: false
   starting: 11
   min_goalkeepers: 1
   min_defenders: 3
@@ -35,13 +34,13 @@ lineup:
   auto_subs: true
 
 transfers:
-  verify_at_season_launch: true
+  verify_at_season_launch: false
   free_per_gameweek: 1
   max_banked: 5            # 2024/25 rule; verify unchanged
   hit_cost: 4              # points per extra transfer
 
 chips:
-  verify_at_season_launch: true
+  verify_at_season_launch: false
   # 2025/26 ran two sets per half-season (WC/FH/BB/TC each half). Whether 2026/27
   # repeats this, reverts, or brings back the assistant-manager chip MUST be checked.
   wildcard: {count: 2, windows: "one_per_half_unverified"}
@@ -52,7 +51,7 @@ chips:
   one_chip_per_gameweek: true
 
 scoring:
-  verify_at_season_launch: true
+  verify_at_season_launch: false
   appearance: {lt_60_min: 1, gte_60_min: 2}
   goals: {GKP: 10, DEF: 6, MID: 5, FWD: 4}
   assists: 3

@@ -154,3 +154,84 @@ def test_owned_player_missing_from_projections_raises(pool, rules):
     current = CurrentSquad(buy_costs={9999: 50}, bank=0, free_transfers=1)
     with pytest.raises(ValueError, match="9999"):
         optimize(pool, rules, current=current, allow_unverified=True)
+
+
+def test_manager_lock_and_ban(pool, rules):
+    """The human layer can pin players in or out of the solve (rule 4)."""
+    base = optimize(pool, rules, allow_unverified=True)
+    outside = next(i for i in pool["id"] if i not in base.squad)
+    star = base.squad[0]
+
+    locked = optimize(pool, rules, allow_unverified=True, lock=frozenset({outside}))
+    assert outside in locked.squad
+    banned = optimize(pool, rules, allow_unverified=True, ban=frozenset({star}))
+    assert star not in banned.squad
+    # Constrained solves can never beat the free optimum.
+    assert locked.objective <= base.objective
+    assert banned.objective <= base.objective
+
+
+def test_marginal_hit_gate_rejects_piggyback_hit(rules):
+    """A hit must clear the EV threshold ON ITS OWN, not ride in on a big
+    free move's package delta (backtest GW2 review finding)."""
+    from fpl_claude.backtest.simulate import SquadState, decide_transfers
+
+    rows = []
+    for k in range(15):
+        position = ["GKP", "GKP", "DEF", "DEF", "DEF", "DEF", "DEF",
+                    "MID", "MID", "MID", "MID", "MID", "FWD", "FWD", "FWD"][k]
+        rows.append({"id": k + 1, "web_name": f"own{k}", "team": f"T{k % 5}",
+                     "position": position, "price": 5.0, "xpts_horizon": 20.0,
+                     "xpts_gw2": 4.0})
+    # Big free upgrade (+15 over an owned MID) and a small extra (+4.1 over
+    # an owned FWD): the +4.1 clears the solver's -4 hit cost (package-positive,
+    # so the optimizer takes it) but nets only ~+0.1 — far below the required
+    # NET hit_ev_threshold (4.5) per hit. The gate must strip it while keeping
+    # the free move.
+    rows.append({"id": 98, "web_name": "big", "team": "T8", "position": "MID",
+                 "price": 5.0, "xpts_horizon": 35.0, "xpts_gw2": 8.0})
+    rows.append({"id": 99, "web_name": "small", "team": "T9", "position": "FWD",
+                 "price": 5.0, "xpts_horizon": 24.1, "xpts_gw2": 5.0})
+    pool2 = pd.DataFrame(rows)
+    state = SquadState(
+        buy_costs={k + 1: 50 for k in range(15)}, bank=0, free_transfers=1
+    )
+    verified = Ruleset({**rules.raw, "verified_against_official": True})
+    for section in verified.raw.values():
+        if isinstance(section, dict):
+            section.pop("verify_at_season_launch", None)
+    result, audit = decide_transfers(pool2, verified, state)
+    assert 98 in result.transfers_in  # the free move stands
+    assert 99 not in result.transfers_in  # the piggyback hit is refused
+    assert result.hits == 0
+    assert audit["hit_gate"].startswith("rejected")
+
+
+def test_marginal_hit_gate_keeps_hit_that_nets_threshold(rules):
+    """A hit whose NET marginal gain (after the -4) clears the threshold stays."""
+    from fpl_claude.backtest.simulate import SquadState, decide_transfers
+
+    rows = []
+    for k in range(15):
+        position = ["GKP", "GKP", "DEF", "DEF", "DEF", "DEF", "DEF",
+                    "MID", "MID", "MID", "MID", "MID", "FWD", "FWD", "FWD"][k]
+        rows.append({"id": k + 1, "web_name": f"own{k}", "team": f"T{k % 5}",
+                     "position": position, "price": 5.0, "xpts_horizon": 20.0,
+                     "xpts_gw2": 4.0})
+    rows.append({"id": 98, "web_name": "big", "team": "T8", "position": "MID",
+                 "price": 5.0, "xpts_horizon": 35.0, "xpts_gw2": 8.0})
+    # +10 gross over an owned FWD -> net +6 after the -4: clears 4.5/hit.
+    rows.append({"id": 99, "web_name": "worth-it", "team": "T9", "position": "FWD",
+                 "price": 5.0, "xpts_horizon": 30.0, "xpts_gw2": 7.0})
+    pool2 = pd.DataFrame(rows)
+    state = SquadState(
+        buy_costs={k + 1: 50 for k in range(15)}, bank=0, free_transfers=1
+    )
+    verified = Ruleset({**rules.raw, "verified_against_official": True})
+    for section in verified.raw.values():
+        if isinstance(section, dict):
+            section.pop("verify_at_season_launch", None)
+    result, audit = decide_transfers(pool2, verified, state)
+    assert 98 in result.transfers_in and 99 in result.transfers_in
+    assert result.hits == 1
+    assert audit["hit_gate"].startswith("kept")

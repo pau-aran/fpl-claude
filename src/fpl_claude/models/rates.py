@@ -20,6 +20,12 @@ import pandas as pd
 # Sample size (in full matches) at which current-season rates get full weight.
 FULL_WEIGHT_MATCHES = 6
 
+# Pseudo-minutes added to every per-90 denominator: shrinks tiny samples toward
+# zero instead of letting them explode (a 1-minute cameo with 0.06 xG is NOT a
+# 5.4 xG/90 player — backtest GW1 2025/26 captained exactly that artifact).
+# A full season barely notices (~3%); a single cameo is damped ~99%.
+SHRINKAGE_MINUTES = 90
+
 RATE_COLUMNS = ["xg90", "xa90", "saves90", "dc90", "bonus90"]
 
 
@@ -32,7 +38,7 @@ def _num(value: Any) -> float:
 
 
 def _per90(total: Any, minutes: int) -> float:
-    return _num(total) * 90.0 / minutes if minutes > 0 else 0.0
+    return _num(total) * 90.0 / (minutes + SHRINKAGE_MINUTES) if minutes > 0 else 0.0
 
 
 def from_bootstrap(bootstrap: dict[str, Any]) -> pd.DataFrame:
@@ -78,6 +84,12 @@ def blend(current: pd.DataFrame, prior: pd.DataFrame | None) -> pd.DataFrame:
     weight = (merged["minutes_sample"] / (FULL_WEIGHT_MATCHES * 90)).clip(0, 1)
     has_prior = merged["xg90_prior"].notna()
     for col in RATE_COLUMNS:
+        if (merged[f"{col}_prior"].fillna(0) == 0).all():
+            # The stat is absent from the prior era entirely (e.g. defensive
+            # contribution before 2025/26): an all-zero prior column is a
+            # phantom, not evidence — shrinking toward it strangles real
+            # current-season signal. Keep current rates unblended.
+            continue
         blended = weight * merged[col] + (1 - weight) * merged[f"{col}_prior"]
         merged[col] = blended.where(has_prior, merged[col])
     merged["low_sample"] = ~has_prior & (merged["minutes_sample"] < 90)
