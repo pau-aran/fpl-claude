@@ -167,6 +167,21 @@ def test_rates_tiny_sample_does_not_explode():
     assert rates.loc[70, "xg90"] < 0.1
 
 
+def test_rates_all_zero_prior_column_not_blended():
+    # A stat absent from the prior era (dc90 before 2025/26) arrives as an
+    # all-zero prior column; blending toward it would strangle real
+    # current-season signal (GW1 2025/26 backtest review finding).
+    bs = {"elements": [_player(80, 1, 2, minutes=180, defensive_contribution=24,
+                               expected_goals="1.0")]}
+    current = rates_model.from_bootstrap(bs)
+    prior = current.copy()
+    prior["dc90"] = 0.0        # field didn't exist last season
+    prior["xg90"] = 0.2        # real prior stat: still blends
+    blended = rates_model.blend(current, prior).set_index("id")
+    assert blended.loc[80, "dc90"] == pytest.approx(current.set_index("id").loc[80, "dc90"])
+    assert blended.loc[80, "xg90"] < current.set_index("id").loc[80, "xg90"]
+
+
 def test_rates_low_sample_flag_without_prior():
     bs = {"elements": [_player(60, 1, 3, minutes=45)]}
     df = rates_model.blend(rates_model.from_bootstrap(bs), None)

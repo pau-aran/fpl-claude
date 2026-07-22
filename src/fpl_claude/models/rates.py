@@ -84,6 +84,12 @@ def blend(current: pd.DataFrame, prior: pd.DataFrame | None) -> pd.DataFrame:
     weight = (merged["minutes_sample"] / (FULL_WEIGHT_MATCHES * 90)).clip(0, 1)
     has_prior = merged["xg90_prior"].notna()
     for col in RATE_COLUMNS:
+        if (merged[f"{col}_prior"].fillna(0) == 0).all():
+            # The stat is absent from the prior era entirely (e.g. defensive
+            # contribution before 2025/26): an all-zero prior column is a
+            # phantom, not evidence — shrinking toward it strangles real
+            # current-season signal. Keep current rates unblended.
+            continue
         blended = weight * merged[col] + (1 - weight) * merged[f"{col}_prior"]
         merged[col] = blended.where(has_prior, merged[col])
     merged["low_sample"] = ~has_prior & (merged["minutes_sample"] < 90)
