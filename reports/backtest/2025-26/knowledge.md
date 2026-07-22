@@ -38,13 +38,16 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   (full sample) and Isak (has a prior → blend handled him, NOT double-shrunk)
   untouched — exactly the set that should/shouldn't move. Directly de-risks
   the Woltemade-type bandwagon the market pushed at GW8.
-- [WATCH] Level calibration: 6-GW mean error +2.7, mean |error| 11.6
-  (excl GW1: −2.5, n=5) — no level bias, no adjustment. Predictions sit
-  flat 51–59 while actuals track the LEAGUE environment (official avgs
-  54/51/48/63/42/46 vs our 84/44/54/61/40/55): big misses are slate-wide
-  hot/cold weeks, not model level. GW6's +1.9 near-exact aggregate was
-  OFFSETTING errors (defence −11.6, Haaland(C) +14.7), not per-player
-  accuracy. Bonus proxy: no new signal since GW1. DC watch continues.
+- [WATCH] Level calibration: 8-GW mean error +7.2, mean |error| 13.9. Two
+  large UNDER-predictions in a row (GW7 +13, GW8 +28) as the environment ran
+  hot (official avgs 60, 56) and our captain+defence hauled. Predictions sit
+  flat 51–59 while actuals swing with the league (official
+  54/51/48/63/42/46/60/56 vs our 84/44/54/61/40/55/71/82). This is
+  totals-COMPRESSION, not ranking bias — the model still ordered buys right
+  (Fernandes>Saka confirmed GW8), so no adjustment yet. IF under-prediction
+  persists a 3rd week, test whether horizon decay / a minutes ceiling is
+  systematically clipping high-scorers. Bonus proxy: no new signal. DC watch
+  continues.
 
 ## Decision policy
 
@@ -108,8 +111,15 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   surfaced a player the model UNDERRATED, which is its purpose. The real
   test is the first DIVERGENCE (lens says buy, model is cold). Cost nothing;
   keep grading live.
-- Captaincy = highest projection unless news says otherwise: 7/7 (Salah ×5,
-  Haaland ×2). GW7 Haaland at BRE(A) — model top + 60% poll, goal+assist. The armband migrated mechanically the week Haaland entered
+- Captaincy = highest projection unless news says otherwise: 8/8 (Salah ×5,
+  Haaland ×3). GW8 Haaland v EVE(H) — 71% poll, goal+assist+bonus, doubled 26.
+- Value over reputation beats consensus template adds when the model
+  disagrees on minutes/underlying: GW8 faded the most-bought Saka (model
+  horizon 17.0) for B.Fernandes (23.95) — the crowd was SELLING Fernandes
+  (~240k out), so buying the sentiment low was contrarian value. Outcome:
+  Fernandes 8 > Saka 7, £0.9 cheaper. Never override a large horizon gap
+  (here 7 pts) on a reputation narrative; the duel lens is a tie-breaker, not
+  an override. The armband migrated mechanically the week Haaland entered
   (8.65 top of board → returned 16→32) — the rule handles form shifts by
   itself. No recency overrides.
 - Community consensus (X strategy accounts, r/FantasyPL GW threads, FFScout

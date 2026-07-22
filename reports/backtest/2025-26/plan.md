@@ -6,15 +6,21 @@ burns the bank or FT a planned step depends on is a net loss even if the EV
 gate passes it. Breaking the plan requires new information + written reason
 in the decision memo.*
 
-## State after GW7
+## State after GW8
 
-- Bank £0.2m | **2 FT for GW8** (rolled at GW7) | season 409 pts (+45 vs
-  average-manager baseline) | 1 hit taken all season
-- Squad unchanged since GW6: holds **Haaland + Brooks** (no Salah); Palmer
-  benched, back GW8; **Ekitiké held** (benched by Liverpool at Chelsea, 16' —
-  Isak now the lead striker, the Ekitiké→Isak branch is live for GW8)
-- NOTE: bank still £0.1m below the £0.3m standing buffer — rebuild it with
-  the next move that frees cash; no purchase may cut it further.
+- Bank ~£0.1m | **1 FT for GW9** | season 491 pts (+71 vs average-manager
+  baseline) | 1 hit taken all season
+- GW8 was a forced triple-out (Palmer 6wk, Gudmundsson 4wk, Brooks 2-3wk).
+  Executed **Palmer→B.Fernandes + Gudmundsson→Senesi** on 2 FT, no hit.
+  Squad now: Raya, Dúbravka (GK); Saliba, Calafiori, Muñoz, Senesi, Ballard
+  (DEF); Semenyo, Szoboszlai, Mbeumo, B.Fernandes, Brooks (MID); Haaland,
+  Ekitiké, Scarlett (FWD).
+- **Ekitiké held as Liverpool's nailed No.9** (Isak injured — the Ekitiké→Isak
+  branch is DEAD, hold pays as a starter). **Brooks** (out 2-3wk) sits on the
+  bench as dead weight — the first cash-raising sale candidate once fit/needed.
+- Two live moneyball wins to keep leaning on: faded the template Saka for the
+  crowd-sold B.Fernandes (value>reputation, paid off); newcomer haircut now
+  cools bandwagon newcomers (Woltemade) in the solver.
 
 ## Executed
 
@@ -35,66 +41,62 @@ in the decision memo.*
   regrade. First outing of the purist duel lens: all reads matchup-correct
   but none surfaced a model-underrated player yet (§4, [WATCH]).
 
-## Active path — the GW8 decision window (post-October-break)
+- **GW8 — EXECUTED, forced triple-out handled cleanly.** Palmer (out 6wk),
+  Gudmundsson (4wk), Brooks (2-3wk) all blanked; 2 FT → Palmer→B.Fernandes +
+  Gudmundsson→Senesi, no hit, full XI restored. Vetoed Saliba→Timber (5th).
+  Faded the template Saka for the crowd-sold Fernandes (value>reputation).
+  Haaland(C) 26. GW **82 vs official avg 56 (+26)** — best week of the season;
+  season 491 (+71). The GW6 Palmer hold-vs-sell bet resolved AGAINST the hold
+  (six more weeks) but the parallel Isak-injury flip made Ekitiké a free
+  starter, netting the window positive (reviews/gw08.md §2).
 
-We arrive at GW8 with **2 FT, no hit, £0.2m bank** — exactly as planned. GW8
-is the real decision point: three unknowns resolve at once — Palmer's return,
-Isak's confirmed minutes, and any international-break knocks. Spend here, not
-before.
+## Active path — GW9 → GW10 (consolidate the lead, chase ceiling)
 
-- **International break — full availability re-verify.** Every one of the
-  15 gets a fresh news check before GW8; post-break knocks and late
-  returners are exactly where deadline information beats the field.
-  Overlays re-scoped to stated timelines.
-- **GW8 — the decision window, 2 FTs, no hit:**
-  - **Palmer returns (the hold's payoff): a free XI upgrade we already
-    own.** If he starts vs NFO(A), he walks back into the XI — zero
-    transfers spent, and the GW6 hold-vs-sell rank bet is settled. If
-    there's a setback/re-injury, the branch flips: Palmer becomes the
-    funding leg for the Isak route below (decide on the pre-GW8 presser,
-    duration-scoped).
-  - **Isak entry branch — trigger now CLOSER.** At GW7 Isak took his first
-    PL start (Chelsea A) with Ekitiké dropping to a 16' cameo — the "first
-    60'+ start" trigger is nearly met, pending he backs it up out of the
-    break (Slot's pre-GW8 word + a second start). The natural route stays
-    **Ekitiké → Isak** (like-for-like LIV FWD swap, ~£1–2m from the second
-    FT's downgrade room or the Palmer branch). Still no entry on a single
-    cameo — want the starter status confirmed, not one-off.
-  - Whatever the branches leave over: rebuild bank to ≥ £0.3m before any
-    luxury move.
-- **GW9+ sketch (revisit at GW8):** Haaland holds through AVL(A)4 — one
-  hard away fixture inside a good run is not a sell signal (GW5 lesson);
-  captaincy stays mechanical.
+We are +71 vs the average-manager baseline but the goal is TOP 1%, not
+beat-average — that means protecting the strong core (Haaland captain, the
+Arsenal/Palace defence, Fernandes/Mbeumo) while taking calculated ceiling
+bets the template won't. 1 FT for GW9, ~£0.1m bank.
+
+- **GW9 — default: 1 FT, likely roll or a single value upgrade.** No forced
+  move (all XI starters fit post-GW8). Candidate uses of the FT: (a) start
+  rebuilding bank / upgrade the Brooks dead-slot when a like-for-like value
+  MID appears; (b) a differential with real EV, not reputation. Captain
+  Haaland unless the duel lens + model both point elsewhere (they haven't in
+  8 weeks). Watch Senesi's run turning hard (MCI(A)5, AVL(A)4 around GW10-11).
+- **Brooks (out 2-3wk)** is the standing cash-raise / bench-upgrade lever —
+  sell when a better-value playing MID is identified, ideally rebuilding the
+  bank toward the £0.3m buffer at the same time.
+- **Ceiling for rank:** we already run the highest-EO captain every week
+  (shield). Rank GAINS now come from the bench/5th-mid and defence value
+  slots where we can differ from template at low cost — and from NOT taking
+  −4s that the plan-fit gate rejects. Keep the discipline; let variance come
+  to the strong core.
 - Chips: out of scope (not simulated in this backtest).
 
-## Conflicts to refuse at GW8
+## Conflicts to refuse at GW9
 
-- A hit that only clears the EV gate on a duration-scoped blank (the GW7
-  Palmer→Enzo pattern): re-verify every candidate's horizon is clean before
-  the arithmetic, not a one-week suppression inflating the delta.
-- Any transfer that spends the bank below £0.2m or blocks the Ekitiké→Isak
-  route's funding room.
-- Sideways churn of a fit premium asset funded by a −4 (the GW7 Saliba→Timber
-  pattern) — a −4 needs net ≥ 4.5 AND plan-fit AND a real upgrade, not a
-  clone swap.
+- A hit that only clears the EV gate on a duration-scoped blank: re-verify
+  every candidate's horizon is clean before the arithmetic (GW7 lesson).
+- Sideways churn of a fit premium asset funded by a −4 (the recurring
+  Saliba→Timber pattern, vetoed 5×) — a −4 needs net ≥ 4.5 AND plan-fit AND a
+  real upgrade, not a clone swap.
+- Chasing a defensive/attacking haul we can't fund (GW8 Senesi<Gabriel was a
+  funding wall, not an error) — buy the affordable value pick, not the
+  reputation one we'd have to over-leverage for.
 
-## Watch list (news-dependent branches)
+## Watch list
 
-- **Palmer (groin) — BRANCH RESOLVES GW8**: rested until after the October
-  break, targeted return v Forest 18 Oct (GW8). Re-verify on the pre-GW8
-  presser. Start = the GW6 hold-vs-sell bet is won, he walks into the XI
-  free; setback = he funds the Isak route.
-- **Isak (Liverpool)**: first PL start banked at GW7 (Chelsea A). Entry
-  trigger nearly met — confirm a SECOND start out of the break before the
-  Ekitiké→Isak swap; watch Slot's pre-GW8 word.
-- **Ekitiké**: held; dropped to a cameo behind Isak at GW7. The designated
-  like-for-like sale once Isak's starter status is confirmed. Watch
-  transfer-out momentum for price-drop surprises.
+- **Ekitiké**: held as Liverpool's nailed No.9 (Isak injured). Only 28' in
+  GW8 — watch Slot's rotation vs Isak's return timeline; still the designated
+  FWD if a better option appears, but no reason to move a nailed starter now.
+- **Brooks (ankle, 2-3wk)**: out; the cash-raise/bench-upgrade lever above.
+- **Senesi**: BOU run turns hard around GW10-11 (MCI(A)5, AVL(A)4) — fine for
+  now, revisit before then.
 
 ## Standing constraints
 
 - Two spending FTs > one FT + one -4 (a -4 needs net ≥ 4.5 AND plan-fit).
 - Keep ≥ £0.3m buffer for price-rise protection on the target path
-  (currently breached at £0.2m — restore at next opportunity).
+  (currently breached at ~£0.1m — restore at next opportunity).
 - A written funding route must show its arithmetic (sells + bank ≥ buys,
   squad quota-legal) before the solve runs (GW6 lesson).

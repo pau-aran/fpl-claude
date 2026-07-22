@@ -7,12 +7,15 @@ GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 ## Where things stand
 
 - **The PLAN §4 backtest gate is RUNNING and passing.** Point-in-time replay
-  of 2025/26 GW1–10; now through **GW7 on branch
-  `claude/fpl-data-sources-architecture-5tvqet`**: **409 pts vs 364
-  average-manager baseline (+45)**, no leakage (stats through GW n−1 only,
-  prices at GW n, prior season via cross-season `code`). GW7 rolled the FT
-  (2 FT banked for GW8), captained Haaland (goal+assist) → 71 vs official
-  avg 60 (+11); refused the optimizer's −4 as plan-conflicting.
+  of 2025/26 GW1–10; now through **GW8 on branch
+  `claude/fpl-data-sources-architecture-5tvqet`**: **491 pts vs 420
+  average-manager baseline (+71)**, no leakage (stats through GW n−1 only,
+  prices at GW n, prior season via cross-season `code`). GW8 was a forced
+  triple-out (Palmer/Gudmundsson/Brooks) handled on 2 FT no hit
+  (Palmer→B.Fernandes + Gudmundsson→Senesi), faded the template Saka for the
+  crowd-sold Fernandes → 82 vs avg 56 (+26), best week of the season.
+  Shipped a model fix mid-run: newcomer confidence haircut (shrink_newcomers,
+  GW8+). Goal is now TOP 1% (not just beat-average) — GW9-10 to go.
 - **New: `src/fpl_claude/backtest/`** — SeasonStore (vaastav point-in-time
   reconstruction), simulator (real FPL mechanics: sell prices, FT banking,
   autosubs, hit gate), per-GW CLI with persisted state, availability-proxy +
@@ -35,14 +38,13 @@ GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 
 ## What the next session should do
 
-1. **Finish the backtest**: GW8–10 (same weekly cadence: overlay agent →
+1. **Finish the backtest**: GW9–10 (same weekly cadence: overlay agent →
    propose → manager decision vs plan.md → run → reviewer agent). State
    lives in `reports/backtest/2025-26/state.json` (resume with
-   `python -m fpl_claude.backtest.run --gw 8`; data via
-   `python -m fpl_claude.backtest.fetch --dest <scratch>`). GW8 is the
-   post-break decision window: Palmer's return, Isak's confirmed starts
-   (Ekitiké→Isak branch), any break knocks — 2 FT, no hit budgeted. See
-   plan.md "Active path — the GW8 decision window".
+   `python -m fpl_claude.backtest.run --gw 9`; data via
+   `python -m fpl_claude.backtest.fetch --dest <scratch>`). GW9: 1 FT,
+   ~£0.1m bank; no forced move; Brooks (out) is the cash-raise lever. See
+   plan.md "Active path — GW9 → GW10".
 2. **Final gate verdict + report** (10-GW total vs 531 baseline; process
    audit from `reviews/`), fold into NEXT-STEPS §2 and drop the "ungated"
    label if passed.
@@ -60,7 +62,8 @@ GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 | 5 | 40 | 42 | Plan discipline: rolled FT for Haaland window |
 | 6 | 55 | 46 | Haaland lands on plan + 67% consensus; captained |
 | 7 | 71 | 60 | Rolled FT (2 banked); Haaland C g+a; refused plan-conflict −4; Semenyo 18 |
-| **Σ** | **409** | **364** | **+45; hits: 1; captaincy rule 7/7** |
+| 8 | 82 | 56 | Triple-out (Palmer/Gud/Brooks); 2 FT no hit; faded Saka→Fernandes; Haaland C 26 |
+| **Σ** | **491** | **420** | **+71; hits: 1; captaincy rule 8/8** |
 
 ## Recent session log
 
