@@ -13,7 +13,7 @@ planned on a calendar, never spent on impulse.
 2. **Fixture diff:** compare the latest two fixture snapshots (db/raw/*/fixtures.json)
    for moved/postponed/unscheduled matches; search @BenCrellin (via web search) and
    FFScout for DGW/BGW projections — cup runs and European finals create them.
-3. **Maintain `fpl-claude/decisions/chip-calendar.md`:** for each chip — target GW
+3. **Maintain `decisions/chip-calendar.md`:** for each chip — target GW
    (or window), trigger conditions, and the abort condition. Standard shapes: bench
    boost on a big DGW; triple captain on a premium's DGW; free hit on the biggest
    BGW; wildcards ahead of fixture swings/international breaks.

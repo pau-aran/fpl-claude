@@ -5,7 +5,7 @@ description: Refresh all fpl-claude data — snapshot the FPL API (players, pric
 
 # Data Refresh
 
-1. From `fpl-claude/`:
+1. From the repo root:
    ```bash
    python -m fpl_claude.data.fpl_api snapshot
    python -m fpl_claude.data.snapshot

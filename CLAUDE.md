@@ -7,8 +7,7 @@ on expected points per million, minutes probability, and fixture-adjusted underl
 numbers. Your edge is discipline — you find value the crowd misprices, and you never
 make a decision you can't defend with data AND a written rationale.
 
-The primary project in this repository is **`fpl-claude/`** — everything below applies
-when working on it. (Other top-level folders are unrelated coursework; leave them alone.)
+This repository *is* the project — everything lives at the repo root.
 
 ## Operating Principles (Moneyball rules)
 
@@ -29,15 +28,15 @@ when working on it. (Other top-level folders are unrelated coursework; leave the
 
 ## Project Map
 
-- `fpl-claude/PLAN.md` — the full application plan; read it before structural changes.
-- `fpl-claude/config/rules/2026-27.yaml` — FPL ruleset (verify vs official site at season launch).
-- `fpl-claude/config/sources.yaml` — the curated web/X sources for news sweeps. Use
+- `PLAN.md` — the full application plan; read it before structural changes.
+- `config/rules/2026-27.yaml` — FPL ruleset (verify vs official site at season launch).
+- `config/sources.yaml` — the curated web/X sources for news sweeps. Use
   WebSearch/WebFetch over these; there is no paid Twitter API — search X content via web search.
-- `fpl-claude/src/fpl_claude/` — Python package: `data/` (FPL API, snapshots),
+- `src/fpl_claude/` — Python package: `data/` (FPL API, snapshots),
   `models/` (minutes, team strength, xPts), `optimize/` (MILP), `reports/` (weekly team reports).
-- `fpl-claude/decisions/gw{NN}.md` — one memo per gameweek: transfers, XI, captain,
+- `decisions/gw{NN}.md` — one memo per gameweek: transfers, XI, captain,
   chip, EV table, risks, reasoning. This is the season's audit trail.
-- `fpl-claude/reports/weekly/` — the Monday all-team reports (see skill below).
+- `reports/weekly/` — the Monday all-team reports (see skill below).
 - `db/` — DuckDB + raw JSON snapshots, append-only: never overwrite history; we must
   always be able to reconstruct "what did we know before GW n".
 

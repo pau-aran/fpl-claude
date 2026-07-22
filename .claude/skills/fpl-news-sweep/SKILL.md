@@ -5,7 +5,7 @@ description: Sweep injuries, press conferences, lineup leaks, X/Twitter signals,
 
 # News & Intelligence Sweep
 
-You are fpl-claude. Work through `fpl-claude/config/sources.yaml` by tier using
+You are fpl-claude. Work through `config/sources.yaml` by tier using
 WebSearch/WebFetch. X/Twitter is reached via web search (search the handle + topic,
 e.g. "FPLStatus <player>"), never a paid API.
 

@@ -7,13 +7,14 @@ offline-tested (28 tests). What remains is gated on **network access** and on th
 
 ## 1. First live data run — NEEDS a networked session (or run locally)
 
-The cloud sandbox used so far only reaches package registries. From any
-environment that can reach the internet, from `fpl-claude/`:
+The cloud sandbox's egress policy blocks the FPL API and football-data.co.uk
+(see `docs/environment.md` for the tested state and the allowlist to grant).
+GitHub IS reachable, so the vaastav/FPL-Core-Insights pulls in §2 work today,
+and WebSearch works for news/rules research. Dependencies are no longer a
+manual step — `.claude/hooks/session-start.sh` installs everything at session
+start. From any environment that can reach the internet, from the repo root:
 
 ```bash
-pip install -e ".[dev,optimize]"
-pip install penaltyblog --no-deps && pip install scipy tqdm pulp networkx matplotlib plotly ipywidgets
-
 python -m fpl_claude.data.fpl_api snapshot          # first real 2026/27 snapshot
 python -m fpl_claude.data.snapshot                  # build the DuckDB
 python -m fpl_claude.data.football_data fetch 2425 2526   # Dixon-Coles training data
