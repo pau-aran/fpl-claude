@@ -47,8 +47,10 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   mechanically gut the predicted total while the rest of the squad tracks close to
   prediction. So it is a captain-ceiling / bonus-signal defect that amplifies in
   BOTH tails, not a fixed +offset — concentrated in the captain slot specifically.
+  (GW14 flipped straight back to +16 under-prediction the moment the captain
+  returned 28 — the base XI is well-calibrated, the doubled captain is the variance.)
   It is NOT a ranking bias — every relative call was validated (Fernandes>Saka,
-  Mateta/Konaté/Enzo/Thiago, captaincy 13/13) — so it never hurt a DECISION, but it
+  Mateta/Konaté/Enzo/Thiago, captaincy 14/14) — so it never hurt a DECISION, but it
   distorts EV reporting and the hit-gate margin. LIVE FIX: an environment-level
   calibration term (scale raw xPts toward the realised league level) and/or better
   captain-ceiling + bonus modelling (the bonus proxy has had no new signal since
@@ -130,13 +132,20 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   still never overrides the EV gate, the plan, or minutes risk; the named duel is
   written in each memo for grading. Keep grading live; watch for the first MISS to
   size its false-positive rate.
-- Captaincy = highest projection unless news says otherwise: 13/13 rule
-  adherence (Salah ×5, Haaland ×8). Haaland has now blanked THREE STRAIGHT as
-  captain (GW11 pen miss; GW12 & GW13 no return) — plus GW9 — yet every pick was
-  the correct ~90%-EO shield on a defensible fixture (GW13 was the softest of his
-  season, home to Leeds, no pre-deadline doubt). The rule is judged on adherence,
-  not on a captain's variance streak; the streak is what dragged calibration into
-  three over-predictions (see captain-slot calibration [OPEN]).
+- Captaincy = highest projection unless news says otherwise: 14/14 rule
+  adherence (Salah ×5, Haaland ×9). Haaland blanked THREE STRAIGHT (GW11-13) then
+  RETURNED 28 as captain at Fulham (GW14) — proof the shield is judged on adherence,
+  not on a variance streak; switching off him on recency would have missed the haul.
+  The streak drove three over-predictions; the return drove one under (calibration
+  [OPEN]).
+- Hold premiums through SHORT-TERM absences; refuse lateral swaps to patch one week.
+  GW14: with Saliba ill (out ~1wk), Senesi + Brooks banned (1 game), Thiago benched
+  (tactical), the solver offered a free cost-neutral Saliba→Virgil. Refused — a
+  lateral premium-CB swap on a one-week illness burns an established hold + the
+  banked FT to fix a single thin XI. Accepted a legal-but-thin 3-4-3 (benched Thiago
+  the forced 10th) instead; it cost ~0 (Thiago still played 30'). Bank the FT, let
+  the absentees return. (Distinct from a forced injury replacement like Semenyo→Enzo,
+  where the loss was multi-week + AFCON.)
 - Transfer SEQUENCING: enter a fixture run one GW early, but NOT into the
   target's worst fixture. GW9 deferred Ekitiké→Mateta because Mateta's GW9
   was ARS(A) (his worst) — outcome Mateta 2 = Ekitiké 2 (zero cost), banked a
@@ -163,9 +172,8 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 
 ## Season context (2025/26 replay, verified)
 
-- Official GW averages 1–13: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35
-  (cum 643). GW11-13 were all low slates (38/39/35) — the November int'l break
-  (GW12) and two top-six H2Hs (GW13) suppressed template returns.
+- Official GW averages 1–14: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35, 58
+  (cum 701). GW11-13 were low slates (38/39/35); GW14 (58) bounced back.
 - **AFCON 2025 starts 21 Dec 2025** (~GW17): Salah (Egypt), Mbeumo (Cameroon),
   Semenyo (Ghana) miss a block of GWs. A GW12+ transfer-planning input — do
   not buy into a mid/fwd about to vanish for a month without pricing the gap.

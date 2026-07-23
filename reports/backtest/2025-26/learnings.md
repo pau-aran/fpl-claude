@@ -22,3 +22,4 @@ the full evidence trail behind a point.*
 | GW11 | `reviews/gw11.md` | 34 pts (avg 38); −4 variance week — 2 in-squad pen misses; rolled to 2 FT; 7th churn veto gained 0; captain 11/11 |
 | GW12 | `reviews/gw12.md` | 42 pts (avg 39); int'l break — BANNED injured Gabriel (model wanted to buy him), Semenyo→Enzo hauled +11; Muñoz 14; first buy-side duel divergence connected; edge +92 |
 | GW13 | `reviews/gw13.md` | 44 pts (avg 35); Scarlett→Thiago (+13 debut) + Raya→Roefs reshape; crossed +100 (edge +101); 3rd straight captain blank; bench-order defect cost ~8; duel lens →[PROVEN] |
+| GW14 | `reviews/gw14.md` | 69 pts (avg 58); 4 one-week absences (Saliba ill, Senesi+Brooks banned, Thiago benched) — rolled, refused free Saliba→Virgil churn; Haaland(C) drought ended 28, Muñoz 14; edge +112 |
