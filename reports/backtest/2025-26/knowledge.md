@@ -132,8 +132,10 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   still never overrides the EV gate, the plan, or minutes risk; the named duel is
   written in each memo for grading. Keep grading live; watch for the first MISS to
   size its false-positive rate.
-- Captaincy = highest projection unless news says otherwise: 15/15 rule
-  adherence (Salah ×5, Haaland ×10). Haaland has blanked FOUR of the last FIVE as
+- Captaincy = highest projection unless news says otherwise: 16/16 rule
+  adherence (Salah ×5, Haaland ×11). Haaland RETURNED 26 at Palace (GW16) — the
+  4-in-5 blank streak was pure variance, and holding the shield through it (no
+  recency switch) caught both GW14's 28 and GW16's 26. Haaland has blanked FOUR of the last FIVE as
   captain (GW11-13, GW15; only GW14's 28 broke it) — extraordinary variance, but he
   was the top projection + ~90% EO shield EVERY week, so a recency switch would have
   (a) missed the GW14 haul and (b) chased a moving target. The rule is judged on
@@ -173,8 +175,8 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 
 ## Season context (2025/26 replay, verified)
 
-- Official GW averages 1–15: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35, 58, 49
-  (cum 750). GW11-13 low (38/39/35); GW14-15 (58/49) recovered.
+- Official GW averages 1–16: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35, 58, 49, 60
+  (cum 810). GW11-13 low (38/39/35); GW14-16 (58/49/60) recovered.
 - **AFCON: PL players unavailable from GW17** (starts 21 Dec 2025; min 3 GWs, some
   6). Owned asset = Mbeumo (Cameroon); available GW15-16, gone GW17+. HOLD him
   through his good GW15-16 fixtures, move at GW16 into a NON-AFCON mid (don't sell

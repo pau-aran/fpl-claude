@@ -1,4 +1,4 @@
-# 2025/26 Backtest Baseline — Official FPL Averages, GW1-15
+# 2025/26 Backtest Baseline — Official FPL Averages, GW1-16
 
 Benchmark for the fpl-claude backtest: the official average manager score per gameweek
 (the "Average" shown on the FPL site), plus the official highest GW score, for
@@ -27,10 +27,11 @@ Values cross-verified against independent web sources where snippets were availa
 | 13 | 35 | 123 | not found | Deadline 2025-11-29. FPL API mirror (olbauday gameweek_summaries.csv, re-fetched). Low slate — two top-six H2Hs (CHE-ARS, CRY-MUN) cancelled template returns; Haaland blanked at home to Leeds. |
 | 14 | 58 | 138 | not found | Deadline 2025-12-02 (midweek). FPL API mirror. Bounce-back slate — Haaland's captaincy drought ended (28, away at Fulham). |
 | 15 | 49 | 133 | not found | Deadline 2025-12-06. FPL API mirror. Last full round before AFCON; Haaland blanked (subbed 68') at home to Sunderland — his 4th low captain week in five. |
+| 16 | 60 | 149 | not found | Deadline 2025-12-13. FPL API mirror. Last round before the AFCON exodus (players out from GW17); Haaland's captaincy returned (26). |
 
-**Average-manager 15-GW cumulative total (sum of official GW averages): 750 points.**
+**Average-manager 16-GW cumulative total (sum of official GW averages): 810 points.**
 
-*Look-ahead (fetched, not yet played in-sim): GW16 avg 60, GW17 66.*
+*Look-ahead (fetched, not yet played in-sim): GW17 avg 66.*
 
 ## Verification notes
 
