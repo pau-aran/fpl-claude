@@ -1,0 +1,77 @@
+{
+ "72": {
+  "start_share": 0.0,
+  "reason": "Marcos Senesi (Bournemouth DEF): SUSPENDED — one-match ban for a 5th yellow (booked late v Sunderland, GW13), misses Bournemouth v Everton (FFScout / givemesport suspensions tracker, 1 Dec 2025). Out GW14 only; returns GW15 to a good run (EVE done, CHE(H), BUR(H)1). HELD — a one-game ban is not a sale.",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.0,
+  "reason": "David Brooks (Bournemouth MID): SUSPENDED — one-match ban for a 5th yellow (v Sunderland, GW13), misses Everton (goodisonnews / givemesport, 1 Dec 2025). Out GW14 only; a fringe bench asset anyway. Dead bench slot this week.",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.0,
+  "reason": "William Saliba (Arsenal DEF): OUT again — ILL, missed the Brentford game (Mosquera partnered Gabriel), Arteta called the earlier injury 'bizarre' and hinted a return this week (arsenal.com 'four changes' / lastwordonsports confirmed XI, 3 Dec 2025). Benched in our XI anyway. HELD/short — a premium CB through an illness/knock is not sold; re-verify GW15.",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.3,
+  "reason": "Igor Thiago (Brentford FWD): BENCHED at Arsenal — Andrews said it was TACTICAL (Brentford set up 3-5-2 away at the leaders) plus 'a couple of knocks and bruises' from the Burnley game; named on the bench, likely an impact sub (Yahoo / AFTV / inkl, 3 Dec 2025). Reduced to 0.3 for GW14 ONLY — a one-week benching at his toughest fixture (ARS(A)5). HELD: 11 goals in 13, 2nd top scorer, starts again GW15 (TOT(A), LEE(H) to come). No churn on a tactical rest.",
+  "duration_gws": 1
+ },
+ "430": {
+  "start_share": 0.9,
+  "reason": "Erling Haaland (Man City FWD): fit, City away at Fulham (mid-table); model top of board (7.50). Our-squad CAPTAIN — the ~90% EO shield despite a 3-blank streak; switching off him would be recency bias (mancity.com / preview, 2 Dec 2025).",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.85,
+  "reason": "Ibrahima Konate (Liverpool DEF): nailed CB, home to Sunderland (good fixture), no flag (liverpoolfc.com preview, 3 Dec 2025). Carried — our-squad starter in the good run.",
+  "duration_gws": 1
+ },
+ "387": {
+  "start_share": 0.85,
+  "reason": "Dominik Szoboszlai (Liverpool MID): nailed, home to Sunderland, no flag (liverpoolfc.com preview, 3 Dec 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.85,
+  "reason": "Riccardo Calafiori (Arsenal DEF): STARTED at LB in the confirmed XI v Brentford (Arsenal won 2-0, CS), fit (arsenal.com / lastwordonsports confirmed XI, 3 Dec 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "256": {
+  "start_share": 0.85,
+  "reason": "Daniel Munoz (Crystal Palace DEF): nailed wing-back, away at bottom side Burnley (soft fixture), no flag (cpfc / preview, 3 Dec 2025). Carried — our-squad starter in form.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.85,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): Palace No.9, away at Burnley (soft), on penalties (cpfc / preview, 3 Dec 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "449": {
+  "start_share": 0.85,
+  "reason": "Bruno Fernandes (Man Utd MID): nailed captain/No.10, home to West Ham, no flag (manutd.com preview, 4 Dec 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "119": {
+  "start_share": 0.85,
+  "reason": "Bryan Mbeumo (Man Utd MID): nailed starter, home to West Ham, no flag (manutd.com preview, 4 Dec 2025). Carried — our-squad starter. NOTE: Cameroon at AFCON from ~GW17 — cover due before then.",
+  "duration_gws": 1
+ },
+ "237": {
+  "start_share": 0.9,
+  "reason": "Enzo Fernandez (Chelsea MID): nailed, away at Leeds (good fixture), penalty/set-piece involved (chelseafc.com preview, 3 Dec 2025). Carried — our GW12 buy, held.",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.9,
+  "reason": "Nordin Roefs (Sunderland GK): No.1, away at Liverpool (tough fixture — low CS odds this week) but nailed to start (Sports Mole preview, 3 Dec 2025). Carried — our-squad keeper.",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.9,
+  "reason": "Martin Dubravka (Burnley GK): No.1, home to Crystal Palace, no rotation flag (Sports Mole preview, 3 Dec 2025). Carried — our-squad bench keeper.",
+  "duration_gws": 1
+ }
+}
