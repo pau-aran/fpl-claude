@@ -120,6 +120,12 @@ We are +125 vs the average-manager baseline; the goal is TOP 1%. **GW18 opens wi
 3 FT, £0.3m bank.** *(To be filled at the pre-GW18 deadline, BEFORE reading the
 optimizer.)*
 
+- **[NEW DOCTRINE, from GW18] The Manager's Read is a co-equal voice.** Owner directive
+  (2026-07-23): write the human read (team trajectory / eye-test, who's due/cold, brave
+  captain, bench order) BEFORE reading the solve, and let it override the model on those
+  weak axes even against modest EV — plan-fit and minutes stay sacred. Lean into
+  team-trajectory/eye-test and captaincy bravery. Every deviation is graded in the review.
+  See knowledge.md "Manager's Read".
 - **[PRIORITY, live-pipeline] Bench-order fix.** GW17 quantified the [OPEN] defect:
   the fixture-blind XI order started Konaté (TOT away, 1) over the benched Saliba (EVE
   away, CS 6) — a real ~5-point leak, not theoretical. Until the ordering weights

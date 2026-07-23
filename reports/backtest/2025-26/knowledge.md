@@ -115,8 +115,25 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   force a forbidden hit. Instead: a written funding route must SHOW ITS
   ARITHMETIC (sells + bank ≥ buys; resulting squad quota-legal) before the
   solve runs. Re-judge only if a redirect ever slips through un-caught.
-- Purist matchup lens (owner directive, 2026-07-22): every deadline, write a
-  short POSITIONAL-DUEL read alongside the quant inputs — in-form players who
+- **The Manager's Read — co-equal voice, written BEFORE the solve** (owner directive,
+  2026-07-23). The optimizer is ONE input, not the anchor. Each deadline, write the human
+  read FIRST — then read the solve. Anchoring to the machine and rationalising afterward is
+  the failure mode this fixes. The read covers **team trajectory / the eye-test** (manager-
+  bounce sides, teams visibly clicking, players who look dangerous weeks before the returns
+  show, Christmas-congestion rotation feel, a squad that's gone "all-Haaland and thin") and
+  who's genuinely due vs cold. It carries REAL authority on the axes where models are weakest
+  and feel is strongest — **bench order, captaincy, differentials-for-rank, riding-vs-fading
+  runs** — and MAY override the model there even against MODEST EV, provided it fits the plan
+  and minutes are safe. It does NOT override: a flagged/benched-for-minutes player (the
+  minutes gate is sacred), the plan's funding arithmetic, or a LARGE EV gap (the model still
+  governs the big quant calls). Owner emphasis (2026-07-23): lean hardest into **team-
+  trajectory/eye-test** and **captaincy bravery**. Guardrail — it is GRADED every week like the
+  duel lens (process, not outcome): the memo records the read, the review scores whether the
+  human overlay added or leaked points, so the edge is measured honestly over the season.
+  Motivating miss: GW17's bench order — a human eye starts Saliba (EVE away, CS 6) over Konaté
+  (TOT away, blank 1) on sight; the fixture-blind model didn't, −5, the whole gap to average.
+- Purist matchup lens (owner directive, 2026-07-22) — now ONE feeder of the Manager's Read
+  above: every deadline, write a short POSITIONAL-DUEL read alongside the quant inputs — in-form players who
   come up against a weak direct counterpart in their position (winger vs a
   slow/exposed fullback, striker vs an error-prone CB pairing or a stand-in,
   attacking fullback vs a winger who doesn't track back, defence/GK vs a
@@ -135,8 +152,13 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   still never overrides the EV gate, the plan, or minutes risk; the named duel is
   written in each memo for grading. Keep grading live; watch for the first MISS to
   size its false-positive rate.
-- Captaincy = highest projection unless news says otherwise: 16/16 rule
-  adherence (Salah ×5, Haaland ×11). Haaland RETURNED 26 at Palace (GW16) — the
+- Captaincy = highest projection is the DEFAULT, not a straitjacket (updated 2026-07-23).
+  The shield discipline — never RECENCY-switch off a blanking premium — was right and caught
+  28/26/16 (GW14/16/17); keep it. But under the Manager's Read, **captaincy bravery is now
+  permitted**: a considered, WRITTEN eye-test/trajectory/fixture thesis MAY override the top
+  projection for a differential captain (this is distinct from chasing last week's points).
+  Every such call is graded — we measure whether brave armbands add or leak vs the shield.
+  Historic adherence 17/17 (Salah ×5, Haaland ×12). Haaland RETURNED 26 at Palace (GW16) — the
   4-in-5 blank streak was pure variance, and holding the shield through it (no
   recency switch) caught both GW14's 28 and GW16's 26. Haaland has blanked FOUR of the last FIVE as
   captain (GW11-13, GW15; only GW14's 28 broke it) — extraordinary variance, but he
