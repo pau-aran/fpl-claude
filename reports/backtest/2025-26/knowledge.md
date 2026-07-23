@@ -204,8 +204,9 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 
 ## Season context (2025/26 replay, verified)
 
-- Official GW averages 1–16: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35, 58, 49, 60
-  (cum 810). GW11-13 low (38/39/35); GW14-16 (58/49/60) recovered.
+- Official GW averages 1–19: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35, 58, 49, 60,
+  66, 44, 40 (cum 960). GW11-13 low (38/39/35); GW14-17 (58/49/60/66) recovered;
+  GW18-19 (44/40) low again — the Boxing-Day-congestion × AFCON exodus window.
 - **AFCON: PL players unavailable from GW17** (starts 21 Dec 2025; min 3 GWs, some
   6). Owned asset = Mbeumo (Cameroon); available GW15-16, gone GW17+. HOLD him
   through his good GW15-16 fixtures, move at GW16 into a NON-AFCON mid (don't sell

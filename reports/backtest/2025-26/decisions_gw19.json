@@ -1,0 +1,7 @@
+{
+  "lock": [6,7,72,374,449,387,237,430,136,283,670,470],
+  "ban": [256,119,82,381],
+  "max_transfers": 2,
+  "captain": 430,
+  "reasoning": "AFCON window, 5 FT. Two MINUTES-driven moves (not churn): (1) Munoz (256) FORCED out — two consecutive 0-minute GWs (17,18), the two-blank red-alert = a real availability hole, sell. (2) Gakpo out — rotated/blanked both weeks since we bought him (0' then 4'); the hold-through-one-bad-week was already spent at GW18, so move him to a nailed mid now. Both into nailed 78-min players. Lock the core to refuse the optimizer's Saliba->Timber (phantom same-club swap) and Mateta churn. Ban Mbeumo/Semenyo/Salah (all still AFCON). CAPTAIN HAALAND, not B.Fernandes: the model gap is only +0.12 (not 'clearly ahead'), Haaland is the ~90% EO shield, and B.Fernandes carries a GW18 0-minute flag — no marginal switch off a nailed talisman. GW19 avg ~40, a low AFCON slate."
+}

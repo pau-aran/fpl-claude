@@ -70,6 +70,19 @@ GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 
 ## Recent session log
 
+- **2026-07-23 (GW17–19 forward simulation — AFCON window):** ran the backtest
+  three GWs further on the optimized pipeline. **GW17 63 (avg 66, −3), GW18 23
+  (avg 44, −21), GW19 58 (avg 40, +18); Σ 144 vs 150 (−6); season 1085 (+125).**
+  GW17: forced Mbeumo→Gakpo (only owned AFCON player), banked 3 FT, Haaland C 16;
+  the new immediate-GW lineup ordered the XI on fixture — Gakpo blanked on 0 min
+  (lesson: on a FORCED buy weight minutes-security over ceiling). GW18: a
+  Boxing-Day×AFCON chaos slate — three nailed players DNP + captain blank; the
+  roll was process-defensible but exposed that the availability proxy is blind to
+  congestion rotation (a full news-sweep/team-week report would flag it). GW19:
+  the codified rules cashed — the two-consecutive-0-min red-alert flagged the
+  Muñoz sale (→Timber 9), and keeping the armband on Haaland over a marginal,
+  minutes-flagged B.Fernandes saved the captaincy (B.Fernandes DNP'd 0). Memos +
+  reviews committed (gw17-19); baseline/knowledge averages extended to GW19.
 - **2026-07-23 (pattern-analysis / optimization session):** branch
   `claude/branch-analysis-optimization-n8q1f5`. Analysed the GW1–16 backtest for
   recurring patterns (parallel review-mining agents) and shipped the highest-
