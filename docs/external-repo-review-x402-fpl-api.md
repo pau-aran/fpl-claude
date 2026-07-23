@@ -97,3 +97,39 @@ Adopt the **set-piece/penalty-duty signal** (behind the backtest gate) and the
 **`ep_next` benchmark column**. Skip the composite-scoring engine, the weight
 optimizer, and the entire x402/crypto layer. Net: the repo's real gift to us
 isn't its code — it's the reminder that we're leaving set-piece duty on the table.
+
+## Update — implemented (both signals shipped)
+
+Both adopted signals are now in the pipeline; the composite engine, weight
+optimizer, and x402 layer were skipped as recommended.
+
+- **Penalty component in `models/xpts.py`.** A `penalty` term for the designated
+  taker (`penalties_order == 1`), fixture-independent (a spot-kick is a spot-kick,
+  so it is *not* attack-scaled — a modelling improvement over lumping pens into
+  `xg90`). Double-count-guarded by an `embed_gap`: FPL's `expected_goals` already
+  embeds an established taker's own pens, so the term credits only what a player's
+  `xg90` cannot have captured — a priorless newcomer taker whose rate is shrunk
+  toward replacement (auto, decaying to zero as his own minutes earn full weight),
+  plus an explicit news overlay `pen_boost` for a mid-season duty change among
+  established players. Steady state for an established taker: `embed_gap → 0`,
+  `xg90` unchanged, zero double-count.
+- **Taker columns + `ep_next`** in `models/projections.py`: `is_pen_taker`,
+  `is_set_piece_taker`, and FPL's own next-GW expected points as a benchmark
+  (never a model input).
+- **Backtest fidelity:** `backtest/data.py` carries season-end `penalties_order`
+  as a documented static proxy (the archive has no point-in-time order);
+  `ep_next` is left absent (no honest point-in-time value).
+- **Skills wired** so the signal is used, not orphaned: `/fpl-scout` (set-piece
+  value lens + `ep_next` sanity), `/fpl-news-sweep` (the `pen_boost` overlay key
+  for duty changes), `/fpl-review` (log `ep_next` alongside our xPts vs actual).
+- **Tests:** `tests/test_models.py::test_penalty_term_credits_only_unpriced_takers`
+  covers newcomer-credit, established-zero, decay, non-taker, `pen_boost`, and the
+  keeper guard (37 pass).
+
+**Gate re-run (PLAN §4, GW1–10 replay, this environment's vaastav snapshot):
+659 → 659, zero committed decisions changed → no regression.** The penalty term
+never fired on our (established) backtest squad because the archive's taker order
+is static season-end — the signal's payoff is inherently forward-looking (a taker
+who *changes*), which a static-order replay cannot exercise. So this is a
+live-value addition proven **safe**, not proven profitable; its edge banks the
+first time a penalty duty actually moves during the live season.

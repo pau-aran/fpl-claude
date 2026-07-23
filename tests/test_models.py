@@ -301,6 +301,41 @@ def test_positional_enforcement_is_structural(bootstrap):
         expected_points("WING", dirty_rates, est, fixture, True, scoring)
 
 
+def test_penalty_term_credits_only_unpriced_takers():
+    """The penalty term prices a taker's spot-kicks without double-counting the
+    pens already inside an established player's xg90."""
+    scoring = ScoringMap.from_ruleset(Ruleset.load("2026-27"))
+    fixture = fdr_expectation(3, 3)
+    est = minutes_model.estimate(_player(1, 1, 3, minutes=900, starts=10), 10)
+    base = {"xg90": 0.3, "xa90": 0.2, "saves90": 0.0, "dc90": 0.0, "bonus90": 0.2}
+
+    def pts(**over):
+        return expected_points("MID", {**base, **over}, est, fixture, True, scoring)
+
+    # Established taker (has_prior): his prior xg90 already embeds his pens -> 0.
+    established = pts(pen_taker=True, has_prior=True, evidence=1.0)
+    assert established["penalty"] == 0.0
+    # Priorless newcomer taker: xg90 is shrunk toward replacement, prices none.
+    newcomer = pts(pen_taker=True, has_prior=False, evidence=0.0)
+    assert newcomer["penalty"] > 0.0
+    # The auto-credit decays as the newcomer earns his own minutes.
+    assert pts(pen_taker=True, has_prior=False, evidence=0.6)["penalty"] < newcomer["penalty"]
+    # Not the taker -> nothing.
+    assert pts(pen_taker=False, has_prior=False, evidence=0.0)["penalty"] == 0.0
+    # A news overlay forces the term on for an established player (duty change).
+    boosted = pts(pen_taker=True, has_prior=True, evidence=1.0, pen_boost=0.5)
+    assert boosted["penalty"] > 0.0
+    # Keepers never get a penalty term even when flagged as the taker.
+    gk_est = minutes_model.estimate(_player(2, 1, 1, minutes=900, starts=10), 10)
+    gk = expected_points("GKP", {**base, "pen_taker": True, "has_prior": False,
+                                 "evidence": 0.0}, gk_est, fixture, True, scoring)
+    assert gk["penalty"] == 0.0
+    # total still accounts for the component.
+    assert newcomer["total"] == pytest.approx(
+        sum(v for k, v in newcomer.items() if k != "total"), abs=0.01
+    )
+
+
 def test_gk_and_def_specific_components(bootstrap):
     scoring = ScoringMap.from_ruleset(Ruleset.load("2026-27"))
     fixture = fdr_expectation(3, 3)

@@ -23,6 +23,13 @@ You are fpl-claude. The market buys reputation; we buy points per million.
      sub-~0.7 `p_start` players without a written exception.
    - **Differentials:** selected_by_percent < 10% × high `xpts_horizon`.
    - **Template:** selected_by_percent > 30% — we must own a reason NOT to own them.
+   - **Set-piece edge:** the `is_pen_taker` / `is_set_piece_taker` columns flag
+     designated takers — a durable, minutes-adjacent value signal the crowd is
+     slow to reprice. A newly-installed penalty taker (his xg90 lags his new
+     duty) is a live buy signal; prioritise takers on the value board.
+   - **Sanity vs FPL:** the `ep_next` column is FPL's own next-GW expected
+     points — a free external benchmark. Flag any candidate where our
+     `xpts_gwNN` and `ep_next` disagree hard for a look before publishing.
 
 4. **Consensus cross-check (mandatory before publishing):** compare our top ~5 per
    position against at least two public sources (LiveFPL, FPL Review free numbers,
@@ -33,7 +40,10 @@ You are fpl-claude. The market buys reputation; we buy points per million.
    benchmark, not input.
 
 5. Enrich the top candidates with a quick web check (sources.yaml): role security,
-   set-piece duties, penalty taking, new-signing minutes ramp.
+   set-piece duties, penalty taking, new-signing minutes ramp. When the web
+   confirms a penalty-duty CHANGE the snapshot's order hasn't caught yet, encode
+   it as an overlay `pen_boost` (0–1, see fpl-news-sweep) so the projection
+   prices the new taker's spot-kicks instead of waiting weeks for xg90 to catch up.
 
 6. **Price radar** (`python -m fpl_claude.data.prices --from-snapshot <latest>`):
    note which BUY/WATCH candidates are near a rise (buy-early candidates) and which

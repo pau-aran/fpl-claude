@@ -19,6 +19,12 @@ Known fidelity gaps (documented, revisited by the weekly review loop):
     decisions had press-conference news we cannot replay.
   - Fixture list is the season's FINAL schedule; a fixture postponed mid-season
     appears at its rescheduled GW from the start.
+  - Penalty/set-piece order is the season-END value from players_raw (the
+    archive carries no point-in-time order per GW). Takers rarely change, so it
+    is a fair proxy; the xPts penalty term only auto-credits priorless low-sample
+    takers, so a late-season order flip cannot leak backward into an established
+    player's projection. `ep_next` has no honest point-in-time value here and is
+    left absent (the live pipeline reads it straight from the API).
   - `selected_by_percent` is the raw `selected` count scaled by a nominal
     player base — fine for ranking, not for exact EO.
 """
@@ -27,6 +33,7 @@ from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
+from typing import Any
 
 import pandas as pd
 
@@ -47,6 +54,16 @@ STAT_FIELDS = {
 }
 
 NOMINAL_MANAGER_BASE = 11_000_000  # scales `selected` counts to a rough EO%
+
+
+def _order(value: Any) -> int | None:
+    """Set-piece order from players_raw: an int rank, or None when blank/NaN."""
+    try:
+        if value is None or pd.isna(value):
+            return None
+        return int(value)
+    except (TypeError, ValueError):
+        return None
 
 
 class SeasonStore:
@@ -106,6 +123,16 @@ class SeasonStore:
                     "selected_by_percent": selected.get(pid, "0.0"),
                     "status": "a",  # no historical flags in the archive
                     "chance_of_playing_next_round": None,
+                    # Season-end set-piece order as a static proxy (see docstring
+                    # fidelity gaps); ep_next has no point-in-time value here.
+                    "penalties_order": _order(getattr(p, "penalties_order", None)),
+                    "corners_and_indirect_freekicks_order": _order(
+                        getattr(p, "corners_and_indirect_freekicks_order", None)
+                    ),
+                    "direct_freekicks_order": _order(
+                        getattr(p, "direct_freekicks_order", None)
+                    ),
+                    "ep_next": None,
                     **stats,
                 }
             )

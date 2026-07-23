@@ -39,6 +39,17 @@ PROJECTIONS_DIR = PROJECT_ROOT / "db" / "projections"
 POSITION_BY_ELEMENT_TYPE = {1: "GKP", 2: "DEF", 3: "MID", 4: "FWD"}
 
 
+def _num_or_none(value: Any) -> float | None:
+    """FPL API numerics arrive as strings ('4.5') or None; keep None as None so
+    a benchmark column reads NaN (honestly absent) rather than a fake 0.0."""
+    if value in (None, ""):
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
 def _load(from_snapshot: str | None) -> tuple[dict, list[dict]]:
     if from_snapshot:
         day_dir = RAW_DIR / from_snapshot
@@ -157,6 +168,18 @@ def build_projections(
             duration = max(0, int(overlay["duration_gws"]))
         rates = rates_df.loc[pid].to_dict()
 
+        # Set-piece duty: point-in-time live, season-end proxy in the backtest.
+        # `penalties_order == 1` is the designated taker; the xPts penalty term
+        # reads pen_taker (+ optional overlay pen_boost for a duty change).
+        pen_order = p.get("penalties_order")
+        is_pen_taker = pen_order == 1
+        rates["pen_taker"] = is_pen_taker
+        rates["pen_boost"] = float(overlay.get("pen_boost", 0.0)) if overlay else 0.0
+        is_sp_taker = 1 in (
+            p.get("corners_and_indirect_freekicks_order"),
+            p.get("direct_freekicks_order"),
+        )
+
         per_gw: dict[str, float] = {}
         horizon_total = 0.0
         for i, gw in enumerate(gameweeks):
@@ -183,6 +206,13 @@ def build_projections(
                 "exp_minutes_gw": est.exp_minutes,
                 "minutes_confidence": est.confidence,
                 "low_sample": bool(rates.get("low_sample", False)),
+                # FPL's own next-GW expected points: a free external benchmark
+                # for /fpl-review calibration and a captaincy sanity check, never
+                # a model input. NaN when absent (backtest archive has no
+                # point-in-time ep_next).
+                "ep_next": _num_or_none(p.get("ep_next")),
+                "is_pen_taker": bool(is_pen_taker),
+                "is_set_piece_taker": bool(is_sp_taker),
                 "team_model": "+".join(sorted(sources[p["team"]])) or "none",
             }
         )
@@ -199,7 +229,10 @@ def main() -> None:
     parser.add_argument("--from-snapshot", help="db/raw/ date dir (YYYY-MM-DD) instead of live API")
     parser.add_argument("--prior-snapshot", help="path to a previous season's bootstrap.json")
     parser.add_argument("--horizon", type=int, default=None)
-    parser.add_argument("--overlays", help="JSON file: {player_id: {start_share, reason}}")
+    parser.add_argument(
+        "--overlays",
+        help="JSON file: {player_id: {start_share, reason, [duration_gws], [pen_boost]}}",
+    )
     args = parser.parse_args()
 
     bootstrap, fixtures = _load(args.from_snapshot)

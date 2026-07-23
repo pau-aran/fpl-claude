@@ -36,3 +36,18 @@ need to know the template to know where our edge deviates from it).
 
 Save nothing for pre-season sweeps unless asked; in-season, append the table to the
 current gameweek's decision memo draft if one exists.
+
+## Overlay keys the sweep produces
+
+The sweep's findings become the `--overlays` JSON `{player_id: {...}}` the
+projection pipeline consumes. Beyond availability, watch for **penalty-duty
+changes** — a new taker (transfer, incumbent injured/dropped, new manager) is a
+news event, not a stat, and his `xg90` lags his new role by weeks:
+
+- `start_share` (0–1) + `reason`: minutes/availability, as usual.
+- `duration_gws`: how many horizon GWs the news covers (omit = whole horizon).
+- `pen_boost` (0–1): set when a player has just BECOME the designated penalty
+  taker and the snapshot's `penalties_order` hasn't caught up. It forces the
+  xPts penalty term on for that player (1.0 = full spot-kick credit). Leave unset
+  for an established taker — his pens are already in his xg90 and the model prices
+  them without help. Always pair it with a sourced `reason`.

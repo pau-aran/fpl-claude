@@ -15,9 +15,22 @@ Composition per player per fixture:
   saves        exp_min/90 * saves90 / saves_per_n    (GKP)
   def. contrib dc_pts[pos] * P(Poisson(dc90 * exp_min/90) >= threshold)
   bonus        bonus90 * exp_min/90                  (historical proxy, v1)
+  penalty      exp_min/90 * team_pen_goals90 * embed_gap * goal_pts[pos]
 
 attack_scale = fixture expected goals / league average — how much easier or
-harder this opponent makes scoring than the player's per-90 baseline.
+harder this opponent makes scoring than the player's per-90 baseline. Penalties
+are fixture-independent (a spot-kick is a spot-kick) so the penalty term is NOT
+attack-scaled.
+
+The penalty term prices the designated taker's spot-kicks. FPL's `expected_goals`
+already embeds a full-history taker's own penalties, so crediting an established
+taker again would double-count — `embed_gap` credits only the share his xg90
+cannot have captured yet: a priorless newcomer taker whose rate is shrunk toward
+replacement (auto, decaying as his own minutes accumulate), or an explicit news
+overlay `pen_boost` for a mid-season duty change among established players
+(steady state: has_prior taker, no overlay -> embed_gap 0 -> xg90 unchanged). The
+edge this exists to catch is a NEW taker the market/model underrates, exactly the
+minutes-adjacent inefficiency the project chases.
 
 Component applicability is ENFORCED by position, never assumed from the data:
 
@@ -31,6 +44,8 @@ Component applicability is ENFORCED by position, never assumed from the data:
   saves          x    -    -    -    GKP-only branch
   def. contrib   -    x    x    x    YAML defensive_contribution position list
   bonus          x    x    x    x    —
+  penalty        -    x    x    x    designated-taker branch (pen_taker); a
+                                     keeper's spot-kicks are not modeled
 
 Unknown positions raise rather than silently score as outfielders.
 
@@ -50,7 +65,15 @@ from .team import LEAGUE_AVG_GOALS, FixtureExpectation
 
 MAX_GOALS = 15  # Poisson truncation, matches the team model's score grid
 
+# Expected penalty GOALS per team per 90: PL awards ~0.10 penalties per team per
+# game and they convert at ~0.79 -> ~0.08 goals. The designated taker inherits
+# this stream; a benched taker takes none, so it is minutes-shared like any other
+# component. A constant (not team-specific): pens-won rate is noisy at team level
+# and the taker identity, not his club's pen-drawing, is the signal we price.
+TEAM_PEN_GOALS_PER90 = 0.08
+
 POSITIONS = frozenset({"GKP", "DEF", "MID", "FWD"})
+PENALTY_POSITIONS = frozenset({"DEF", "MID", "FWD"})
 
 # Components forced to zero regardless of what the rates data claims — the
 # structural truths of the game the pipeline must not depend on clean data for.
@@ -152,6 +175,20 @@ def expected_points(
 
     bonus = rates.get("bonus90", 0.0) * share
 
+    penalty = 0.0
+    if position in PENALTY_POSITIONS and rates.get("pen_taker"):
+        # Credit only the penalty share the player's xg90 cannot already embed.
+        # has_prior taker => his prior xg90 prices his pens (auto_gap 0); a
+        # priorless newcomer's rate is shrunk toward replacement and prices none
+        # (auto_gap -> 1, decaying to 0 as his own minutes earn full weight). A
+        # news overlay (pen_boost) forces the term on for a duty change among
+        # established players — the one case stats alone cannot see.
+        has_prior = bool(rates.get("has_prior", True))
+        evidence = float(rates.get("evidence", 1.0))
+        auto_gap = 0.0 if has_prior else max(0.0, 1.0 - evidence)
+        embed_gap = max(auto_gap, float(rates.get("pen_boost", 0.0)))
+        penalty = share * TEAM_PEN_GOALS_PER90 * embed_gap * scoring.goal_points[position]
+
     components = {
         "appearance": appearance,
         "goals": goals,
@@ -161,6 +198,7 @@ def expected_points(
         "saves": saves,
         "defensive_contribution": defensive_contribution,
         "bonus": bonus,
+        "penalty": penalty,
     }
     for name in STRUCTURALLY_ZERO.get(position, ()):
         components[name] = 0.0

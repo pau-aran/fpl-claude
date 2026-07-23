@@ -20,5 +20,8 @@ You are fpl-claude. Moneyball rule 3: judge the process, never the variance.
    rank delta, hits taken, decision-quality notes.
 5. **Calibration:** once models are live, log predicted-vs-actual error per position
    into `notebooks/calibration.md`; recurring bias (e.g. minutes model too optimistic
-   on rotation-risk defenders) becomes a model TODO.
+   on rotation-risk defenders) becomes a model TODO. Log our `xpts_gwNN` **and** FPL's
+   own `ep_next` against actual side by side — two independent predictors framing the
+   error. Where FPL's number beat ours on a call, ask what it saw (usually minutes or
+   a set-piece/penalty role) and feed that back into the overlay or a model TODO.
 6. End with max 3 lessons that change next week's behavior. No generic lessons.

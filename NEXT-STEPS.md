@@ -56,6 +56,21 @@ Defects found, carried to the LIVE pipeline (VERDICT.md + reviews/gw10.md §4):
 - Optional depth later: extend to 2023/24–2024/25 replays for more calibration
   seasons; seed the FPL↔Understat ID map for Minutes v2.
 
+Shipped after the gate (re-ran the GW1–10 replay at parity — 659=659, no committed
+decision changed, so no regression; see docs/external-repo-review-x402-fpl-api.md):
+- **Set-piece / penalty-duty signal.** `xpts.py` gains a `penalty` component for
+  the designated taker (`penalties_order==1`), double-count-guarded: it credits
+  only the pens a player's `xg90` cannot already embed (a priorless newcomer taker,
+  decaying as his own minutes accrue) plus an explicit overlay `pen_boost` for a
+  mid-season duty change. Projections expose `is_pen_taker` / `is_set_piece_taker`.
+  The backtest can't exercise the forward-looking edge (its taker order is static
+  season-end), so this is a live-value add proven safe, not proven profitable —
+  its payoff shows up when a taker actually changes.
+- **`ep_next` benchmark.** FPL's own next-GW expected points now rides along as a
+  projections column — a free external predictor for /fpl-review calibration and a
+  captaincy sanity check. Never a model input; NaN in the backtest (no honest
+  point-in-time value in the archive).
+
 ## 3. Season-launch rules verification (the day the 2026/27 game opens)
 
 - Reconcile every `verify_at_season_launch` section of `config/rules/2026-27.yaml`
