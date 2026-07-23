@@ -73,36 +73,39 @@ in the decision memo.*
   home) — the GW11 thesis vindicated by simply not selling. Captain Haaland at
   NEW(A). See gw12.md / consensus/gw12.md.
 
-## Active path — GW13+ → season-end
+- **GW13 — EXECUTED: the structural value reshape, 2 FT, no hit.** Scarlett →
+  **Thiago** (dead-slot → Brentford's in-form No.9 v bottom-side Burnley, the
+  standing plan lever) + Raya → **Roefs** (cheap-keeper downgrade to fund Thiago,
+  timed to Arsenal's most depleted week — Gabriel AND Saliba both out at Chelsea).
+  Locked Saliba (out on a training knock, benched — held the premium, no churn).
+  Captain Haaland at home to Leeds (softest fixture, no pre-deadline doubt — he
+  blanked, variance). See gw13.md / consensus/gw13.md.
 
-We are +89 vs the average-manager baseline (pre-GW12 result); the goal is TOP 1%.
-GW12 spent one FT on the forced Semenyo→Enzo move; **GW13 opens with 2 FT, ~£1.8m
-bank.** *(To be filled at the pre-GW13 deadline, BEFORE reading the optimizer.)*
+## Active path — GW14+ → season-end
 
-- **GW13 — resolve the open threads with the 2 banked FT:**
-  - **Semenyo's replacement is settled (Enzo)** — but re-verify Semenyo's return
-    timeline; if he's back soon and Enzo's run sours, no churn. Enzo held.
-  - **Senesi suspension watch** — a 5th yellow (nearing) triggers a one-game ban;
-    if it lands, a cheap fit DEF swap is the productive use of a FT (he has SUN(A)
-    then good fixtures, so time it).
-  - **Scarlett (£4.3, non-playing FWD)** — still the standing low-priority
-    dead-slot upgrade; the £1.8 bank now funds a better bench body if wanted.
-  - Bank if no positive-EV, non-churn move clears.
-- **AFCON (from ~GW17):** Mbeumo (Cameroon), Salah (Egypt), and now-sold Semenyo
-  (Ghana) affected. Mbeumo is the one we still own — plan his cover BEFORE GW17,
-  don't get caught fielding 10.
+We are +92 vs the average-manager baseline (pre-GW13 result); the goal is TOP 1%.
+GW13 spent both FT on the Thiago/Roefs reshape; **GW14 opens with ~0–1 FT.**
+*(To be filled at the pre-GW14 deadline, BEFORE reading the optimizer.)*
+
+- **GW14 — the forced thread is Senesi's ban:** he took his 5th yellow late in
+  GW13 → **suspended GW14**. Need a fit DEF in for one week (Saliba may be back;
+  Konaté is already owned; a straight sub may cover without a transfer). Resolve
+  cheaply.
+- **Thiago's leg knock (limped off late GW13)** — re-verify his GW14 status; if
+  he's out, the new Thiago slot may need covering. Watch.
+- **Saliba's training-knock timeline** — held; confirm return for GW14.
+- **AFCON (from ~GW17):** Mbeumo (Cameroon) is the owned asset — plan cover before
+  GW17.
 - **Rank discipline:** highest-EO captain (Haaland shield); ceiling via
-  value/differential slots, never a plan-failing −4. Let variance come to the core.
-- Chips: out of scope (not simulated in this backtest).
+  value/differential slots, never a plan-failing −4.
+- Chips: out of scope.
 
-## Conflicts to refuse at GW13
+## Conflicts to refuse at GW14
 
-- **The Saliba→Timber clone swap (vetoed 8× through GW12).** Still a free sideways
-  Arsenal-DEF clone on the same fixture; with Gabriel out, Saliba is even less
-  sellable. Lock if it resurfaces.
-- **Churning Enzo or the Liverpool bloc after one week.** Both are recent,
-  deliberate holds inside good runs — sell only on real new information.
-- A −4 that only clears the gate on a duration-scoped blank, or that buys an
+- **The Saliba→Timber clone swap (vetoed 8×).** Still churn; lock if it resurfaces.
+- **Churning Thiago/Enzo/the Liverpool bloc after one good week** — recent
+  deliberate buys/holds; sell only on real new information (an injury counts).
+- A −4 that only clears the gate on a duration-scoped blank, or buys an
   AFCON-bound asset without pricing the absence.
 
 ## Watch list
