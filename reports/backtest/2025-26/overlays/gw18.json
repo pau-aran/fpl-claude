@@ -1,0 +1,87 @@
+{
+ "449": {
+  "start_share": 0.0,
+  "reason": "Bruno Fernandes (Man Utd MID): OUT — soft-tissue/hamstring injury in the GW17 loss at Aston Villa (came off 45', the 1-pt GW17 return); Amorim gave no timescale, ~5 fixtures expected out (GW18-21), targeted return the Man City derby 17 Jan. The most-transferred-out player of the GW (870k+ sold, price falling) (ESPN / Forbes / Yahoo, 22-24 Dec 2025). Forced sale.",
+  "duration_gws": 4
+ },
+ "387": {
+  "start_share": 0.0,
+  "reason": "Dominik Szoboszlai (Liverpool MID): SUSPENDED for GW18 only — one-match ban (5th yellow), out v Wolves, back GW19 (liverpoolfc.com / Sports Mole predicted XI, 23-24 Dec 2025). LOCK and bench — a one-week ban on a nailed Liverpool mid is never a sale.",
+  "duration_gws": 1
+ },
+ "119": {
+  "start_share": 0.0,
+  "reason": "Bryan Mbeumo (Man Utd MID): still at AFCON (Cameroon) — group stage 21-31 Dec, earliest PL return ~GW20; not back for GW18. Suppressed so the optimizer never re-buys him (the archive lists him available). (premierleague.com AFCON returns, Dec 2025).",
+  "duration_gws": 2
+ },
+ "381": {
+  "start_share": 0.0,
+  "reason": "Mohamed Salah (Liverpool MID): still at AFCON (Egypt — advancing, projected return ~GW23 / 24 Jan). Suppressed to keep the solver from buying an away premium (goal.com Salah return timeline, Dec 2025).",
+  "duration_gws": 5
+ },
+ "430": {
+  "start_share": 0.85,
+  "reason": "Erling Haaland (Man City FWD): fitness DOUBT — missed a midweek game with a minor training knock; Guardiola said 'much better' but gave no start guarantee at Nott'm Forest (A) (NBC / World Soccer Talk, 24-26 Dec). Still model top + ~46.5% captain poll; CAPTAIN on consensus, but shaded to 0.85 for the doubt and vice=Foden as the live hedge.",
+  "duration_gws": 1
+ },
+ "414": {
+  "start_share": 0.9,
+  "reason": "Phil Foden (Man City MID): FIT, no flag — the 'hottest FPL property' (44 pts in 3 GWs), expected to start as playmaker in City's Christmas-tree at Forest (SI predicted XI, 26 Dec). Held; promoted to VICE-captain (the nailed City hedge if Haaland fails his fitness test).",
+  "duration_gws": 1
+ },
+ "237": {
+  "start_share": 0.85,
+  "reason": "Enzo Fernandez (Chelsea MID): FIT, expected to start and captain Chelsea in James's absence, HOME to Aston Villa (chelseafc.com / SI, 24-26 Dec). Held — now our senior mid with Bruno out and Szoboszlai banned.",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.85,
+  "reason": "Ibrahima Konate (Liverpool DEF): FIT, in the expected XI HOME to bottom-side Wolves (WOL(H), soft) (Yahoo/Liverpool.com, 23-24 Dec). Held — prime CS fixture.",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.85,
+  "reason": "William Saliba (Arsenal DEF): FIT, no suspension, expected to start HOME to Brighton (BHA(H)); the Arsenal absentees are Gabriel and Ben White (Last Word / Yahoo, 26-27 Dec). Held/locked — the fit premium DEF.",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.85,
+  "reason": "Riccardo Calafiori (Arsenal DEF): FIT and expected to start HOME to Brighton (a GW18 SI 'defender suspended' headline did NOT apply to him) (Last Word / Yahoo, 26-27 Dec). Held — a GW20 doubt is a later problem.",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.8,
+  "reason": "Marcos Senesi (Bournemouth DEF): FIT, in an essentially unchanged Bournemouth XI AWAY at Brentford (Sports Mole/Yahoo, 24-27 Dec). Held.",
+  "duration_gws": 1
+ },
+ "295": {
+  "start_share": 0.8,
+  "reason": "Michael Keane (Everton DEF): FIT, back in the expected XI AWAY at Burnley (BUR(A), soft) after an early-Dec knock; Everton miss Branthwaite (Yahoo/Last Word, 26 Dec). Held.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.8,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): managing a knee knock but played 90 midweek, expected to start HOME to Spurs; Palace miss Sarr (AFCON) (cpfc / Sports Mole, 26 Dec). Held.",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.85,
+  "reason": "Igor Thiago (Brentford FWD): FIT, in the predicted XI HOME to Bournemouth (BOU(H)) (brentfordfc.com, 24-26 Dec). Held — nailed No.9.",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.85,
+  "reason": "Nordin Roefs (Sunderland GK): FIT, expected to start HOME to Leeds (LEE(H), soft) — no GW18 flag (a 2-3wk hamstring story is a LATER date, out of scope) (Sports Mole/SAFC, 26-28 Dec). Held — value keeper on a good fixture.",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.6,
+  "reason": "Martin Dubravka (Burnley GK): SELECTION RISK — Burnley (Mike Jackson) reportedly dropped him for at least one game (out of contract, expected to leave); GW18 start v Everton not cleanly confirmed (burnleyexpress, Dec 2025). Bench keeper; shaded down but not a starter for us anyway.",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.4,
+  "reason": "David Brooks (Bournemouth MID): rotation-prone fringe, away at Brentford (Sports Mole, 24-27 Dec). Held at 0.4 — bench filler.",
+  "duration_gws": 1
+ }
+}

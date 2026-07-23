@@ -1,0 +1,84 @@
+{
+ "7": {
+  "start_share": 0.1,
+  "reason": "Riccardo Calafiori (Arsenal DEF): DOUBT/OUT — played 0 minutes GW18 and withdrew from the Brighton warm-up; a foot injury that the GW20 sweep confirms keeps him out (missed Arsenal's last two). HOME to Aston Villa GW19 but not trusted (arsenal.com / FFScout, 29-30 Dec). Shaded to 0.1 so the fixture-aware XI benches him; HELD not sold — our 5th DEF, covered by four fit CBs (Saliba/Konaté/Keane/Senesi).",
+  "duration_gws": 3
+ },
+ "387": {
+  "start_share": 0.85,
+  "reason": "Dominik Szoboszlai (Liverpool MID): BACK from his one-match ban, expected to start HOME to Leeds (LEE(H), soft), non-AFCON (Hungary) (liverpoolfc.com / This Is Anfield, 29-30 Dec). Held — restored to the XI.",
+  "duration_gws": 1
+ },
+ "450": {
+  "start_share": 0.8,
+  "reason": "Matheus Cunha (Man Utd MID): nailed, HOME to bottom-side Wolves (WOL(H) — softest fixture on the board), on Man Utd's pens/set-pieces with Bruno out; a live captaincy-bravery alternative to Haaland (manutd.com / racingpost, 29-30 Dec). Held — our new mid on a dream fixture.",
+  "duration_gws": 1
+ },
+ "430": {
+  "start_share": 0.9,
+  "reason": "Erling Haaland (Man City FWD): FIT, expected to start AWAY at Sunderland (SUN(A) — flagged as unbeaten at home this season, a tougher venue than the scoreline suggests); still model top + ~33% captain poll (SI predicted XI / FFScout, 30 Dec). Captain — shield held; Cunha the brave alternative considered and declined (low conviction on a broken Man Utd).",
+  "duration_gws": 1
+ },
+ "414": {
+  "start_share": 0.85,
+  "reason": "Phil Foden (Man City MID): FIT, expected to start AWAY at Sunderland; City rotating around the edges (Doku out, Savinho watch) but Foden/Haaland nailed (SI/Yahoo, 30 Dec). Held — vice.",
+  "duration_gws": 1
+ },
+ "237": {
+  "start_share": 0.85,
+  "reason": "Enzo Fernandez (Chelsea MID): FIT, no new concern, HOME to Bournemouth (BOU(H)); captaining Chelsea in James's absence (chelseafc.com, 30 Dec). Held.",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.85,
+  "reason": "Ibrahima Konate (Liverpool DEF): FIT, expected to start HOME to Leeds (LEE(H), soft); one booking from a ban (risk, not a doubt) (liverpoolfc.com, 29-30 Dec). Held — prime CS fixture.",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.85,
+  "reason": "William Saliba (Arsenal DEF): FIT, HOME to Aston Villa; with Calafiori out and Gabriel just back, Saliba is the nailed senior CB (arsenal.com, 30 Dec). Held/locked.",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.8,
+  "reason": "Marcos Senesi (Bournemouth DEF): FIT, AWAY at Chelsea (CHE(A), tough); transfer noise (exploring a January exit) but a fitness starter (SI/AOL, 30 Dec-2 Jan). Held.",
+  "duration_gws": 1
+ },
+ "295": {
+  "start_share": 0.8,
+  "reason": "Michael Keane (Everton DEF): FIT, AWAY at Nott'm Forest (NFO(A)) (Yahoo, 30 Dec). Held — the value CB after his GW18 haul.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.8,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): FIT, HOME to Fulham (FUL(H)); Palace's live doubt is Richards, not Mateta (cpfc, 30 Dec-1 Jan). Held.",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.8,
+  "reason": "Igor Thiago (Brentford FWD): minor festive-caution doubt flagged by Keith Andrews ('a bit of an issue') but not ruled out, HOME to Spurs (BRE v TOT) (FFScout, 29 Dec). Held at 0.8 — monitor, but a nailed No.9.",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.85,
+  "reason": "Nordin Roefs (Sunderland GK): FIT, first-choice, HOME to Man City (MCI(H) — TOUGH, faces our own Haaland); a low-CS but save-point week (SI/Sports Mole, 30 Dec). Held — no better GK option (Dúbravka away at Newcastle, worse).",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.55,
+  "reason": "Martin Dubravka (Burnley GK): selection risk persists (out of contract), AWAY at Newcastle (NEW(A), tough) (burnleyexpress, Dec). Bench keeper.",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.4,
+  "reason": "David Brooks (Bournemouth MID): rotation-prone fringe, away at Chelsea (SI, 30 Dec). Bench filler.",
+  "duration_gws": 1
+ },
+ "449": {
+  "start_share": 0.0,
+  "reason": "Bruno Fernandes (Man Utd MID): still OUT (hamstring, ~5 games, return ~17 Jan) — sold at GW18. Suppressed so the optimizer can't re-buy the injured premium (the archive lists him available).",
+  "duration_gws": 3
+ },
+ "119": {"start_share": 0.0, "reason": "Bryan Mbeumo (Man Utd): at AFCON (Cameroon), not back for GW19. Suppressed vs a re-buy.", "duration_gws": 1},
+ "381": {"start_share": 0.0, "reason": "Mohamed Salah (Liverpool): at AFCON (Egypt, advancing, return ~GW23). Suppressed vs a re-buy.", "duration_gws": 4}
+}

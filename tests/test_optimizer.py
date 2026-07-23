@@ -235,3 +235,40 @@ def test_marginal_hit_gate_keeps_hit_that_nets_threshold(rules):
     assert 98 in result.transfers_in and 99 in result.transfers_in
     assert result.hits == 1
     assert audit["hit_gate"].startswith("kept")
+
+
+def test_reselect_xi_benches_high_horizon_blank_for_soft_fixture(rules):
+    """The bench-order fix: a high-horizon player who blanks THIS week (e.g. a
+    suspension) must be benched in favour of a lower-horizon player with a better
+    current-GW fixture. Squad membership is untouched — only the XI split changes."""
+    from fpl_claude.backtest.simulate import reselect_xi
+    from fpl_claude.optimize.milp import OptimizedSquad
+
+    # 15-man squad: 2 GKP, 5 DEF, 5 MID, 3 FWD. One MID ("banned") has the best
+    # horizon but ~0 this GW; a bench MID ("soft") has a lower horizon but a strong
+    # current-GW score and should be started over him.
+    rows = []
+    specs = [("GKP", 2), ("DEF", 5), ("MID", 5), ("FWD", 3)]
+    pid = 0
+    for position, count in specs:
+        for _ in range(count):
+            pid += 1
+            rows.append({"id": pid, "web_name": f"p{pid}", "team": f"T{pid % 6}",
+                         "position": position, "price": 5.0,
+                         "xpts_horizon": 10.0, "xpts_gw7": 4.0})
+    df = pd.DataFrame(rows)
+    banned = 8  # a MID (ids 8-12 are MID); top horizon, blanks this week
+    soft = 12   # a MID; lower horizon, best current-GW fixture
+    df.loc[df["id"] == banned, ["xpts_horizon", "xpts_gw7"]] = [30.0, 0.1]
+    df.loc[df["id"] == soft, ["xpts_horizon", "xpts_gw7"]] = [9.0, 7.5]
+
+    squad = OptimizedSquad(
+        squad=list(range(1, 16)), xi=list(range(1, 12)),
+        captain=banned, vice=1, bench=[12, 13, 14, 15],
+        cost=750, objective=0.0,
+    )
+    fixed = reselect_xi(squad, df, rules, gw=7)
+    assert banned not in fixed.xi and banned in fixed.bench  # blank benched
+    assert soft in fixed.xi                                  # soft fixture started
+    assert fixed.captain == soft                             # captain = top this-GW
+    assert set(fixed.squad) == set(range(1, 16))             # membership unchanged

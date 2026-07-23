@@ -55,16 +55,18 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   calibration term (scale raw xPts toward the realised league level) and/or better
   captain-ceiling + bonus modelling (the bonus proxy has had no new signal since
   GW1). Applies forward-only.
-- [OPEN — PRIORITY] Bench-order model ignores fixture softness: cost points THREE
-  times now — GW10 started Senesi (MCI away) over Saliba (BUR away), −3; GW13 started
-  Calafiori (0, subbed 45', depleted Arsenal at Chelsea) and BENCHED Konaté (8,
-  clean sheet at 3rd-bottom West Ham), −8; GW17 started Konaté (1, beaten at Spurs)
-  over the benched Saliba (6, CS at Everton), −5 — and all three played 90 so autosubs
-  couldn't rescue it (this is XI *selection*, not substitution). This is the biggest
-  recurring points leak, and GW17 turned a ~average week into −6 vs the field. Weight
-  FDR / team-model CS probability in XI ordering, or expose a manager bench-order
-  override; interim, apply a manual bench-order overlay (start the softer-fixture DEF)
-  each GW.
+- [DONE — shipped GW18] Bench-order fix: the XI/captain/bench split now runs on the
+  CURRENT gameweek's `xpts_gw{gw}` (fixture-aware — the opponent is baked in), not the
+  season `xpts_horizon` the squad/transfer MILP optimizes on (`reselect_xi` in
+  backtest/simulate.py, applied in run_gameweek; squad/transfers untouched, forward-only,
+  38 tests). Root cause: `optimize()` used one score (`xpts_horizon`) for BOTH which 15 to
+  own AND which 11 to start — so a high-horizon player who blanks THIS week (a suspension,
+  a benched premium on a hard away trip) started over a soft-fixture body. It had leaked
+  points three times (GW10 −3 Senesi>Saliba; GW13 −8 started 0-min Calafiori, benched
+  Konaté's CS; GW17 −5 started Konaté's blank over benched Saliba's CS — all played 90 so
+  autosubs couldn't rescue XI *selection*). First three weeks live (GW18-20): clean — banned
+  Szoboszlai benched (GW18), doubtful Konaté/Keane benched (GW20), no regressions. The
+  Manager's Read's bench-order authority now has a working lever instead of a manual overlay.
 - [PROCESS] Suspension verification: a ban needs the OFFENCE **and**
   confirmation it was upheld/served against the team sheet — not an aggregator
   headline. The GW9–10 Ballard "3-match ban" was misapplied (he played both

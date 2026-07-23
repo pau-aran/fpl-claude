@@ -1,0 +1,90 @@
+{
+ "7": {
+  "start_share": 0.0,
+  "reason": "Riccardo Calafiori (Arsenal DEF): OUT — foot injury, missed Arsenal's last two fixtures, ruled out v Bournemouth GW20 (FFScout GW20 team news, 2 Jan 2026). Dead since GW18; the reshape sale.",
+  "duration_gws": 2
+ },
+ "387": {
+  "start_share": 0.0,
+  "reason": "Dominik Szoboszlai (Liverpool MID): OUT — hamstring picked up in the GW19 window, ruled a longer-term concern (This Is Anfield / Sportskeeda, w/c 1 Jan). Multi-week, so sold — never hold a longer-term injury as dead weight when a FT can field a starter.",
+  "duration_gws": 3
+ },
+ "374": {
+  "start_share": 0.5,
+  "reason": "Ibrahima Konate (Liverpool DEF): DOUBTFUL — ongoing injury concern flagged in Liverpool's roundups, no confirmed GW20 return, AWAY at Fulham (Liverpool.com, 2 Jan). Per the default-available-on-ambiguity rule, HELD not sold (a doubt, not confirmed out); shaded to 0.5 so the fixture-aware XI can bench him — autosub covers a scratch.",
+  "duration_gws": 1
+ },
+ "295": {
+  "start_share": 0.5,
+  "reason": "Michael Keane (Everton DEF): DOUBTFUL — Patterson tipped to keep the place 'if Keane is ruled out', HOME to Brentford (ToffeeWeb, 2 Jan). Held on the default-available rule; shaded to 0.5 for the doubt, bench-eligible via the XI fix.",
+  "duration_gws": 1
+ },
+ "291": {
+  "start_share": 0.85,
+  "reason": "James Tarkowski (Everton DEF): FIT and RED-HOT (20 pts in 3, ~110k transfers in), HOME to Brentford then a soft Everton run (WOL H, LEE H); non-AFCON. The Calafiori replacement — highest-horizon value DEF on the board (21.57 at £5.6), model + value + form aligned (Yahoo/NeverManageAlone, 2 Jan).",
+  "duration_gws": 1
+ },
+ "82": {
+  "start_share": 0.85,
+  "reason": "Antoine Semenyo (Bournemouth MID): FIT, AFCON-IMMUNE (Ghana did not qualify — he never left), a proven top-6 FPL asset and Bournemouth's talisman, HOME to Arsenal GW20 (tough) but a strong horizon (21.11). The Szoboszlai replacement. NOTE the Read's flag — Bournemouth's trajectory is DOWN (winless, Senesi agitating to leave) and we already own Senesi there — but the ~5-pt horizon EV gap over the trajectory-cleaner Kudus/Gordon is too large for the Read to override (the model governs large gaps). Taken on EV; the team-trajectory risk is a monitor, graded.",
+  "duration_gws": 1
+ },
+ "430": {
+  "start_share": 0.9,
+  "reason": "Erling Haaland (Man City FWD): FIT, HOME to Chelsea (WORST side for conceding big chances over the last 4, ~21 conceded); ~40% captain poll, model top (Premier League / AllAboutFPL, 2 Jan). Captain — a genuinely elite fixture, no doubt this week.",
+  "duration_gws": 1
+ },
+ "414": {
+  "start_share": 0.85,
+  "reason": "Phil Foden (Man City MID): FIT, HOME to Chelsea; City rotating fringes (Savinho watch) but Foden nailed (FFScout GW20, 2 Jan). Held — vice.",
+  "duration_gws": 1
+ },
+ "450": {
+  "start_share": 0.8,
+  "reason": "Matheus Cunha (Man Utd MID): nailed, on Man Utd's pens, AWAY at Leeds (LEE(A), soft — promoted side); Bruno still out so Cunha keeps the creative load (Sports Mole, 2 Jan). Held — refuse the model's Cunha->Tarkowski churn (route Tarkowski through Calafiori instead).",
+  "duration_gws": 1
+ },
+ "237": {
+  "start_share": 0.85,
+  "reason": "Enzo Fernandez (Chelsea MID): AVAILABLE (the two-match suspension in the archive is a March event, out of window), AWAY at Man City (MCI(A), tough) (Fox dated to April, excluded; chelseafc.com). Held.",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.85,
+  "reason": "William Saliba (Arsenal DEF): FIT (the 'missed Leeds' item is the 31 Jan fixture, out of window), AWAY at Bournemouth (BOU(A)); with Calafiori out he's the nailed senior CB (arsenal.com, 2 Jan). Held/locked.",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.8,
+  "reason": "Marcos Senesi (Bournemouth DEF): FIT, named in the XI HOME to Arsenal (ARS(H), tough); transfer noise (exploring a Jan exit) but a starter (SI/AOL, 2-3 Jan). Held.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.8,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): FIT and in form, AWAY at Newcastle (NEW(A)) (WhoScored, 3 Jan). Held.",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.85,
+  "reason": "Igor Thiago (Brentford FWD): FIT and HOT (PL POTM-nominated for January), AWAY at Everton (EVE(A)) (brentfordfc.com, 2 Jan). Held — nailed No.9.",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.85,
+  "reason": "Nordin Roefs (Sunderland GK): FIT, first-choice, AWAY at Spurs (TOT(A)) (Sports Mole, 3 Jan). Held — value keeper.",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.55,
+  "reason": "Martin Dubravka (Burnley GK): selection risk persists, AWAY at Brighton (BHA(A)) (FFScout, 2 Jan). Bench keeper.",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.4,
+  "reason": "David Brooks (Bournemouth MID): rotation-prone fringe, home to Arsenal (SI, 3 Jan). Bench filler.",
+  "duration_gws": 1
+ },
+ "449": {"start_share": 0.0, "reason": "Bruno Fernandes (Man Utd): still OUT (hamstring, return ~17 Jan). Suppressed vs a re-buy.", "duration_gws": 2},
+ "119": {"start_share": 0.0, "reason": "Bryan Mbeumo (Man Utd): at AFCON (Cameroon advanced to R16), not back for GW20. Suppressed vs a re-buy.", "duration_gws": 2},
+ "381": {"start_share": 0.0, "reason": "Mohamed Salah (Liverpool): at AFCON (Egypt advanced, return ~GW23). Suppressed vs a re-buy.", "duration_gws": 3}
+}

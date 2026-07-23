@@ -26,7 +26,7 @@ import pandas as pd
 
 from ..models import projections as proj
 from ..models.team import TeamModel
-from ..optimize.milp import CurrentSquad, OptimizedSquad, optimize
+from ..optimize.milp import POSITIONS, CurrentSquad, OptimizedSquad, optimize
 from ..rules.engine import Ruleset
 from .data import SeasonStore
 
@@ -168,6 +168,75 @@ def decide_transfers(
         else:
             audit["hit_gate"] = f"kept: net {audit['hit_marginal']} >= {threshold}/hit"
     return result, audit
+
+
+def reselect_xi(
+    squad: OptimizedSquad, projections: pd.DataFrame, rules: Ruleset, gw: int
+) -> OptimizedSquad:
+    """Re-pick the fielded XI, captain, vice and bench order from the owned 15 using
+    THIS gameweek's expected points (``xpts_gw{gw}``), not the season-horizon column
+    the squad/transfer MILP optimizes on.
+
+    Owning for the run (horizon) and starting for the week (this GW) are different
+    questions: the horizon-ordered lineup started high-horizon players who blank THIS
+    week — a banned man, a benched premium on a hard away trip — over a softer-fixture
+    body, the recurring bench-order leak (knowledge.md [OPEN]; GW10 -3, GW13 -8,
+    GW17 -5). ``xpts_gw{gw}`` already bakes in the opponent, so choosing the XI on it
+    IS fixture-aware ordering. Squad membership and transfers are left untouched — this
+    only re-splits the chosen 15 into XI + bench, forward-only per the backtest rule.
+    """
+    col = f"xpts_gw{gw}"
+    by_id = projections.drop_duplicates("id").set_index("id")
+    if col not in by_id.columns:
+        return squad
+    score = {i: float(by_id.loc[i, col]) for i in squad.squad if i in by_id.index}
+    pos = {i: str(by_id.loc[i, "position"]) for i in squad.squad if i in by_id.index}
+    if len(score) != len(squad.squad):  # a squad player missing from the table
+        return squad
+
+    lineup = rules.raw["lineup"]
+    min_def = int(lineup["min_defenders"])
+    min_mid = int(lineup["min_midfielders"])
+    min_fwd = int(lineup["min_forwards"])
+    by_pos = {
+        p: sorted((i for i in squad.squad if pos[i] == p), key=lambda i: -score[i])
+        for p in ("GKP", "DEF", "MID", "FWD")
+    }
+    if not by_pos["GKP"]:
+        return squad
+    gk = by_pos["GKP"][0]  # exactly one keeper, the higher-projected one
+
+    best: tuple[float, list[int]] | None = None
+    for ndef in range(min_def, min(5, len(by_pos["DEF"])) + 1):
+        for nmid in range(min_mid, min(5, len(by_pos["MID"])) + 1):
+            nfwd = 10 - ndef - nmid
+            if not (min_fwd <= nfwd <= min(3, len(by_pos["FWD"]))):
+                continue
+            outfield = by_pos["DEF"][:ndef] + by_pos["MID"][:nmid] + by_pos["FWD"][:nfwd]
+            total = sum(score[i] for i in outfield)
+            if best is None or total > best[0]:
+                best = (total, outfield)
+    if best is None:
+        return squad
+
+    xi_ids = [gk, *best[1]]
+    xi_sorted = sorted(xi_ids, key=lambda i: (POSITIONS.index(pos[i]), -score[i]))
+    ranked = sorted(xi_ids, key=lambda i: -score[i])
+    captain, vice = ranked[0], ranked[1]
+    bench_out = sorted(
+        (i for i in squad.squad if i not in xi_ids and pos[i] != "GKP"),
+        key=lambda i: -score[i],
+    )
+    bench_gk = [i for i in squad.squad if i not in xi_ids and pos[i] == "GKP"]
+    return OptimizedSquad(
+        **{
+            **squad.__dict__,
+            "xi": xi_sorted,
+            "captain": captain,
+            "vice": vice,
+            "bench": bench_out + bench_gk,
+        }
+    )
 
 
 def apply_captaincy(squad: OptimizedSquad, decision: ManagerDecision) -> OptimizedSquad:
@@ -322,6 +391,9 @@ def run_gameweek(
     else:
         squad, _ = decide_transfers(projections, rules, state, decision=decision)
         state = apply_transfers(state, squad, projections, rules)
+    # Field the XI on THIS week's xpts (fixture-aware), fixing the horizon-ordered
+    # bench-order leak; the transfer/squad decision above is left untouched.
+    squad = reselect_xi(squad, projections, rules, gw)
     if decision is not None:
         squad = apply_captaincy(squad, decision)
 
