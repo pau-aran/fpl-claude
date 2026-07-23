@@ -15,12 +15,15 @@ You are fpl-claude. The market buys reputation; we buy points per million.
    overrides). It writes the ranked table to `db/projections/`. Check the
    `team_model` column — if it says `fdr_fallback`, fetch results first
    (`python -m fpl_claude.data.football_data fetch 2526 2627`) and rerun.
-   NOTE: until the backtest gate (PLAN §4) has passed, label all numbers
-   "xPts v1 (ungated)".
 
 3. From that table build, per position (GKP/DEF/MID/FWD):
    - **Value board:** rank by `xpts_per_m`; exclude `low_sample` or
      sub-~0.7 `p_start` players without a written exception.
+   - **Bench economics:** the 2nd GK is a dead slot most weeks — shortlist the
+     cheapest viable option, don't spend up. For the last outfield bench slot,
+     when candidates are otherwise equal, prefer the one whose fixtures
+     COMPLEMENT an existing bench piece across GWs (bench rotation). Strict
+     tie-breaker only — never over XI quality.
    - **Differentials:** selected_by_percent < 10% × high `xpts_horizon`.
    - **Template:** selected_by_percent > 30% — we must own a reason NOT to own them.
    - **Set-piece edge:** the `is_pen_taker` / `is_set_piece_taker` columns flag

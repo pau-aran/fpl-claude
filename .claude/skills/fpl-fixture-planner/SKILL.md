@@ -17,12 +17,26 @@ half: reading the runs, planning paths, and writing the reasoning down.
 2. Classify every club's run, from the perspective of players we own or shortlist:
    - **Turning good** (≥3 of next 5 at FDR ≤ 2, or leaving a hard patch):
      buy-ahead candidates — get in ONE GW BEFORE the run starts, before the
-     price and ownership move.
+     price and ownership move — UNLESS that entry GW is the target's single
+     worst fixture of the run. Then defer one week: you capture the same run at
+     a softer entry and bank an FT (GW9 deferred Mateta off ARS(A): 2=2 zero
+     cost, banked the FT for the green GW10 +7). Never pay a hit or eat a bad
+     entry week for an edge that lives later in the run.
    - **Turning bad** (≥3 of next 5 at FDR ≥ 4, or a derby/top-six gauntlet):
      sell-ahead candidates — plan the exit while value is high; never hold a
      fading run out of inertia.
    - **Split runs** (good now, bad soon): fine for XI now, note the exit GW
      in the plan so the sale is scheduled, not improvised.
+   - **International-tournament cliffs** (AFCON from GW17 2025/26; World Cup
+     returnees early-season): before buying any mid/fwd, check whether he's in
+     an in-season tournament squad and price the gap — a great run that ends at
+     a cliff is worth less than its FDR shows. Hold an owned tournament-bound
+     asset through his good pre-cliff fixtures, then rotate into a
+     non-tournament replacement at the last good GW (GW16 Mbeumo), never sell
+     early. Never buy a mid/fwd about to vanish without pricing the gap.
+   - **No churn:** never re-buy a player you sold within the last few GWs
+     without genuinely NEW information — it admits the sale was wrong and pays
+     the buy/sell spread twice (GW3 Wood buy-back veto).
 
 3. Plan transfer PATHS, not moves: with 1 FT/GW and banking to 5, write the
    2-3 week sequence ("bank this week → double-move into X+Y before their

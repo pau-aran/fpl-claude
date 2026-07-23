@@ -23,10 +23,14 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   OPT-IN per entry (knock → 1-2, "weeks" → 3-4, ban → matches left,
   structural/long-term → omit; scoping only matters for suppressions,
   near-1.0 confirmations may omit).
-- [OPEN] Minutes model turns 1 start into p_start=1.0 for no-prior players
-  (`_start_share`). Ballard: fielded 0-min GW2–4 (10.47 predicted pts for
-  8 real minutes) — but self-correcting (4.10→2.42 as team_games grows)
-  and hasn't driven a transfer since GW2. Demoted behind overlay-horizon.
+- [DONE] Minutes model no longer turns 1 start into p_start=1.0 for no-prior
+  players. The `_start_share` no-prior tiny-sample branch used to return raw
+  `starts/team_games` (Ballard: 10.47 predicted pts for 8 real minutes, GW2–4).
+  Now it shrinks toward `NEUTRAL_START_SHARE` by `team_games/3`, mirroring the
+  prior-blend branch — heaviest with least evidence, gone by `team_games ≥ 3`.
+  Low steady-state impact (self-corrected by ~GW4-5), but it de-risks GW1–3 of
+  the first post-WC-2026 season, exactly the small-sample/no-prior window where
+  it bit before overlays are written.
 - [DONE] Newcomer confidence haircut (`shrink_newcomers`, rates.py, from
   GW8): a priorless newcomer has nothing for `blend` to regress toward, so
   his small-sample rates rode at full trust and a 2-game hot streak outranked
@@ -54,14 +58,26 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   distorts EV reporting and the hit-gate margin. LIVE FIX: an environment-level
   calibration term (scale raw xPts toward the realised league level) and/or better
   captain-ceiling + bonus modelling (the bonus proxy has had no new signal since
-  GW1). Applies forward-only.
-- [OPEN — PRIORITY] Bench-order model ignores fixture softness: cost points TWICE
-  now — GW10 started Senesi (MCI away) over Saliba (BUR away), −3; GW13 started
-  Calafiori (0, subbed 45', depleted Arsenal at Chelsea) and BENCHED Konaté (8,
-  clean sheet at 3rd-bottom West Ham), −8. This is now the biggest recurring
-  points leak. Weight FDR / team-model CS probability in XI ordering, or expose a
-  manager
-  bench-order override.
+  GW1). Applies forward-only. DECISION: NO model change — it never flipped a pick
+  (captaincy 16/16) and cancels in the hit-gate (both sides of a marginal delta
+  share the same captain), so it is EV-reporting hygiene, not a decision defect.
+  Handled as a process note: `/fpl-review` now logs the captain slot separately so
+  reported EV can be read against the known captain-slot variance. Revisit a real
+  calibration term only if a captain-changing transfer ever turns on it.
+- [DONE — split fix] Bench-order leak (was [OPEN — PRIORITY], the biggest
+  recurring leak — GW10 −3, GW13 −8). Root cause was TWO problems under one label:
+  (1) the optimizer picked the XI/captain/bench on `xpts_horizon` (a decayed
+  MULTI-week total) while the week is scored on the single next GW — GW10 benched
+  Saliba (3.40) behind Senesi (3.38) on the horizon though the immediate GW ranked
+  Saliba higher. FIXED: `optimize()` now derives XI/captain/vice/bench on the
+  nearest `xpts_gw{n}` column (auto-detected; `_pick_lineup` in milp.py), squad-15
+  and transfers still on the horizon. (2) GW13's −8 was a projection the model
+  can't fix — it rated Calafiori (3.71) over Konaté (3.32) on the immediate GW too,
+  blind to Arsenal's depleted back line; no lineup re-rank catches that. FIXED via
+  the manager overlay: `ManagerDecision.start`/`bench` (decision JSON `start`/`bench`)
+  force an owned player into/out of the XI with written reasoning — the bench-order
+  override the reviews asked for. Deliberately NOT done: a team-model CS-probability
+  overhaul to cure defender fixture-compression — over-engineering; left [WATCH].
 - [PROCESS] Suspension verification: a ban needs the OFFENCE **and**
   confirmation it was upheld/served against the team sheet — not an aggregator
   headline. The GW9–10 Ballard "3-match ban" was misapplied (he played both
@@ -172,6 +188,19 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   sources only. First live week (GW6) was too convergent to test it
   (model and 67% poll agreed on Haaland); its first real test is the one
   divergence taken — Palmer hold vs mass sells — resolving GW8.
+- [PROVEN] Two consensus-divergence archetypes are SANCTIONED edges (backtest
+  ~4–5 wins / 0 losses / 1 push) — a live session should recognise them, not
+  re-derive them each week: (a) **BUY the crowd's sell** when the model horizon
+  AND the underlying (npxG+xAG/90, minutes security) rate a cold-sentiment asset —
+  GW8 B.Fernandes (~240k sold, 8>7 and cheaper), GW12 Enzo (a top-sold mid, 11 on
+  a soft duel), GW13 Thiago (heavily-sold context, 13 on debut) all cashed. (b)
+  **HOLD through one bad fixture** when the run turns green the very next GW and
+  no new info exists — GW11 held the Konaté/Szoboszlai Liverpool bloc into MCI(A)
+  against the heaviest sell in the game; run turned green GW12 exactly as the
+  strategists predicted. Both require model-horizon support (never a reputation
+  narrative alone) and a written EO-risk acknowledgment, and NEVER override the EV
+  gate, the plan, or minutes risk. Divergences OUTSIDE these two shapes still need
+  a fresh written case; these two are pre-cleared.
 
 ## Season context (2025/26 replay, verified)
 

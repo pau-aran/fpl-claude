@@ -30,6 +30,18 @@ e.g. "FPLStatus <player>"), never a paid API.
   RUMOUR (aggregator, community). Never present RUMOUR as fact.
 - FPL impact: one clause — "hold", "sell before Friday price drop", "captaincy doubt", etc.
 
+**Mandatory minutes red-alerts** (minutes are the stated #1 inefficiency):
+- **Two consecutive 0-minute appearances** by an owned/shortlisted nominal
+  starter, with no injury flag, is escalated to a DOUBT with a forced
+  presser / beat-reporter check. Autosubs mask it, but a non-playing starter is
+  a squad hole (GW15-16 Muñoz, £6.0 nominal starter, 0 min both weeks).
+- **A `SUSPENDED` status needs TWO facts, not a headline:** the offence AND
+  confirmation the ban is upheld/served against the club's expected team sheet
+  or an official source — not an aggregator "X banned" line. **On ambiguity,
+  default the player to AVAILABLE** — an erroneous 0.0 that benches a real
+  starter is costlier than the missed suspension (GW9-10 Ballard was flagged
+  banned but played both weeks).
+
 Below the table: **Market notes** (predicted price changes affecting our squad or
 shortlists) and **Strategy-page consensus** (what the crowd is converging on — we
 need to know the template to know where our edge deviates from it).
@@ -45,7 +57,13 @@ changes** — a new taker (transfer, incumbent injured/dropped, new manager) is 
 news event, not a stat, and his `xg90` lags his new role by weeks:
 
 - `start_share` (0–1) + `reason`: minutes/availability, as usual.
-- `duration_gws`: how many horizon GWs the news covers (omit = whole horizon).
+- `duration_gws`: how many horizon GWs the news SUPPRESSION covers. Short
+  durations are OPT-IN — knock → 1-2, "out weeks" → 3-4, ban → matches
+  remaining, structural/season-ending/departure → **OMIT** (whole horizon, so
+  an ACL or transfer never "recovers"). Omit for near-1.0 confirmations too;
+  scoping only matters for suppressions. **When unsure, omit** — an erroneous
+  short scope re-poisons the horizon and manufactures a phantom sale (the
+  GW2-4 defect that was the season's binding constraint).
 - `pen_boost` (0–1): set when a player has just BECOME the designated penalty
   taker and the snapshot's `penalties_order` hasn't caught up. It forces the
   xPts penalty term on for that player (1.0 = full spot-kick credit). Leave unset

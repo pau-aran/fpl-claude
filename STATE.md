@@ -70,6 +70,26 @@ GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 
 ## Recent session log
 
+- **2026-07-23 (pattern-analysis / optimization session):** branch
+  `claude/branch-analysis-optimization-n8q1f5`. Analysed the GW1–16 backtest for
+  recurring patterns (parallel review-mining agents) and shipped the highest-
+  leverage fixes, strategy-first. CODE (3, minimal): (1) the optimizer now derives
+  XI/captain/vice/bench on the single next-GW `xpts_gw{n}` column, not the decayed
+  horizon it buys the 15 on (`_pick_lineup`) — closes the GW10 bench leak; (2) a
+  manager `start`/`bench` XI override (`ManagerDecision`) for the GW13 class the
+  model can't see; (3) `_start_share` no-prior shrinkage (GW1–3 safety). 40 tests,
+  ruff clean. STRATEGY (the bulk): codified the proven edges that lived only in
+  knowledge.md into the skills — captaincy no-recency-switch, XI/bench fixture
+  softness + override, a mandatory chip verdict every deadline (biggest untapped
+  lever), premium-hold-through-short-knocks, funding-route arithmetic + post-solve
+  re-read, suspension verification + AVAILABLE default, two-0-minute minutes
+  red-alert, `duration_gws` scoping map, tournament (AFCON) cliffs, no-churn,
+  bench economics, enter-a-run-early-but-not-into-the-worst-fixture. Named the two
+  consensus-divergence archetypes [PROVEN] in knowledge.md. Dropped the stale
+  "xPts v1 (ungated)" label (gate has passed). Deliberately NOT done (over-
+  engineering per owner steer): team-model CS-probability overhaul, a calibration
+  term, the phantom-swap filter.
+
 - **2026-07-22 (GW7 session):** new branch
   `claude/fpl-data-sources-architecture-5tvqet`. Folded owner data-source
   feedback into the sources reference/`sources.yaml` (official API +
