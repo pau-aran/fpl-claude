@@ -38,19 +38,29 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   (full sample) and Isak (has a prior → blend handled him, NOT double-shrunk)
   untouched — exactly the set that should/shouldn't move. Directly de-risks
   the Woltemade-type bandwagon the market pushed at GW8.
-- [OPEN] Level calibration — CONFIRMED bias by backtest end (10-GW mean error
-  +8.3; back half GW7–10 +13/+28/+4/+21, mean +16.6). The model under-predicts
-  TOTALS ~15–25% in strong weeks: predictions sit flat ~51–59 while a strong
-  squad's actuals climb into the 70s–80s. It is NOT a ranking bias — every
-  relative call was validated (Fernandes>Saka, the Mateta/Konaté upgrades,
-  captaincy 10/10) — so it never hurt a DECISION, but it distorts EV reporting
-  and the hit-gate margin. LIVE FIX: an environment-level calibration term
-  (scale raw xPts toward the realised league level) and/or better
-  captain-ceiling + bonus modelling (the bonus proxy has had no new signal
-  since GW1). Applies post-backtest (forward-only rule).
-- [OPEN] Bench-order model ignores fixture softness: GW10 started Senesi
-  (MCI away) over Saliba (BUR away) on flat near-equal projections, −3. Weight
-  FDR / team-model CS probability in XI ordering, or expose a manager
+- [OPEN] Level calibration — VARIANCE-BOUNDED not monotonic (13-GW mean error
+  +1.5), and the residual concentrates in the DOUBLED CAPTAIN SLOT. The model
+  under-predicts TOTALS ~15–25% in strong weeks (GW7–10 +13/+28/+4/+21) but
+  over-predicts on dead slates: GW11 −19, GW12 −13, GW13 −15 (THREE straight), all
+  driven by the captain (Haaland) blanking — a pen miss then two no-returns. The
+  model doubles the captain's ~7-9 projection, so consecutive captain blanks
+  mechanically gut the predicted total while the rest of the squad tracks close to
+  prediction. So it is a captain-ceiling / bonus-signal defect that amplifies in
+  BOTH tails, not a fixed +offset — concentrated in the captain slot specifically.
+  (GW14 flipped straight back to +16 under-prediction the moment the captain
+  returned 28 — the base XI is well-calibrated, the doubled captain is the variance.)
+  It is NOT a ranking bias — every relative call was validated (Fernandes>Saka,
+  Mateta/Konaté/Enzo/Thiago, captaincy 14/14) — so it never hurt a DECISION, but it
+  distorts EV reporting and the hit-gate margin. LIVE FIX: an environment-level
+  calibration term (scale raw xPts toward the realised league level) and/or better
+  captain-ceiling + bonus modelling (the bonus proxy has had no new signal since
+  GW1). Applies forward-only.
+- [OPEN — PRIORITY] Bench-order model ignores fixture softness: cost points TWICE
+  now — GW10 started Senesi (MCI away) over Saliba (BUR away), −3; GW13 started
+  Calafiori (0, subbed 45', depleted Arsenal at Chelsea) and BENCHED Konaté (8,
+  clean sheet at 3rd-bottom West Ham), −8. This is now the biggest recurring
+  points leak. Weight FDR / team-model CS probability in XI ordering, or expose a
+  manager
   bench-order override.
 - [PROCESS] Suspension verification: a ban needs the OFFENCE **and**
   confirmation it was upheld/served against the team sheet — not an aggregator
@@ -114,17 +124,31 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   bench-order calls. It NEVER overrides the EV gate, the plan, or minutes
   risk — it's the creative overlay on top, and the duel named must be
   written in the memo so the review can grade it.
-  [WATCH] Reads are 4-for-4 matchup-correct through GW9 (GW9: Mbeumo v
-  Brighton-1-CS-in-8 named as favourable → 15). BUT every call has only
-  agreed with signals we already had (FDR, ownership, a hold we already
-  owned) — it has NOT yet surfaced a player the model UNDERRATED, which is
-  its purpose. Strong as a hold-conviction / captaincy-context tool; unproven
-  as a buy-side EDGE. Real test = the first DIVERGENCE (lens says buy where
-  the model is cold). Cost nothing; keep grading live.
-- Captaincy = highest projection unless news says otherwise: 10/10 rule
-  adherence over the backtest (Salah ×5, Haaland ×5). One blank (GW9 Haaland
-  away) — still the correct ~90%-EO shield. The rule is judged on adherence,
-  not one variance week.
+  [PROVEN] Reads 7-for-7 weeks matchup-correct through GW13, and TWO independent
+  buy-side divergences have now cashed: GW12 Enzo at Burnley (11, a crowd-sold mid
+  on a soft duel) and GW13 Thiago v Burnley (13 on debut, an in-form No.9 vs the
+  league's most porous side). Two hits was the pre-set threshold — the duel lens
+  is now a validated buy-side EDGE, not merely a hold/captain-context tool. It
+  still never overrides the EV gate, the plan, or minutes risk; the named duel is
+  written in each memo for grading. Keep grading live; watch for the first MISS to
+  size its false-positive rate.
+- Captaincy = highest projection unless news says otherwise: 16/16 rule
+  adherence (Salah ×5, Haaland ×11). Haaland RETURNED 26 at Palace (GW16) — the
+  4-in-5 blank streak was pure variance, and holding the shield through it (no
+  recency switch) caught both GW14's 28 and GW16's 26. Haaland has blanked FOUR of the last FIVE as
+  captain (GW11-13, GW15; only GW14's 28 broke it) — extraordinary variance, but he
+  was the top projection + ~90% EO shield EVERY week, so a recency switch would have
+  (a) missed the GW14 haul and (b) chased a moving target. The rule is judged on
+  adherence; the streak is the calibration [OPEN]'s captain-slot variance, not a
+  process flaw. Discipline (no recency switch) explicitly tested and held.
+- Hold premiums through SHORT-TERM absences; refuse lateral swaps to patch one week.
+  GW14: with Saliba ill (out ~1wk), Senesi + Brooks banned (1 game), Thiago benched
+  (tactical), the solver offered a free cost-neutral Saliba→Virgil. Refused — a
+  lateral premium-CB swap on a one-week illness burns an established hold + the
+  banked FT to fix a single thin XI. Accepted a legal-but-thin 3-4-3 (benched Thiago
+  the forced 10th) instead; it cost ~0 (Thiago still played 30'). Bank the FT, let
+  the absentees return. (Distinct from a forced injury replacement like Semenyo→Enzo,
+  where the loss was multi-week + AFCON.)
 - Transfer SEQUENCING: enter a fixture run one GW early, but NOT into the
   target's worst fixture. GW9 deferred Ekitiké→Mateta because Mateta's GW9
   was ARS(A) (his worst) — outcome Mateta 2 = Ekitiké 2 (zero cost), banked a
@@ -151,7 +175,14 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 
 ## Season context (2025/26 replay, verified)
 
-- Official GW averages 1–10: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65 (cum 531).
+- Official GW averages 1–16: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35, 58, 49, 60
+  (cum 810). GW11-13 low (38/39/35); GW14-16 (58/49/60) recovered.
+- **AFCON: PL players unavailable from GW17** (starts 21 Dec 2025; min 3 GWs, some
+  6). Owned asset = Mbeumo (Cameroon); available GW15-16, gone GW17+. HOLD him
+  through his good GW15-16 fixtures, move at GW16 into a NON-AFCON mid (don't sell
+  early — GW15 Mbeumo returned 8 at Wolves after we refused the premature sale).
+  Salah (Egypt) also out — not owned. Never buy a mid/fwd about to vanish without
+  pricing the gap.
 - Pep rotation is priced into nothing: don't double City defenders without a
   written rotation overlay (GW1 Gvardiol).
 - Availability news beats every model input: the overlay layer (researched,

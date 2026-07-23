@@ -1,0 +1,82 @@
+{
+ "1": {
+  "start_share": 0.9,
+  "reason": "David Raya (Arsenal GK): undisputed No.1, in the confirmed XI at Sunderland; Arsenal arrived on an 8-game clean-sheet run so CS odds are strong even away (arseblog / 101greatgoals confirmed XI, 8 Nov 2025). Carried — our-squad nailed keeper.",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.9,
+  "reason": "William Saliba (Arsenal DEF): fully fit and STARTING at Sunderland in the confirmed back line (Raya; Timber, Saliba, Gabriel, Calafiori) — the GW9 45' exit was rotation, fully resolved (arseblog / 101greatgoals confirmed XI, 8 Nov 2025). UPDATED up from 0.88. LOCKED in the decision to refuse the 7th sideways Saliba->Timber churn — a hold, not an injury call.",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.85,
+  "reason": "Riccardo Calafiori (Arsenal DEF): first-choice LB, PREFERRED to Hincapie for the Sunderland trip and in the confirmed back four (arseblog 'Calafiori preferred to Hincapie' / 101greatgoals, 8 Nov 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.85,
+  "reason": "Marcos Senesi (Bournemouth DEF): fit and in Iraola's confirmed back line at Aston Villa (Petrovic; Smith, Milosavljevic, Senesi, Truffert) — Iraola had a fully available squad (Sports Mole / OneFootball preview, 9 Nov 2025). Carried — our-squad starter, but the run soured this week (AVL away); revisit at GW12.",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.82,
+  "reason": "Ibrahima Konate (Liverpool DEF): nailed first-choice CB, in the Liverpool back line away at Man City — but the fixture is the worst of his run (MCI away, City in form) and Liverpool are mid-defensive-crisis (5 losses in 6), so CS odds are low this week (liverpoolfc.com / preview, 8 Nov 2025). Carried at 0.82 — held through the one bad fixture; his run turns from GW12.",
+  "duration_gws": 1
+ },
+ "256": {
+  "start_share": 0.85,
+  "reason": "Daniel Munoz (Crystal Palace DEF): nailed wing-back, STARTED in Palace's confirmed XI v Brighton at home, no flag (cpfc.co.uk / Sports Mole confirmed XI, 9 Nov 2025). Carried — our-squad starter; home game vs a blunt Brighton, decent CS odds.",
+  "duration_gws": 1
+ },
+ "8": {
+  "start_share": 0.85,
+  "reason": "Jurrien Timber (Arsenal DEF): fit and STARTING at RB in Arsenal's confirmed XI at Sunderland (arseblog / 101greatgoals, 8 Nov 2025). Listed only because the optimizer proposes a Saliba->Timber swap — Timber is nailed but this is a clone swap of one Arsenal DEF for another on the SAME fixture; NOT bought (see decision). NOT in our squad.",
+  "duration_gws": 1
+ },
+ "449": {
+  "start_share": 0.85,
+  "reason": "Bruno Fernandes (Man Utd MID): nailed captain/No.10, in Man Utd's UNCHANGED confirmed XI at Tottenham (Carrick kept the same team on a winning run), no flag (manutd.com / ESPN confirmed XI, 8 Nov 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "82": {
+  "start_share": 0.85,
+  "reason": "Antoine Semenyo (Bournemouth MID): passed a MINOR KNOCK picked up at the Etihad (GW10) and declared 'good to go' pre-Villa; started in the confirmed XI, nailed and in form (Sports Mole / OneFootball 'Semenyo good to go', 9 Nov 2025). Carried — our-squad starter. NOTE: Ghana at AFCON from ~GW17 (future planning input).",
+  "duration_gws": 1
+ },
+ "119": {
+  "start_share": 0.85,
+  "reason": "Bryan Mbeumo (Man Utd MID): nailed starter in red-hot form, in Man Utd's unchanged confirmed XI at Tottenham, no flag (manutd.com / ESPN confirmed XI, 8 Nov 2025). Carried — our-squad starter. NOTE: Cameroon at AFCON from ~GW17 (future planning input).",
+  "duration_gws": 1
+ },
+ "387": {
+  "start_share": 0.85,
+  "reason": "Dominik Szoboszlai (Liverpool MID): nailed, versatile starter in the Liverpool XI away at Man City, no injury flag (liverpoolfc.com / preview, 8 Nov 2025). Carried — our-squad starter, but the worst fixture of the run (MCI away, Liverpool out of form).",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.1,
+  "reason": "David Brooks (Bournemouth MID): edging back from the ankle problem but still bench-at-most, not in the confirmed XI at Villa (Sports Mole / afcb.co.uk, 9 Nov 2025). Carried at 0.1 — our-squad bench dead-slot, no autosub-relevant role.",
+  "duration_gws": 1
+ },
+ "430": {
+  "start_share": 0.9,
+  "reason": "Erling Haaland (Man City FWD): fully fit, no flag, leading the line at home to Liverpool (Pep's 1000th game); 13 goals in 10, facing a Liverpool defence leaking big chances all season (mancity.com / preview, 8 Nov 2025). UPDATED — nailed. Our-squad CAPTAIN: soft-in-disguise home fixture, ~90%+ EO shield.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.85,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): fit and STARTED as Palace's nailed No.9 in the confirmed XI at home to Brighton, one GW into his green run as planned (cpfc.co.uk / Sports Mole confirmed XI, 9 Nov 2025). Carried — our-squad starter (the GW10 buy).",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.9,
+  "reason": "Martin Dubravka (Burnley GK): No.1, in the confirmed XI at West Ham, no rotation flag (Sports Mole / Burnley Express confirmed XI, 8 Nov 2025). Carried — our-squad bench keeper.",
+  "duration_gws": 1
+ },
+ "599": {
+  "start_share": 0.05,
+  "reason": "Dane Scarlett (Spurs FWD): deep fringe striker, not in the Spurs matchday XI v Man Utd (Richarlison/Tel/Kolo Muani ahead) (tottenhamhotspur.com / lineups, 8 Nov 2025). Carried at 0.05 — our-squad depth, effectively non-playing; the standing dead-FWD-slot upgrade lever for GW12.",
+  "duration_gws": 1
+ }
+}

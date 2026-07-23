@@ -1,0 +1,77 @@
+{
+ "6": {
+  "start_share": 0.0,
+  "reason": "William Saliba (Arsenal DEF): OUT a 3rd straight week — the training knock persists, NOT in the confirmed XI at Villa (Raya; White, Timber, Hincapie, Calafiori) (arsenal.com / lastwordonsports confirmed XI, 6 Dec 2025). Benched in our XI anyway (Senesi back gives 4 fit DEF). HELD/LOCKED one more week — Arteta keeps hinting a return; but the fuse is burning: if not back by GW16 he is a dead slot to move. duration 1.",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.85,
+  "reason": "Igor Thiago (Brentford FWD): BACK in the confirmed starting XI at Tottenham after the GW14 tactical rest, 'in a good place' (brentfordfc.com confirmed XI, 6 Dec 2025). Carried — our-squad starter restored.",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.85,
+  "reason": "Marcos Senesi (Bournemouth DEF): BACK from suspension, in the confirmed Bournemouth XI v Chelsea (afcb / Sky Sports, 6 Dec 2025). Carried — our-squad DEF restored; run eases (CHE(H), MUN(A), BUR(H)1).",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.5,
+  "reason": "David Brooks (Bournemouth MID): back from suspension but rotation-prone, bench/fringe (afcb / Sports Mole, 6 Dec 2025). Carried at 0.5 — our-squad bench.",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.8,
+  "reason": "Riccardo Calafiori (Arsenal DEF): STARTED at LB at Villa in the confirmed XI, though flagged as a minor warm-up doubt pre-match (withdrew from a Brighton warm-up, 'not thought serious') (arsenal.com / lastwordonsports, 6 Dec 2025). Carried at 0.8 — our-squad starter, slight knock watch.",
+  "duration_gws": 1
+ },
+ "430": {
+  "start_share": 0.9,
+  "reason": "Erling Haaland (Man City FWD): fit, leading the line at HOME to Sunderland (the league's worst defence away); model top of board (7.08). Our-squad CAPTAIN — the ~90% EO shield, drought just broken (mancity.com / confirmed XI, 6 Dec 2025).",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.85,
+  "reason": "Ibrahima Konate (Liverpool DEF): nailed CB, away at Leeds, no flag (liverpoolfc.com preview, 6 Dec 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "387": {
+  "start_share": 0.85,
+  "reason": "Dominik Szoboszlai (Liverpool MID): nailed, away at Leeds, no flag (liverpoolfc.com preview, 6 Dec 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "256": {
+  "start_share": 0.85,
+  "reason": "Daniel Munoz (Crystal Palace DEF): nailed wing-back, away at Fulham, no flag (cpfc preview, 7 Dec 2025). Carried — our-squad starter in form.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.85,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): Palace No.9, away at Fulham, on penalties (cpfc preview, 7 Dec 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "449": {
+  "start_share": 0.85,
+  "reason": "Bruno Fernandes (Man Utd MID): nailed captain/No.10, away at bottom-side Wolves (soft fixture), no flag (manutd.com preview, 8 Dec 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "119": {
+  "start_share": 0.85,
+  "reason": "Bryan Mbeumo (Man Utd MID): nailed starter, away at bottom-side Wolves (soft), no flag (manutd.com preview, 8 Dec 2025). Carried — our-squad starter. AFCON: available GW15 AND GW16, unavailable from GW17 (Cameroon) — HELD through his two good fixtures, move at GW16.",
+  "duration_gws": 1
+ },
+ "237": {
+  "start_share": 0.85,
+  "reason": "Enzo Fernandez (Chelsea MID): nailed, away at Bournemouth, penalty/set-piece involved (chelseafc.com confirmed XI, 6 Dec 2025). Carried — held.",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.85,
+  "reason": "Nordin Roefs (Sunderland GK): No.1, away at Man City (the worst possible fixture — low CS odds this week) but nailed to start (Sports Mole preview, 6 Dec 2025). Carried — our-squad keeper, a bad-duel week absorbed.",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.9,
+  "reason": "Martin Dubravka (Burnley GK): No.1, away at Newcastle, no rotation flag (Sports Mole preview, 6 Dec 2025). Carried — our-squad bench keeper.",
+  "duration_gws": 1
+ }
+}

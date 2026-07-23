@@ -1,4 +1,4 @@
-# 2025/26 Backtest Baseline — Official FPL Averages, GW1-10
+# 2025/26 Backtest Baseline — Official FPL Averages, GW1-16
 
 Benchmark for the fpl-claude backtest: the official average manager score per gameweek
 (the "Average" shown on the FPL site), plus the official highest GW score, for
@@ -22,8 +22,16 @@ Values cross-verified against independent web sources where snippets were availa
 | 8  | 56 | 138 | not found | Deadline 2025-10-18. FPL API mirror. First GW after October international break. |
 | 9  | 46 | 124 | not found | Deadline 2025-10-24. FPL API mirror. |
 | 10 | 65 | 135 | not found | Deadline 2025-11-01. FPL API mirror. Highest average of GW1-10. |
+| 11 | 38 | not found | not found | Deadline 2025-11-08. Verified: AllAboutFPL "lowest of the season so far" + FPL API mirror. City 3-0 Liverpool; Villa 4-0 Bournemouth; two league-wide penalty misses on the slate. |
+| 12 | 39 | 134 | not found | Deadline 2025-11-22. Verified: [FPL Dave GW12 review](https://www.fpldave.com/gameweek/12) ("39pts Average") + FPL API mirror. First GW after the November int'l break — Gabriel/Semenyo among the break's injuries. |
+| 13 | 35 | 123 | not found | Deadline 2025-11-29. FPL API mirror (olbauday gameweek_summaries.csv, re-fetched). Low slate — two top-six H2Hs (CHE-ARS, CRY-MUN) cancelled template returns; Haaland blanked at home to Leeds. |
+| 14 | 58 | 138 | not found | Deadline 2025-12-02 (midweek). FPL API mirror. Bounce-back slate — Haaland's captaincy drought ended (28, away at Fulham). |
+| 15 | 49 | 133 | not found | Deadline 2025-12-06. FPL API mirror. Last full round before AFCON; Haaland blanked (subbed 68') at home to Sunderland — his 4th low captain week in five. |
+| 16 | 60 | 149 | not found | Deadline 2025-12-13. FPL API mirror. Last round before the AFCON exodus (players out from GW17); Haaland's captaincy returned (26). |
 
-**Average-manager 10-GW cumulative total (sum of official GW averages): 531 points.**
+**Average-manager 16-GW cumulative total (sum of official GW averages): 810 points.**
+
+*Look-ahead (fetched, not yet played in-sim): GW17 avg 66.*
 
 ## Verification notes
 
