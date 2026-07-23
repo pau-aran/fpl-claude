@@ -28,10 +28,11 @@ Values cross-verified against independent web sources where snippets were availa
 | 14 | 58 | 138 | not found | Deadline 2025-12-02 (midweek). FPL API mirror. Bounce-back slate — Haaland's captaincy drought ended (28, away at Fulham). |
 | 15 | 49 | 133 | not found | Deadline 2025-12-06. FPL API mirror. Last full round before AFCON; Haaland blanked (subbed 68') at home to Sunderland — his 4th low captain week in five. |
 | 16 | 60 | 149 | not found | Deadline 2025-12-13. FPL API mirror. Last round before the AFCON exodus (players out from GW17); Haaland's captaincy returned (26). |
+| 17 | 66 | 148 | not found | Deadline 2025-12-20. FPL API mirror. The AFCON reshape round (Mbeumo/Salah/Sunderland ×6 out); five free transfers granted. Haaland (WHU home) returned again. A hot slate — the season's joint-third-highest average. |
 
-**Average-manager 16-GW cumulative total (sum of official GW averages): 810 points.**
+**Average-manager 17-GW cumulative total (sum of official GW averages): 876 points.**
 
-*Look-ahead (fetched, not yet played in-sim): GW17 avg 66.*
+*Look-ahead (fetched, not yet played in-sim): GW18 avg 44.*
 
 ## Verification notes
 

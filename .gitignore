@@ -6,3 +6,6 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
+
+# fetched external season archives (regenerable via fpl_claude.backtest.fetch)
+db/vaastav/

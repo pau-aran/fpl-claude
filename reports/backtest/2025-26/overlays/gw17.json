@@ -1,0 +1,92 @@
+{
+ "119": {
+  "start_share": 0.0,
+  "reason": "Bryan Mbeumo (Man Utd MID): OUT — released to Cameroon for AFCON 2025 (tournament 21 Dec–18 Jan; group stage 21–31 Dec). Man Utd confirmed without Mbeumo, Amad and Mazraoui for the GW17 trip to Aston Villa (Sun 21 Dec); he is the most-sold player of the GW, 1M+ transfers out (unitedinfocus / athlonsports / skysports / premierleague.com FPL, 18-20 Dec 2025). The pre-committed AFCON sale (plan.md, flagged since GW12). Priority FT #1.",
+  "duration_gws": 4
+ },
+ "256": {
+  "start_share": 0.0,
+  "reason": "Daniel Munoz (Crystal Palace DEF): OUT — knee injury requiring SURGERY, Glasner confirmed 4–6 weeks (footballinsider / 3addedminutes / onefootball, w/c 15 Dec 2025). Explains the two 0-minute weeks (GW15+GW16) the sweeps under-weighted; injury window ~6 Dec → ~24 Jan. Misses GW17-21. The plan's 'if injured multi-week, SELL' branch triggers — priority FT #2 (resolves the GW16 [WATCH]).",
+  "duration_gws": 5
+ },
+ "381": {
+  "start_share": 0.0,
+  "reason": "Mohamed Salah (Liverpool MID): OUT — Egypt AFCON call-up, released from GW17 (skysports / olympics.com, Dec 2025). Not owned; overlaid to 0 so the solver never buys an AFCON-bound premium as the Mbeumo cover (plan 'Conflicts to refuse': no Africa call-ups).",
+  "duration_gws": 5
+ },
+ "82": {
+  "start_share": 0.0,
+  "reason": "Antoine Semenyo (Bournemouth MID): OUT — ankle-ligament injury since GW12 PLUS Ghana AFCON (sold to Enzo at GW12; watch-list item). Still unavailable; overlaid to 0 to keep the solver from re-buying the crowd name into an AFCON block.",
+  "duration_gws": 5
+ },
+ "384": {
+  "start_share": 0.0,
+  "reason": "Cody Gakpo (Liverpool MID): OUT — ruled out with a knock pre-GW17, ~12% of managers affected (fantasyfootballfix GW16/17, Dec 2025). NOT AFCON but injured — the season-end archive lists him available (status 'a'), so this overlay stops the optimizer's proposed Munoz->Gakpo, a buy into an injury the point-in-time data can't see.",
+  "duration_gws": 2
+ },
+ "430": {
+  "start_share": 0.9,
+  "reason": "Erling Haaland (Man City FWD): fit, HOME to West Ham (soft, WHU(H)) — model top of board, ~90% EO. Captain; the 4-in-5 blank streak broke with 28 (GW14) and 26 (GW16). No recency switch, ever (mancity.com preview, 19 Dec 2025).",
+  "duration_gws": 1
+ },
+ "449": {
+  "start_share": 0.85,
+  "reason": "Bruno Fernandes (Man Utd MID): nailed No.10, AWAY at Aston Villa (AVL(A), tougher) but Man Utd's highest scorer and now the focal point with Mbeumo+Amad gone to AFCON — more responsibility, on pens/set-pieces (manutd.com / racingpost preview, 19 Dec 2025). Held — our-squad starter and captain fail-safe (vice).",
+  "duration_gws": 1
+ },
+ "387": {
+  "start_share": 0.85,
+  "reason": "Dominik Szoboszlai (Liverpool MID): nailed, AWAY at Spurs (TOT(A)), non-AFCON (Hungary), no flag (liverpoolfc.com preview, 19 Dec 2025). HELD — refuse the solver's Szoboszlai->Mukiele churn; Liverpool bloc in its turned run, and no AFCON exposure.",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.85,
+  "reason": "Ibrahima Konate (Liverpool DEF): nailed CB, away at Spurs (TOT(A)), non-AFCON (France), no flag (liverpoolfc.com preview, 19 Dec 2025). Held — our-squad DEF.",
+  "duration_gws": 1
+ },
+ "237": {
+  "start_share": 0.85,
+  "reason": "Enzo Fernandez (Chelsea MID): nailed, AWAY at Newcastle (NEW(A)), non-AFCON (Argentina), pens/set-pieces (chelseafc.com preview, 19 Dec 2025). Held — the GW12 Semenyo replacement, in the run.",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.85,
+  "reason": "Igor Thiago (Brentford FWD): nailed No.9, AWAY at Wolves (WOL(A) — soft, bottom side), non-AFCON (Brazil), no flag (brentfordfc.com preview, 19 Dec 2025). Held — our-squad striker on a favourable duel.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.85,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): Palace No.9, AWAY at Leeds (LEE(A), soft), on pens, non-AFCON (France), no flag (cpfc preview, 19 Dec 2025). Held — our-squad striker; note his supplier Munoz is now out.",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.8,
+  "reason": "Marcos Senesi (Bournemouth DEF): nailed, HOME to Burnley (BUR(H) — softest fixture on the board, promoted side, low xG against), non-AFCON (Argentina) (afcb preview, 19 Dec 2025). Held — prime CS duel this week.",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.85,
+  "reason": "Nordin Roefs (Sunderland GK): No.1, AWAY at Brighton (BHA(A)). Sunderland lost SIX players to AFCON (Masuaku, Sadiki, Traore, Diarra, Talbi, Mandava) — a weakened outfield lowers CS odds, but the keeper still plays and faces shots (save points) (skysports AFCON impact / Sports Mole, 19 Dec 2025). Held — our £4.8 value keeper; a tougher week noted.",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.85,
+  "reason": "William Saliba (Arsenal DEF): fit, AWAY at Everton (EVE(A)), non-AFCON (France), nailed CB (arsenal.com preview, 19 Dec 2025). Held/locked — the fit premium DEF, the standing Saliba->Timber churn refused an 11th time.",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.85,
+  "reason": "Riccardo Calafiori (Arsenal DEF): ban served (GW16 suspension complete), back and nailed at LB/CB, away at Everton (EVE(A)), non-AFCON (Italy) (arsenal.com preview, 19 Dec 2025). Held — our-squad DEF restored.",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.9,
+  "reason": "Martin Dubravka (Burnley GK): No.1, AWAY at Bournemouth (BOU(A)), non-AFCON (Slovakia), no rotation flag (Sports Mole preview, 19 Dec 2025). Held — our-squad bench keeper.",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.4,
+  "reason": "David Brooks (Bournemouth MID): rotation-prone fringe, home to Burnley, non-AFCON (Wales) (Sports Mole preview, 19 Dec 2025). Held at 0.4 — our-squad bench filler; a likely sell-on candidate once AFCON cover settles, not this week.",
+  "duration_gws": 1
+ }
+}

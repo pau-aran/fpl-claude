@@ -102,35 +102,45 @@ in the decision memo.*
   autosubs (Calafiori→Konaté 9, Muñoz→Saliba) fired. GW **72 vs avg 60 (+12)**;
   season 941 (+131). See gw16.md.
 
-## Active path — GW17 (the AFCON reshape, finally) → season-end
+- **GW17 — EXECUTED: the AFCON reshape, two forced moves, no hit, 2 FT banked.**
+  **Mbeumo (Cameroon, AFCON) → Foden** (6 goals GW13-16, WHU home, 33%-owned
+  differential — form+fixture+ceiling) + **Muñoz (knee surgery, 4-6wk) → Keane**
+  (£4.6 Everton CB, restores the £0.3 buffer). The GW16 Muñoz [WATCH] resolved
+  decisively (surgery, out to ~24 Jan). Refused: the Gakpo buy (injured — the
+  optimizer couldn't see it), Brooks→Dewsbury-Hall, the 11th Saliba→Timber. Banked
+  2 FT (→3) for the AFCON returnees. Captain Haaland (WHU home) → returned 16 (3rd in
+  four weeks). GW **60 vs avg 66 (−6)** — first below-average week since GW11; season
+  **1001 (+125)**, the 1000-pt milestone crossed. The −6 was a quiet non-Haaland attack
+  PLUS the [OPEN] fixture-blind bench order leaking ~5 (benched Saliba's CS at Everton
+  out-scored the started Konaté's blank at Spurs). See gw17.md / reviews/gw17.md.
 
-We are +131 vs the average-manager baseline; the goal is TOP 1%. **GW17 opens with
-4 FT, £0.0m bank.** *(To be filled at the pre-GW17 deadline, BEFORE reading the
+## Active path — GW18 → season-end
+
+We are +125 vs the average-manager baseline; the goal is TOP 1%. **GW18 opens with
+3 FT, £0.3m bank.** *(To be filled at the pre-GW18 deadline, BEFORE reading the
 optimizer.)*
 
-- **GW17 — execute the AFCON reshape + resolve Muñoz:**
-  - **Mbeumo (Cameroon) is now OUT (AFCON, from GW17, ≥3 GWs).** SELL him into a
-    NON-AFCON mid with a clean GW17-20 home-heavy run. Priority FT #1.
-  - **[INVESTIGATE FIRST] Muñoz — 0 minutes in BOTH GW15 and GW16.** Almost certainly
-    a knock the sweeps under-weighted; autosubs saved us twice but a £6.0 non-playing
-    starter is a hole. Confirm his status at the pre-GW17 presser: if injured
-    (multi-week), SELL alongside Mbeumo (priority FT #2); if a one-off, hold.
-  - 4 FT gives room for BOTH moves (Mbeumo + Muñoz) without a hit, plus a buffer —
-    but bank is £0.0, so both are cost-sensitive (funded by the sales). Don't spend
-    the 4th FT on churn; bank toward the AFCON returnees (GW20-21).
-  - Bench-order discipline: watch the XI order (the [OPEN] fixture-blind bench).
-- **Rank discipline:** highest-EO captain (Haaland shield — the 4-in-5 blank streak
-  broke with 28+26 across GW14/16; no recency switch, ever); ceiling via
-  value/differentials (Fernandes red-hot).
+- **[PRIORITY, live-pipeline] Bench-order fix.** GW17 quantified the [OPEN] defect:
+  the fixture-blind XI order started Konaté (TOT away, 1) over the benched Saliba (EVE
+  away, CS 6) — a real ~5-point leak, not theoretical. Until the ordering weights
+  FDR/CS-probability, apply a manual bench-order overlay each GW (start the softer-fixture
+  DEF). Watch it at GW18.
+- **AFCON returnees window (GW20-21).** 3 FT banked (cap 5). Mbeumo/Salah and the other
+  Africa call-ups return ~mid/late Jan; plan the re-buy or the permanent pivot to Foden
+  et al. Don't spend the banked FTs on churn before then.
+- **Rank discipline:** highest-EO captain (Haaland shield — returned 28/26/16 across
+  GW14/16/17; no recency switch, ever); ceiling via value/differentials (Foden now in,
+  Fernandes as Man Utd's focal point through the AFCON gap).
 - Chips: out of scope.
 
-## Conflicts to refuse at GW17
+## Conflicts to refuse at GW18
 
-- **Buying an AFCON-bound player** as the Mbeumo/Muñoz cover — the replacements MUST
-  have clean GW17-20 availability (no Africa call-ups).
-- **Lateral premium churn** (the Saliba→Timber pattern) — Saliba is a fit hold now.
-- **Panic-churning** Thiago/Enzo/the Liverpool bloc after good runs — real new info
-  only. (Muñoz is the exception: two 0-min weeks IS new information.)
+- **Panic-selling Foden** after a one-week blank — bought on a proven form+fixture+ownership
+  thesis with a strong run (WHU/NFO/SUN/CHE ahead); one quiet 90 is variance.
+- **Lateral premium churn** (the Saliba→Timber pattern) — Saliba is a fit hold (and his
+  benched CS just out-scored the XI; if anything he should START, not be sold).
+- **Panic-churning** Thiago/Enzo/the Liverpool bloc after a quiet week — real new info only.
+- **Buying an AFCON-bound player** — still out until ~18 Jan; replacements need clean runs.
 
 ## Watch list
 
@@ -143,11 +153,15 @@ optimizer.)*
 - **Senesi**: yellow-card count nearing a one-game ban (booked v West Ham) — the
   most likely GW13 forced move if it lands.
 - **Liverpool bloc (Konaté, Szoboszlai)**: hold thesis vindicated; in the good run
-  now (WHU(A), SUN(H) ahead). Hold.
-- **Scarlett (£4.3 FWD, non-playing)**: standing low-priority dead-slot upgrade;
-  £1.8 bank can fund it if a second move is ever wanted.
-- **AFCON (from ~GW17)**: Mbeumo (owned, Cameroon), Salah affected — plan Mbeumo
-  cover before GW17.
+  now. Note: GW17 the fixture-blind bench started Konaté (hard TOT away) over Saliba —
+  order the softer-fixture DEF into the XI going forward.
+- **Foden (new, £8.9)**: the Mbeumo AFCON replacement — form (6 goals GW13-16) + soft run
+  (WHU/NFO/SUN/CHE) + 33%-owned differential. Blanked GW17 (variance); hold, do not churn.
+- **Keane (new, £4.6)**: the Muñoz replacement — nailed Everton CB, 5th-DEF/rotation cover.
+- **Muñoz [CLOSED]**: sold GW17 (knee surgery, out to ~24 Jan). Track only in case a
+  late-Jan re-buy ever makes sense (unlikely — Foden/Keane bedded in).
+- **AFCON (out to ~18 Jan)**: Mbeumo (sold), Salah, and the wider call-ups return GW20-21 —
+  the banked-FT window. Plan the re-buy/pivot then.
 
 ## Standing constraints
 
