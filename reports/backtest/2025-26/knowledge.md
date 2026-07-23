@@ -38,16 +38,20 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   (full sample) and Isak (has a prior → blend handled him, NOT double-shrunk)
   untouched — exactly the set that should/shouldn't move. Directly de-risks
   the Woltemade-type bandwagon the market pushed at GW8.
-- [OPEN] Level calibration — CONFIRMED bias by backtest end (10-GW mean error
-  +8.3; back half GW7–10 +13/+28/+4/+21, mean +16.6). The model under-predicts
-  TOTALS ~15–25% in strong weeks: predictions sit flat ~51–59 while a strong
-  squad's actuals climb into the 70s–80s. It is NOT a ranking bias — every
-  relative call was validated (Fernandes>Saka, the Mateta/Konaté upgrades,
-  captaincy 10/10) — so it never hurt a DECISION, but it distorts EV reporting
+- [OPEN] Level calibration — a STRONG-SLATE under-prediction, now shown to be
+  VARIANCE-BOUNDED not monotonic (11-GW mean error +5.8). The model
+  under-predicts TOTALS ~15–25% in strong weeks (GW7–10 +13/+28/+4/+21) —
+  predictions sit flat ~51–59 while a strong squad's actuals climb into the
+  70s–80s — BUT on a dead slate it over-predicts: GW11 predicted 53.0, actual
+  34 (−19, the season's largest over-prediction, a league-wide blank with two
+  in-squad penalty misses). So it is a captain-ceiling / bonus-signal defect
+  that amplifies in BOTH tails, not a fixed +offset. It is NOT a ranking bias —
+  every relative call was validated (Fernandes>Saka, Mateta/Konaté upgrades,
+  captaincy 11/11) — so it never hurt a DECISION, but it distorts EV reporting
   and the hit-gate margin. LIVE FIX: an environment-level calibration term
   (scale raw xPts toward the realised league level) and/or better
   captain-ceiling + bonus modelling (the bonus proxy has had no new signal
-  since GW1). Applies post-backtest (forward-only rule).
+  since GW1). Applies forward-only.
 - [OPEN] Bench-order model ignores fixture softness: GW10 started Senesi
   (MCI away) over Saliba (BUR away) on flat near-equal projections, −3. Weight
   FDR / team-model CS probability in XI ordering, or expose a manager
@@ -121,10 +125,11 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   its purpose. Strong as a hold-conviction / captaincy-context tool; unproven
   as a buy-side EDGE. Real test = the first DIVERGENCE (lens says buy where
   the model is cold). Cost nothing; keep grading live.
-- Captaincy = highest projection unless news says otherwise: 10/10 rule
-  adherence over the backtest (Salah ×5, Haaland ×5). One blank (GW9 Haaland
-  away) — still the correct ~90%-EO shield. The rule is judged on adherence,
-  not one variance week.
+- Captaincy = highest projection unless news says otherwise: 11/11 rule
+  adherence (Salah ×5, Haaland ×6). Two low weeks (GW9 Haaland away blank;
+  GW11 Haaland scored but MISSED A PENALTY in a 3-0 win → only 4) — both
+  correct ~90%-EO shields where the read was right and the variance was
+  unforecastable. The rule is judged on adherence, not on penalty-miss weeks.
 - Transfer SEQUENCING: enter a fixture run one GW early, but NOT into the
   target's worst fixture. GW9 deferred Ekitiké→Mateta because Mateta's GW9
   was ARS(A) (his worst) — outcome Mateta 2 = Ekitiké 2 (zero cost), banked a
@@ -151,7 +156,11 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 
 ## Season context (2025/26 replay, verified)
 
-- Official GW averages 1–10: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65 (cum 531).
+- Official GW averages 1–11: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38
+  (cum 569). GW11 (38) was the season's lowest slate so far.
+- **AFCON 2025 starts 21 Dec 2025** (~GW17): Salah (Egypt), Mbeumo (Cameroon),
+  Semenyo (Ghana) miss a block of GWs. A GW12+ transfer-planning input — do
+  not buy into a mid/fwd about to vanish for a month without pricing the gap.
 - Pep rotation is priced into nothing: don't double City defenders without a
   written rotation overlay (GW1 Gvardiol).
 - Availability news beats every model input: the overlay layer (researched,
