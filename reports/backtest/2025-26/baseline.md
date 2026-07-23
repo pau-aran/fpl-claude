@@ -1,4 +1,4 @@
-# 2025/26 Backtest Baseline — Official FPL Averages, GW1-14
+# 2025/26 Backtest Baseline — Official FPL Averages, GW1-15
 
 Benchmark for the fpl-claude backtest: the official average manager score per gameweek
 (the "Average" shown on the FPL site), plus the official highest GW score, for
@@ -25,11 +25,12 @@ Values cross-verified against independent web sources where snippets were availa
 | 11 | 38 | not found | not found | Deadline 2025-11-08. Verified: AllAboutFPL "lowest of the season so far" + FPL API mirror. City 3-0 Liverpool; Villa 4-0 Bournemouth; two league-wide penalty misses on the slate. |
 | 12 | 39 | 134 | not found | Deadline 2025-11-22. Verified: [FPL Dave GW12 review](https://www.fpldave.com/gameweek/12) ("39pts Average") + FPL API mirror. First GW after the November int'l break — Gabriel/Semenyo among the break's injuries. |
 | 13 | 35 | 123 | not found | Deadline 2025-11-29. FPL API mirror (olbauday gameweek_summaries.csv, re-fetched). Low slate — two top-six H2Hs (CHE-ARS, CRY-MUN) cancelled template returns; Haaland blanked at home to Leeds. |
-| 14 | 58 | 138 | not found | Deadline 2025-12-02 (midweek). FPL API mirror. Bounce-back slate — Haaland's captaincy drought ended (home... away at Fulham). |
+| 14 | 58 | 138 | not found | Deadline 2025-12-02 (midweek). FPL API mirror. Bounce-back slate — Haaland's captaincy drought ended (28, away at Fulham). |
+| 15 | 49 | 133 | not found | Deadline 2025-12-06. FPL API mirror. Last full round before AFCON; Haaland blanked (subbed 68') at home to Sunderland — his 4th low captain week in five. |
 
-**Average-manager 14-GW cumulative total (sum of official GW averages): 701 points.**
+**Average-manager 15-GW cumulative total (sum of official GW averages): 750 points.**
 
-*Look-ahead (fetched, not yet played in-sim): GW15 avg 49, GW16 60, GW17 66.*
+*Look-ahead (fetched, not yet played in-sim): GW16 avg 60, GW17 66.*
 
 ## Verification notes
 

@@ -88,34 +88,41 @@ in the decision memo.*
   and banked the FT to 2. Captain Haaland → drought ended, 28; Muñoz 14. GW **69 vs
   avg 58 (+11)**; season 813 (+112). See gw14.md / consensus/gw14.md.
 
-## Active path — GW15+ → season-end
+- **GW15 — EXECUTED: rolled 2 FT → 3, no hit.** Refused the 9th Saliba→Timber churn
+  (Saliba out a 3rd week but benched, held) and the PREMATURE Mbeumo→Gakpo (Mbeumo
+  available GW15-16, out only from GW17). Held Mbeumo through his soft Wolves fixture
+  → 8. Captain Haaland (home to Sunderland) blanked (4th low week in 5); Fernandes 18
+  carried it. GW **56 vs avg 49 (+7)**; season 869 (+119). See gw15.md.
 
-We are +112 vs the average-manager baseline; the goal is TOP 1%. **GW15 opens with
-2 FT, £0.0m bank** and the four absentees returning. *(To be filled at the pre-GW15
-deadline, BEFORE reading the optimizer.)*
+## Active path — GW16 (the AFCON reshape) → season-end
 
-- **GW15 — the absentees return; use the 2 FT productively, not reflexively:**
-  - Saliba (ill), Senesi + Brooks (ban), Thiago (benched) should all be back —
-    confirm each at the pre-GW15 presser. If all fit, NO forced move.
-  - **AFCON is now imminent (starts 21 Dec, ~GW17):** Mbeumo (Cameroon) is the
-    owned asset to cover; this is the window to plan/execute his replacement so we
-    don't field 10 at GW17. Likely the best use of a FT over GW15-16.
-  - Bench-order discipline: with a full bench back, ensure the fixture-soft DEFs
-    start (the [OPEN] bench defect bit at GW13 — watch the XI order).
-  - Bank £0.0 constrains moves to cost-neutral-or-cheaper; a cash-raising downgrade
-    may be needed to fund an AFCON-cover upgrade.
-- **Rank discipline:** highest-EO captain (Haaland shield, drought broken); ceiling
-  via value/differential slots (Muñoz delivering), never a plan-failing −4.
+We are +119 vs the average-manager baseline; the goal is TOP 1%. **GW16 opens with
+3 FT, £0.0m bank.** *(To be filled at the pre-GW16 deadline, BEFORE reading the
+optimizer.)*
+
+- **GW16 — execute the AFCON reshape (the reason we banked to 3 FT):**
+  - **Mbeumo (Cameroon) OUT from GW17** — GW16 is his last game (BOU(H), a good
+    fixture: play him one more time, then he's gone). Move him at GW16 into a
+    **NON-AFCON mid** with a good GW17+ run. This is the priority FT.
+  - **Saliba resolution** — if still out at GW16 (would be a 4th week), he becomes a
+    dead slot: convert him to a fit playing DEF (now on OUR terms, not a knee-jerk
+    churn — a 4-week absence is no longer a "short knock"). If back, hold.
+  - 3 FT + £0.0 bank: the Mbeumo and Saliba moves are cost-sensitive — likely a
+    like-for-like on Mbeumo (≤£8.5 mid) and a cost-neutral Saliba swap. Bank the 3rd.
+  - Bench-order discipline: watch the XI order (the [OPEN] fixture-blind bench).
+- **Rank discipline:** highest-EO captain (Haaland shield — hold through the blank
+  streak, no recency switch); ceiling via value/differentials (Muñoz, Fernandes).
 - Chips: out of scope.
 
-## Conflicts to refuse at GW15
+## Conflicts to refuse at GW16
 
-- **Lateral premium-DEF churn** (Saliba→Timber/Virgil pattern) — vetoed repeatedly;
-  hold the premiums now they're fit.
-- **Churning Thiago/Enzo/Muñoz/the Liverpool bloc** after good runs — sell only on
-  real new information.
-- A −4 that only clears on a duration-scoped blank, or buys an AFCON-bound asset
-  without pricing the absence (Mbeumo cover must be a NON-AFCON player).
+- **Lateral premium-DEF churn** (Saliba→Timber/Virgil) — but note Saliba's hold is
+  now conditional: a 4th absent week converts him on our terms, which is NOT the
+  vetoed clone swap.
+- **Churning Thiago/Enzo/Muñoz/the Liverpool bloc** after good runs — real new info
+  only.
+- **Buying an AFCON-bound player** as the Mbeumo replacement — the cover MUST have a
+  clean GW17-20 run at home.
 
 ## Watch list
 

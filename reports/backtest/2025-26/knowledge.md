@@ -132,12 +132,13 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   still never overrides the EV gate, the plan, or minutes risk; the named duel is
   written in each memo for grading. Keep grading live; watch for the first MISS to
   size its false-positive rate.
-- Captaincy = highest projection unless news says otherwise: 14/14 rule
-  adherence (Salah ×5, Haaland ×9). Haaland blanked THREE STRAIGHT (GW11-13) then
-  RETURNED 28 as captain at Fulham (GW14) — proof the shield is judged on adherence,
-  not on a variance streak; switching off him on recency would have missed the haul.
-  The streak drove three over-predictions; the return drove one under (calibration
-  [OPEN]).
+- Captaincy = highest projection unless news says otherwise: 15/15 rule
+  adherence (Salah ×5, Haaland ×10). Haaland has blanked FOUR of the last FIVE as
+  captain (GW11-13, GW15; only GW14's 28 broke it) — extraordinary variance, but he
+  was the top projection + ~90% EO shield EVERY week, so a recency switch would have
+  (a) missed the GW14 haul and (b) chased a moving target. The rule is judged on
+  adherence; the streak is the calibration [OPEN]'s captain-slot variance, not a
+  process flaw. Discipline (no recency switch) explicitly tested and held.
 - Hold premiums through SHORT-TERM absences; refuse lateral swaps to patch one week.
   GW14: with Saliba ill (out ~1wk), Senesi + Brooks banned (1 game), Thiago benched
   (tactical), the solver offered a free cost-neutral Saliba→Virgil. Refused — a
@@ -172,11 +173,14 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 
 ## Season context (2025/26 replay, verified)
 
-- Official GW averages 1–14: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35, 58
-  (cum 701). GW11-13 were low slates (38/39/35); GW14 (58) bounced back.
-- **AFCON 2025 starts 21 Dec 2025** (~GW17): Salah (Egypt), Mbeumo (Cameroon),
-  Semenyo (Ghana) miss a block of GWs. A GW12+ transfer-planning input — do
-  not buy into a mid/fwd about to vanish for a month without pricing the gap.
+- Official GW averages 1–15: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35, 58, 49
+  (cum 750). GW11-13 low (38/39/35); GW14-15 (58/49) recovered.
+- **AFCON: PL players unavailable from GW17** (starts 21 Dec 2025; min 3 GWs, some
+  6). Owned asset = Mbeumo (Cameroon); available GW15-16, gone GW17+. HOLD him
+  through his good GW15-16 fixtures, move at GW16 into a NON-AFCON mid (don't sell
+  early — GW15 Mbeumo returned 8 at Wolves after we refused the premature sale).
+  Salah (Egypt) also out — not owned. Never buy a mid/fwd about to vanish without
+  pricing the gap.
 - Pep rotation is priced into nothing: don't double City defenders without a
   written rotation overlay (GW1 Gvardiol).
 - Availability news beats every model input: the overlay layer (researched,
