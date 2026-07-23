@@ -25,3 +25,4 @@ the full evidence trail behind a point.*
 | GW14 | `reviews/gw14.md` | 69 pts (avg 58); 4 one-week absences (Saliba ill, Senesi+Brooks banned, Thiago benched) — rolled, refused free Saliba→Virgil churn; Haaland(C) drought ended 28, Muñoz 14; edge +112 |
 | GW15 | `reviews/gw15.md` | 56 pts (avg 49); rolled to 3 FT (AFCON prep), held Mbeumo (8 at Wolves — refused early sale); Fernandes 18; Haaland(C) blank 4-in-5; edge +119 |
 | GW16 | `reviews/gw16.md` | 72 pts (avg 60); rolled to 4 FT (Saliba back covered Calafiori ban), held Mbeumo for send-off; Haaland(C) returned 26, autosubs +11; Muñoz 0-min×2 flag; edge +131 |
+| GW17 | `reviews/gw17.md` | 70 pts (avg 66); AFCON reshape — Mbeumo→Rice (11 debut) + Muñoz→Tarkowski, 2 of 4 FT no hit, banked 3; Haaland(C) 32 (17/17); past 1000 pts; bench-order defect 3rd time (Saliba 6 benched, ~−3); Fernandes subbed 45'; edge +135 |

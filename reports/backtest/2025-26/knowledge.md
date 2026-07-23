@@ -49,19 +49,26 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   BOTH tails, not a fixed +offset — concentrated in the captain slot specifically.
   (GW14 flipped straight back to +16 under-prediction the moment the captain
   returned 28 — the base XI is well-calibrated, the doubled captain is the variance.)
+  GW17 confirmed it a third time: predicted 58.5, actual 70 (+11.5), of which the
+  captain alone (Haaland 17.7 predicted → 32 actual) was +14.3 — the rest of a thin XI
+  under-scored, netting the base to slightly OVER-predicted. 17-GW mean error +4.2.
   It is NOT a ranking bias — every relative call was validated (Fernandes>Saka,
   Mateta/Konaté/Enzo/Thiago, captaincy 14/14) — so it never hurt a DECISION, but it
   distorts EV reporting and the hit-gate margin. LIVE FIX: an environment-level
   calibration term (scale raw xPts toward the realised league level) and/or better
   captain-ceiling + bonus modelling (the bonus proxy has had no new signal since
   GW1). Applies forward-only.
-- [OPEN — PRIORITY] Bench-order model ignores fixture softness: cost points TWICE
-  now — GW10 started Senesi (MCI away) over Saliba (BUR away), −3; GW13 started
+- [OPEN — PRIORITY] Bench-order model ignores fixture softness: cost points THREE
+  times now — GW10 started Senesi (MCI away) over Saliba (BUR away), −3; GW13 started
   Calafiori (0, subbed 45', depleted Arsenal at Chelsea) and BENCHED Konaté (8,
-  clean sheet at 3rd-bottom West Ham), −8. This is now the biggest recurring
-  points leak. Weight FDR / team-model CS probability in XI ordering, or expose a
-  manager
-  bench-order override.
+  clean sheet at 3rd-bottom West Ham), −8; GW17 started Tarkowski (3, Everton HOME to
+  Arsenal FDR4) and BENCHED Saliba (6, CS+bonus at Everton, but on a post-injury
+  depressed minutes projection), −3. This is the biggest recurring in-week leak.
+  Weight FDR / team-model CS probability in XI ordering, or expose a manager
+  bench-order override. INTERIM: sanity-check XI order by hand each week — start
+  premiums into soft fixtures over cheap DEFs into hard ones. The GW17 case adds a
+  second driver: a returning player's minutes projection stays artificially low for
+  1-2 GWs after an absence, so the solver benches him even onto a good fixture.
 - [PROCESS] Suspension verification: a ban needs the OFFENCE **and**
   confirmation it was upheld/served against the team sheet — not an aggregator
   headline. The GW9–10 Ballard "3-match ban" was misapplied (he played both

@@ -1,0 +1,77 @@
+{
+ "119": {
+  "start_share": 0.0,
+  "reason": "Bryan Mbeumo (Man Utd MID): OUT from GW17 — released to Cameroon for AFCON (Morocco, 21 Dec 2025 – 18 Jan 2026). Man Utd used him in the GW16 send-off (BOU) then released him; unavailable for a run of GWs (group stage + likely KO ⇒ estimate 4–5 GWs). This is the availability edge the archive can't see (status stays 'a'). SELL — priority FT #1 (worldsoccertalk/goal.com AFCON release, CAF squad list, 12–15 Dec 2025).",
+  "duration_gws": 5
+ },
+ "256": {
+  "start_share": 0.0,
+  "reason": "Daniel Munoz (Crystal Palace DEF): played 0 minutes in BOTH GW15 and GW16 despite pre-deadline XIs still listing him — the GW17 presser confirms a muscle problem keeping him out further (Glasner: not available). A £6.0 non-playing starter is a hole; autosubs papered GW15–16. SELL — priority FT #2. Multi-week ('weeks') ⇒ scope 4 (cpfc injury update, 18 Dec 2025).",
+  "duration_gws": 4
+ },
+ "6": {
+  "start_share": 0.85,
+  "reason": "William Saliba (Arsenal DEF): fit, nailed CB, AWAY at Everton (GW17, FDR3) on the start of Arsenal's elite GW17-24 run (EVE/BHA/AVL/.../NFO/MUN/LEE, almost all 3s). No flag (arsenal.com preview, 19 Dec 2025). LOCK — refuse the standing Saliba->Timber churn (the target-slot for Timber is Munoz's, not Saliba's).",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.85,
+  "reason": "Riccardo Calafiori (Arsenal DEF): ban served (GW16), BACK in the XI away at Everton (FDR3), on Arsenal's strong run. No flag (arsenal.com preview, 19 Dec 2025). Carried — our-squad starter restored.",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.85,
+  "reason": "Marcos Senesi (Bournemouth DEF): nailed, HOME to bottom-side Burnley (GW17, FDR1) — the softest CS fixture on the board. No flag (afcb/Sports Mole preview, 19 Dec 2025). Carried — prime CS week.",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.85,
+  "reason": "Ibrahima Konate (Liverpool DEF): nailed CB, AWAY at Tottenham (GW17, FDR3), Liverpool's run softens to WOL(H)1 LEE(H)2 after. Non-AFCON (France). No flag (liverpoolfc.com preview, 18 Dec 2025). Carried — hold the Liverpool bloc.",
+  "duration_gws": 1
+ },
+ "449": {
+  "start_share": 0.85,
+  "reason": "Bruno Fernandes (Man Utd MID): nailed captain/No.10, AWAY at Aston Villa (GW17, FDR4). Non-AFCON (Portugal) — unaffected by the exodus, and now Man Utd's focal creator with Mbeumo/Amad gone. Carried — held; the captaincy fail-safe behind Haaland (manutd.com preview, 19 Dec 2025).",
+  "duration_gws": 1
+ },
+ "237": {
+  "start_share": 0.85,
+  "reason": "Enzo Fernandez (Chelsea MID): nailed, AWAY at Newcastle (GW17, FDR3), pen/set-piece involved. Non-AFCON (Argentina). No flag (chelseafc.com preview, 18 Dec 2025). Carried — held.",
+  "duration_gws": 1
+ },
+ "387": {
+  "start_share": 0.85,
+  "reason": "Dominik Szoboszlai (Liverpool MID): nailed, away at Tottenham (GW17, FDR3). Non-AFCON (Hungary). No flag (liverpoolfc.com preview, 18 Dec 2025). Carried — refuse the Szoboszlai->Mukiele churn; hold the Liverpool bloc into WOL(H)/LEE(H).",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.45,
+  "reason": "David Brooks (Bournemouth MID): rotation-prone fringe, home to Burnley (GW17). Dead bench slot. Carried at 0.45 — a low-priority dead-slot upgrade the 4 FT can fund later, not this week's churn (Sports Mole preview, 19 Dec 2025).",
+  "duration_gws": 1
+ },
+ "430": {
+  "start_share": 0.9,
+  "reason": "Erling Haaland (Man City FWD): fit, HOME to West Ham (GW17, FDR2) — a soft home fixture and the captaincy anchor. Model top of board (9.76), ~90% EO shield; the GW14/16 hauls (28/26) broke the blank streak. Non-AFCON. CAPTAIN (mancity.com preview, 19 Dec 2025).",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.85,
+  "reason": "Igor Thiago (Brentford FWD): nailed No.9, AWAY at Wolves (GW17, FDR2) — a soft away duel. Non-AFCON (Brazil). No flag (brentfordfc.com preview, 18 Dec 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.85,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): Palace No.9, AWAY at Leeds (GW17, FDR3), on penalties. Non-AFCON (France). No flag (cpfc preview, 18 Dec 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.85,
+  "reason": "Nordin Roefs (Sunderland GK): No.1, AWAY at Brighton (GW17, FDR4) — a harder duel this week. Nailed (Sports Mole preview, 19 Dec 2025). Carried — our-squad keeper.",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.9,
+  "reason": "Martin Dubravka (Burnley GK): No.1, AWAY at Bournemouth (GW17, FDR4). No rotation flag (Sports Mole preview, 19 Dec 2025). Carried — our-squad bench keeper.",
+  "duration_gws": 1
+ }
+}

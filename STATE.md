@@ -1,4 +1,4 @@
-# Session State — updated 2026-07-22 (backtest session — GW7 done)
+# Session State — updated 2026-07-23 (backtest session — GW17 done, AFCON reshape)
 
 *Handoff snapshot. Read this first, then `NEXT-STEPS.md` for the roadmap and
 `reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge.
@@ -70,6 +70,21 @@ GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 
 ## Recent session log
 
+- **2026-07-23 (GW17 session — the AFCON reshape):** branch
+  `claude/next-sim-8gw-decision-tree-j7wl1n`. Ran the next backtest GW (GW17), the
+  first round of the AFCON exodus, and rebuilt the standing decision tree for the full
+  8-GW AFCON window (GW18-24). GW17: executed the reshape on 2 of 4 banked FT, no hit —
+  **Mbeumo→Rice** (the Cameroon/AFCON sale, reinvested into the cheapest rider of
+  Arsenal's elite run at £7.1; 11 on debut) + **Muñoz→Tarkowski** (the confirmed
+  multi-week injury sale, banking £0.5 to a £1.2 buffer). Locked Saliba (refused the
+  11th Saliba→Timber churn), banked 2 FT (→3 for GW18). Captain Haaland at home to West
+  Ham → 32 (17/17 adherence). **GW 70 vs avg 66 (+4); season 1011 — past 1000, edge
+  +135 (season high).** plan.md's "Active path" is now an 8-GW week-by-week tree (ride
+  the loaded Arsenal/City/Liverpool runs, bank FT/£ through the low-average trough,
+  reassess at the returnee window GW22-23). Two live threads: the fixture-blind
+  bench-order defect hit a 3rd time (Saliba's 6 benched behind Tarkowski, ~−3) and
+  B.Fernandes subbed 45' (fitness watch for GW18). Data self-provisioned via
+  `backtest.fetch` (vaastav); official GW17-24 averages fetched into baseline.md.
 - **2026-07-22 (GW7 session):** new branch
   `claude/fpl-data-sources-architecture-5tvqet`. Folded owner data-source
   feedback into the sources reference/`sources.yaml` (official API +
