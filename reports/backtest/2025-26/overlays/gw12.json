@@ -1,0 +1,87 @@
+{
+ "82": {
+  "start_share": 0.0,
+  "reason": "Antoine Semenyo (Bournemouth MID) — OUT. Aggravated a left ankle ligament injury (anterior talo-fibular) on Ghana duty (14 Nov friendly v Japan), returned to England for checks and was ABSENT from the Bournemouth squad v West Ham; illness compounded it. Iraola gave no return date but he is out GW12 and pointing at another week's recovery before Sunderland (GW13) (fourfourtwo / footboom / FFScout 'why Semenyo missed out', 22-23 Nov 2025). Ghana at AFCON from 21 Dec (~GW17) compounds the absence. DECISION-CRITICAL: our owned MID is a multi-week loss — transfer out.",
+  "duration_gws": 2
+ },
+ "237": {
+  "start_share": 0.9,
+  "reason": "Enzo Fernandez (Chelsea MID — OUR PLANNED GW12 BUY for the injured Semenyo): nailed, STARTED (co-captain) and SCORED the clincher in Chelsea's 2-0 win at Burnley; running a career-high npxG+xAG/90 (~0.63) and Chelsea moved 2nd (chelseafc.com confirmed XI / OneFootball report, 22 Nov 2025). NEW — decision-critical: the crowd was SELLING Enzo (a top-5 most-sold MID), so this is a value-over-reputation buy the model rates highly; confirmed nailed and returning.",
+  "duration_gws": 1
+ },
+ "5": {
+  "start_share": 0.0,
+  "reason": "Gabriel Magalhaes (Arsenal DEF) — OUT ~4 weeks. Right-thigh muscular injury on Brazil duty (limped out v Senegal, 15 Nov); tests confirmed a tear, ruled out of the north London derby and expected back ~turn of the year (Arteta; NBC / bet365 / arseblog, 20-23 Nov 2025). NOT in our squad — flagged 0.0 to BLOCK the optimizer's proposed Saliba->Gabriel buy (the model cannot see the injury). Also banned in the decision for belt-and-suspenders.",
+  "duration_gws": 4
+ },
+ "1": {
+  "start_share": 0.9,
+  "reason": "David Raya (Arsenal GK): undisputed No.1, in the confirmed XI at home to Tottenham; Arsenal have the league's best defence (5 conceded in 11) and strong CS odds in the derby despite Gabriel's absence, Hincapie deputising alongside Saliba (lastwordonsports / NBC confirmed XI, 23 Nov 2025). Carried — our-squad nailed keeper; NOT sold (see decision: the Raya->Roefs downgrade is refused).",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.9,
+  "reason": "William Saliba (Arsenal DEF): fully fit and STARTING at CB in the confirmed north London derby XI (Raya; Timber, Saliba, Hincapie, Calafiori) — with Gabriel out, Saliba is MORE important, not a sell candidate (lastwordonsports / NBC confirmed XI, 23 Nov 2025). LOCKED — refuses the optimizer's Saliba->Gabriel (Gabriel injured) and the recurring Saliba->Timber churn.",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.85,
+  "reason": "Riccardo Calafiori (Arsenal DEF): first-choice LB, in the confirmed derby back line, no flag (lastwordonsports / NBC confirmed XI, 23 Nov 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.85,
+  "reason": "Marcos Senesi (Bournemouth DEF): fit and STARTED v West Ham in the confirmed XI (Petrovic; Cook, Diakite, Senesi, Truffert). NOTE: picked up a yellow and is nearing a suspension (5th booking watch) — monitor for GW13-14, not a GW12 issue (FFScout 'Senesi nears ban', 23 Nov 2025). Carried — our-squad starter; run eases (WHU(H)2, SUN(A)3 ahead).",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.85,
+  "reason": "Ibrahima Konate (Liverpool DEF): STARTED at CB in the confirmed XI at home to Nottingham Forest (Alisson; Szoboszlai, Konate, van Dijk, Kerkez) — the run-turns-green fixture we held him for; Alisson back from injury, a settled defence (liverpool.com confirmed XI, 22 Nov 2025). Carried — our-squad starter, thesis paying off (kept through the MCI week, now the good run).",
+  "duration_gws": 1
+ },
+ "256": {
+  "start_share": 0.85,
+  "reason": "Daniel Munoz (Crystal Palace DEF): nailed wing-back, STARTED and SCORED in Palace's 2-0 win at Wolves plus a clean sheet (cpfc / premierleague.com confirmed XI + report, 22 Nov 2025). Carried — our-squad starter in fine form.",
+  "duration_gws": 1
+ },
+ "449": {
+  "start_share": 0.85,
+  "reason": "Bruno Fernandes (Man Utd MID): nailed captain/No.10, in Man Utd's confirmed XI at home to Everton, top assist-maker, no flag (Al Jazeera / manchesterworld confirmed XI, 24 Nov 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "119": {
+  "start_share": 0.85,
+  "reason": "Bryan Mbeumo (Man Utd MID): nailed starter and Man Utd's top scorer (5), in the confirmed XI v Everton at Old Trafford; the single most-transferred-in player of GW12 (~475k) — we already own him (Al Jazeera / manchesterworld confirmed XI, 24 Nov 2025). Carried — our-squad starter. NOTE: Cameroon at AFCON from ~GW17.",
+  "duration_gws": 1
+ },
+ "387": {
+  "start_share": 0.85,
+  "reason": "Dominik Szoboszlai (Liverpool MID): STARTED (at RB) in the confirmed XI v Nottingham Forest, nailed and versatile, no flag (liverpool.com confirmed XI, 22 Nov 2025). Carried — our-squad starter, now in Liverpool's turned-green run.",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.6,
+  "reason": "David Brooks (Bournemouth MID): recovered and STARTED v West Ham in the confirmed XI (with Semenyo out, Brooks is back in the side) (Sports Mole / ESPN confirmed XI, 22 Nov 2025). UPDATED up from 0.1 — now a genuine playing bench piece / autosub cover, though rotation-prone.",
+  "duration_gws": 1
+ },
+ "430": {
+  "start_share": 0.9,
+  "reason": "Erling Haaland (Man City FWD): fully fit through the international break, STARTING at Newcastle (confirmed XI, chasing his 100th PL goal / 15th of the season); Newcastle 14th and toothless (3 wins in 11) — a soft away duel despite the 'big away game' framing (Sports Mole / si.com confirmed XI, 22 Nov 2025). Our-squad CAPTAIN: model top of board, ~90%+ EO shield.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.85,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): STARTED as Palace's No.9 in the 2-0 win at Wolves (missed a first-half one-on-one but nailed, 2nd most-bought FWD context) (cpfc / premierleague.com confirmed XI, 22 Nov 2025). Carried — our-squad starter.",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.9,
+  "reason": "Martin Dubravka (Burnley GK): No.1, in the confirmed XI at home to Chelsea, no rotation flag (Sports Mole confirmed XI, 22 Nov 2025). Carried — our-squad bench keeper.",
+  "duration_gws": 1
+ },
+ "599": {
+  "start_share": 0.05,
+  "reason": "Dane Scarlett (Spurs FWD): deep fringe striker, not in the Spurs matchday XI at Arsenal (tottenhamhotspur.com / lineups, 23 Nov 2025). Carried at 0.05 — our-squad depth, effectively non-playing; standing dead-FWD-slot upgrade lever.",
+  "duration_gws": 1
+ }
+}
