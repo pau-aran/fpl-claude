@@ -1,4 +1,4 @@
-# 2025/26 Backtest Baseline — Official FPL Averages, GW1-11
+# 2025/26 Backtest Baseline — Official FPL Averages, GW1-12
 
 Benchmark for the fpl-claude backtest: the official average manager score per gameweek
 (the "Average" shown on the FPL site), plus the official highest GW score, for
@@ -23,8 +23,9 @@ Values cross-verified against independent web sources where snippets were availa
 | 9  | 46 | 124 | not found | Deadline 2025-10-24. FPL API mirror. |
 | 10 | 65 | 135 | not found | Deadline 2025-11-01. FPL API mirror. Highest average of GW1-10. |
 | 11 | 38 | not found | not found | Deadline 2025-11-08. Verified: AllAboutFPL "lowest of the season so far" + FPL API mirror. City 3-0 Liverpool; Villa 4-0 Bournemouth; two league-wide penalty misses on the slate. |
+| 12 | 39 | not found | not found | Deadline 2025-11-22. Verified: [FPL Dave GW12 review](https://www.fpldave.com/gameweek/12) ("39pts Average") + FPL API mirror. First GW after the November int'l break — Gabriel/Semenyo among the break's injuries. |
 
-**Average-manager 11-GW cumulative total (sum of official GW averages): 569 points.**
+**Average-manager 12-GW cumulative total (sum of official GW averages): 608 points.**
 
 ## Verification notes
 

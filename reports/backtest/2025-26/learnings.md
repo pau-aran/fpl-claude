@@ -20,3 +20,4 @@ the full evidence trail behind a point.*
 | GW9 | `reviews/gw09.md` | 58 pts (avg 46); rolled FT, deferred Ekitiké→Mateta; captain blank absorbed |
 | GW10 | `reviews/gw10.md` | 75 pts (avg 65); queued double-move (Mateta+Konaté); backtest gate closed +93 |
 | GW11 | `reviews/gw11.md` | 34 pts (avg 38); −4 variance week — 2 in-squad pen misses; rolled to 2 FT; 7th churn veto gained 0; captain 11/11 |
+| GW12 | `reviews/gw12.md` | 42 pts (avg 39); int'l break — BANNED injured Gabriel (model wanted to buy him), Semenyo→Enzo hauled +11; Muñoz 14; first buy-side duel divergence connected; edge +92 |

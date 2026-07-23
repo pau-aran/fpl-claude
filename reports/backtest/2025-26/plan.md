@@ -61,54 +61,66 @@ in the decision memo.*
   Process PASS; the churn veto gained 0 (vindicated 7th time). See
   reviews/gw11.md.
 
-## Active path — GW12 (spend the 2 banked FT) → season-end
+- **GW12 — EXECUTED: one forced injury move, refused the churn, banked the 2nd
+  FT.** The Nov international break broke the week: **Semenyo OUT** (ankle, Ghana
+  duty, multi-week + AFCON) and **Gabriel OUT ~4wk** (thigh, Brazil). Semenyo →
+  **Enzo** (£6.7, nailed, started+scored at Burnley — a value-over-reputation buy
+  of a crowd-sold, career-high-underlying mid; frees £1.3 to bank £1.8). Refused
+  the 8th Saliba→Timber churn (Saliba the senior CB with Gabriel out — locked) and
+  BANNED Gabriel (the optimizer's raw proposal was to BUY him — availability edge
+  the model can't see). Rolled the 2nd FT (bank 2 for GW13: Semenyo timeline open,
+  Senesi nearing a ban). Held the Liverpool bloc into its turned-green run (NFO
+  home) — the GW11 thesis vindicated by simply not selling. Captain Haaland at
+  NEW(A). See gw12.md / consensus/gw12.md.
 
-We are +89 vs the average-manager baseline; the goal is TOP 1%. GW11 banked its
-FT, so GW12 opens with **2 FT, £0.5m bank** and a fit 11 — the queued optionality
-week. *(To be filled at the pre-GW12 deadline, BEFORE reading the optimizer.)*
+## Active path — GW13+ → season-end
 
-- **GW12 — spend the 2 FT productively (no hit unless a move clears net ≥4.5).**
-  Primary candidates, to price against the pre-GW12 board + overlay:
-  - **Liverpool bloc re-assessment AS the run turns green** (Konaté/Szoboszlai:
-    NFO(H), WHU(A), SUN(H) from GW12). The GW11 hold thesis was "buy back the
-    week the fixtures turn" — this is that week. Keep if the underlying/fixtures
-    justify; do NOT reflexively sell after one bad week (that would retro-justify
-    the crowd churn we refused).
-  - **Scarlett (£4.3, non-playing FWD)** → a cheap PLAYING body: the standing
-    dead-slot autosub upgrade, best actioned now that we have 2 FT.
-  - Bank one FT if only one positive-EV move clears — don't spend a second FT on
-    churn just because it's available.
-- **AFCON (starts 21 Dec 2025, ~GW17):** Mbeumo (Cameroon), Semenyo (Ghana),
-  Salah (Egypt) miss a GW block. Price the gap into any GW12+ mid/fwd move — do
-  not buy into a player about to vanish for a month.
-- **Rank discipline:** keep the highest-EO captain (Haaland shield); take
-  ceiling via value/differential slots, never a plan-failing −4. Let variance
-  come to the strong core — GW11 was a −4 blank slate, not a process failure.
+We are +89 vs the average-manager baseline (pre-GW12 result); the goal is TOP 1%.
+GW12 spent one FT on the forced Semenyo→Enzo move; **GW13 opens with 2 FT, ~£1.8m
+bank.** *(To be filled at the pre-GW13 deadline, BEFORE reading the optimizer.)*
+
+- **GW13 — resolve the open threads with the 2 banked FT:**
+  - **Semenyo's replacement is settled (Enzo)** — but re-verify Semenyo's return
+    timeline; if he's back soon and Enzo's run sours, no churn. Enzo held.
+  - **Senesi suspension watch** — a 5th yellow (nearing) triggers a one-game ban;
+    if it lands, a cheap fit DEF swap is the productive use of a FT (he has SUN(A)
+    then good fixtures, so time it).
+  - **Scarlett (£4.3, non-playing FWD)** — still the standing low-priority
+    dead-slot upgrade; the £1.8 bank now funds a better bench body if wanted.
+  - Bank if no positive-EV, non-churn move clears.
+- **AFCON (from ~GW17):** Mbeumo (Cameroon), Salah (Egypt), and now-sold Semenyo
+  (Ghana) affected. Mbeumo is the one we still own — plan his cover BEFORE GW17,
+  don't get caught fielding 10.
+- **Rank discipline:** highest-EO captain (Haaland shield); ceiling via
+  value/differential slots, never a plan-failing −4. Let variance come to the core.
 - Chips: out of scope (not simulated in this backtest).
 
-## Conflicts to refuse at GW12
+## Conflicts to refuse at GW13
 
-- **The Saliba→Timber clone swap (vetoed 7× through GW11).** A free sideways
-  swap of one nailed Arsenal DEF for another on the SAME fixture is not an
-  upgrade. If it resurfaces, lock Saliba again.
-- **Retro-selling the Liverpool bloc to justify GW11.** We held them for the
-  GW12 fixture turn — sell only if the turned-fixture EV genuinely says so, not
-  as a reaction to one bad week we already priced.
-- A −4 that only clears the gate on a duration-scoped blank, or that buys into
-  an AFCON-bound asset without pricing the absence.
+- **The Saliba→Timber clone swap (vetoed 8× through GW12).** Still a free sideways
+  Arsenal-DEF clone on the same fixture; with Gabriel out, Saliba is even less
+  sellable. Lock if it resurfaces.
+- **Churning Enzo or the Liverpool bloc after one week.** Both are recent,
+  deliberate holds inside good runs — sell only on real new information.
+- A −4 that only clears the gate on a duration-scoped blank, or that buys an
+  AFCON-bound asset without pricing the absence.
 
 ## Watch list
 
-- **Liverpool bloc (Konaté, Szoboszlai)**: held through MCI(A) GW11; their run
-  turns from GW12 (NFO(H), WHU(A), SUN(H)). Primary GW12 re-assessment target.
-- **Scarlett (£4.3 FWD, non-playing)**: dead autosub slot — the standing
-  low-priority bench-upgrade lever, best actioned with 2 FT at GW12.
-- **Brooks (ankle)**: edging back but still bench-at-most for Bournemouth
-  (0.1 overlay) — no XI role, no urgency.
-- **Senesi**: run soured (AVL(A) GW11) but WHU(H)2 then SUN(A)3 ahead — hold,
-  revisit alongside the Liverpool bloc at GW12.
-- **AFCON (from ~GW17)**: Mbeumo, Semenyo, Salah affected — a GW12+ planning
-  input, not a GW11 action.
+- **Semenyo (OUT, ankle ligament + AFCON)**: SOLD to Enzo at GW12. Track his
+  return only to confirm the sale doesn't need reversing (it shouldn't — AFCON
+  follows the injury).
+- **Enzo (new, £6.7)**: the Semenyo replacement — nailed Chelsea mid, career-high
+  underlying. Hold; watch Chelsea's ARS(H) fixture in the run.
+- **Gabriel (OUT ~4wk, not owned)**: banned from buys until fit (~turn of year).
+- **Senesi**: yellow-card count nearing a one-game ban (booked v West Ham) — the
+  most likely GW13 forced move if it lands.
+- **Liverpool bloc (Konaté, Szoboszlai)**: hold thesis vindicated; in the good run
+  now (WHU(A), SUN(H) ahead). Hold.
+- **Scarlett (£4.3 FWD, non-playing)**: standing low-priority dead-slot upgrade;
+  £1.8 bank can fund it if a second move is ever wanted.
+- **AFCON (from ~GW17)**: Mbeumo (owned, Cameroon), Salah affected — plan Mbeumo
+  cover before GW17.
 
 ## Standing constraints
 
