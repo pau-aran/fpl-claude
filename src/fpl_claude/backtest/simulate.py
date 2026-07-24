@@ -330,6 +330,8 @@ def run_gameweek(
     else:
         squad, _ = decide_transfers(projections, rules, state, decision=decision)
         state = apply_transfers(state, squad, projections, rules)
+    # optimize() already fields the XI/captain/bench on THIS week's fixture column
+    # (milp._pick_lineup) and honours any force_start/force_bench overlay.
     if decision is not None:
         squad = apply_captaincy(squad, decision)
 

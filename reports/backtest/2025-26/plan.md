@@ -36,7 +36,9 @@ in the decision memo.*
   Konaté + Brooks.
 - **Live threads into GW18:** (1) B.Fernandes subbed 45' at Villa (GW17) — confirm
   fitness at the presser; (2) the fixture-blind bench-order defect (Saliba's 6 benched
-  behind Tarkowski's 3 at GW17, ~−3) — sanity-check XI order manually until the code fix.
+  behind Tarkowski's 3 at GW17, ~−3) — now FIXED in code (`optimize()` fields the XI on
+  the nearest `xpts_gw{n}` column; `start`/`bench` decision levers for reads it can't see),
+  effective GW18+.
 
 ## Executed
 
@@ -173,9 +175,9 @@ call is filled at that deadline, BEFORE reading the optimizer; this is the stand
 
 **Rank discipline:** highest-EO captain (Haaland shield — landed 28/26/32 across
 GW14/16/17; no recency switch, ever); ceiling via value/differentials. **Bench-order
-discipline is now the #1 in-week leak** (cost ~3 again at GW17: Saliba benched behind
-Tarkowski) — until the code fix lands, manually sanity-check the XI order every week and
-start premiums into soft fixtures over cheap DEFs into hard ones.
+was the #1 in-week leak** (cost ~3 again at GW17: Saliba benched behind Tarkowski) — now
+FIXED in code (the optimizer fields the XI on this week's fixture column; `start`/`bench`
+decision levers override for reads it can't see, e.g. a depleted opponent defence).
 
 Chips: out of scope (but note — the AFCON disruption is the season's classic
 Wildcard/Free-Hit trigger for the field; we ride it on FTs, which is the disciplined

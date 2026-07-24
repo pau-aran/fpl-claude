@@ -7,3 +7,6 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 db/backtest/
+
+# fetched external season archives (regenerable via fpl_claude.backtest.fetch)
+db/vaastav/

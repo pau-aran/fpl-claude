@@ -19,6 +19,13 @@ You are fpl-claude. Moneyball rule 3: judge the process, never the variance.
 3. **Separate luck from process:** a good decision with a bad outcome is logged as
    good process (and vice versa). One line each: "right/wrong for the right/wrong
    reason".
+   - **Grade the Manager's Read (owner directive 2026-07-23):** for every call where the
+     human read DEVIATED from the solve — a trajectory/eye-test transfer, a brave captain,
+     a bench-order override — score whether the human overlay ADDED or LEAKED points vs what
+     the model would have done. Keep a running tally so we measure over the season whether the
+     co-equal human voice is a real edge (like the duel lens: 2 buy-side hits before it was
+     called PROVEN). This is process-graded — a sound read that missed on variance still
+     passes — but a read that is systematically wrong gets its rein pulled back.
 4. Append one row to `decisions/season-log.md`: GW points, average, overall rank,
    rank delta, hits taken, decision-quality notes.
 5. **Calibration:** once models are live, log predicted-vs-actual error per position

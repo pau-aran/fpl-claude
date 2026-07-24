@@ -38,17 +38,28 @@ applies it manually; you never touch their FPL account.
    - The optimizer now picks the **XI, captain, vice and bench order on THIS
      week's fixture** (nearest `xpts_gw{n}`), not the multi-week horizon it buys
      the 15 on. Do not re-order the bench by the horizon column by hand.
-5. **Overlay (the part only you can do):** deviate from the optimizer only with a
-   written reason (presser tone, rotation pattern from the weekly report, tactical
-   change). Check every recommended player against the risk table — a flagged
-   player needs a documented plan. Include the **positional-duel read** (owner
-   directive, 2026-07-22): name the in-form players facing a weak direct
-   counterpart this GW (winger vs slow/exposed fullback, striker vs error-prone
-   or stand-in CBs, attacking fullback vs a non-tracking winger, defence/GK vs a
-   blunt attack) — team FDR hides soft individual duels. Use it to seed
-   shortlists the model underrates and to tilt close calls (captaincy tiebreak,
-   near-equal targets, bench order); it never overrides the EV gate, the plan,
-   or minutes risk. Write the named duel into the memo so the review can grade it.
+4b. **Manager's Read — write it BEFORE you read the solve (co-equal voice, owner
+   directive 2026-07-23).** The optimizer is one input, not the anchor; anchoring to
+   the machine and rationalising afterward is the failure mode this prevents. In a few
+   sentences, put down the HUMAN read: team trajectory / eye-test (manager-bounce sides,
+   teams visibly clicking, players who look dangerous before the returns show, Christmas-
+   congestion rotation feel, a squad gone thin/over-reliant), who's genuinely due vs cold,
+   and who you'd want to watch live. Lean hardest into **team-trajectory/eye-test** and
+   **captaincy bravery** (owner emphasis). One feeder of this read is the **positional-duel
+   lens** (owner directive, 2026-07-22): name the in-form players facing a weak direct
+   counterpart this GW (winger vs slow/exposed fullback, striker vs error-prone or stand-in
+   CBs, attacking fullback vs a non-tracking winger, defence/GK vs a blunt attack) — team
+   FDR hides soft individual duels.
+5. **Reconcile the read with the optimizer (the part only you can do).** The Manager's Read
+   carries REAL authority on the axes where models are weakest and feel is strongest —
+   **bench order, captaincy, differentials-for-rank, riding-vs-fading runs** — and MAY
+   override the solve there even against MODEST EV, provided it fits the plan and minutes are
+   safe. It does NOT override: a flagged/benched-for-minutes player (the minutes gate is
+   sacred — check every recommended player against the risk table), the plan's funding
+   arithmetic, or a LARGE EV gap (the model still governs the big quant calls). Every
+   deviation gets a written reason; every named read (trajectory call, brave captain, duel)
+   goes into the memo so the review GRADES it — process, not outcome — and we measure over the
+   season whether the human overlay adds or leaks points.
    - **Premiums are HOLDS through short-term (1-2 week) absences.** Refuse a
      lateral or cost-neutral swap that sells an established premium to patch one
      thin XI — bank the FT and accept a legal-but-thin formation; the absentee
@@ -62,7 +73,8 @@ applies it manually; you never touch their FPL account.
      tool that catches the GW13 class (started Calafiori at a depleted Arsenal
      over Konaté v West Ham, −8). Never start a nailed defender in a hard away
      trip over a nailed defender at home to a bottom side on tied projections.
-6. **Policies:** hits only if EV gain > `policies.hit_ev_threshold`. Price
+6. **Policies:** hits only if EV gain > `policies.hit_ev_threshold`; captain from
+   an EV table (show top 3 with ceiling/floor); respect chip calendar. Price
    pressure (from the refresh radar) may pull a decided transfer earlier in the
    window or delay a sale — it never changes WHO we buy or sell, and acting
    early forfeits the T-2h flag check, so weigh £0.1 against late team news
@@ -88,6 +100,9 @@ applies it manually; you never touch their FPL account.
 ## Memo format (`decisions/gw{NN}.md`)
 
 - **Header:** GW, deadline (UTC + time remaining), squad value, bank, free transfers.
+- **Manager's read (write first):** the human take — team trajectory / eye-test, who's
+  due/cold, the named duel(s), any brave-captain or bench-order call and its thesis. Flag
+  which calls DEVIATE from the solve so the review can grade the human overlay.
 - **Transfers:** OUT→IN with EV delta and rationale; hits justified against threshold.
 - **XI + bench order + captain/vice:** captain EV table.
 - **Chip decision:** use/hold, vs the calendar.

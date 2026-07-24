@@ -23,10 +23,14 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   OPT-IN per entry (knock → 1-2, "weeks" → 3-4, ban → matches left,
   structural/long-term → omit; scoping only matters for suppressions,
   near-1.0 confirmations may omit).
-- [OPEN] Minutes model turns 1 start into p_start=1.0 for no-prior players
-  (`_start_share`). Ballard: fielded 0-min GW2–4 (10.47 predicted pts for
-  8 real minutes) — but self-correcting (4.10→2.42 as team_games grows)
-  and hasn't driven a transfer since GW2. Demoted behind overlay-horizon.
+- [DONE] Minutes model no longer turns 1 start into p_start=1.0 for no-prior
+  players. The `_start_share` no-prior tiny-sample branch used to return raw
+  `starts/team_games` (Ballard: 10.47 predicted pts for 8 real minutes, GW2–4).
+  Now it shrinks toward `NEUTRAL_START_SHARE` by `team_games/3`, mirroring the
+  prior-blend branch — heaviest with least evidence, gone by `team_games ≥ 3`.
+  Low steady-state impact (self-corrected by ~GW4-5), but it de-risks GW1–3 of
+  the first post-WC-2026 season, exactly the small-sample/no-prior window where
+  it bit before overlays are written.
 - [DONE] Newcomer confidence haircut (`shrink_newcomers`, rates.py, from
   GW8): a priorless newcomer has nothing for `blend` to regress toward, so
   his small-sample rates rode at full trust and a 2-game hot streak outranked
@@ -58,17 +62,22 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   calibration term (scale raw xPts toward the realised league level) and/or better
   captain-ceiling + bonus modelling (the bonus proxy has had no new signal since
   GW1). Applies forward-only.
-- [OPEN — PRIORITY] Bench-order model ignores fixture softness: cost points THREE
-  times now — GW10 started Senesi (MCI away) over Saliba (BUR away), −3; GW13 started
-  Calafiori (0, subbed 45', depleted Arsenal at Chelsea) and BENCHED Konaté (8,
-  clean sheet at 3rd-bottom West Ham), −8; GW17 started Tarkowski (3, Everton HOME to
-  Arsenal FDR4) and BENCHED Saliba (6, CS+bonus at Everton, but on a post-injury
-  depressed minutes projection), −3. This is the biggest recurring in-week leak.
-  Weight FDR / team-model CS probability in XI ordering, or expose a manager
-  bench-order override. INTERIM: sanity-check XI order by hand each week — start
-  premiums into soft fixtures over cheap DEFs into hard ones. The GW17 case adds a
-  second driver: a returning player's minutes projection stays artificially low for
-  1-2 GWs after an absence, so the solver benches him even onto a good fixture.
+- [DONE — split fix] Bench-order leak (was [OPEN — PRIORITY], the biggest
+  recurring leak — GW10 −3, GW13 −8, GW17 −3). Root cause was TWO problems under one
+  label: (1) the optimizer picked the XI/captain/bench on `xpts_horizon` (a decayed
+  MULTI-week total) while the week is scored on the single next GW — GW10 benched
+  Saliba behind Senesi on the horizon though the immediate GW ranked Saliba higher;
+  GW17 benched Saliba (6) behind Tarkowski because a returning player's minutes
+  projection stays low for 1-2 GWs. FIXED: `optimize()` now derives XI/captain/vice/
+  bench on the nearest `xpts_gw{n}` column (auto-detected; `_pick_lineup` in milp.py),
+  squad-15 and transfers still on the horizon; applies forward-only (GW18+). (2) GW13's
+  −8 was a projection the model can't fix — it rated Calafiori over Konaté on the
+  immediate GW too, blind to Arsenal's depleted back line; no lineup re-rank catches
+  that. FIXED via the manager overlay: `ManagerDecision.start`/`bench` (decision JSON
+  `start`/`bench`) force an owned player into/out of the XI with written reasoning — the
+  bench-order override the reviews asked for. Deliberately NOT done: a team-model
+  CS-probability overhaul to cure defender fixture-compression — over-engineering,
+  left [WATCH].
 - [PROCESS] Suspension verification: a ban needs the OFFENCE **and**
   confirmation it was upheld/served against the team sheet — not an aggregator
   headline. The GW9–10 Ballard "3-match ban" was misapplied (he played both
