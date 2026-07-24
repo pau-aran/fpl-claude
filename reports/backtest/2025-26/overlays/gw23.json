@@ -1,0 +1,97 @@
+{
+ "381": {
+  "start_share": 0.82,
+  "reason": "Mohamed Salah (Liverpool MID): BACK and STARTING for GW23 — the returnee thread RESOLVED. Egypt finished 4th at AFCON (lost the 3rd-place playoff to Nigeria 4-2 on penalties after 0-0, Sat 17 Jan); Salah flew back and STARTED the midweek Champions League win at Marseille (0-3, Wed 21 Jan) — his first start since Matchday 5 (PSV) — so he is fit and the first-week-back doubt is largely spent. Expected to start at Bournemouth (Sat 24 Jan, 17:30 late KO); slight residual minutes-management risk on his first PL start back keeps him just below full-nailed. Price ~PS14.0m (down from the PS14.5m opening; PS14.2m by Nov, sliding through his lean run + AFCON). NOT owned — a premium buy-back GATED ON A FUNDING SALE (a two-move/-4 reshape, not a straight swap), and NOT a top-3 template buy (the crowd bought the cheaper Man Utd pair). Buy only if projection + fixtures beat the incumbent MID board, never the name. Washington Post/Al Jazeera/Opta 21 Jan; Slot presser 22-23 Jan.",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.05,
+  "reason": "Ibrahima Konate (Liverpool DEF): OUT for GW23 (OUR PLAYER) — the week's biggest squad shock. His father Hamady died this week; Konate was in Paris with his family, MISSED the Marseille trip (Wed 21 Jan), and his funeral was scheduled for Friday 23 Jan in Aulnay-sous-Bois. Slot all-but-confirmed his Bournemouth absence ('I spoke to him a few times, these are private matters and they should stay between us… he needs time'). A forced-consideration AND the natural Salah-funding sale (out anyway), though the arithmetic does not close on him alone (~PS5.5 + PS2.3 bank vs a PS14.0m Salah). Bereavement absence, indefinite/uncertain return — reassess GW24. Data-hygiene: the confirmed matchday non-selection is post-deadline, but the bereavement + funeral + missed-Marseille are all pre-deadline and usable. Yahoo/OneFootball/ThisIsAnfield/Liverpool.com 21-23 Jan.",
+  "duration_gws": 1
+ },
+ "488": {
+  "start_share": 0.4,
+  "reason": "Bruno Guimaraes (Newcastle MID): MAJOR DOUBT for GW23 (OUR PLAYER) — the second hit to a squad that had been quiet for weeks. Picked up an ANKLE knock at PSV in midweek (UCL, ~21 Jan); Eddie Howe (pre-Aston Villa presser, 23 Jan) 'pledged to give him every chance' but admitted he 'did not know the extent of the injury' — classic 50/50-or-worse doubt for the NEW v AVL game (Sun 25 Jan). Our GW22 Semenyo replacement; the cover/bench-order question is now live for the memo. Data-hygiene: the confirmed non-selection is the post-deadline Sun teamsheet — only the pre-deadline ankle knock + Howe's uncertain presser are used. newcastleunited.com/Howe 23 Jan.",
+  "duration_gws": 1
+ },
+ "430": {
+  "start_share": 0.7,
+  "reason": "Erling Haaland (Man City FWD): the captaincy anchor, HOME to bottom-side Wolves (GW23, plan FDR1) — but for the first time the risk is AVAILABILITY, not a form blank. Consensus captain and heavy Triple-Captain pick (projected ~7.8; 20 league goals despite an eight-game open-play drought; 7M+ captained him). HOWEVER a real, DATABLE pre-deadline rotation flag exists: Pep called him 'exhausted' after the Carabao Cup semi 1st leg v Newcastle (~13 Jan), City have a MUST-WIN UCL tie v Galatasaray Wed 28 Jan (needing a win for the top eight) and heavily rotated + lost their last UCL game — pre-deadline FPL content explicitly warned of 'significant rotation risk' (partly offset by Pep's 'too many changes' admission suggesting he'd rotate LESS v Wolves). Point-in-time we cannot know the confirmed XI, so start_share is set at 0.7 to price the elevated-but-not-dominant, market-discounted risk (still net expected to start). CAPTAIN per the shield/no-switch rule (22/22), but do NOT triple-captain (TC held for GW26) and treat the vice (Thiago) as live. Data-hygiene: the confirmed benching is post-deadline and EXCLUDED. Guardiola pressers 13-23 Jan; premierleague.com/totalfootballanalysis GW23.",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.85,
+  "reason": "Igor Thiago (Brentford FWD): nailed No.9, HOME to Nottingham Forest (GW23) — a decent home fixture after last week's blank at Chelsea. VICE-CAPTAIN and unusually LIVE this week: if Haaland is a late rotation scratch (0 minutes) the armband transfers to Thiago. Non-AFCON (Brazil); no flag surfaced (15-24 Jan). Carried.",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.85,
+  "reason": "William Saliba (Arsenal DEF): fit, HOME to Manchester United (GW23, plan FDR3, Sun 25 Jan). Arteta (pre-Man Utd presser, 23 Jan): no fresh injury worries; only Dowman expected to miss — Arsenal close to full strength. LOCK — refuse the standing Saliba->Timber churn (we own both). Data-hygiene: the 'Saliba back injury / extended period' story is the 2026 World Cup (Jul 2026) — NOT a GW23 flag. Non-AFCON. Carried. arsenal.com/Sports Mole 23 Jan.",
+  "duration_gws": 1
+ },
+ "8": {
+  "start_share": 0.85,
+  "reason": "Jurrien Timber (Arsenal DEF): nailed, HOME to Manchester United (GW23, FDR3). Named in the pre-Man Utd fitness picture with no fresh worries (Arteta 23 Jan); a fixture in the back four (fullback), set-piece/attacking threat on the elite run. Non-AFCON. Carried.",
+  "duration_gws": 1
+ },
+ "21": {
+  "start_share": 0.85,
+  "reason": "Declan Rice (Arsenal MID): nailed, HOME to Manchester United (GW23, FDR3). No fresh worries (Arteta 23 Jan); the GW19 knee knock long resolved (17 on the GW20 return). Set-piece anchor on the elite Arsenal run. Non-AFCON. START. Carried.",
+  "duration_gws": 1
+ },
+ "291": {
+  "start_share": 0.87,
+  "reason": "James Tarkowski (Everton DEF): nailed CB, HOME to Leeds (GW23, Mon 26 Jan — the round's closing game). MORE nailed this week: Everton are depleted at the back (Keane suspended, Branthwaite unfit) and no suspension surfaced for Tarkowski. This is our cleanest named prime-CS/duel bet among the DEFs (home fixture; Konate the usual LIV bet is OUT and Senesi faces a Salah-restored Liverpool). [PROCESS] if the solver benches him on a <0.2 hair, pull force_start for HIM. Data-hygiene: exclude the EVE-LEE result + the Tarkowski handball/penalty (post-deadline, Mon 26 Jan). Non-AFCON. Carried.",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.88,
+  "reason": "Marcos Senesi (Bournemouth DEF): super-nailed, HOME to Liverpool (GW23, Sat 17:30). Bournemouth are in an injury crisis (could be missing ~9 players — Adams, Kluivert, Gannon-Doak, Brooks, Tavernier hamstring et al.), which makes Senesi certain to start; no suspension surfaced. Clean-sheet prospects are WEAKER than usual, though — he faces a Salah-restored Liverpool attack (projection note, not an availability one). Non-AFCON. Carried. Liverpool.com/NewsNow 22-24 Jan.",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.05,
+  "reason": "David Brooks (Bournemouth MID): OUT for GW23 (OUR PLAYER) — on Bournemouth's injury list (ankle, carried over from the GW22 knock) amid a ~9-man injury crisis. A dead bench slot, immaterial to our XI. Reassess GW24. Liverpool.com/NewsNow 22-24 Jan.",
+  "duration_gws": 1
+ },
+ "237": {
+  "start_share": 0.83,
+  "reason": "Enzo Fernandez (Chelsea MID): available, AWAY at Crystal Palace (GW23, Sun 25 Jan) — into the soft CRY/BRE window. Chelsea's pre-Palace team news (23 Jan): Enzo had been suffering with illness but 'came through the majority' of the midweek game — available, docked slightly for the residual illness note. Chelsea's flagged doubts are Palmer (thigh)/Gittens/Estevao, NOT Enzo. Intra-squad clash: he faces our Mateta's Palace (both start). Non-AFCON. HOLD. Carried. chelseafc.com 23 Jan.",
+  "duration_gws": 1
+ },
+ "387": {
+  "start_share": 0.85,
+  "reason": "Dominik Szoboszlai (Liverpool MID): nailed, AWAY at Bournemouth (GW23, Sat 17:30). STARTED AND SCORED in the midweek UCL win at Marseille (21 Jan) — no rotation concern despite Salah/Wirtz restoring the front line (he operates in a deeper central-midfield role, still nailed). Slot flagged no added injury concerns beyond Konate's bereavement. Non-AFCON (Hungary). The Liverpool-bloc role reassessment resolves benign for him — hold. Carried.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.82,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): available, HOME to Chelsea (GW23, Sun 25 Jan). Nailed No.9 on penalties; the transfer-saga watch (Chelsea/Villa links) continues but is a non-injury WATCH, not a doubt — docked slightly (0.82) for that noise. No fresh injury/suspension surfaced. Intra-squad clash: he faces our Enzo's Chelsea (both start). Non-AFCON. Carried. cpfc.co.uk 22-24 Jan.",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.85,
+  "reason": "Robin Roefs (Sunderland GK): No.1, AWAY at West Ham (GW23, Sat 12:30 — the round's first KO, setting the 11:00 deadline). No rotation or injury flag surfaced (22-24 Jan). Nailed; our keeper. Carried.",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.9,
+  "reason": "Martin Dubravka (Burnley GK): No.1, HOME to Tottenham (GW23, Sat). Our BENCH keeper (immaterial). No rotation flag surfaced (22-24 Jan). Carried.",
+  "duration_gws": 1
+ },
+ "119": {
+  "start_share": 0.82,
+  "reason": "Bryan Mbeumo (Man Utd MID): nailed under interim boss Carrick — SCORED in the 2-0 derby win over Man City (17 Jan), his 8th of the season, playing to the 76th minute (subbed for Cunha). AWAY at Arsenal (GW23, Sun 25 Jan) — a tougher fixture, mild sub/minutes risk. The No.2 most-transferred-in player this week (the Man Utd hype train). NOT owned — our re-entry test is DEFERRED to GW24 MUN-FUL(H) (the cleaner home fixture); the derby minutes are the confirming evidence, buy on the numbers not the bandwagon. manutd.com/ESPN/Goal 17 Jan; OfficialFPL transfers GW23.",
+  "duration_gws": 1
+ },
+ "449": {
+  "start_share": 0.85,
+  "reason": "Bruno Fernandes (Man Utd MID): nailed under Carrick — 90' + assist (for Mbeumo) in the 2-0 derby win over Man City (17 Jan), 'the engine' of United's play, had a goal chalked off. AWAY at Arsenal (GW23, Sun 25 Jan). The No.1 most-transferred-in player this week (the 9th time he has topped the market) — the template's marquee returnee buy. NOT owned — our re-entry test is DEFERRED to GW24 MUN-FUL(H), same window as Mbeumo; a buy on the numbers, not an auto-buy-back. manutd.com/Goal/Fox 17 Jan; OfficialFPL/fantasyfootballfix transfers GW23.",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.1,
+  "reason": "Riccardo Calafiori (Arsenal DEF): STILL OUT/not ready for GW23. Arteta (pre-Man Utd presser, 23 Jan): sidelined ~a month, needs 'another training session' to be assessed and 'won't be rushed back into the starting lineup even if declared fit' — at best a bench return, not a start. Only Dowman is expected to miss otherwise. BAN any buy-back; Arsenal are also at our 3-per-club cap (Saliba/Timber/Rice), so any buy needs an Arsenal sale first. arsenal.com/Sports Mole 23 Jan.",
+  "duration_gws": 1
+ }
+}

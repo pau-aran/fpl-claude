@@ -1,4 +1,4 @@
-# 2025/26 Backtest Baseline — Official FPL Averages, GW1-22
+# 2025/26 Backtest Baseline — Official FPL Averages, GW1-23
 
 Benchmark for the fpl-claude backtest: the official average manager score per gameweek
 (the "Average" shown on the FPL site), plus the official highest GW score, for
@@ -34,11 +34,12 @@ Values cross-verified against independent web sources where snippets were availa
 | 20 | 42 | not found | not found | Deadline 2026-01-03. FPL API mirror + [FPL Dave GW20 review] cross-check ("42pts Average"). Last of the three-in-nine festive rounds; Haaland blanked again. |
 | 21 | 48 | 118 | not found | Deadline 2026-01-06 (midweek Tue; round runs 6-8 Jan). FPL API mirror, re-fetched + re-verified this session (highest 118). Trough's last round; ARS-LIV 0-0. |
 | 22 | 40 | 111 | not found | Deadline 2026-01-17 (round 17-19 Jan, straddling the AFCON final). FPL API mirror (verified, highest 111). Derby round: the ~74% Haaland captaincy blanked; returnees Mbeumo/Bruno hit on debut-back. |
+| 23 | 44 | 115 | not found | Deadline 2026-01-24 (round 24-26 Jan). FPL API mirror (verified, highest 115). Salah's return round (started at Bournemouth); Haaland benched by Pep (17', UCL rotation) — the ~7M captaincy stung. |
 
-**Average-manager 22-GW cumulative total (sum of official GW averages): 1090 points.**
-*(21-GW was 1050; GW22 adds 40.)*
+**Average-manager 23-GW cumulative total (sum of official GW averages): 1134 points.**
+*(22-GW was 1090; GW23 adds 44.)*
 
-*Look-ahead (mirror-verified, not yet played in-sim): GW23 avg 44 (highest 115), GW24 55 (126) — GW23 is Salah's return round (Egypt out in the SF), GW24 the window's close.*
+*Look-ahead (mirror-verified, not yet played in-sim): GW24 avg 55 (highest 126) — the AFCON window's close; averages recover as the returnees settle and rotation eases.*
 
 ## Verification notes
 

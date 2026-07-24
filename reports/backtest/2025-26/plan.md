@@ -23,31 +23,29 @@ in the decision memo.*
   suspended — the ban was a mis-sourced aggregator headline (knowledge.md
   [PROCESS]). Harmless: we sold him for the productive-slot upgrade, not the ban.
 
-## Current state — after GW22 (live snapshot)
+## Current state — after GW23 (live snapshot)
 
-- Bank **£2.3m** | **5 FT for GW23 — the CAP** (spent 1 at GW22, re-accrued) | season **1278
-  pts (+188)** | 1 hit taken all season | captaincy 22/22.
+- Bank **£2.1m** | **5 FT for GW24 — the CAP** (spent 1 at GW23, re-accrued) | season **1316
+  pts (+182)** | 1 hit taken all season | captaincy 23/23.
 - **Squad:** Roefs, Dúbravka (GK); Saliba, Timber, Tarkowski, Senesi, Konaté (DEF); Rice,
-  Enzo, Szoboszlai, **Bruno G.**, Brooks (MID); Haaland, Thiago, Mateta (FWD). Change at
-  GW22: **Semenyo→Bruno Guimarães** (the completed £64m City clause = the planned risk-class
-  sale; Bruno G. the clean-entry value pick over the solver's Foden). Arsenal triple intact;
-  all four chips intact (set 2).
-- **GW22 (38 v 40, −2):** first sub-average week since GW11, on tails — Haaland's derby blank
-  (the 74% field captain too), Burnley scoring at Anfield in the bloc's PRIME week (Konaté 2,
-  Szoboszlai 0/OG), Tarkowski's 8 stranded on an un-named 0.14 bench hair (→ new listing
-  rule). The refusals still paid (kept Saliba 8 v Saka 1 — veto #13; refused Foden 1 in 45'
-  v chosen Bruno G. 3); both deferred returnees hit in the derby (Mbeumo 9, Bruno 10) —
-  live evidence for their re-entry tests, not a regrade.
-- **Live threads into GW23 (deadline Sat 24 Jan ~11:00 UTC):** (1) **SALAH RETURNS** — Egypt
-  out in the SF; his Liverpool entry is BOU(A)4, then NEW(H)3 MCI(H)4. The window's biggest
-  question: a £14+ buy needs a funding SALE — pure upgrade on the numbers only; (2) **the
-  bloc reassessment is NOW** — after the Burnley failure the bloc's soft-run thesis is spent
-  (BOU-A next, Salah's return may lift Liverpool's attack but our two are DEF/MID); decide
-  hold-vs-reshape WITH the Salah question, not separately; (3) **Mbeumo defer holds through
-  ARS(A) GW23; GW24 MUN-FUL(H) is the entry test** (9 on return, 70' under Carrick);
-  (4) **Bruno nailed again** (10 in 90') — re-entry candidate, same GW24 window; (5) Brooks
-  ankle (bench slot, no action); (6) TC@GW26 mini-DGW — verify the fixture data again this
-  week. [PROCESS, new GW23+] every <0.2-hair bench margin gets LISTED + an explicit call.
+  Enzo, Szoboszlai, Bruno G., **Garner** (MID); Haaland, Thiago, Mateta (FWD). Change at
+  GW23: **Brooks→Garner** (free at the FT cap — minimum-spend autosub insurance with
+  Konaté/Bruno G. both doubtful). Arsenal triple intact; all four chips intact (set 2).
+- **GW23 (38 v 44, −6):** second straight −6, both on priced variance not process. **Haaland
+  played 17'** (we PRICED the exhaustion/UCL-rotation flag 0.70 pre-deadline and captained
+  the shield anyway — correct, ate the tail; C returned 2). Low slate for our holds
+  (Szoboszlai 13 the exception). Konaté benched (bereavement — his father died; humane hold),
+  Bruno G. benched (ankle, 0'). Refusals paid again (Salah 5 on the refused £14 buy — our
+  board outprojected him; Foden 1 in 29'), but the deferred Mbeumo hauled 10 at ARS(A) —
+  the one variance loss (defensible: don't buy the name into his hardest fixture).
+- **Live threads into GW24 (deadline Sat 31 Jan ~11:00 UTC — the window's CLOSE):** (1) **the
+  returnee ENTRY test is live + evidenced** — Mbeumo 8→10 and Bruno F. 10→5 across two games
+  back under Carrick, both nailed; **GW24 is MUN-FUL(H), the planned home entry** — decide the
+  buy + its funding sale; (2) **Konaté status** — if his return stays uncertain he's the
+  natural funding sale; if he's back, hold; (3) **the Liverpool bloc** — Salah has restored
+  their attack around our DEF/MID holds; a bloc trim is the alternative funding route;
+  (4) TC@GW26 mini-DGW — verify the fixture data once more; (5) Brooks (sold), Mateta
+  transfer-saga watch only. [PROCESS, GW23+] list every <0.2-hair bench margin + call it.
 
 ## Executed
 
@@ -186,6 +184,19 @@ in the decision memo.*
   NEW RULE: all <0.2 bench hairs listed + called in the memo. Captain Haaland derby blank
   (22/22, the field's 74% too). GW **38 vs avg 40 (−2)**; season **1278 (+188)**. See
   gw22.md / consensus/gw22.md / reviews/gw22.md.
+
+- **GW23 — EXECUTED: Salah's return round — REFUSED the buy-back, held through two absences,
+  Brooks→Garner (free), no hit — −6.** The window's headline divergence, decided on written
+  arithmetic BEFORE the solve: Salah £14.0 projected LAST on our MID board (45 exp min,
+  first week back) with no funding route short of tearing down two slots — BANNED (he
+  returned 5, the refusal validated). Held Konaté through a bereavement (father died — humane,
+  non-negotiable; benched 0) and Bruno G. through a 1-week ankle doubt (benched 0, no cost).
+  Spent the free at-cap FT on Brooks→Garner (minimum-spend autosub insurance). Deferred
+  Mbeumo/Bruno F. to the GW24 MUN-FUL(H) entry (refused buying into ARS-A — Mbeumo hauled 10
+  there, the one variance loss). Captain Haaland PRICED 0.70 on a datable exhaustion/UCL flag
+  and captained anyway (correct on EO+ceiling) — Pep played him 17', C returned 2 (the
+  calibration captain-slot tail, forecast in the split). GW **38 vs avg 44 (−6)**; season
+  **1316 (+182)**. See gw23.md / consensus/gw23.md / reviews/gw23.md.
 
 ## Active path — the returnee window (GW21 → GW24)
 
