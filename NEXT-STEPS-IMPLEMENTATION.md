@@ -71,10 +71,20 @@ external factor. Tick items off and move them to `NEXT-STEPS.md`/`STATE.md` as t
       (websearch-driven multi-competition results + the vaastav data) to validate the builder
       before GW1, since it's a first-class deliverable.
 
-### A8. Continue the backtest (optional, high-signal)
-- [ ] Simulate GW21-24 to close the AFCON window on the pipeline — the returnee decisions
-      (Mbeumo/Bruno ~GW22, Salah ~GW23), the Liverpool ARS(A)5 reassess (GW21), and a first
-      live chip-EV check (set 2 unlocks GW20). Watch the `force_start` duel-lever rule.
+### A8. Continue the backtest (optional, high-signal) — DONE ✅
+- [x] Simulated GW21-24 to close the AFCON window (season **1380, +191** vs baseline; window
+      GW17-24 net **+56** of edge; 1 hit all season, captaincy 24/24). The returnee decisions
+      landed on the numbers: GW21 rolled to the FT cap (+13); GW22 the Semenyo £64m-clause
+      risk-class sale → Bruno G. over the solver's Foden (−2, both refusals vindicated same
+      week); GW23 REFUSED the £14 Salah buy-back on written arithmetic + held through a
+      bereavement (−6, priced-variance week); GW24 entered **B.Fernandes over Mbeumo** on
+      horizon/value-per-£m (+9, right by +8 vs the deferred Mbeumo). Exercised the new chip-EV
+      surface every week (chip advice printed in `--propose`; TC@GW26 DGW candidate surfaced
+      and confirmed via news) and the calibration split (base-XI vs captain-slot Outcome line).
+      Two NEW process rules shipped from the run: (a) list + explicitly call every <0.2-hair
+      bench margin (GW22 Tarkowski sting), (b) the pure-CS duel-name CAUTION (0-for-2). One
+      [WATCH] opened: widen the DEF-CS bench hair to ~0.3 (Konaté GW24 + Tarkowski GW22, two
+      bimodal-CS bench stings). Memos/reviews/consensus/overlays all committed GW21-24.
 
 ## B. BLOCKED / time-gated (cannot do in this sandbox / before the game opens)
 - [ ] **First live 2026/27 data run** — FPL API + football-data egress-blocked here; needs a
@@ -88,9 +98,22 @@ external factor. Tick items off and move them to `NEXT-STEPS.md`/`STATE.md` as t
 - [ ] **GW1 2026/27 draft squad** (Phase 4) — depends on live data + verified rules.
 
 ## Suggested order
-1. A2 (close the calibration defect — last modeling gap before GW1).
-2. A1 (finish chip timing + DGW/BGW detection — the biggest untapped rank lever).
-3. A8 (GW21-24 backtest — exercises A1/A2 and the returnee logic end-to-end).
-4. A4/A3 (multi-period path + live calibration loop).
+1. ~~A2 (close the calibration defect)~~ — **DONE** (Path A, `calibration.md`; memo split shipped).
+2. ~~A1 (chip timing + DGW/BGW detection)~~ — **DONE** (`optimize/chip_timing.py`, `--propose`
+   advice, exercised live GW21-24; TC@GW26 DGW surfaced).
+3. ~~A8 (GW21-24 backtest)~~ — **DONE** (window closed at +191; two new process rules + one
+   [WATCH] shipped from the run).
+4. **A4/A3 next** (multi-period MILP transfer path + live `/fpl-review` calibration loop) —
+   now the highest-leverage remaining buildable items; A4 would make the hand-written `plan.md`
+   FT-banking/returnee-window path model-derived (the GW17-24 window proved the manual version
+   works, +56 edge — worth encoding).
 5. A5/A6/A7 (data breadth, minutes v2, weekly-report dry-run) as capacity allows.
 6. B items the moment a networked session / the 2026/27 season opens.
+
+## Backtest reach (as of this session)
+- **24 of 38 GWs simulated** point-in-time: season **1380 vs baseline 1189 (+191)**, 1 hit
+  all season, captaincy 24/24. AFCON window (GW17-24) net **+56**. The pipeline now has chip
+  MECHANICS + TIMING advisory, the calibration defect closed, and two bench-order process
+  rules. Next backtest frontier (optional): GW25-26 to exercise the FIRST live chip play
+  (TC@GW26, Arsenal DGW) and GW31 (BGW, a Free Hit/WC trigger) — the chip surface is built and
+  waiting for a DGW/BGW to actually fire a chip in-sim.

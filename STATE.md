@@ -1,39 +1,52 @@
-# Session State — updated 2026-07-24 (backtest session — GW18-20 done, the AFCON+festive trough)
+# Session State — updated 2026-07-24 (backtest session — AFCON window CLOSED, GW21-24 + A1/A2 shipped)
 
-*Handoff snapshot. Read this first, then `NEXT-STEPS.md` for the roadmap and
+*Handoff snapshot. Read this first, then `NEXT-STEPS-IMPLEMENTATION.md` for the buildable
+backlog, `NEXT-STEPS.md` for the road-to-GW1 roadmap, and
 `reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge.
 GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 
-## Latest: GW18-20 backtest (this session)
+## Latest: GW21-24 backtest — the AFCON window CLOSED (this session)
 
-Simulated the next three GWs (the AFCON + festive-congestion trough, 26 Dec–3 Jan) on the
-point-in-time pipeline. **168 pts vs 126 average (+42); season 1179, edge +135 → +177 (a
-new high); 0 hits, captaincy 20/20.** The block was won on availability discipline and value
-holds, not the captain (Haaland blanked 2/2/2 — borne by the ~90%-owned field too):
-- **GW18 43 v 44 (−1):** B.Fernandes OUT (hamstring, Amorim presser) → **Semenyo** (value
-  cover; Ghana didn't make AFCON, 9 on debut); refused the model's Mateta→Mbeumo AFCON
-  buy-back trap; banked 2 FT. Autosubs covered two unforecastable blanks (Calafiori's
-  warm-up injury struck ~20h post-deadline — not knowable — + Szoboszlai).
-- **GW19 62 v 40 (+22):** Calafiori OUT (muscle ~month, now public) → **Timber** (9 debut);
-  BENCHED Rice (1-wk knee, held-not-sold); refused the model's buy-back-AND-captain-injured-
-  Bruno line. One process miss: Konaté (duel-named CS bet) benched on a 0.06 hair (7 on the
-  bench, ~−4) — `force_start` lever not pulled → now a standing rule.
-- **GW20 63 v 42 (+21):** ROLL (0 transfers → 4 FT banked); held Enzo through MCI(A)5 (11)
-  and Rice returned (17) — both "hold" rules vindicated same week.
+Simulated GW21-24 on the point-in-time pipeline, orchestrated with parallel Opus agents (one
+per GW for the point-in-time news replay + consensus; two more for the A1/A2 code tasks).
+**The 8-GW AFCON window (GW17-24) is complete: entered at +135, EXIT at +191 — net +56 of
+edge built through the season's lowest-average stretch.** Season **1380 vs baseline 1189**,
+1 hit all season, captaincy 24/24.
+- **GW21 61 v 48 (+13):** ROLL to the 5-FT cap (the returnee window slipped later — both AFCON
+  QFs pushed returns back); the refused churn bundle scored 8 vs kept 13+bench; ARS-LIV 0-0
+  paid the Liverpool hold.
+- **GW22 38 v 40 (−2):** the Semenyo £64m-City-clause risk-class sale → **Bruno G.** over the
+  solver's Foden (refused: same rotation class — Foden 45'/1 pt, vindicated same week).
+  Deferred both returnee buy-backs on entry-fixture numbers. Tarkowski's 8 stranded on an
+  un-named 0.14 bench hair → NEW RULE (list every <0.2 hair).
+- **GW23 38 v 44 (−6):** REFUSED the £14 Salah buy-back on written arithmetic (last on our MID
+  board; he returned 5); held Konaté through a bereavement + Bruno G. through an ankle knock;
+  Brooks→Garner (free). Haaland PRICED 0.70 on a datable exhaustion/UCL flag, captained anyway
+  — Pep played him 17' (C returned 2). Priced-variance week, not process error.
+- **GW24 64 v 55 (+9):** the window's reshape — {Mateta(out), Szoboszlai(trim)} →
+  {**B.Fernandes**, Calvert-Lewin}. Entered B.Fern over Mbeumo on OUR numbers (horizon 24.74 /
+  2.60 pts-£m vs 19.82 / 2.36) — right by +8 (deferred Mbeumo 2, B.Fern 10 on debut).
 
-Squad now: Roefs, Dúbravka / Saliba, **Timber**, Tarkowski, Senesi, Konaté / Rice, Enzo,
-Szoboszlai, **Semenyo**, Brooks / Haaland, Thiago, Mateta. **4 FT, £1.9m** into GW21 — the
-Liverpool ARS(A)5 reassess and the returnee window (Mbeumo/Bruno ~GW22, Salah ~GW23) next.
-Data self-provisioned via `backtest.fetch` (vaastav); GW18-20 official averages verified.
+Squad now: Roefs, Dúbravka / Saliba, Timber, Tarkowski, Senesi, Konaté / Rice, Enzo,
+**B.Fernandes**, Garner, Bruno G. / Haaland, Thiago, **Calvert-Lewin**. **4 FT, £0.7m** into
+GW25. Arsenal triple intact for **DGW26 (confirmed) → TC-Rice queued**; **BGW31 flagged**
+(Free Hit/WC). Data self-provisioned via `backtest.fetch`; GW21-24 averages verified.
 
-**Also this session — Phase 3b chip MECHANICS built** (owner-directed): the backtest simulator
-now plays all four chips (WC/FH/BB/TC via `decision.chip` / `--chip`; `score_gw` BB-all-15 &
-TC-×3, `run_gameweek` WC-keep/FH-revert, one-per-half inventory in `state.json`), + 6 tests
-(46 green). The **AFCON chip counterfactual** (`chip-analysis-afcon.md`) proved FT-only was
-right: WC@17-held 236 vs our 238, FH neutral/negative, BB gains were bench variance, TC@17 +16.
-Chip timing rules encoded (TC on a standout captain fixture/DGW; BB only on a DGW; WC/FH for a
-4+ change need or BGW/DGW). Remaining Phase 3b (auto chip-timing + multi-period MILP path) and
-the full forward backlog are in the new **`NEXT-STEPS-IMPLEMENTATION.md`**.
+**Also this session — two code tasks shipped via parallel Opus agents (worktree-isolated,
+merged clean):**
+- **A1 — chip TIMING advisory** (`src/fpl_claude/optimize/chip_timing.py`, merged `5dc1edb`):
+  DGW/BGW detection from fixtures + a chip-EV surface (TC/BB per future GW, nailedness flags,
+  half-inventory-aware) + an `advise()` applying the knowledge.md timing rule; wired into
+  `run.py --propose` (a "Chip advice" block prints current-GW verdicts + a forward table). It
+  surfaced the DGW26 TC-Rice candidate live during the GW21-24 run. Skill updated; tests added.
+- **A2 — calibration defect CLOSED** (`reports/backtest/2025-26/calibration.md`, merged
+  `248a675`): a full 20-GW decomposition (reproducible via `notebooks/calibration_analysis.py`)
+  resolved the [OPEN] as Path A (ranking-correct, EV-reporting-only, NO model change). It
+  CORRECTED the old framing — the +4.3/GW residual is in the BASE XI (within noise, t=1.47),
+  the captain slot is mean-unbiased (−0.07) and only high-variance. A uniform calibration is a
+  proven no-op on picks and the hit-gate; the "scale to league level" term is inoperable
+  (predicted-total std 2.96, ~uncorrelated with the slate). FIX: the memo Outcome line now
+  splits "predicted = base XI + captain slot (doubled)". 68 tests green, ruff clean.
 
 ## Where things stand
 
@@ -72,16 +85,18 @@ the full forward backlog are in the new **`NEXT-STEPS-IMPLEMENTATION.md`**.
 
 ## What the next session should do
 
-1. **Backtest gate is DONE (PASSED, +93).** Next real work is the LIVE
-   pipeline: implement the three queued [OPEN]s (level calibration,
-   bench-order fixture softness, suspension verification — see VERDICT.md /
-   knowledge.md) so they're in place before GW1 2026/27. These are the
-   highest-leverage remaining quality gains toward a verified top-1%.
-2. **Final gate verdict + report** (10-GW total vs 531 baseline; process
-   audit from `reviews/`), fold into NEXT-STEPS §2 and drop the "ungated"
-   label if passed.
-3. Then the pre-GW1-2026/27 items in NEXT-STEPS §§1,3 (network allowlist
-   re-test, season-launch rules verification).
+The three highest-leverage buildable items (A1/A2/A8) are now DONE. Remaining, in order
+(see `NEXT-STEPS-IMPLEMENTATION.md` "Suggested order"):
+1. **A4/A3** — the next buildable frontier: make the multi-period FT-banking / returnee-window
+   transfer path native to the MILP (A4), and wire `/fpl-review` to consume `db/projections/`
+   CSVs for a live calibration loop (A3). The GW17-24 window PROVED the hand-written `plan.md`
+   version works (+56 edge over 8 GWs) — worth encoding so the standing plan is model-derived.
+2. **Optional backtest continuation** — GW25-26 would fire the FIRST live chip in-sim
+   (**TC-Rice on the confirmed Arsenal DGW26**), and GW31 the BGW (a Free Hit/WC trigger). The
+   chip mechanics + timing surface are built and waiting for a DGW/BGW to actually play one.
+3. **A5/A6/A7** (data-source clients, Minutes v2 LightGBM, the never-run weekly team report)
+   as capacity allows — then the **B / time-gated** items the moment a networked session or the
+   2026/27 season opens (live data run, season-launch rules verification, automation arming).
 
 ## Backtest scoreboard (2025/26 replay)
 
@@ -108,10 +123,30 @@ the full forward backlog are in the new **`NEXT-STEPS-IMPLEMENTATION.md`**.
 | 18 | 43 | 44 | Bruno OUT→Semenyo (9); refused Mbeumo AFCON trap; autosubs covered 2 blanks |
 | 19 | 62 | 40 | Calafiori OUT→Timber (9); Rice benched; refused buy-back-injured-Bruno |
 | 20 | 63 | 42 | ROLL→4 FT; held Enzo thru MCI-A (11); Rice back (17) |
-| **Σ1-20** | **1179** | **1002** | **+177; hits: 1; captaincy 20/20 — season-high edge** |
+| 21 | 61 | 48 | ROLL to the 5-FT cap; refused the churn bundle; ARS-LIV 0-0 paid the bloc hold |
+| 22 | 38 | 40 | Semenyo £64m clause → Bruno G. (over Foden); deferred returnees; Tarkowski 8 benched |
+| 23 | 38 | 44 | Refused £14 Salah; held Konaté (bereavement)+Bruno G. (ankle); Haaland priced 0.70, 17' |
+| 24 | 64 | 55 | Window close: Szob→B.Fernandes (10 deb, over Mbeumo) + Mateta(out)→CL; base XI +20.7 |
+| **Σ1-24** | **1380** | **1189** | **+191; hits: 1; captaincy 24/24 — AFCON window (GW17-24) net +56** |
 
 ## Recent session log
 
+- **2026-07-24 (GW21-24 session — the AFCON window CLOSED + A1/A2 shipped):** branch
+  `claude/simulate-gw-18-19-20-rff52m` (PR #4). Orchestrated parallel Opus agents (per-GW
+  point-in-time news/consensus researchers + two worktree-isolated code agents) while running
+  the manager decision loop myself. **Closed the 8-GW AFCON window (GW17-24) at +191 — net +56
+  of edge** through the season's lowest-average stretch; GW21-24 went 61/38/38/64 (v 48/40/44/55).
+  The window's spine: rode the loaded runs on banked FTs (never a chip — the counterfactual
+  proved FT-only right), sold Semenyo on his £64m City clause (GW22), refused the £14 Salah
+  buy-back on written arithmetic (GW23), and entered B.Fernandes over Mbeumo on horizon/value
+  (GW24, right by +8). Two −6 weeks (GW22-23) were priced variance (a forecast Haaland 17'
+  rotation, a bloc CS bet that failed), recovered in one at GW24 (base XI +20.7). Shipped
+  alongside: **A1** (chip-timing advisory — `optimize/chip_timing.py`, `--propose` chip block,
+  merged `5dc1edb`; it surfaced the TC-Rice DGW26 candidate live) and **A2** (calibration
+  defect closed Path A — `calibration.md` + the memo base/captain split, merged `248a675`).
+  68 tests green, ruff clean. Two NEW process rules from the run (list every <0.2 bench hair;
+  pure-CS duel-name caution) + one [WATCH] (widen the DEF-CS hair to ~0.3). All memos/reviews/
+  consensus/overlays committed; STATE/NEXT-STEPS-IMPLEMENTATION/plan/knowledge/baseline updated.
 - **2026-07-24 (GW18-20 session — the AFCON+festive trough):** branch
   `claude/simulate-gw-18-19-20-rff52m`. Ran the next three backtest GWs (26 Dec–3 Jan, the
   three-in-nine festive rounds stacked on AFCON) on the point-in-time pipeline. **168 v 126
