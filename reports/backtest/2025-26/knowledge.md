@@ -42,32 +42,35 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   (full sample) and Isak (has a prior → blend handled him, NOT double-shrunk)
   untouched — exactly the set that should/shouldn't move. Directly de-risks
   the Woltemade-type bandwagon the market pushed at GW8.
-- [OPEN] Level calibration — VARIANCE-BOUNDED not monotonic (13-GW mean error
-  +1.5), and the residual concentrates in the DOUBLED CAPTAIN SLOT. The model
-  under-predicts TOTALS ~15–25% in strong weeks (GW7–10 +13/+28/+4/+21) but
-  over-predicts on dead slates: GW11 −19, GW12 −13, GW13 −15 (THREE straight), all
-  driven by the captain (Haaland) blanking — a pen miss then two no-returns. The
-  model doubles the captain's ~7-9 projection, so consecutive captain blanks
-  mechanically gut the predicted total while the rest of the squad tracks close to
-  prediction. So it is a captain-ceiling / bonus-signal defect that amplifies in
-  BOTH tails, not a fixed +offset — concentrated in the captain slot specifically.
-  (GW14 flipped straight back to +16 under-prediction the moment the captain
-  returned 28 — the base XI is well-calibrated, the doubled captain is the variance.)
-  GW17 confirmed it a third time: predicted 58.5, actual 70 (+11.5), of which the
-  captain alone (Haaland 17.7 predicted → 32 actual) was +14.3 — the rest of a thin XI
-  under-scored, netting the base to slightly OVER-predicted. 17-GW mean error +4.2.
-  GW18-20 confirmed BOTH tails inside three weeks: GW18 −11.7 (captain blank guts the
-  total), GW19 +11.8 and GW20 +13.3 (base XI out-hauls — Rice/Thiago/Enzo/Timber/Tarkowski
-  big returns — while the captain STILL blanks). 20-GW mean error ~+4.0. Haaland returned
-  2/2/2 across the AFCON-window openers (four straight captain blanks GW17-excepted); the
-  base XI is well-calibrated in ranking (every relative call validated, captaincy 20/20),
-  the doubled-captain slot is the entire variance.
-  It is NOT a ranking bias — every relative call was validated (Fernandes>Saka,
-  Mateta/Konaté/Enzo/Thiago, captaincy 14/14) — so it never hurt a DECISION, but it
-  distorts EV reporting and the hit-gate margin. LIVE FIX: an environment-level
-  calibration term (scale raw xPts toward the realised league level) and/or better
-  captain-ceiling + bonus modelling (the bonus proxy has had no new signal since
-  GW1). Applies forward-only.
+- [DONE/process] Level calibration — RESOLVED as ranking-correct, EV-reporting-only;
+  NO model change. Full 20-GW decomposition in `calibration.md` (reproducible via
+  `notebooks/calibration_analysis.py`); it reconstructs every committed memo total
+  exactly. CORRECTS the old framing this entry carried: the 20-GW mean under-prediction
+  (+5.1 total) lives in the BASE XI (+4.3/GW), NOT the captain — and it is within noise
+  (t=1.47, df=19, NOT significant at 5%). The captain slot is MEAN-UNBIASED (−0.07,
+  t=−0.06), only high-variance: it is the highest-leverage single slot (std 9.95 doubled)
+  but the ten non-captain players carry MORE of the total variance (68.5% vs 45.3%; they
+  partly offset, cov<0). Both tails are MIXED base+captain, not captain-only — GW1/8/19/20
+  are base-driven hauls (whole defence/midfield click, captain flat/negative), GW14/16/17
+  captain-driven (Haaland 28/26/32), GW11/12/13/18 both slots down together. Why no build:
+  (a) no stable bias to estimate (+4.3 is 1.5 SE from zero over 20 GWs); (b) a uniform
+  additive calibration is a PROVEN no-op on every pick AND the marginal-net hit-gate — it
+  adds the same constant to every feasible 15-man objective and cancels in
+  `result.obj − free.obj` — so it belongs in REPORTING, not the model; (c) the proposed
+  "scale raw xPts toward the realised league level" is INOPERABLE — our predicted total is
+  near-flat (std 2.96) and ~uncorrelated with the weekly slate (corr +0.06 vs league avg,
+  −0.11 vs our own actual), so there is no level to scale toward, and a multiplicative form
+  would CORRUPT the hit-gate (scales the gain, not the fixed −4, flipping borderline hits on
+  noise); (d) the captain has no ceiling MEAN to fix — its issue is irreducible variance
+  (which week Haaland returns 32 vs 2), and raising its mean would INTRODUCE bias; (e) the
+  ranking is validated 20/20 (every relative call, captaincy 20/20) and must not be risked
+  for an EV-reporting gain. FIX SHIPPED (forward-only, GW21+): the memo Outcome now logs the
+  split "Predicted: T = base XI B + captain slot S (doubled/tripled)"
+  (`predicted_xi_breakdown` in `simulate.py`; `write_memo`), so EV and the hit-gate margin
+  are read against the known captain-slot variance. [WATCH] the one real per-player signal —
+  starting MIDs under-predicted +1.2/player (the bonus90 proxy has had no new signal since
+  GW1) — for Minutes-v2 / bonus work; deliberately NOT patched here, a per-position bump is
+  non-uniform and could reorder MID-vs-FWD, risking the ranking.
 - [DONE — split fix] Bench-order leak (was [OPEN — PRIORITY], the biggest
   recurring leak — GW10 −3, GW13 −8, GW17 −3). Root cause was TWO problems under one
   label: (1) the optimizer picked the XI/captain/bench on `xpts_horizon` (a decayed
@@ -166,15 +169,15 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   Haaland 2/2/2 across GW18-20 (four low weeks in the last five, GW17's 32 aside), yet he
   was the top projection + ~90% EO shield EVERY week, so no recency switch was ever right
   (a switch chases a moving target AND the ~90%-owned field bleeds the identical blanks —
-  averages 44/40/42). The rule is judged on adherence; the drought is the calibration
-  [OPEN]'s captain-slot variance. The GW14/16/17 hauls (28/26/32) all landed the week AFTER
+  averages 44/40/42). The rule is judged on adherence; the drought is the (now resolved)
+  calibration entry's captain-slot variance. The GW14/16/17 hauls (28/26/32) all landed the week AFTER
   a drought stretch — holding through is what catches them. Haaland RETURNED 26 at Palace (GW16) — the
   4-in-5 blank streak was pure variance, and holding the shield through it (no
   recency switch) caught both GW14's 28 and GW16's 26. Haaland has blanked FOUR of the last FIVE as
   captain (GW11-13, GW15; only GW14's 28 broke it) — extraordinary variance, but he
   was the top projection + ~90% EO shield EVERY week, so a recency switch would have
   (a) missed the GW14 haul and (b) chased a moving target. The rule is judged on
-  adherence; the streak is the calibration [OPEN]'s captain-slot variance, not a
+  adherence; the streak is the (now resolved) calibration entry's captain-slot variance, not a
   process flaw. Discipline (no recency switch) explicitly tested and held.
 - Hold premiums through SHORT-TERM absences; refuse lateral swaps to patch one week.
   GW14: with Saliba ill (out ~1wk), Senesi + Brooks banned (1 game), Thiago benched

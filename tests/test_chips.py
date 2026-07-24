@@ -13,6 +13,7 @@ import pytest
 from fpl_claude.backtest.simulate import (
     SquadState,
     canonical_chip,
+    predicted_xi_breakdown,
     predicted_xi_points,
     score_gw,
     wildcard_squad,
@@ -82,6 +83,41 @@ def test_predicted_points_chip_variants(rules):
     cap_pts = float(by_id.loc[squad.captain, "xpts_gw1"])
     assert bb == pytest.approx(base + bench_pts, abs=0.01)  # bench now counts
     assert tc == pytest.approx(base + cap_pts, abs=0.01)     # captain x3, not x2
+
+
+def test_predicted_xi_breakdown_splits_base_and_captain(rules):
+    """A2 calibration: the memo Outcome splits the predicted total into base XI
+    (captain excluded) + the doubled/tripled captain slot. base + slot == total,
+    and total is exactly what predicted_xi_points already returned."""
+    pool = _pool()
+    squad = optimize(pool, rules)
+    by_id = pool.set_index("id")
+    cap_xpts = float(by_id.loc[squad.captain, "xpts_gw1"])
+
+    b = predicted_xi_breakdown(squad, pool, 1)
+    # the split reconstructs the total, and the total is unchanged from before
+    assert b.base_xi + b.captain_slot == pytest.approx(b.total, abs=0.01)
+    assert b.total == predicted_xi_points(squad, pool, 1)
+    # captain slot is the captain DOUBLED; base excludes the captain entirely
+    assert b.captain_mult == 2
+    assert b.captain_slot == pytest.approx(2 * cap_xpts, abs=0.01)
+    base_manual = sum(float(by_id.loc[i, "xpts_gw1"]) for i in squad.xi if i != squad.captain)
+    assert b.base_xi == pytest.approx(base_manual, abs=0.01)
+
+    # triple captain: captain counts x3, the base XI is unchanged
+    tc = predicted_xi_breakdown(squad, pool, 1, chip="triple_captain")
+    assert tc.captain_mult == 3
+    assert tc.captain_slot == pytest.approx(3 * cap_xpts, abs=0.01)
+    assert tc.base_xi == pytest.approx(base_manual, abs=0.01)
+    assert tc.total == predicted_xi_points(squad, pool, 1, chip="triple_captain")
+
+    # bench boost: the base spans all 14 non-captain squad players, captain still x2
+    bb = predicted_xi_breakdown(squad, pool, 1, chip="bench_boost")
+    assert bb.captain_mult == 2
+    base_bb = sum(float(by_id.loc[i, "xpts_gw1"]) for i in squad.squad if i != squad.captain)
+    assert bb.base_xi == pytest.approx(base_bb, abs=0.01)
+    assert bb.base_xi + bb.captain_slot == pytest.approx(bb.total, abs=0.01)
+    assert bb.total == predicted_xi_points(squad, pool, 1, chip="bench_boost")
 
 
 def test_score_gw_bench_boost_counts_all_fifteen(rules):

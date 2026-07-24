@@ -56,9 +56,18 @@ branch, `claude/branch-analysis-optimization-n8q1f5`):
 - **[DONE] Minutes p_start=1.0 for no-prior players** — `_start_share` now shrinks
   the no-prior tiny sample toward `NEUTRAL_START_SHARE` by `team_games/3`;
   de-risks GW1–3 of the post-WC season.
-- **[DONE/process] Level calibration** — decided NO model change (never flipped a
-  pick, cancels in the hit-gate); `/fpl-review` now logs the captain slot
-  separately so EV reporting reads against the known captain-slot variance.
+- **[DONE/process] Level calibration** — CLOSED on a full 20-GW decomposition
+  (`reports/backtest/2025-26/calibration.md`, reproducible via
+  `notebooks/calibration_analysis.py`): NO model change. The mean under-prediction
+  (+4.3/GW) sits in the BASE XI and is within noise (t=1.47, ns); the captain slot is
+  mean-UNBIASED (−0.07) and only high-variance. A uniform calibration is a proven no-op
+  on every pick and the marginal hit-gate (belongs in reporting), and "scale toward the
+  league level" is inoperable (our total is near-flat, corr +0.06 with the slate).
+  Fix shipped forward-only: the memo Outcome logs "Predicted: T = base XI B + captain
+  slot S (doubled)" (`predicted_xi_breakdown`/`write_memo`), and `/fpl-review` logs the
+  captain slot separately — so EV/hit-gate reporting reads against the known captain-slot
+  variance. One `[WATCH]` left: starting MIDs under-predicted +1.2 (bonus proxy), for
+  Minutes-v2, not patched (ranking-risk).
 - **[DONE/process] Suspension verification** — `/fpl-news-sweep` now requires the
   offence AND confirmation the ban is served, and defaults to AVAILABLE on
   ambiguity; plus a two-consecutive-0-minute minutes red-alert.
