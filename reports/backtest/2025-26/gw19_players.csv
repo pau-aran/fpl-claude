@@ -1,0 +1,16 @@
+id,web_name,team,position,price,predicted,actual,minutes,role,played_after_subs
+670,Roefs,Sunderland,GKP,4.8,3.55,7,90,XI,True
+470,Dúbravka,Burnley,GKP,4.0,2.98,2,90,bench,False
+8,J.Timber,Arsenal,DEF,6.4,4.69,9,82,XI,True
+72,Senesi,Bournemouth,DEF,4.9,3.38,3,90,XI,True
+291,Tarkowski,Everton,DEF,5.5,3.44,9,90,XI,True
+374,Konaté,Liverpool,DEF,5.4,3.32,7,90,bench,False
+6,Saliba,Arsenal,DEF,5.9,3.33,2,90,XI,True
+237,Enzo,Chelsea,MID,6.4,4.58,9,90,XI,True
+82,Semenyo,Bournemouth,MID,7.7,3.58,5,90,XI,True
+21,Rice,Arsenal,MID,7.2,0.43,0,0,bench,False
+387,Szoboszlai,Liverpool,MID,6.6,3.76,3,90,XI,True
+86,Brooks,Bournemouth,MID,5.0,1.87,10,77,bench,False
+430,Haaland,Man City,FWD,15.1,5.81,2,90,C,True
+136,Thiago,Brentford,FWD,7.0,4.45,2,90,V,True
+283,Mateta,Crystal Palace,FWD,7.7,3.85,9,90,XI,True

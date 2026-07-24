@@ -1,4 +1,4 @@
-# 2025/26 Backtest Baseline — Official FPL Averages, GW1-17
+# 2025/26 Backtest Baseline — Official FPL Averages, GW1-24
 
 Benchmark for the fpl-claude backtest: the official average manager score per gameweek
 (the "Average" shown on the FPL site), plus the official highest GW score, for
@@ -29,10 +29,18 @@ Values cross-verified against independent web sources where snippets were availa
 | 15 | 49 | 133 | not found | Deadline 2025-12-06. FPL API mirror. Last full round before AFCON; Haaland blanked (subbed 68') at home to Sunderland — his 4th low captain week in five. |
 | 16 | 60 | 149 | not found | Deadline 2025-12-13. FPL API mirror. Last round before the AFCON exodus (players out from GW17); Haaland's captaincy returned (26). |
 | 17 | 66 | 148 | not found | Deadline 2025-12-20. FPL API mirror (matched the prior look-ahead exactly). First round of the AFCON exodus (Salah/Mbeumo et al. out); Haaland's captaincy landed again (16) at home to West Ham. |
+| 18 | 44 | not found | not found | Deadline 2025-12-26 (Boxing Day). FPL API mirror (matched the prior look-ahead). AFCON + festive congestion; Haaland (~90% owned) blanked — low round. |
+| 19 | 40 | not found | not found | Deadline 2025-12-30. FPL API mirror (matched look-ahead). Second-lowest of the window; Calafiori/Rice/Bruno all out for Arsenal/Man Utd — injury-hit template slate. |
+| 20 | 42 | not found | not found | Deadline 2026-01-03. FPL API mirror + [FPL Dave GW20 review] cross-check ("42pts Average"). Last of the three-in-nine festive rounds; Haaland blanked again. |
+| 21 | 48 | 118 | not found | Deadline 2026-01-06 (midweek Tue; round runs 6-8 Jan). FPL API mirror, re-fetched + re-verified this session (highest 118). Trough's last round; ARS-LIV 0-0. |
+| 22 | 40 | 111 | not found | Deadline 2026-01-17 (round 17-19 Jan, straddling the AFCON final). FPL API mirror (verified, highest 111). Derby round: the ~74% Haaland captaincy blanked; returnees Mbeumo/Bruno hit on debut-back. |
+| 23 | 44 | 115 | not found | Deadline 2026-01-24 (round 24-26 Jan). FPL API mirror (verified, highest 115). Salah's return round (started at Bournemouth); Haaland benched by Pep (17', UCL rotation) — the ~7M captaincy stung. |
+| 24 | 55 | 126 | not found | Deadline 2026-01-31 (13:30 UTC; round 31 Jan-2 Feb). FPL API mirror (verified, highest 126). The AFCON window's close — averages recover; the Man Utd returnees (Mbeumo/B.Fernandes) the template entry. |
 
-**Average-manager 17-GW cumulative total (sum of official GW averages): 876 points.**
+**Average-manager 24-GW cumulative total (sum of official GW averages): 1189 points.**
+*(23-GW was 1134; GW24 adds 55.)*
 
-*Look-ahead (fetched, not yet played in-sim): GW18 avg 44, GW19 40, GW20 42, GW21 48, GW22 40, GW23 44, GW24 55 — the AFCON window keeps averages low (GW18-23 all ≤48).*
+*Look-ahead (mirror-verified, not yet played in-sim): DGW26 CONFIRMED (Arsenal + Wolves double, via the EFL Cup final knock-on); BGW31 to follow (Arsenal/City/Wolves/Palace blank). GW25 is a normal full round (~avg TBD).*
 
 ## Verification notes
 

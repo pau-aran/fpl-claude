@@ -1,0 +1,97 @@
+{
+ "119": {
+  "start_share": 0.0,
+  "reason": "Bryan Mbeumo (Man Utd MID): OUT — AFCON with Cameroon, now DEEPER than a group exit: Cameroon beat South Africa 2-1 in the R16 (4 Jan) and face host Morocco in the QF (Fri 9 Jan). Earliest realistic return GW22 (17 Jan) ONLY if they lose the QF; GW23+ if they progress. BAN the model's weekly buy-back; reassess at GW22 when the QF result is public. CAF / ESPN, 4-6 Jan 2026.",
+  "duration_gws": 2
+ },
+ "381": {
+  "start_share": 0.0,
+  "reason": "Mohamed Salah (Liverpool MID): OUT — AFCON with Egypt, DEEPER than expected: Egypt topped Group B and beat Benin in the R16 to reach the QF (v Ivory Coast, Sat 10 Jan). Return ~GW23 (late Jan) at the earliest, GW24 if Egypt progress (final is 18 Jan). Not owned; BAN any buy. CAF / France24 / Al Jazeera, 5-6 Jan 2026.",
+  "duration_gws": 3
+ },
+ "449": {
+  "start_share": 0.0,
+  "reason": "Bruno Fernandes (Man Utd MID): still OUT/DOUBT (hamstring, Villa 21 Dec). Return now imminent-but-uncertain — Amorim (4 Jan) said he was 'pushing' for Burnley (GW21, 7 Jan), but Amorim was SACKED 5 Jan (interim charge for the derby). Not a confirmed nailed start amid the managerial upheaval. Sold GW18; BAN the buy-back on spec — reassess GW22 as a re-entry candidate only if nailed. manutd.com / Al Jazeera, 4-5 Jan 2026.",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.0,
+  "reason": "Riccardo Calafiori (Arsenal DEF): still OUT (muscle, ~a month, back late Jan ~GW23). No pre-deadline change (arsenal.com carried the standing update). Sold GW19; BAN any buy-back; Arsenal are at the 3-per-club cap anyway (Saliba/Timber/Rice). arsenal.com, standing to 6 Jan 2026.",
+  "duration_gws": 2
+ },
+ "6": {
+  "start_share": 0.85,
+  "reason": "William Saliba (Arsenal DEF): fit, HOME to Liverpool (GW21, a top-of-table clash, plan FDR3). Played 90 in GW20 (3 Jan); no pre-deadline flag. LOCK — refuse the Saliba->Timber churn (#14, nonsensical, we own both). Non-AFCON. Carried.",
+  "duration_gws": 1
+ },
+ "8": {
+  "start_share": 0.85,
+  "reason": "Jurrien Timber (Arsenal DEF): nailed, HOME to Liverpool (GW21, plan FDR3) — set-piece/attacking threat even in a tight game. Played 90 in GW20; no flag. Non-AFCON. On the elite Arsenal run (HOLD the triple). Carried.",
+  "duration_gws": 1
+ },
+ "21": {
+  "start_share": 0.85,
+  "reason": "Declan Rice (Arsenal MID): nailed, HOME to Liverpool (GW21, plan FDR3); hauled 17 in GW20 after the GW19 1-week knee knock passed (held-not-churned, vindicated). Set-piece anchor, elite run. Non-AFCON. No flag. START. Carried.",
+  "duration_gws": 1
+ },
+ "291": {
+  "start_share": 0.85,
+  "reason": "James Tarkowski (Everton DEF): nailed CB, HOME to bottom-side Wolves (GW21, FDR2) — the week's PRIME CS/duel bet among our DEFs (soft home fixture vs a winless side), the one diversifying our defensive returns away from the single ARS-LIV game. [PROCESS] if the solver benches him on a <0.2 hair, pull force_start for HIM (not Konate). Played 90 in GW20; no flag. Carried.",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.85,
+  "reason": "Marcos Senesi (Bournemouth DEF): nailed, HOME to Tottenham (GW21, plan FDR3). Played 90 in GW20; no flag, no suspension surfaced. Non-AFCON. Carried.",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.85,
+  "reason": "Ibrahima Konate (Liverpool DEF): nailed CB, AWAY at Arsenal (GW21, FDR5) — the plan's Liverpool-bloc DECISION POINT. Hold-through-one-hard-fixture: keep him (BUR(H)1 is a prime CS bet immediately after at GW22); moving a nailed premium for one hard game then back is churn. [PROCESS] do NOT force_start him into ARS(A) — it is a poor CS bet; Tarkowski (WOL H) is this week's prime DEF CS bet. Played 90 in GW20; non-AFCON (France); no flag. Carried.",
+  "duration_gws": 1
+ },
+ "237": {
+  "start_share": 0.85,
+  "reason": "Enzo Fernandez (Chelsea MID): nailed, AWAY at Fulham (GW21, plan FDR3) — into the soft FUL/BRE/CRY run after passing the MCI(A)5 test (returned 11 in GW20). Career-high underlying. Played 90 in GW20; non-AFCON; no flag. HOLD. Carried.",
+  "duration_gws": 1
+ },
+ "387": {
+  "start_share": 0.85,
+  "reason": "Dominik Szoboszlai (Liverpool MID): nailed, AWAY at Arsenal (GW21, FDR5) — hold the Liverpool bloc through its one hard fixture (a mid keeps attacking upside even at Arsenal; BUR(H)1 soft right after). Played 90 in GW20; non-AFCON (Hungary); no flag. Refuse the churn. Carried.",
+  "duration_gws": 1
+ },
+ "82": {
+  "start_share": 0.85,
+  "reason": "Antoine Semenyo (Bournemouth MID): nailed & STARTING v Tottenham (GW21, home, plan FDR3) — Iraola (6 Jan): he plays, 'it could be his last game'. FLAG: Man City set to trigger his ~£65m release clause; a completed January move is a GW22+ minutes/rotation risk (Pep rotation vs being a nailed 90-min talisman). GW21 no action; a SELL-CONSIDERATION for the returnee window — reassess GW22. ESPN / premierleague.com, 31 Dec-6 Jan 2026.",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.45,
+  "reason": "David Brooks (Bournemouth MID): rotation-prone fringe, HOME to Tottenham (GW21). Dead bench slot; carried at 0.45. Refuse any spend-up (the bank/FTs are for the returnee window). No flag (afcb, GW20 team sheet 3 Jan).",
+  "duration_gws": 1
+ },
+ "430": {
+  "start_share": 0.9,
+  "reason": "Erling Haaland (Man City FWD): fit, HOME to Brighton (GW21, plan FDR3) — the captaincy anchor. Model top of board and ~93% top-1M captaincy (96%+ top 10k). CAPTAIN — no recency switch despite four straight captain blanks (GW17-20 window; the shield discipline that caught 28/26/32 in GW14/16/17). Non-AFCON; no flag. premierleague.com / FantasyFootballFix GW21, 5-6 Jan 2026.",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.85,
+  "reason": "Igor Thiago (Brentford FWD): nailed No.9, HOME to promoted Sunderland (GW21, FDR2) — in form (GW20 hat-trick, 17 pts) into a soft home fixture. VICE and a genuine captain-differential temptation we pass on for the Haaland shield. Non-AFCON (Brazil); no flag (brentfordfc, 5 Jan). Carried.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.85,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): Palace No.9 on penalties, HOME to Aston Villa (GW21, plan FDR3). Played 90 in GW20; non-AFCON (France); no flag (cpfc, 5 Jan). Carried.",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.85,
+  "reason": "Robin Roefs (Sunderland GK): No.1, AWAY at Brentford (GW21, FDR3). Played 90 in GW20; nailed, no rotation flag (Sports Mole preview, 5 Jan). Our keeper. Carried.",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.9,
+  "reason": "Martin Dubravka (Burnley GK): No.1, HOME to Man Utd (GW21, FDR4) — Man Utd in managerial disarray (Amorim sacked 5 Jan) marginally softens it, but he is our bench keeper (immaterial). No rotation flag (Sports Mole preview, 5 Jan). Carried.",
+  "duration_gws": 1
+ }
+}

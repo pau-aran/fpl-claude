@@ -1,0 +1,97 @@
+{
+ "119": {
+  "start_share": 0.7,
+  "reason": "Bryan Mbeumo (Man Utd MID): BACK for GW22 — the returnee condition RESOLVED. Cameroon were ELIMINATED, losing 2-0 to hosts Morocco in the AFCON QF (Fri 9 Jan), so his GW21 'return only on a QF loss' clause paid out. His absence was the tournament (no injury), so he is fit/fresh and back in Man Utd training; predicted to START the derby v Man City (Sat 17 Jan 12:30) in interim boss Carrick's attack (SI/NBC/Sports Mole predicted XIs, 16 Jan). Mild first-game-back minutes risk only. NOT owned — the HEADLINE template BUY this week (in-form Man Utd creator); buy on the numbers, funded by the Semenyo sale, not the name. CAF/Al Jazeera 9 Jan; predicted XIs 16 Jan.",
+  "duration_gws": 1
+ },
+ "381": {
+  "start_share": 0.0,
+  "reason": "Mohamed Salah (Liverpool MID): STILL OUT for GW22. Egypt beat Ivory Coast 3-2 in the QF (Salah goal+assist, Sat 10 Jan) then LOST the SF 1-0 to Senegal (Wed 14 Jan). Egypt are scheduled for the 3rd-place playoff v Nigeria on Sat 17 Jan 16:00 GMT — AFTER the 11:00 deadline and the same day as Liverpool's BUR(H) game — so Salah cannot feature in GW22. Earliest Liverpool return ~GW23 (BOU away, 24 Jan). NOT owned; BAN any buy for GW22; reassess GW23. LFC/ThisIsAnfield 14-15 Jan.",
+  "duration_gws": 1
+ },
+ "449": {
+  "start_share": 0.65,
+  "reason": "Bruno Fernandes (Man Utd MID): BACK for GW22. Hamstring since 21 Dec; club was 'confident' he'd be fit for the derby, and under new interim boss Michael Carrick (appointed 13-14 Jan, until season end) he is predicted to START at home to Man City in a higher 4-2-3-1 role (SI/NBC/Sports Mole/RotoWire predicted XIs, 16 Jan). Re-entry candidate on the numbers (Man Utd's premium creator) but freshly back from a ~4-week injury under a new manager, so an easing-in/re-injury risk keeps him below full-nailed. NOT owned; a buy candidate, not an auto-buy-back.",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.0,
+  "reason": "Riccardo Calafiori (Arsenal DEF): STILL OUT/UNCONFIRMED for GW22. Arteta (16 Jan, pre-Forest): 'might' be a chance for ONE of Calafiori/Mosquera/Hincapie/Dowman but 'couldn't tell' who — needs a training session; NOT confirmed available. Target still ~GW23/late Jan. BAN any buy-back; Arsenal are also at our 3-per-club cap (Saliba/Timber/Rice), so any buy needs an Arsenal sale first. arsenal.com/Arseblog 16 Jan.",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.85,
+  "reason": "William Saliba (Arsenal DEF): fit, AWAY at Nottingham Forest (GW22, plan FDR3). Arteta (16 Jan): no fresh worries for Arsenal. Played through GW21 (ARS-LIV 0-0); non-AFCON. LOCK — refuse the standing Saliba->Timber churn (we own both). Carried.",
+  "duration_gws": 1
+ },
+ "8": {
+  "start_share": 0.85,
+  "reason": "Jurrien Timber (Arsenal DEF): nailed, AWAY at Nottingham Forest (GW22, FDR3). Arteta named him in the 16 Jan fitness round-up but flagged NO fresh worries — treated as fit (started GW19-21). Set-piece/attacking threat; on the elite Arsenal run. Non-AFCON. Carried.",
+  "duration_gws": 1
+ },
+ "21": {
+  "start_share": 0.85,
+  "reason": "Declan Rice (Arsenal MID): nailed, AWAY at Nottingham Forest (GW22, FDR3). The GW19 knee knock long passed (hauled 17 on the GW20 return); no fresh worries (Arteta 16 Jan). Set-piece anchor, elite run. Non-AFCON. START. Carried.",
+  "duration_gws": 1
+ },
+ "291": {
+  "start_share": 0.85,
+  "reason": "James Tarkowski (Everton DEF): fit, AWAY at Aston Villa (GW22, Sun 18 Jan, ~FDR3). [DATA-HYGIENE] search surfaces a Tarkowski hamstring surgery, but it is datable to 19 Apr 2025 (2024/25, Everton 0-2 City) — NOT a GW22 injury; the only 2025/26 Everton-City game is a 3-3 draw on 4 May 2026 (post-deadline). No pre-deadline GW22 flag; he has played all season (8/9 in GW18-19). Non-AFCON. Carried. ESPN match archive; no Everton flag in the FFScout GW22 round-up.",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.85,
+  "reason": "Marcos Senesi (Bournemouth DEF): nailed, AWAY at Brighton (GW22, Mon 19 Jan, plan FDR4 — the round's closing game). Iraola (15-16 Jan) flagged Brooks/Unal, NOT Senesi; a 'thin' squad plus a possible Zabarnyi suspension make Senesi MORE nailed. Non-AFCON; no suspension surfaced. Carried. AOL/Soccerway 15-16 Jan.",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.85,
+  "reason": "Ibrahima Konate (Liverpool DEF): nailed CB, HOME to Burnley (GW22, plan FDR1) — this week's PRIME CS/duel bet among our DEFs (soft home fixture; the payoff for HOLDING the bloc through ARS-A last week). Slot (16 Jan): no new injury concerns. [PROCESS] if the solver benches him on a <0.2 hair, pull force_start for HIM — the GW22 flip of the GW21 Tarkowski call. Non-AFCON (France). Carried.",
+  "duration_gws": 1
+ },
+ "237": {
+  "start_share": 0.85,
+  "reason": "Enzo Fernandez (Chelsea MID): nailed, HOME to Brentford (GW22, plan FDR3) — into the soft BRE/CRY run. Chelsea (15 Jan) flagged Gittens/Delap ill, NOT Enzo. Intra-squad clash: he faces our Thiago's Brentford (both start). Non-AFCON; no flag. HOLD. Carried.",
+  "duration_gws": 1
+ },
+ "387": {
+  "start_share": 0.85,
+  "reason": "Dominik Szoboszlai (Liverpool MID): nailed, HOME to Burnley (GW22, FDR1) — the bloc's soft payoff week after ARS-A. Slot (16 Jan): no new concerns. Non-AFCON (Hungary). Refuse any churn. Carried.",
+  "duration_gws": 1
+ },
+ "82": {
+  "start_share": 0.5,
+  "reason": "Antoine Semenyo (now Man City MID): MOVE COMPLETED — signed from Bournemouth Fri 9 Jan for £64m (initial ~£62.5m, up to ~£86m), 5.5-yr deal. GW22 he plays AWAY at Man Utd in the derby (Sat 17 Jan 12:30) as a NEW signing. Hot start (goal+assist on debut v Exeter, FA Cup, 10 Jan; scored again v Newcastle, EFL Cup SF ~13 Jan) and Marmoush away at AFCON thin City's attack — real upside — but a derby start for a just-arrived man in a stacked front line is a coin-flip at best (rotation risk). The FPL case is a SELL: bank the value; his role is downgraded (lost penalties/set-pieces, weekly Pep rotation) vs his 90-min Bournemouth nailedness. The MANAGER decides the sale. Sky/ESPN 9 Jan; Pep presser 16 Jan.",
+  "duration_gws": 1
+ },
+ "86": {
+  "start_share": 0.15,
+  "reason": "David Brooks (Bournemouth MID): DOUBT/likely OUT — ankle, twisted v Newcastle; Iraola (15-16 Jan) 'uncertain', calling him the latest absentee in a thin squad. Was already a dead bench slot (0.45 at GW21); the injury drops him to ~0.15. Immaterial to our XI (bench). AOL/FFScout 15-16 Jan.",
+  "duration_gws": 1
+ },
+ "430": {
+  "start_share": 0.9,
+  "reason": "Erling Haaland (Man City FWD): fit, AWAY at Man Utd in the derby (GW22, plan FDR4) — the captaincy anchor. Pep (16 Jan): everyone fit bar Stones/Bobb (Gonzalez a doubt). CAPTAIN — no recency switch despite a 4-GW single-goal drought (74% owned, top captain pick; derby record 8 goals + 3 assists in 6 outings). Non-AFCON. premierleague.com GW22 captain / Pep presser 16 Jan.",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.85,
+  "reason": "Igor Thiago (Brentford FWD): nailed No.9, AWAY at Chelsea (GW22) — a TOUGHER fixture than GW21's Sunderland home. Red-hot (5 goals in his last 2: GW20 hat-trick + GW21 brace) → VICE and a genuine captain-differential we pass on for the Haaland shield (Chelsea away dampens it). [DATA-HYGIENE] exclude his 'PL Player of the Month January' + the 4-2 Everton hat-trick — both post-deadline (early-Feb). Non-AFCON (Brazil); no flag. Carried.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.82,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): available, AWAY at Sunderland (GW22, ~FDR3). Glasner (15-16 Jan): Mateta 'will be available' despite transfer/exit reports (Chelsea/Villa links, 'contract talks stall') — a transfer-saga WATCH, not an injury; docked slightly (0.82) for that non-injury noise, but he is the nailed No.9 on penalties and expected to start. Intra-squad clash: he faces our Roefs' Sunderland. Non-AFCON; no flag. cpfc.co.uk 15-16 Jan.",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.85,
+  "reason": "Robin Roefs (Sunderland GK): No.1, HOME to Crystal Palace (GW22, ~FDR3). Sunderland (15 Jan) flagged Masuaku/Traore, NOT Roefs. Faces our Mateta's Palace (intra-squad clash). Nailed; our keeper. Carried.",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.9,
+  "reason": "Martin Dubravka (Burnley GK): No.1, AWAY at Liverpool (GW22, ~FDR5 — the flip side of our Liverpool defenders' soft home CS bet). Our BENCH keeper (immaterial). No rotation flag surfaced (15-16 Jan). Carried.",
+  "duration_gws": 1
+ }
+}

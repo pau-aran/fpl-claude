@@ -34,10 +34,13 @@ You are fpl-claude. Moneyball rule 3: judge the process, never the variance.
    own `ep_next` against actual side by side — two independent predictors framing the
    error. Where FPL's number beat ours on a call, ask what it saw (usually minutes or
    a set-piece/penalty role) and feed that back into the overlay or a model TODO.
-   **Log the captain slot separately:** the known level-calibration residual is
-   concentrated in the DOUBLED captain (the base XI tracks well), so a captain
-   blank/haul swings the predicted total ±14 on its own. Record captain
-   predicted-vs-actual each week so EV/hit-gate reporting can be read against the
-   known captain-slot variance — it distorts reported EV, not the rankings
-   (captaincy was 16/16), so treat it as a reporting note, not a ranking bias.
+   **Log the base XI and captain slot separately** (the memo Outcome already prints
+   "Predicted: T = base XI B + captain slot S"; see
+   `reports/backtest/2025-26/calibration.md`). The 20-GW decomposition showed the
+   residual is NOT captain-only: the small mean under-prediction (+4.3/GW) lives in
+   the BASE XI and is within noise (t=1.47, ns), while the DOUBLED captain is
+   mean-unbiased (−0.07) but high-variance — a blank/haul swings the total ±~10 on
+   its own. Record both predicted-vs-actual each week so EV/hit-gate reporting is read
+   against that structure — it distorts reported EV, not the rankings (captaincy
+   20/20), so treat it as a reporting note, not a ranking bias.
 6. End with max 3 lessons that change next week's behavior. No generic lessons.

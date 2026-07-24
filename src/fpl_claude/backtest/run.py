@@ -24,7 +24,9 @@ import argparse
 import json
 from pathlib import Path
 
+import pandas as pd
 
+from ..optimize.chip_timing import advise, chip_surface, detect_double_blank
 from ..rules.engine import Ruleset
 from .data import SeasonStore
 from .overlays import availability_overlays, merge
@@ -35,6 +37,7 @@ from .simulate import (
     decide_transfers,
     project_gw,
     run_gameweek,
+    wildcard_squad,
 )
 
 
@@ -48,6 +51,7 @@ def load_state(path: Path) -> SquadState | None:
         free_transfers=int(raw["free_transfers"]),
         points_total=int(raw["points_total"]),
         hits_total=int(raw["hits_total"]),
+        chips_used=list(raw.get("chips_used", [])),
     )
 
 
@@ -61,6 +65,7 @@ def save_state(state: SquadState, path: Path, gw: int) -> None:
                 "free_transfers": state.free_transfers,
                 "points_total": state.points_total,
                 "hits_total": state.hits_total,
+                "chips_used": state.chips_used,
             },
             indent=2,
         )
@@ -82,8 +87,49 @@ def load_decision(path: Path | None) -> ManagerDecision | None:
         max_transfers=raw.get("max_transfers"),
         start=frozenset(int(i) for i in raw.get("start", [])),
         bench=frozenset(int(i) for i in raw.get("bench", [])),
+        chip=raw.get("chip"),
         reasoning=str(raw.get("reasoning", "")),
     )
+
+
+def _print_chip_advice(
+    store: SeasonStore, gw: int, rules: Ruleset, state: SquadState, projections
+) -> None:
+    """Chip-timing advisory for the HELD squad (state.buy_costs) — verdicts for
+    the current half's chips plus a compact forward EV surface. Advice only:
+    nothing here plays a chip. The WC change-need signal is the uncapped
+    optimizer's reshape (what a wildcard would rebuild) NET of banked free
+    transfers — the AFCON counterfactual proved an FT-rideable reshape is not a
+    wildcard, so only the changes the FT budget can't cover count as a trigger."""
+    id_to_name = dict(zip(store.teams["id"], store.teams["name"]))
+    double_blank = detect_double_blank(store.fixtures_at(gw), id_to_name)
+    held_ids = list(state.buy_costs)
+    surface = chip_surface(projections, held_ids, rules.raw["lineup"], double_blank)
+    wc_changes = len(wildcard_squad(projections, rules, state).transfers_in)
+    change_need = max(0, wc_changes - state.free_transfers)
+    plan = advise(surface, state.chips_used, gw, change_need=change_need)
+
+    half = 2 if gw > 19 else 1
+    print(f"\n=== Chip advice (held squad; one-of-each-per-half, current half {half}) ===")
+    used = ", ".join(state.chips_used) if state.chips_used else "none"
+    print(f"inventory used: {used} | uncapped change-need: {change_need}")
+    for chip, adv in plan.items():
+        tgt = f"GW{adv.target_gw}" if adv.target_gw is not None else "—"
+        print(f"  {chip:<15}{adv.verdict:<7}{tgt:<6} | {adv.reason}")
+    if surface:
+        fwd = pd.DataFrame(
+            {
+                "gw": [s.gw for s in surface],
+                "tc_extra": [s.tc_extra for s in surface],
+                "tc_captain": [s.tc_captain_name for s in surface],
+                "bb_extra": [s.bb_extra for s in surface],
+                "bb_nonnailed": [s.bb_nonnailed for s in surface],
+                "doublers": [s.n_doublers for s in surface],
+                "blankers": [s.n_blankers for s in surface],
+            }
+        )
+        print("forward surface (per future GW):")
+        print(fwd.to_string(index=False))
 
 
 def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
@@ -118,6 +164,8 @@ def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
     out_rows["fixtures_next"] = out_rows["team"].map(outlook)
     print(out_rows.to_string())
 
+    _print_chip_advice(store, gw, rules, state, projections)
+
 
 def _name(result: GWResult, pid: int) -> str:
     match = result.player_rows[result.player_rows["id"] == pid]
@@ -142,6 +190,14 @@ def write_memo(
         "",
         "## Decision",
         "",
+    ]
+    if r.chip:
+        _CHIP_LABEL = {
+            "wildcard": "WILDCARD", "free_hit": "FREE HIT",
+            "bench_boost": "BENCH BOOST", "triple_captain": "TRIPLE CAPTAIN",
+        }
+        lines.append(f"- **CHIP PLAYED: {_CHIP_LABEL.get(r.chip, r.chip.upper())}**")
+    lines += [
         f"- Captain: **{_name(r, r.squad.captain)}** | vice: {_name(r, r.squad.vice)}",
         f"- Bank after moves: £{r.bank / 10:.1f}m | free transfers left for next GW: {r.free_transfers_left}",
     ]
@@ -182,6 +238,7 @@ def write_memo(
                 lines.append(
                     f"- {_name(r, pid)}: start_share={ov['start_share']} — {ov['reason']}"
                 )
+    cap_word = {2: "doubled", 3: "tripled"}.get(r.captain_mult, f"x{r.captain_mult}")
     lines += [
         "",
         "## Squad — predicted vs actual",
@@ -192,7 +249,11 @@ def write_memo(
         "",
         "## Outcome",
         "",
-        f"- Predicted XI points (incl. captain double): **{r.predicted_xi_pts}**",
+        f"- Predicted XI points: **{r.predicted_xi_pts}** = base XI {r.base_xi_pts} "
+        f"+ captain slot {r.captain_slot_pts} ({cap_word}). Split logged because the "
+        f"season residual is a small within-noise base bias plus a mean-unbiased, "
+        f"high-variance captain slot — read EV against that "
+        f"(reports/backtest/2025-26/calibration.md).",
         f"- Actual GW points (after autosubs & hits): **{r.actual_pts}**",
         f"- Effective captain: {_name(r, r.effective_captain)}",
         "- Autosubs: "
@@ -219,7 +280,10 @@ def main() -> None:
     parser.add_argument("--season", default="2025-26")
     parser.add_argument("--force", action="store_true", help="allow re-running a completed GW")
     parser.add_argument("--decision", default=None,
-                        help="manager decision JSON (lock/ban/captain/max_transfers/reasoning)")
+                        help="manager decision JSON (lock/ban/captain/max_transfers/chip/reasoning)")
+    parser.add_argument("--chip", default=None,
+                        help="play a chip this GW: wildcard|free_hit|bench_boost|triple_captain "
+                             "(overrides the decision JSON's chip)")
     parser.add_argument("--propose", action="store_true",
                         help="print the optimizer proposal + fixture outlook and exit; no writes")
     args = parser.parse_args()
@@ -248,6 +312,9 @@ def main() -> None:
     overlays = merge(availability_overlays(store, args.gw), hand)
 
     decision = load_decision(Path(args.decision) if args.decision else None)
+    if args.chip:
+        from dataclasses import replace
+        decision = replace(decision or ManagerDecision(), chip=args.chip)
 
     if args.propose:
         if state is None:
