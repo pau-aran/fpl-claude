@@ -23,29 +23,33 @@ in the decision memo.*
   suspended — the ban was a mis-sourced aggregator headline (knowledge.md
   [PROCESS]). Harmless: we sold him for the productive-slot upgrade, not the ban.
 
-## Current state — after GW23 (live snapshot)
+## Current state — after GW24 (the AFCON window CLOSED)
 
-- Bank **£2.1m** | **5 FT for GW24 — the CAP** (spent 1 at GW23, re-accrued) | season **1316
-  pts (+182)** | 1 hit taken all season | captaincy 23/23.
-- **Squad:** Roefs, Dúbravka (GK); Saliba, Timber, Tarkowski, Senesi, Konaté (DEF); Rice,
-  Enzo, Szoboszlai, Bruno G., **Garner** (MID); Haaland, Thiago, Mateta (FWD). Change at
-  GW23: **Brooks→Garner** (free at the FT cap — minimum-spend autosub insurance with
-  Konaté/Bruno G. both doubtful). Arsenal triple intact; all four chips intact (set 2).
-- **GW23 (38 v 44, −6):** second straight −6, both on priced variance not process. **Haaland
-  played 17'** (we PRICED the exhaustion/UCL-rotation flag 0.70 pre-deadline and captained
-  the shield anyway — correct, ate the tail; C returned 2). Low slate for our holds
-  (Szoboszlai 13 the exception). Konaté benched (bereavement — his father died; humane hold),
-  Bruno G. benched (ankle, 0'). Refusals paid again (Salah 5 on the refused £14 buy — our
-  board outprojected him; Foden 1 in 29'), but the deferred Mbeumo hauled 10 at ARS(A) —
-  the one variance loss (defensible: don't buy the name into his hardest fixture).
-- **Live threads into GW24 (deadline Sat 31 Jan ~11:00 UTC — the window's CLOSE):** (1) **the
-  returnee ENTRY test is live + evidenced** — Mbeumo 8→10 and Bruno F. 10→5 across two games
-  back under Carrick, both nailed; **GW24 is MUN-FUL(H), the planned home entry** — decide the
-  buy + its funding sale; (2) **Konaté status** — if his return stays uncertain he's the
-  natural funding sale; if he's back, hold; (3) **the Liverpool bloc** — Salah has restored
-  their attack around our DEF/MID holds; a bloc trim is the alternative funding route;
-  (4) TC@GW26 mini-DGW — verify the fixture data once more; (5) Brooks (sold), Mateta
-  transfer-saga watch only. [PROCESS, GW23+] list every <0.2-hair bench margin + call it.
+- Bank **£0.7m** | **4 FT for GW25** (spent 2 at GW24) | season **1380 pts (+191)** | 1 hit
+  all season | captaincy 24/24.
+- **Squad (window-close, consolidated):** Roefs, Dúbravka (GK); Saliba, Timber, Tarkowski,
+  Senesi, Konaté (DEF); Rice, Enzo, **B.Fernandes**, Garner, Bruno G. (MID); Haaland, Thiago,
+  **Calvert-Lewin** (FWD). Changes at GW24: **Szoboszlai→B.Fernandes** (the returnee entry,
+  numbers over name) + **Mateta→Calvert-Lewin** (forced AC-Milan-saga sale → BGW31-playing
+  bench FWD). Arsenal triple (Saliba/Timber/Rice) intact for DGW26; all four chips intact.
+- **GW24 (64 v 55, +9):** the window closed on a bounce-back and a clean process sheet.
+  B.Fernandes 10 on debut (V) — the entry paid, and **B.Fern-over-Mbeumo was right by +8**
+  (Mbeumo deferred returned 2). Base XI out-hauled (+20.7 over estimate — the offset to the
+  two −6 captain weeks); Haaland (C) 5→10, no drought. One blemish: Konaté 11 on the bench
+  (the Liverpool-defensive-crisis CS bet was wrong; a 0.28 margin, above the hair threshold —
+  defensible fixture call, logged as variance).
+- **THE AFCON WINDOW (GW17-24) IS COMPLETE: entered at +135, exit at +191 — net +56 of edge
+  built through the season's hardest, lowest-average stretch**, on availability discipline,
+  value holds, and two clean returnee-entry calls (Semenyo-out early GW22, B.Fern-in late
+  GW24). 1 hit all season, captaincy 24/24.
+- **Live threads into GW25-26:** (1) **DGW26 CONFIRMED (Arsenal + Wolves)** — **TC@GW26 on
+  Rice** is the live queue (doubling into two soft Arsenal games); the reshape kept the
+  triple for exactly this. (2) **BGW31 (Arsenal/City/Wolves/Palace blank)** — the next chip
+  trigger, a Free Hit / Wildcard candidate; Calvert-Lewin (Leeds, plays) a small hedge.
+  (3) **Bruno G. ankle** — benched GW24; confirm fitness for GW25 (soft AVL-H/BRE-H run makes
+  him a hold if fit). (4) £0.7 bank is tight (buffer intact but thin) — mind price moves.
+  [PROCESS] list every <0.2-hair bench margin + call it; [WATCH] whether to widen the DEF-CS
+  hair to ~0.3 (Konaté GW24, Tarkowski GW22 — two bench-order stings on bimodal CS bets).
 
 ## Executed
 
@@ -197,6 +201,18 @@ in the decision memo.*
   and captained anyway (correct on EO+ceiling) — Pep played him 17', C returned 2 (the
   calibration captain-slot tail, forecast in the split). GW **38 vs avg 44 (−6)**; season
   **1316 (+182)**. See gw23.md / consensus/gw23.md / reviews/gw23.md.
+
+- **GW24 — EXECUTED: the AFCON window's CLOSE — the returnee reshape, 2 of 5 FT, no hit —
+  +9.** {Mateta, Szoboszlai} → {B.Fernandes, Calvert-Lewin}. Entered B.Fernandes (£9.5) over
+  Mbeumo on OUR numbers (horizon 24.74/2.60 pts-£m vs 19.82/2.36 — model and crowd agreed, so
+  no contrarian fade) — funded by the plan's Liverpool-bloc trim (Szoboszlai) + the forced
+  Mateta sale (AC Milan saga, dropped from the squad) into a BGW31-playing bench FWD
+  (Calvert-Lewin). Held the Salah refusal (£14, 5 pts — right 2nd week), held Konaté (back
+  from bereavement, benched on the Liverpool-crisis CS call — returned 11, the one variance
+  loss) + Bruno G. (ankle, benched, 0). Captain Haaland at TOT(A) — the season's closest call,
+  held on the shield; Salah/B.Fern switches both lost on the numbers. B.Fern 10 on debut (V);
+  base XI +20.7 over estimate. GW **64 vs avg 55 (+9)**; season **1380 (+191)**. See gw24.md /
+  consensus/gw24.md / reviews/gw24.md.
 
 ## Active path — the returnee window (GW21 → GW24)
 
