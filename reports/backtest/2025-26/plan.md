@@ -23,27 +23,31 @@ in the decision memo.*
   suspended — the ban was a mis-sourced aggregator headline (knowledge.md
   [PROCESS]). Harmless: we sold him for the productive-slot upgrade, not the ban.
 
-## Current state — after GW21 (live snapshot)
+## Current state — after GW22 (live snapshot)
 
-- Bank **£1.9m** | **5 FT for GW22 — the CAP** (rolled GW20 and GW21) | season **1240
-  pts (+190)** | 1 hit taken all season | captaincy 21/21.
-- **Squad (unchanged since GW19):** Roefs, Dúbravka (GK); Saliba, Timber, Tarkowski, Senesi,
-  Konaté (DEF); Rice, Enzo, Szoboszlai, Semenyo, Brooks (MID); Haaland, Thiago, Mateta (FWD).
-  Loaded on Arsenal (Saliba/Timber/Rice = 3), the Liverpool bloc (Konaté/Szoboszlai) and
-  Haaland (C). Fully fit; all four chips intact (set 2 opened GW20).
-- **GW21 (61 v 48, +13):** rolled through the midweek round. The refused four-move churn
-  bundle (Saka/Foden/Gudmundsson/Mukiele in for Saliba/Semenyo/Konaté/Szoboszlai) scored 8
-  against the kept players' 13-plus-bench-7 — the season's most emphatic churn veto. ARS-LIV
-  0-0 paid the Liverpool hold; Thiago's brace (12) topped our board; Haaland (C) 6 (doubled
-  12) — drought eased, no haul yet.
-- **Live threads into GW22 (deadline Sat 17 Jan, MUN-MCI derby opens it):** (1) **the returnee
-  round is CONDITIONAL** — AFCON QFs 9-10 Jan (post-GW21-deadline): Mbeumo back for GW22 only
-  on a Cameroon QF loss (else GW23+), Salah ~GW23+ (Egypt QF v CIV); (2) **Bruno** murky
-  post-Amorim-sacking — re-entry only if nailed under the interim; (3) **Semenyo→City clause
-  watch** — if the January move completes he becomes a SELL (Pep-rotation risk), with the
-  FA-Cup weekend (10-11 Jan) to clarify; (4) chip surface queues **TC @ GW26** (2-team
-  mini-DGW, Timber top single-GW xpts) — verify as it approaches. [PROCESS] force_start
-  watch continues (not owed at GW21 — Tarkowski was fielded).
+- Bank **£2.3m** | **5 FT for GW23 — the CAP** (spent 1 at GW22, re-accrued) | season **1278
+  pts (+188)** | 1 hit taken all season | captaincy 22/22.
+- **Squad:** Roefs, Dúbravka (GK); Saliba, Timber, Tarkowski, Senesi, Konaté (DEF); Rice,
+  Enzo, Szoboszlai, **Bruno G.**, Brooks (MID); Haaland, Thiago, Mateta (FWD). Change at
+  GW22: **Semenyo→Bruno Guimarães** (the completed £64m City clause = the planned risk-class
+  sale; Bruno G. the clean-entry value pick over the solver's Foden). Arsenal triple intact;
+  all four chips intact (set 2).
+- **GW22 (38 v 40, −2):** first sub-average week since GW11, on tails — Haaland's derby blank
+  (the 74% field captain too), Burnley scoring at Anfield in the bloc's PRIME week (Konaté 2,
+  Szoboszlai 0/OG), Tarkowski's 8 stranded on an un-named 0.14 bench hair (→ new listing
+  rule). The refusals still paid (kept Saliba 8 v Saka 1 — veto #13; refused Foden 1 in 45'
+  v chosen Bruno G. 3); both deferred returnees hit in the derby (Mbeumo 9, Bruno 10) —
+  live evidence for their re-entry tests, not a regrade.
+- **Live threads into GW23 (deadline Sat 24 Jan ~11:00 UTC):** (1) **SALAH RETURNS** — Egypt
+  out in the SF; his Liverpool entry is BOU(A)4, then NEW(H)3 MCI(H)4. The window's biggest
+  question: a £14+ buy needs a funding SALE — pure upgrade on the numbers only; (2) **the
+  bloc reassessment is NOW** — after the Burnley failure the bloc's soft-run thesis is spent
+  (BOU-A next, Salah's return may lift Liverpool's attack but our two are DEF/MID); decide
+  hold-vs-reshape WITH the Salah question, not separately; (3) **Mbeumo defer holds through
+  ARS(A) GW23; GW24 MUN-FUL(H) is the entry test** (9 on return, 70' under Carrick);
+  (4) **Bruno nailed again** (10 in 90') — re-entry candidate, same GW24 window; (5) Brooks
+  ankle (bench slot, no action); (6) TC@GW26 mini-DGW — verify the fixture data again this
+  week. [PROCESS, new GW23+] every <0.2-hair bench margin gets LISTED + an explicit call.
 
 ## Executed
 
@@ -171,6 +175,18 @@ in the decision memo.*
   named-CS miss logged (Tarkowski 4, no CS). GW **61 vs avg 48 (+13)**; season **1240 (+190)**.
   See gw21.md / consensus/gw21.md / reviews/gw21.md.
 
+- **GW22 — EXECUTED: the returnee round — the planned Semenyo risk-class sale → Bruno G.,
+  1 FT, no hit — −2.** Sold Semenyo the week his £64m City move completed (started
+  the derby, 2 — the 0.5 share honest); bought Bruno G. (£7.2, LEE-H entry) over the solver's
+  Foden (refused: same Pep-rotation class we were exiting — he got 45' and 1 pt; vindicated
+  same week). DEFERRED both template returnee buy-backs on entry-fixture numbers — both hit
+  in the derby (Mbeumo 9, Bruno 10; ~−6 net, variance not regrade, re-entry tests now live).
+  Locked Konaté/Szoboszlai into BUR(H)1 — Burnley scored at Anfield (2 + 0/OG): the named
+  prime-CS duel missed a 2nd straight week. Tarkowski 8 stranded on an un-named 0.14 hair →
+  NEW RULE: all <0.2 bench hairs listed + called in the memo. Captain Haaland derby blank
+  (22/22, the field's 74% too). GW **38 vs avg 40 (−2)**; season **1278 (+188)**. See
+  gw22.md / consensus/gw22.md / reviews/gw22.md.
+
 ## Active path — the returnee window (GW21 → GW24)
 
 We are **+177 vs the average-manager baseline** and at 1179 pts; the goal is TOP 1%. The
@@ -244,25 +260,30 @@ No chip is queued for GW21-24 (squad intact, low-average trough); revisit at the
 
 ## Watch list
 
-- **AFCON/injury returnees — the window's opportunity (PRIORITY, now CONDITIONAL)**: both
-  AFCON men reached the QFs (9-10 Jan, post-GW21) — **Mbeumo (Cameroon) back for GW22 ONLY on
-  a QF loss to Morocco, else GW23+; Salah (Egypt) ~GW23 earliest, GW24 if Egypt go deep**
-  (final 18 Jan). **B.Fernandes ~GW22 but murky** (Amorim sacked 5 Jan — needs a nailed role
-  under the interim before re-entry). **Calafiori ~GW23/late Jan.** The 5 banked FTs are for
-  reassessing these; buy back ONLY on projection+fixtures, never the name.
-- **Semenyo (owned, £7.7) — CLAUSE WATCH**: Man City set to trigger his ~£65m release clause
-  (pre-GW21 reporting; Iraola: "could be his last game"). Started and scored 6 at GW21. If the
-  January move COMPLETES he becomes a SELL (Pep-rotation risk replaces 90-min nailedness) —
-  decide at GW22 on confirmed news, not speculation. Until then: nailed, in-form, hold.
+- **Returnees — re-entry tests now LIVE (PRIORITY)**: **Mbeumo** back (Cameroon QF exit),
+  9 pts in 70' in the derby under Carrick — defer holds through ARS(A) at GW23; **GW24
+  MUN-FUL(H) is the entry test** (needs confirmed minutes at GW23). **B.Fernandes** 10 in 90'
+  — nailed again under Carrick; same GW24 window, same test. **Salah returns ~GW23** (Egypt
+  out in the SF; entry BOU-A then NEW-H MCI-H) — the window's biggest question: a £14+ buy
+  needs a funding SALE and must beat the incumbent MID board on projection, not name.
+  **Calafiori** still unconfirmed (Arteta, 16 Jan). Buy ONLY on projection+fixtures.
+- **Bruno G. (owned, £7.2)**: the GW22 Semenyo replacement — nailed Newcastle anchor (90' on
+  debut), soft WOL(A)2 AVL(H)3 next, banked £2.3. The clean-entry value pick over Foden
+  (vindicated: Foden 45'/1 pt). Hold; not a sell candidate for Salah funding (just bought,
+  churn rule).
+- **Semenyo (SOLD GW22, £64m City move completed)**: started the derby (2) — the 0.5 share
+  honest, the risk-class sale stands. Track only for the record; no reversal (never re-buy
+  without new info — a City bench role is not new info).
 - **Timber (owned, £6.4)**: the GW19 Calafiori replacement — nailed Arsenal DEF on the elite
   run, 9 on debut, set-piece/attacking threat. Hold hard; part of the Arsenal fixture load.
 - **Rice (owned, £7.1)**: nailed Arsenal mid on the elite run; 1-wk knee knock (GW19) passed,
   hauled 17 on return (GW20). Hold hard; the fixture-load anchor.
 - **Enzo (£6.4)**: nailed Chelsea mid, career-high underlying; passed the MCI(A)5 test (11).
   Soft FUL/BRE/CRY run ahead. Hold.
-- **Liverpool bloc (Konaté, Szoboszlai)**: the ARS(A)5 reassess PASSED (held; the 0-0 paid
-  Konaté 7). Soft BUR(H)1 at GW22, then BOU(A)4; Salah's return (~GW23) may reshape Liverpool's
-  attack — the bloc is a HOLD with the GW23 Salah question the next checkpoint.
+- **Liverpool bloc (Konaté, Szoboszlai)**: the prime week FAILED (Burnley scored at Anfield;
+  2 + 0/OG) and the soft-run thesis is spent — **the GW23 reassessment is live and must be
+  decided WITH the Salah question** (one of these two is the natural funding sale if Salah
+  clears the projection bar; selling BOTH overexposes to one club's reshape). BOU(A)4 next.
 - **Tarkowski (£5.6)**: nailed Everton CB; steady returns through the window (8/9 GW18-19). Hold.
 - **B.Fernandes (SOLD GW18, hamstring)**: track for the ~GW22 return — a re-entry candidate on
   the numbers (Man Utd's premium creator), NOT an automatic buy-back.

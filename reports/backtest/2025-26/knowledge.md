@@ -93,7 +93,11 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   existed and was NOT used (~−4). RULE (GW20+): when the duel lens names a prime CS/attacking
   bet that the solver benches on a <0.2 xpts hair, pull `force_start`. This is a discipline
   point, not a code defect (the model's own order was a coin-flip); it complements the
-  [DONE] split fix. Watched clean at GW20 (no lever owed).
+  [DONE] split fix. Watched clean at GW20 (no lever owed). EXTENDED (GW23+) after
+  Tarkowski's 8 stranded on an UN-NAMED 0.14 hair at GW22 (the lens had named Konaté, so
+  the rule never fired): every <0.2-hair bench margin is now LISTED in the decision memo
+  with an explicit manager field/bench call — the duel lens stays the tiebreak filter;
+  the listing guarantees every hair is SEEN before the deadline, not discovered in review.
 - [PROCESS] Suspension verification: a ban needs the OFFENCE **and**
   confirmation it was upheld/served against the team sheet — not an aggregator
   headline. The GW9–10 Ballard "3-match ban" was misapplied (he played both
@@ -166,7 +170,12 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   size its false-positive rate. FIRST MISS recorded GW21: the named prime-CS bet
   (Tarkowski home to bottom-side Wolves) was fielded and kept no clean sheet (4 pts)
   — false-positive count 1 across ~9 graded weeks; the same week's form-duel read
-  (Thiago v Sunderland) braced 12, so the lens stayed net positive. Grading continues.
+  (Thiago v Sunderland) braced 12, so the lens stayed net positive. GW22 made named
+  PURE-CS bets **0-for-2** (Konaté v Burnley: Burnley scored at Anfield, an own-goal
+  chaos week) — CS-flavoured duel names now carry a CAUTION: prefer form/entry/attacking
+  duels for the named bet, or demand odds-grade support before naming a pure-CS duel.
+  Form/entry duels remain positive (Thiago GW21 brace; Bruno G. GW22 safe 3). Grading
+  continues.
 - Captaincy = highest projection unless news says otherwise: 20/20 rule
   adherence (Salah ×5, Haaland ×15). The AFCON window opened with a captain DROUGHT —
   Haaland 2/2/2 across GW18-20 (four low weeks in the last five, GW17's 32 aside), yet he
