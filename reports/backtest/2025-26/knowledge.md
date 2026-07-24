@@ -56,6 +56,12 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   GW17 confirmed it a third time: predicted 58.5, actual 70 (+11.5), of which the
   captain alone (Haaland 17.7 predicted → 32 actual) was +14.3 — the rest of a thin XI
   under-scored, netting the base to slightly OVER-predicted. 17-GW mean error +4.2.
+  GW18-20 confirmed BOTH tails inside three weeks: GW18 −11.7 (captain blank guts the
+  total), GW19 +11.8 and GW20 +13.3 (base XI out-hauls — Rice/Thiago/Enzo/Timber/Tarkowski
+  big returns — while the captain STILL blanks). 20-GW mean error ~+4.0. Haaland returned
+  2/2/2 across the AFCON-window openers (four straight captain blanks GW17-excepted); the
+  base XI is well-calibrated in ranking (every relative call validated, captaincy 20/20),
+  the doubled-captain slot is the entire variance.
   It is NOT a ranking bias — every relative call was validated (Fernandes>Saka,
   Mateta/Konaté/Enzo/Thiago, captaincy 14/14) — so it never hurt a DECISION, but it
   distorts EV reporting and the hit-gate margin. LIVE FIX: an environment-level
@@ -78,6 +84,13 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   bench-order override the reviews asked for. Deliberately NOT done: a team-model
   CS-probability overhaul to cure defender fixture-compression — over-engineering,
   left [WATCH].
+- [PROCESS] The bench-order OVERRIDE only helps if the manager pulls it. GW19: our own
+  pre-hoc duel read named Konaté the softest CS bet (LIV v Leeds H), the solver benched him
+  on a 0.06 hair, he returned 7 on the bench (started Senesi 3) — the `force_start` lever
+  existed and was NOT used (~−4). RULE (GW20+): when the duel lens names a prime CS/attacking
+  bet that the solver benches on a <0.2 xpts hair, pull `force_start`. This is a discipline
+  point, not a code defect (the model's own order was a coin-flip); it complements the
+  [DONE] split fix. Watched clean at GW20 (no lever owed).
 - [PROCESS] Suspension verification: a ban needs the OFFENCE **and**
   confirmation it was upheld/served against the team sheet — not an aggregator
   headline. The GW9–10 Ballard "3-match ban" was misapplied (he played both
@@ -148,8 +161,14 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   still never overrides the EV gate, the plan, or minutes risk; the named duel is
   written in each memo for grading. Keep grading live; watch for the first MISS to
   size its false-positive rate.
-- Captaincy = highest projection unless news says otherwise: 16/16 rule
-  adherence (Salah ×5, Haaland ×11). Haaland RETURNED 26 at Palace (GW16) — the
+- Captaincy = highest projection unless news says otherwise: 20/20 rule
+  adherence (Salah ×5, Haaland ×15). The AFCON window opened with a captain DROUGHT —
+  Haaland 2/2/2 across GW18-20 (four low weeks in the last five, GW17's 32 aside), yet he
+  was the top projection + ~90% EO shield EVERY week, so no recency switch was ever right
+  (a switch chases a moving target AND the ~90%-owned field bleeds the identical blanks —
+  averages 44/40/42). The rule is judged on adherence; the drought is the calibration
+  [OPEN]'s captain-slot variance. The GW14/16/17 hauls (28/26/32) all landed the week AFTER
+  a drought stretch — holding through is what catches them. Haaland RETURNED 26 at Palace (GW16) — the
   4-in-5 blank streak was pure variance, and holding the shield through it (no
   recency switch) caught both GW14's 28 and GW16's 26. Haaland has blanked FOUR of the last FIVE as
   captain (GW11-13, GW15; only GW14's 28 broke it) — extraordinary variance, but he
@@ -165,6 +184,12 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   the forced 10th) instead; it cost ~0 (Thiago still played 30'). Bank the FT, let
   the absentees return. (Distinct from a forced injury replacement like Semenyo→Enzo,
   where the loss was multi-week + AFCON.)
+  [PROVEN twice more, GW19-20] Two "hold" flavours both cashed in the same block: (a) GW19
+  BENCHED Rice on a 1-week precautionary knee (Arteta short-term) rather than churn a PS7.2
+  anchor — he returned 17 on GW20; (b) GW20 HELD Enzo through his one hard fixture (MCI-A,
+  FDR5) rather than move-and-move-back — he returned 11 at the Etihad. The multi-week/AFCON
+  cutoff for a forced SALE vs a 1-week BENCH is the whole discipline: Calafiori (month) sold,
+  Rice (1 week) benched. Selling+rebuying for a single week burns an FT and pays spread twice.
 - Transfer SEQUENCING: enter a fixture run one GW early, but NOT into the
   target's worst fixture. GW9 deferred Ekitiké→Mateta because Mateta's GW9
   was ARS(A) (his worst) — outcome Mateta 2 = Ekitiké 2 (zero cost), banked a
@@ -191,14 +216,24 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 
 ## Season context (2025/26 replay, verified)
 
-- Official GW averages 1–16: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35, 58, 49, 60
-  (cum 810). GW11-13 low (38/39/35); GW14-16 (58/49/60) recovered.
+- Official GW averages 1–20: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35, 58, 49,
+  60, 66, 44, 40, 42 (cum 1002). GW18-20 (44/40/42) is the low AFCON+festive trough — the
+  crowd is weak here, so value holds + patience compound the edge (we went +42 over these 3).
 - **AFCON: PL players unavailable from GW17** (starts 21 Dec 2025; min 3 GWs, some
-  6). Owned asset = Mbeumo (Cameroon); available GW15-16, gone GW17+. HOLD him
-  through his good GW15-16 fixtures, move at GW16 into a NON-AFCON mid (don't sell
+  6). Owned asset = Mbeumo (Cameroon); available GW15-16, gone GW17+, **back GW22**. HOLD him
+  through his good GW15-16 fixtures, move at GW16-17 into a NON-AFCON mid (don't sell
   early — GW15 Mbeumo returned 8 at Wolves after we refused the premature sale).
-  Salah (Egypt) also out — not owned. Never buy a mid/fwd about to vanish without
-  pricing the gap.
+  Salah (Egypt, deeper run) out GW17-22, **back GW23** — not owned. The archive-blind model
+  proposes buying AFCON players back EVERY week (status stays 'a') — BAN them until confirmed
+  back. Never buy a mid/fwd about to vanish without pricing the gap.
+- **Ghana did NOT qualify for AFCON 2025** — Semenyo (Ghana) was fully available all window
+  (90 min every GW), which is why he was the value cover for Bruno at GW18. Don't assume an
+  African player is AFCON-bound; verify the nation qualified AND he was called up.
+- **Festive congestion (GW18-20 in 9 days, 26 Dec/30 Dec/3 Jan) breeds surprise blanks and
+  warm-up injuries.** Point-in-time nuance: the FPL deadline is 90m before the round's FIRST
+  KO, which can be a day+ before a given club's game — an injury in that club's warm-up
+  (Calafiori before the GW18 Brighton game, ~20h post-deadline) is NOT knowable that week and
+  becomes next week's forced sale. Hold the honest read; autosubs + a legal bench cover it.
 - Pep rotation is priced into nothing: don't double City defenders without a
   written rotation overlay (GW1 Gvardiol).
 - Availability news beats every model input: the overlay layer (researched,

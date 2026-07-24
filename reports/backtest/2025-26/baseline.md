@@ -29,10 +29,14 @@ Values cross-verified against independent web sources where snippets were availa
 | 15 | 49 | 133 | not found | Deadline 2025-12-06. FPL API mirror. Last full round before AFCON; Haaland blanked (subbed 68') at home to Sunderland — his 4th low captain week in five. |
 | 16 | 60 | 149 | not found | Deadline 2025-12-13. FPL API mirror. Last round before the AFCON exodus (players out from GW17); Haaland's captaincy returned (26). |
 | 17 | 66 | 148 | not found | Deadline 2025-12-20. FPL API mirror (matched the prior look-ahead exactly). First round of the AFCON exodus (Salah/Mbeumo et al. out); Haaland's captaincy landed again (16) at home to West Ham. |
+| 18 | 44 | not found | not found | Deadline 2025-12-26 (Boxing Day). FPL API mirror (matched the prior look-ahead). AFCON + festive congestion; Haaland (~90% owned) blanked — low round. |
+| 19 | 40 | not found | not found | Deadline 2025-12-30. FPL API mirror (matched look-ahead). Second-lowest of the window; Calafiori/Rice/Bruno all out for Arsenal/Man Utd — injury-hit template slate. |
+| 20 | 42 | not found | not found | Deadline 2026-01-03. FPL API mirror + [FPL Dave GW20 review] cross-check ("42pts Average"). Last of the three-in-nine festive rounds; Haaland blanked again. |
 
-**Average-manager 17-GW cumulative total (sum of official GW averages): 876 points.**
+**Average-manager 20-GW cumulative total (sum of official GW averages): 1002 points.**
+*(17-GW was 876; GW18-20 add 44+40+42 = 126.)*
 
-*Look-ahead (fetched, not yet played in-sim): GW18 avg 44, GW19 40, GW20 42, GW21 48, GW22 40, GW23 44, GW24 55 — the AFCON window keeps averages low (GW18-23 all ≤48).*
+*Look-ahead (fetched, not yet played in-sim): GW21 avg 48, GW22 40, GW23 44, GW24 55 — the AFCON window keeps averages low through GW23 (≤48); GW22 is the Mbeumo/Bruno return round, GW23 Salah's.*
 
 ## Verification notes
 

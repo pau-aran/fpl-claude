@@ -1,8 +1,30 @@
-# Session State — updated 2026-07-23 (backtest session — GW17 done, AFCON reshape)
+# Session State — updated 2026-07-24 (backtest session — GW18-20 done, the AFCON+festive trough)
 
 *Handoff snapshot. Read this first, then `NEXT-STEPS.md` for the roadmap and
 `reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge.
 GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
+
+## Latest: GW18-20 backtest (this session)
+
+Simulated the next three GWs (the AFCON + festive-congestion trough, 26 Dec–3 Jan) on the
+point-in-time pipeline. **168 pts vs 126 average (+42); season 1179, edge +135 → +177 (a
+new high); 0 hits, captaincy 20/20.** The block was won on availability discipline and value
+holds, not the captain (Haaland blanked 2/2/2 — borne by the ~90%-owned field too):
+- **GW18 43 v 44 (−1):** B.Fernandes OUT (hamstring, Amorim presser) → **Semenyo** (value
+  cover; Ghana didn't make AFCON, 9 on debut); refused the model's Mateta→Mbeumo AFCON
+  buy-back trap; banked 2 FT. Autosubs covered two unforecastable blanks (Calafiori's
+  warm-up injury struck ~20h post-deadline — not knowable — + Szoboszlai).
+- **GW19 62 v 40 (+22):** Calafiori OUT (muscle ~month, now public) → **Timber** (9 debut);
+  BENCHED Rice (1-wk knee, held-not-sold); refused the model's buy-back-AND-captain-injured-
+  Bruno line. One process miss: Konaté (duel-named CS bet) benched on a 0.06 hair (7 on the
+  bench, ~−4) — `force_start` lever not pulled → now a standing rule.
+- **GW20 63 v 42 (+21):** ROLL (0 transfers → 4 FT banked); held Enzo through MCI(A)5 (11)
+  and Rice returned (17) — both "hold" rules vindicated same week.
+
+Squad now: Roefs, Dúbravka / Saliba, **Timber**, Tarkowski, Senesi, Konaté / Rice, Enzo,
+Szoboszlai, **Semenyo**, Brooks / Haaland, Thiago, Mateta. **4 FT, £1.9m** into GW21 — the
+Liverpool ARS(A)5 reassess and the returnee window (Mbeumo/Bruno ~GW22, Salah ~GW23) next.
+Data self-provisioned via `backtest.fetch` (vaastav); GW18-20 official averages verified.
 
 ## Where things stand
 
@@ -66,10 +88,38 @@ GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
 | 8 | 82 | 56 | Triple-out (Palmer/Gud/Brooks); 2 FT no hit; faded Saka→Fernandes; Haaland C 26 |
 | 9 | 58 | 46 | Rolled FT (deferred Ekitiké→Mateta); Haaland C blank; Mbeumo 15, Szoboszlai 10 |
 | 10 | 75 | 65 | Ekitiké→Mateta + Ballard→Konaté; Haaland C 26; Mateta 9 |
-| **Σ** | **624** | **531** | **+93; hits: 1; captaincy 10/10 — GATE PASSED** |
+| **Σ1-10** | **624** | **531** | **+93; hits: 1; captaincy 10/10 — GATE PASSED** |
+| 11 | 34 | 38 | −4 variance (2 in-squad pen misses); rolled FT; 7th churn veto |
+| 12 | 42 | 39 | Semenyo→Enzo (11); banned injured Gabriel; Muñoz 14 |
+| 13 | 44 | 35 | Scarlett→Thiago (13 debut) + Raya→Roefs; bench-order −8 |
+| 14 | 69 | 58 | 4 one-week absences rolled; Haaland C drought ended 28 |
+| 15 | 56 | 49 | Rolled to 3 FT; held Mbeumo (8); Fernandes 18 |
+| 16 | 72 | 60 | Rolled to 4 FT; held Mbeumo send-off; Haaland C 26; autosubs +11 |
+| 17 | 70 | 66 | AFCON reshape: Mbeumo→Rice (11) + Muñoz→Tarkowski; Haaland C 32 |
+| 18 | 43 | 44 | Bruno OUT→Semenyo (9); refused Mbeumo AFCON trap; autosubs covered 2 blanks |
+| 19 | 62 | 40 | Calafiori OUT→Timber (9); Rice benched; refused buy-back-injured-Bruno |
+| 20 | 63 | 42 | ROLL→4 FT; held Enzo thru MCI-A (11); Rice back (17) |
+| **Σ1-20** | **1179** | **1002** | **+177; hits: 1; captaincy 20/20 — season-high edge** |
 
 ## Recent session log
 
+- **2026-07-24 (GW18-20 session — the AFCON+festive trough):** branch
+  `claude/simulate-gw-18-19-20-rff52m`. Ran the next three backtest GWs (26 Dec–3 Jan, the
+  three-in-nine festive rounds stacked on AFCON) on the point-in-time pipeline. **168 v 126
+  (+42); season 1179, edge +177 (season high); 0 hits, captaincy 20/20.** GW18: B.Fernandes
+  OUT (hamstring, sourced to Amorim's Boxing-Day presser) → Semenyo (value cover, Ghana not
+  at AFCON, 9 debut), banked 2 FT, refused the model's Mateta→Mbeumo AFCON buy-back trap;
+  autosubs covered two UNFORECASTABLE blanks (Calafiori's warm-up injury struck ~20h after
+  the deadline — a genuine point-in-time miss for the field too — plus Szoboszlai) — 43 v 44.
+  GW19: Calafiori OUT (muscle ~month, now public) → Timber (9 debut), benched Rice (1-wk
+  knee, held-not-sold), refused the model's buy-back-AND-captain-injured-Bruno line — 62 v 40
+  (+22). GW20: ROLL (0 transfers → 4 FT banked toward the returnee window), held Enzo through
+  MCI(A)5 (11) + Rice returned (17), both "hold" rules vindicated same week — 63 v 42 (+21).
+  Haaland (C) blanked all three (2/2/2) — captain-slot variance, borne by the field. One
+  process miss logged: GW19 Konaté (duel-named CS bet) benched on a 0.06 hair (7 stranded,
+  ~−4) — `force_start` lever not pulled → new standing rule in knowledge.md/plan.md. Sources
+  web-verified (Bruno/Calafiori/Rice injuries, AFCON/Ghana). Data self-provisioned via
+  `backtest.fetch`; GW18-20 averages (44/40/42) matched the prior look-ahead.
 - **2026-07-23 (GW17 session — the AFCON reshape):** branch
   `claude/next-sim-8gw-decision-tree-j7wl1n`. Ran the next backtest GW (GW17), the
   first round of the AFCON exodus, and rebuilt the standing decision tree for the full
