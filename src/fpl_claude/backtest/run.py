@@ -24,7 +24,9 @@ import argparse
 import json
 from pathlib import Path
 
+import pandas as pd
 
+from ..optimize.chip_timing import advise, chip_surface, detect_double_blank
 from ..rules.engine import Ruleset
 from .data import SeasonStore
 from .overlays import availability_overlays, merge
@@ -35,6 +37,7 @@ from .simulate import (
     decide_transfers,
     project_gw,
     run_gameweek,
+    wildcard_squad,
 )
 
 
@@ -89,6 +92,46 @@ def load_decision(path: Path | None) -> ManagerDecision | None:
     )
 
 
+def _print_chip_advice(
+    store: SeasonStore, gw: int, rules: Ruleset, state: SquadState, projections
+) -> None:
+    """Chip-timing advisory for the HELD squad (state.buy_costs) — verdicts for
+    the current half's chips plus a compact forward EV surface. Advice only:
+    nothing here plays a chip. The WC change-need signal is the uncapped
+    optimizer's reshape (what a wildcard would rebuild) NET of banked free
+    transfers — the AFCON counterfactual proved an FT-rideable reshape is not a
+    wildcard, so only the changes the FT budget can't cover count as a trigger."""
+    id_to_name = dict(zip(store.teams["id"], store.teams["name"]))
+    double_blank = detect_double_blank(store.fixtures_at(gw), id_to_name)
+    held_ids = list(state.buy_costs)
+    surface = chip_surface(projections, held_ids, rules.raw["lineup"], double_blank)
+    wc_changes = len(wildcard_squad(projections, rules, state).transfers_in)
+    change_need = max(0, wc_changes - state.free_transfers)
+    plan = advise(surface, state.chips_used, gw, change_need=change_need)
+
+    half = 2 if gw > 19 else 1
+    print(f"\n=== Chip advice (held squad; one-of-each-per-half, current half {half}) ===")
+    used = ", ".join(state.chips_used) if state.chips_used else "none"
+    print(f"inventory used: {used} | uncapped change-need: {change_need}")
+    for chip, adv in plan.items():
+        tgt = f"GW{adv.target_gw}" if adv.target_gw is not None else "—"
+        print(f"  {chip:<15}{adv.verdict:<7}{tgt:<6} | {adv.reason}")
+    if surface:
+        fwd = pd.DataFrame(
+            {
+                "gw": [s.gw for s in surface],
+                "tc_extra": [s.tc_extra for s in surface],
+                "tc_captain": [s.tc_captain_name for s in surface],
+                "bb_extra": [s.bb_extra for s in surface],
+                "bb_nonnailed": [s.bb_nonnailed for s in surface],
+                "doublers": [s.n_doublers for s in surface],
+                "blankers": [s.n_blankers for s in surface],
+            }
+        )
+        print("forward surface (per future GW):")
+        print(fwd.to_string(index=False))
+
+
 def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
             overlays: dict | None, decision: ManagerDecision | None) -> None:
     """Print the optimizer proposal + multi-GW fixture context. NO state is
@@ -120,6 +163,8 @@ def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
     out_rows = outside[["web_name", "team", "position", "price", "xpts_horizon"]].copy()
     out_rows["fixtures_next"] = out_rows["team"].map(outlook)
     print(out_rows.to_string())
+
+    _print_chip_advice(store, gw, rules, state, projections)
 
 
 def _name(result: GWResult, pid: int) -> str:

@@ -228,6 +228,9 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   nailed starters with fixtures, i.e. a DGW. TC's one big week was GW17 (+16, Haaland tripled) —
   the cleanest chip: a premium captain's standout single fixture (or a DGW). Rule: **TC on a
   standout captain fixture/DGW; BB only on a DGW; WC/FH only for a 4+ change need or a BGW/DGW.**
+  This rule is now encoded in `optimize/chip_timing.py` (`detect_double_blank` + `chip_surface`
+  + `advise`, conservative thresholds as module constants) and surfaced each deadline by
+  `run.py --propose`.
 
 ## Season context (2025/26 replay, verified)
 
