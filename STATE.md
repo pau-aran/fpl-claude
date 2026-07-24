@@ -26,6 +26,15 @@ Szoboszlai, **Semenyo**, Brooks / Haaland, Thiago, Mateta. **4 FT, £1.9m** into
 Liverpool ARS(A)5 reassess and the returnee window (Mbeumo/Bruno ~GW22, Salah ~GW23) next.
 Data self-provisioned via `backtest.fetch` (vaastav); GW18-20 official averages verified.
 
+**Also this session — Phase 3b chip MECHANICS built** (owner-directed): the backtest simulator
+now plays all four chips (WC/FH/BB/TC via `decision.chip` / `--chip`; `score_gw` BB-all-15 &
+TC-×3, `run_gameweek` WC-keep/FH-revert, one-per-half inventory in `state.json`), + 6 tests
+(46 green). The **AFCON chip counterfactual** (`chip-analysis-afcon.md`) proved FT-only was
+right: WC@17-held 236 vs our 238, FH neutral/negative, BB gains were bench variance, TC@17 +16.
+Chip timing rules encoded (TC on a standout captain fixture/DGW; BB only on a DGW; WC/FH for a
+4+ change need or BGW/DGW). Remaining Phase 3b (auto chip-timing + multi-period MILP path) and
+the full forward backlog are in the new **`NEXT-STEPS-IMPLEMENTATION.md`**.
+
 ## Where things stand
 
 - **The PLAN §4 backtest gate PASSED.** Point-in-time replay of 2025/26

@@ -106,7 +106,11 @@ in committed markdown + owner notification; owner applies moves manually.
 
 ## Engineering backlog (not GW1-blocking)
 
-- Phase 3b: multi-period transfer path + chip planning in the MILP.
+*Full prioritized list with buildable-now vs blocked split: `NEXT-STEPS-IMPLEMENTATION.md`.*
+
+- Phase 3b: **chip MECHANICS DONE** (backtest simulator plays/scoring WC/FH/BB/TC, one-per-half
+  inventory, validated by the AFCON counterfactual). Remaining 3b: automatic chip-TIMING in the
+  decision layer (DGW/BGW detection + chip-EV surface) and the multi-period transfer path.
 - Minutes v2: LightGBM on vaastav history (congestion, Euro-week features).
 - Odds blend into the team model; Understat rates into `models/rates.py`.
 - `/fpl-review` calibration loop wired to `db/projections/` CSVs.

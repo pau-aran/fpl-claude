@@ -214,6 +214,18 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   (model and 67% poll agreed on Haaland); its first real test is the one
   divergence taken — Palmer hold vs mass sells — resolving GW8.
 
+- [DONE — Phase 3b mechanics + PROVEN] Chips: the simulator now plays WC/FH/BB/TC
+  (`score_gw`/`run_gameweek`/`--chip`; one-per-half inventory in `state.json`). The AFCON
+  counterfactual (`chip-analysis-afcon.md`) established the timing discipline: **don't burn a
+  reshaping chip (WC/FH) on an FT-rideable disruption.** WC@GW17-held scored 236 vs our FT 238
+  (it froze the soon-injured Bruno/Calafiori and couldn't react — the window's value was
+  reactivity, which free transfers gave us). FH helped once (+6, GW17) and hurt otherwise. BB
+  was positive every week ex-post (+11/+12/+19/+5) BUT the gains were unforecastable bench
+  variance (a known-out Rice sat on the GW19 bench) — so BB is only a real call when all 15 are
+  nailed starters with fixtures, i.e. a DGW. TC's one big week was GW17 (+16, Haaland tripled) —
+  the cleanest chip: a premium captain's standout single fixture (or a DGW). Rule: **TC on a
+  standout captain fixture/DGW; BB only on a DGW; WC/FH only for a 4+ change need or a BGW/DGW.**
+
 ## Season context (2025/26 replay, verified)
 
 - Official GW averages 1–20: 54, 51, 48, 63, 42, 46, 60, 56, 46, 65, 38, 39, 35, 58, 49,

@@ -209,9 +209,15 @@ FIXED in code (the optimizer fields the XI on this week's fixture column); the r
 now MANAGER-side — pull the `start`/`bench` lever when the duel lens names a prime CS/attacking
 bet the solver benches on a <0.2 hair (the GW19 Konaté miss, ~−4). Watch it every deadline.
 
-Chips: out of scope (but note — the AFCON disruption is the season's classic
-Wildcard/Free-Hit trigger for the field; we ride it on FTs, which is the disciplined
-edge if our squad stays largely intact, as it has).
+Chips: mechanics now BUILT (WC/FH/BB/TC playable + scored in the simulator; one-per-half
+inventory tracked). The AFCON counterfactual (`chip-analysis-afcon.md`) PROVED riding the
+window on FTs was right: a Wildcard@GW17-held scored 236 vs our 238 (it locked in the
+soon-injured Bruno/Calafiori and couldn't react), Free Hit never helped (+6 once, else
+negative), and Bench Boost's gains were bench VARIANCE, not a pre-hoc signal. Forward chip
+rules: **TC** on a premium captain's standout single fixture or a DGW (GW17-type Haaland was
++16); **BB** only when all 15 have two fixtures (a DGW), never on a single GW for bench luck;
+**WC/FH** for a genuine 4+ change need or a Blank/Double GW — not an FT-rideable disruption.
+No chip is queued for GW21-24 (squad intact, low-average trough); revisit at the first DGW/BGW.
 
 ## Conflicts to refuse through the AFCON window (GW18-24)
 

@@ -48,6 +48,7 @@ def load_state(path: Path) -> SquadState | None:
         free_transfers=int(raw["free_transfers"]),
         points_total=int(raw["points_total"]),
         hits_total=int(raw["hits_total"]),
+        chips_used=list(raw.get("chips_used", [])),
     )
 
 
@@ -61,6 +62,7 @@ def save_state(state: SquadState, path: Path, gw: int) -> None:
                 "free_transfers": state.free_transfers,
                 "points_total": state.points_total,
                 "hits_total": state.hits_total,
+                "chips_used": state.chips_used,
             },
             indent=2,
         )
@@ -82,6 +84,7 @@ def load_decision(path: Path | None) -> ManagerDecision | None:
         max_transfers=raw.get("max_transfers"),
         start=frozenset(int(i) for i in raw.get("start", [])),
         bench=frozenset(int(i) for i in raw.get("bench", [])),
+        chip=raw.get("chip"),
         reasoning=str(raw.get("reasoning", "")),
     )
 
@@ -142,6 +145,14 @@ def write_memo(
         "",
         "## Decision",
         "",
+    ]
+    if r.chip:
+        _CHIP_LABEL = {
+            "wildcard": "WILDCARD", "free_hit": "FREE HIT",
+            "bench_boost": "BENCH BOOST", "triple_captain": "TRIPLE CAPTAIN",
+        }
+        lines.append(f"- **CHIP PLAYED: {_CHIP_LABEL.get(r.chip, r.chip.upper())}**")
+    lines += [
         f"- Captain: **{_name(r, r.squad.captain)}** | vice: {_name(r, r.squad.vice)}",
         f"- Bank after moves: £{r.bank / 10:.1f}m | free transfers left for next GW: {r.free_transfers_left}",
     ]
@@ -219,7 +230,10 @@ def main() -> None:
     parser.add_argument("--season", default="2025-26")
     parser.add_argument("--force", action="store_true", help="allow re-running a completed GW")
     parser.add_argument("--decision", default=None,
-                        help="manager decision JSON (lock/ban/captain/max_transfers/reasoning)")
+                        help="manager decision JSON (lock/ban/captain/max_transfers/chip/reasoning)")
+    parser.add_argument("--chip", default=None,
+                        help="play a chip this GW: wildcard|free_hit|bench_boost|triple_captain "
+                             "(overrides the decision JSON's chip)")
     parser.add_argument("--propose", action="store_true",
                         help="print the optimizer proposal + fixture outlook and exit; no writes")
     args = parser.parse_args()
@@ -248,6 +262,9 @@ def main() -> None:
     overlays = merge(availability_overlays(store, args.gw), hand)
 
     decision = load_decision(Path(args.decision) if args.decision else None)
+    if args.chip:
+        from dataclasses import replace
+        decision = replace(decision or ManagerDecision(), chip=args.chip)
 
     if args.propose:
         if state is None:
