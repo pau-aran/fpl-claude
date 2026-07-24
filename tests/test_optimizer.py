@@ -8,6 +8,7 @@ import pytest
 from fpl_claude.optimize.milp import (
     CurrentSquad,
     RulesetUnverifiedError,
+    _pick_lineup,
     optimize,
 )
 from fpl_claude.rules.engine import Ruleset
@@ -169,6 +170,73 @@ def test_manager_lock_and_ban(pool, rules):
     # Constrained solves can never beat the free optimum.
     assert locked.objective <= base.objective
     assert banned.objective <= base.objective
+
+
+def _lineup() -> tuple[dict[str, int], dict[int, str]]:
+    """A legal 15: id -> position, plus lineup rules keyed for _pick_lineup."""
+    pos = {}
+    pid = 0
+    for position, count in (("GKP", 2), ("DEF", 5), ("MID", 5), ("FWD", 3)):
+        for _ in range(count):
+            pid += 1
+            pos[pid] = position
+    lineup = {
+        "starting": 11, "min_goalkeepers": 1,
+        "min_defenders": 3, "min_midfielders": 2, "min_forwards": 1,
+    }
+    return lineup, pos
+
+
+def test_pick_lineup_uses_single_gw_score():
+    """The XI/captain/bench come from the single-GW score, not the horizon —
+    the fix for the GW10 leak (a soft-fixture defender benched behind a
+    hard-fixture one on a bigger multi-week total)."""
+    lineup, pos = _lineup()
+    ids = list(pos)
+    # Everyone mid-pack except one DEF (id 3) who is the best THIS week and one
+    # FWD (id 13) who is the captain-worthy ceiling this week.
+    score = {i: 3.0 for i in ids}
+    score[3] = 9.0   # a DEF: must start and be a strong scorer
+    score[13] = 10.0  # a FWD: the captain
+    score[7] = 1.0   # the weakest DEF: must be benched
+    xi, captain, vice, bench = _pick_lineup(ids, score, pos, lineup)
+
+    assert len(xi) == 11 and captain == 13 and vice == 3
+    assert 3 in xi and 7 not in xi  # started the soft-fixture DEF, benched the weak one
+    # Bench outfielders ordered by descending single-GW score, keeper last.
+    assert pos[bench[-1]] == "GKP"
+    outfield = [score[i] for i in bench[:-1]]
+    assert outfield == sorted(outfield, reverse=True)
+
+
+def test_pick_lineup_manager_start_bench_override():
+    """force_start / force_bench pin a player into or out of the XI even against
+    the score — the depleted-defence read the model can't see (GW13)."""
+    lineup, pos = _lineup()
+    ids = list(pos)
+    score = {i: 3.0 for i in ids}
+    score[3] = 1.0    # a weak DEF the manager nonetheless insists on starting
+    score[4] = 9.0    # a strong DEF the manager benches on a fixture read
+    xi, _, _, bench = _pick_lineup(
+        ids, score, pos, lineup, force_start=frozenset({3}), force_bench=frozenset({4})
+    )
+    assert 3 in xi and 4 not in xi
+
+
+def test_optimize_reranks_xi_on_immediate_gw_column(pool, rules):
+    """When the table carries a per-GW column, optimize() derives the XI/captain
+    on THIS week's fixture while still buying the 15 on the horizon."""
+    pool = pool.copy()
+    # Invert the ordering for the immediate GW: the horizon-best is this week's
+    # worst. The captain must follow the immediate column, not the horizon.
+    pool["xpts_gw1"] = 100.0 - pool["xpts_horizon"]
+    result = optimize(pool, rules, allow_unverified=True)
+    by_id = pool.set_index("id")
+    best_gw1 = max(result.xi, key=lambda i: by_id.loc[i, "xpts_gw1"])
+    assert result.captain == best_gw1  # captain on the immediate GW, not horizon
+    # Bench outfielders ordered by the immediate-GW column.
+    outfield = [by_id.loc[i, "xpts_gw1"] for i in result.bench[:-1]]
+    assert outfield == sorted(outfield, reverse=True)
 
 
 def test_marginal_hit_gate_rejects_piggyback_hit(rules):

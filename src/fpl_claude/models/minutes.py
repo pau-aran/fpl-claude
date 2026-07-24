@@ -78,8 +78,10 @@ def _start_share(
             weight = team_games / 3.0
             return min(1.0, weight * current + (1 - weight) * prior), "prior"
         return min(1.0, prior), "prior"
-    if team_games > 0:
-        return min(1.0, starts / team_games), "season"
+    if team_games > 0:  # tiny sample, no prior: shrink toward neutral, don't
+        current = starts / team_games  # let 1 start in 1 game read as p_start 1.0
+        weight = team_games / 3.0
+        return min(1.0, weight * current + (1 - weight) * NEUTRAL_START_SHARE), "season"
     return NEUTRAL_START_SHARE, "neutral"
 
 

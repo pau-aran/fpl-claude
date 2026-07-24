@@ -44,17 +44,28 @@ the newcomer confidence haircut) and grew the decision architecture (manager
 overlay, plan.md path discipline, community consensus input, the purist
 positional-duel lens).
 
-Defects found, carried to the LIVE pipeline (VERDICT.md + reviews/gw10.md §4):
-- **[OPEN] Level calibration** — model under-predicts totals ~15–25% in strong
-  weeks (ranking unaffected; an EV-reporting/hit-gate issue). Fix: an
-  environment-level calibration term and/or better captain-ceiling + bonus
-  modelling.
-- **[OPEN] Bench-order ignores fixture softness** — weight FDR/CS probability
-  in XI ordering, or expose a manager bench-order override.
-- **[PROCESS] Suspension verification** — confirm a ban was actually
-  upheld/served against the team sheet; default AVAILABLE on ambiguity.
+Defects found in the backtest — now RESOLVED for the LIVE pipeline (this
+branch, `claude/branch-analysis-optimization-n8q1f5`):
+- **[DONE] Bench-order fixture softness** (was the biggest recurring leak: GW10
+  −3, GW13 −8). Split fix: the optimizer now picks XI/captain/vice/bench on the
+  nearest `xpts_gw{n}` (single-GW) column, not the decayed horizon it buys the 15
+  on (`milp.py` `_pick_lineup`, auto-detected) — fixes GW10; and a manager
+  `start`/`bench` XI override (`ManagerDecision`, decision JSON) catches the GW13
+  class the stats model can't see (depleted opponent defence). Skills updated
+  (plan-gameweek overlay, review bench-miss check).
+- **[DONE] Minutes p_start=1.0 for no-prior players** — `_start_share` now shrinks
+  the no-prior tiny sample toward `NEUTRAL_START_SHARE` by `team_games/3`;
+  de-risks GW1–3 of the post-WC season.
+- **[DONE/process] Level calibration** — decided NO model change (never flipped a
+  pick, cancels in the hit-gate); `/fpl-review` now logs the captain slot
+  separately so EV reporting reads against the known captain-slot variance.
+- **[DONE/process] Suspension verification** — `/fpl-news-sweep` now requires the
+  offence AND confirmation the ban is served, and defaults to AVAILABLE on
+  ambiguity; plus a two-consecutive-0-minute minutes red-alert.
 - Optional depth later: extend to 2023/24–2024/25 replays for more calibration
-  seasons; seed the FPL↔Understat ID map for Minutes v2.
+  seasons; seed the FPL↔Understat ID map for Minutes v2; a same-club/same-fixture
+  sub-1pt "phantom swap" surfacing filter (ergonomics only — the lock already
+  neutralises it).
 
 Shipped after the gate (re-ran the GW1–10 replay at parity — 659=659, no committed
 decision changed, so no regression; see docs/external-repo-review-x402-fpl-api.md):

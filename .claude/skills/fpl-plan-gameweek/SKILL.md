@@ -16,8 +16,7 @@ applies it manually; you never touch their FPL account.
 3. **Project:** run the pipeline —
    `python -m fpl_claude.models.projections --from-snapshot <today>` with
    `--overlays` built from the news sweep (each override = player id, start_share,
-   written reason) and `--prior-snapshot` early season. Until the backtest gate
-   (PLAN §4) passes, label all numbers "xPts v1 (ungated)". Then the **consensus
+   written reason) and `--prior-snapshot` early season. Then the **consensus
    cross-check**: compare our captain top-3 and every transfer-in candidate against
    at least two public sources (LiveFPL, FPL Review free, FFScout). Big divergence →
    investigate (stale minutes intel? fix overlay and rerun) and record the verdict
@@ -28,6 +27,17 @@ applies it manually; you never touch their FPL account.
    while the ruleset is unverified: before season-launch verification pass
    `allow_unverified=True` and label the memo "rules unverified — dry run".
    Quote its `ev_delta` against `policies.hit_ev_threshold` for any hit.
+   - **Before the solve**, write the funding arithmetic of the route you intend
+     (sells + bank ≥ buys, and the resulting squad is position-quota-legal). A
+     route that doesn't foot cannot be the plan — say so and pick another.
+   - **After the solve**, re-read the recommended move against that reasoned
+     route. A `lock`/captain re-solve can silently redirect the transfer to a
+     different player (it did twice — GW4, GW6). If it did, either fix the
+     constraint or write a signed addendum; the memo's reasoning must name the
+     move actually recommended.
+   - The optimizer now picks the **XI, captain, vice and bench order on THIS
+     week's fixture** (nearest `xpts_gw{n}`), not the multi-week horizon it buys
+     the 15 on. Do not re-order the bench by the horizon column by hand.
 5. **Overlay (the part only you can do):** deviate from the optimizer only with a
    written reason (presser tone, rotation pattern from the weekly report, tactical
    change). Check every recommended player against the risk table — a flagged
@@ -39,12 +49,41 @@ applies it manually; you never touch their FPL account.
    shortlists the model underrates and to tilt close calls (captaincy tiebreak,
    near-equal targets, bench order); it never overrides the EV gate, the plan,
    or minutes risk. Write the named duel into the memo so the review can grade it.
-6. **Policies:** hits only if EV gain > `policies.hit_ev_threshold`; captain from
-   an EV table (show top 3 with ceiling/floor); respect chip calendar. Price
+   - **Premiums are HOLDS through short-term (1-2 week) absences.** Refuse a
+     lateral or cost-neutral swap that sells an established premium to patch one
+     thin XI — bank the FT and accept a legal-but-thin formation; the absentee
+     returns for ~0 cost (GW3 held Palmer; GW14 refused Saliba→Virgil on a
+     one-week illness). Distinct from a genuine multi-week/season-ending loss,
+     which IS replaced.
+   - **Bench/XI order override (`start`/`bench` in the decision JSON):** the
+     optimizer already orders the XI on this week's fixture, but it cannot see a
+     depleted opponent defence or a soft individual duel. When you do, force the
+     owned player in (`start`) or out (`bench`) with a written reason — the only
+     tool that catches the GW13 class (started Calafiori at a depleted Arsenal
+     over Konaté v West Ham, −8). Never start a nailed defender in a hard away
+     trip over a nailed defender at home to a bottom side on tied projections.
+6. **Policies:** hits only if EV gain > `policies.hit_ev_threshold`. Price
    pressure (from the refresh radar) may pull a decided transfer earlier in the
    window or delay a sale — it never changes WHO we buy or sell, and acting
    early forfeits the T-2h flag check, so weigh £0.1 against late team news
    and write the trade-off down. Sell prices via `Ruleset.sell_price()`.
+   - **Captain = highest model projection unless PRE-DEADLINE NEWS says
+     otherwise — never a recency switch.** A run of captain blanks is variance,
+     not a signal: the highest-projection, highest-EO pick is a rank *shield*
+     (a haul ~90% of rivals share, a blank they share too), and fading a
+     blanking talisman only ever costs you the week he returns (holding Haaland
+     through a 4-in-5 blank streak caught his GW14 28 and GW16 26). Show the
+     top-3 EV table with ceiling/floor and the vice as the news-only fail-safe;
+     do not switch the armband on form. Differential captaincy lost every week
+     it was implicitly tested — take rank risk in the SQUAD, not the armband.
+   - **Chip verdict every deadline (even "hold").** State it explicitly in the
+     memo: name the next pre-committed window from the chip calendar
+     (`/fpl-chip-strategy`), its trigger, and whether this GW meets it. Fire a
+     chip only when (a) the calendar trigger is met OR (b) a written override
+     shows this week beats the calendar's target on EV. The community chip
+     landscape (mass-wildcard weeks, triple-captain polls, free-hit slates) is
+     CONTEXT, never the trigger — discipline (calendar-driven, never impulse) is
+     what makes chips a gain not a leak. Chips are the biggest untapped lever.
 
 ## Memo format (`decisions/gw{NN}.md`)
 

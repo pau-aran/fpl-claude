@@ -41,6 +41,9 @@ class ManagerDecision:
     ban:  players we refuse to own this GW (e.g. rotation trap, news doubt)
     captain/vice: override the solver's pick (must be in the final XI)
     max_transfers: cap moves below the solver's allowance (e.g. force a roll)
+    start/bench: force an owned player into / out of the XI when the human sees
+        a fixture read the stats model can't (depleted opponent defence, a
+        soft individual duel) — the bench-order override the reviews asked for
     """
 
     lock: frozenset[int] = frozenset()
@@ -48,6 +51,8 @@ class ManagerDecision:
     captain: int | None = None
     vice: int | None = None
     max_transfers: int | None = None
+    start: frozenset[int] = frozenset()
+    bench: frozenset[int] = frozenset()
     reasoning: str = ""
 
 
@@ -112,7 +117,10 @@ def initial_build(
     projections: pd.DataFrame, rules: Ruleset, decision: ManagerDecision | None = None
 ) -> tuple[OptimizedSquad, SquadState]:
     d = decision or ManagerDecision()
-    squad = optimize(projections, rules=rules, lock=d.lock, ban=d.ban)
+    squad = optimize(
+        projections, rules=rules, lock=d.lock, ban=d.ban,
+        force_start=d.start, force_bench=d.bench,
+    )
     prices = projections.drop_duplicates("id").set_index("id")["price"]
     buy_costs = {i: int(round(prices.loc[i] * 10)) for i in squad.squad}
     budget = int(rules.raw["budget"]["initial"] * 10)
@@ -150,14 +158,14 @@ def decide_transfers(
         allowance = min(allowance, d.max_transfers)
     result = optimize(
         projections, rules=rules, current=current, max_transfers=allowance,
-        lock=d.lock, ban=d.ban,
+        lock=d.lock, ban=d.ban, force_start=d.start, force_bench=d.bench,
     )
     audit: dict = {"hit_gate": "n/a", "hit_marginal": None}
     if result.hits > 0:
         free = optimize(
             projections, rules=rules, current=current,
             max_transfers=min(state.free_transfers, allowance),
-            lock=d.lock, ban=d.ban,
+            lock=d.lock, ban=d.ban, force_start=d.start, force_bench=d.bench,
         )
         threshold = float(rules.policy("hit_ev_threshold"))
         marginal = result.objective - free.objective  # already net of hit cost

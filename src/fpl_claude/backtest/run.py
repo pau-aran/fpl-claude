@@ -68,8 +68,9 @@ def save_state(state: SquadState, path: Path, gw: int) -> None:
 
 
 def load_decision(path: Path | None) -> ManagerDecision | None:
-    """Manager decision JSON: {lock: [ids], ban: [ids], captain: id,
-    vice: id, max_transfers: int, reasoning: str} — all fields optional."""
+    """Manager decision JSON: {lock: [ids], ban: [ids], captain: id, vice: id,
+    max_transfers: int, start: [ids], bench: [ids], reasoning: str} — all
+    fields optional. start/bench force an owned player into / out of the XI."""
     if path is None:
         return None
     raw = json.loads(path.read_text())
@@ -79,6 +80,8 @@ def load_decision(path: Path | None) -> ManagerDecision | None:
         captain=raw.get("captain"),
         vice=raw.get("vice"),
         max_transfers=raw.get("max_transfers"),
+        start=frozenset(int(i) for i in raw.get("start", [])),
+        bench=frozenset(int(i) for i in raw.get("bench", [])),
         reasoning=str(raw.get("reasoning", "")),
     )
 

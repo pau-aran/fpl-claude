@@ -19,12 +19,15 @@ multi-period transfer path and chip planning build on this in Phase 3b.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 
 import pandas as pd
 import pulp
 
 from ..rules.engine import Ruleset
+
+_GW_COL = re.compile(r"xpts_gw(\d+)$")
 
 BENCH_WEIGHT = 0.10  # bench points count ~10%: autosub value without XI distortion
 VICE_WEIGHT = 0.05  # tiny pull toward a strong vice, never at XI's expense
@@ -81,6 +84,61 @@ def _check_columns(projections: pd.DataFrame, score_col: str) -> None:
         raise ValueError(f"projections table missing columns: {sorted(missing)}")
 
 
+def _pick_lineup(
+    squad_ids: list[int],
+    score: dict[int, float],
+    pos: dict[int, str],
+    lineup: dict,
+    force_start: frozenset[int] = frozenset(),
+    force_bench: frozenset[int] = frozenset(),
+) -> tuple[list[int], int, int, list[int]]:
+    """Pick the best legal starting XI, captain, vice and bench order for ONE
+    gameweek from an already-chosen squad-15, using a single-GW `score`.
+
+    Owning the 15 is a horizon question (the MILP); who STARTS this week is a
+    single-fixture question — conflating them benched a soft-fixture defender
+    behind a hard-fixture one (backtest GW10). Captain/vice and bench order use
+    the true `score`; `force_start`/`force_bench` are the manager overlay (a
+    depleted-defence read the stats model can't see, backtest GW13).
+    """
+    big = 1e6
+
+    def rank(i: int) -> float:
+        return score[i] + (big if i in force_start else 0.0) - (
+            big if i in force_bench else 0.0
+        )
+
+    keepers = sorted((i for i in squad_ids if pos[i] == "GKP"), key=lambda i: -rank(i))
+    defs = sorted((i for i in squad_ids if pos[i] == "DEF"), key=lambda i: -rank(i))
+    mids = sorted((i for i in squad_ids if pos[i] == "MID"), key=lambda i: -rank(i))
+    fwds = sorted((i for i in squad_ids if pos[i] == "FWD"), key=lambda i: -rank(i))
+    min_def = int(lineup["min_defenders"])
+    min_mid = int(lineup["min_midfielders"])
+    min_fwd = int(lineup["min_forwards"])
+    n_out = int(lineup["starting"]) - int(lineup["min_goalkeepers"])
+
+    best: tuple[float, list[int]] | None = None
+    for d in range(min_def, len(defs) + 1):
+        for m in range(min_mid, len(mids) + 1):
+            f = n_out - d - m
+            if f < min_fwd or f > len(fwds):
+                continue
+            picked = defs[:d] + mids[:m] + fwds[:f]
+            total = rank(keepers[0]) + sum(rank(i) for i in picked)
+            if best is None or total > best[0]:
+                best = (total, picked)
+    assert best is not None  # a legal formation always exists for a valid squad
+    picked = best[1]
+    xi = [keepers[0]] + picked
+    xi_set = set(xi)
+    ranked = sorted(xi, key=lambda i: -score[i])  # captain on TRUE single-GW score
+    captain, vice = ranked[0], ranked[1]
+    bench = sorted(
+        (i for i in defs + mids + fwds if i not in xi_set), key=lambda i: -score[i]
+    ) + [keepers[1]]
+    return xi, captain, vice, bench
+
+
 def _solve(
     players: pd.DataFrame,
     rules: Ruleset,
@@ -89,6 +147,8 @@ def _solve(
     max_transfers: int | None,
     lock: frozenset[int] = frozenset(),
     ban: frozenset[int] = frozenset(),
+    force_start: frozenset[int] = frozenset(),
+    force_bench: frozenset[int] = frozenset(),
 ) -> OptimizedSquad:
     shape = rules.squad_shape()
     lineup = rules.raw["lineup"]
@@ -117,6 +177,15 @@ def _solve(
     for i in ban:
         if i in s:
             prob += s[i] == 0
+    # Manager start/bench overlay: force a player into or out of the XI (the
+    # single-GW lineup fix below re-derives order, but these bind the MILP path
+    # too — e.g. pre-season, no per-GW column). force_start implies owned.
+    for i in force_start:
+        if i in x:
+            prob += x[i] == 1
+    for i in force_bench:
+        if i in x:
+            prob += x[i] == 0
 
     # Squad shape and club limit
     prob += pulp.lpSum(s[i] for i in ids) == sum(shape.values())
@@ -202,6 +271,12 @@ def _solve(
     )
 
 
+def _immediate_gw_col(columns) -> str | None:
+    """The smallest-numbered per-GW column (`xpts_gw{n}`) = this week's fixture."""
+    gw_cols = [(int(m.group(1)), c) for c in columns if (m := _GW_COL.match(str(c)))]
+    return min(gw_cols)[1] if gw_cols else None
+
+
 def optimize(
     projections: pd.DataFrame,
     rules: Ruleset | None = None,
@@ -211,6 +286,9 @@ def optimize(
     allow_unverified: bool = False,
     lock: frozenset[int] = frozenset(),
     ban: frozenset[int] = frozenset(),
+    force_start: frozenset[int] = frozenset(),
+    force_bench: frozenset[int] = frozenset(),
+    xi_score_col: str | None = None,
 ) -> OptimizedSquad:
     """Optimal squad from a projections table.
 
@@ -219,6 +297,15 @@ def optimize(
     charged beyond free transfers, and ev_delta populated with the objective
     gain over rolling the current squad unchanged (memos quote this against
     policies.hit_ev_threshold).
+
+    Squad membership, transfers and hits are decided on `score_col` (the decayed
+    multi-week horizon — you OWN a player for a run of fixtures). The starting
+    XI, captain, vice and bench ORDER are single-GW decisions: when the table
+    carries per-GW columns they default to `xi_score_col` (auto-detected as the
+    nearest `xpts_gw{n}`), so a soft-fixture player is no longer benched behind a
+    hard-fixture one on a bigger horizon total (backtest GW10). Pass
+    xi_score_col=score_col to opt out. force_start/force_bench are the manager's
+    XI overlay for reads the model can't see (backtest GW13 depleted defence).
     """
     rules = rules or Ruleset.load()
     if not rules.is_verified() and not allow_unverified:
@@ -236,13 +323,38 @@ def optimize(
                 f"owned players missing from projections table: {sorted(missing)}"
             )
 
-    result = _solve(players, rules, score_col, current, max_transfers, lock, ban)
+    result = _solve(
+        players, rules, score_col, current, max_transfers, lock, ban,
+        force_start, force_bench,
+    )
     if current is not None:
-        baseline = _solve(players, rules, score_col, current, max_transfers=0)
+        baseline = _solve(
+            players, rules, score_col, current, max_transfers=0,
+            force_start=force_start, force_bench=force_bench,
+        )
         result = OptimizedSquad(
             **{
                 **result.__dict__,
                 "ev_delta": round(result.objective - baseline.objective, 3),
+            }
+        )
+
+    if xi_score_col is None:
+        xi_score_col = _immediate_gw_col(players.columns)
+    if xi_score_col and xi_score_col != score_col and xi_score_col in players.columns:
+        by_id = players.set_index("id")
+        pos = {i: by_id.loc[i, "position"] for i in result.squad}
+        xi_score = {i: float(by_id.loc[i, xi_score_col]) for i in result.squad}
+        xi, captain, vice, bench = _pick_lineup(
+            result.squad, xi_score, pos, rules.raw["lineup"], force_start, force_bench
+        )
+        result = OptimizedSquad(
+            **{
+                **result.__dict__,
+                "xi": sorted(xi, key=lambda i: (POSITIONS.index(pos[i]), -xi_score[i])),
+                "captain": captain,
+                "vice": vice,
+                "bench": bench,
             }
         )
     return result
