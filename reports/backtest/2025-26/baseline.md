@@ -1,4 +1,4 @@
-# 2025/26 Backtest Baseline — Official FPL Averages, GW1-17
+# 2025/26 Backtest Baseline — Official FPL Averages, GW1-21
 
 Benchmark for the fpl-claude backtest: the official average manager score per gameweek
 (the "Average" shown on the FPL site), plus the official highest GW score, for
@@ -32,11 +32,12 @@ Values cross-verified against independent web sources where snippets were availa
 | 18 | 44 | not found | not found | Deadline 2025-12-26 (Boxing Day). FPL API mirror (matched the prior look-ahead). AFCON + festive congestion; Haaland (~90% owned) blanked — low round. |
 | 19 | 40 | not found | not found | Deadline 2025-12-30. FPL API mirror (matched look-ahead). Second-lowest of the window; Calafiori/Rice/Bruno all out for Arsenal/Man Utd — injury-hit template slate. |
 | 20 | 42 | not found | not found | Deadline 2026-01-03. FPL API mirror + [FPL Dave GW20 review] cross-check ("42pts Average"). Last of the three-in-nine festive rounds; Haaland blanked again. |
+| 21 | 48 | 118 | not found | Deadline 2026-01-06 (midweek Tue; round runs 6-8 Jan). FPL API mirror, re-fetched + re-verified this session (highest 118). Trough's last round; ARS-LIV 0-0. |
 
-**Average-manager 20-GW cumulative total (sum of official GW averages): 1002 points.**
-*(17-GW was 876; GW18-20 add 44+40+42 = 126.)*
+**Average-manager 21-GW cumulative total (sum of official GW averages): 1050 points.**
+*(20-GW was 1002; GW21 adds 48.)*
 
-*Look-ahead (fetched, not yet played in-sim): GW21 avg 48, GW22 40, GW23 44, GW24 55 — the AFCON window keeps averages low through GW23 (≤48); GW22 is the Mbeumo/Bruno return round, GW23 Salah's.*
+*Look-ahead (mirror-verified, not yet played in-sim): GW22 avg 40 (highest 111), GW23 44 (115), GW24 55 (126) — GW22 is the conditional Mbeumo/Bruno return round (17-19 Jan, straddling the AFCON final on the 18th), GW23 Salah's earliest.*
 
 ## Verification notes
 

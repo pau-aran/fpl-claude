@@ -163,7 +163,10 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
   is now a validated buy-side EDGE, not merely a hold/captain-context tool. It
   still never overrides the EV gate, the plan, or minutes risk; the named duel is
   written in each memo for grading. Keep grading live; watch for the first MISS to
-  size its false-positive rate.
+  size its false-positive rate. FIRST MISS recorded GW21: the named prime-CS bet
+  (Tarkowski home to bottom-side Wolves) was fielded and kept no clean sheet (4 pts)
+  — false-positive count 1 across ~9 graded weeks; the same week's form-duel read
+  (Thiago v Sunderland) braced 12, so the lens stayed net positive. Grading continues.
 - Captaincy = highest projection unless news says otherwise: 20/20 rule
   adherence (Salah ×5, Haaland ×15). The AFCON window opened with a captain DROUGHT —
   Haaland 2/2/2 across GW18-20 (four low weeks in the last five, GW17's 32 aside), yet he
