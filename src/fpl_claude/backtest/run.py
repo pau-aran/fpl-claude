@@ -193,6 +193,7 @@ def write_memo(
                 lines.append(
                     f"- {_name(r, pid)}: start_share={ov['start_share']} — {ov['reason']}"
                 )
+    cap_word = {2: "doubled", 3: "tripled"}.get(r.captain_mult, f"x{r.captain_mult}")
     lines += [
         "",
         "## Squad — predicted vs actual",
@@ -203,7 +204,11 @@ def write_memo(
         "",
         "## Outcome",
         "",
-        f"- Predicted XI points (incl. captain double): **{r.predicted_xi_pts}**",
+        f"- Predicted XI points: **{r.predicted_xi_pts}** = base XI {r.base_xi_pts} "
+        f"+ captain slot {r.captain_slot_pts} ({cap_word}). Split logged because the "
+        f"season residual is a small within-noise base bias plus a mean-unbiased, "
+        f"high-variance captain slot — read EV against that "
+        f"(reports/backtest/2025-26/calibration.md).",
         f"- Actual GW points (after autosubs & hits): **{r.actual_pts}**",
         f"- Effective captain: {_name(r, r.effective_captain)}",
         "- Autosubs: "

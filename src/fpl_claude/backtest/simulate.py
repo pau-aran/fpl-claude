@@ -104,6 +104,14 @@ class GWResult:
     transfers: list[tuple[int, int]] = field(default_factory=list)  # (out, in) ids
     names: dict[int, str] = field(default_factory=dict)  # every projected player
     chip: str | None = None  # chip played this GW, if any
+    # predicted_xi_pts split (A2 calibration): the season-long prediction residual
+    # lives ~entirely in these two slots being read together — the base XI runs a
+    # small within-noise mean under-prediction while the doubled captain is a
+    # mean-unbiased ±10 coin. Logging them apart lets EV/hit-gate reporting be read
+    # against the known captain-slot variance (see reports/backtest/2025-26/calibration.md).
+    base_xi_pts: float = 0.0  # counted players' xPts, captain EXCLUDED
+    captain_slot_pts: float = 0.0  # captain xPts x captain_mult (the doubled/tripled slot)
+    captain_mult: int = 2  # 2 normal / bench_boost, 3 triple_captain
 
 
 def build_team_model(store: SeasonStore, gw: int) -> TeamModel | None:
@@ -339,18 +347,54 @@ def score_gw(
     return total, subs, captain, pd.DataFrame(rows)
 
 
-def predicted_xi_points(
+@dataclass(frozen=True)
+class XiBreakdown:
+    """The predicted-XI total split into the two slots the A2 calibration work
+    isolated: a base XI (every counted player EXCEPT the captain) plus the
+    captain slot (the captain's xPts multiplied by how many times he counts —
+    2 normally / on bench_boost, 3 on triple_captain). `total` is exactly what
+    `predicted_xi_points` returns; base_xi + captain_slot == total by construction.
+    """
+
+    total: float
+    base_xi: float
+    captain_slot: float
+    captain_mult: int
+
+
+def predicted_xi_breakdown(
     squad: OptimizedSquad, projections: pd.DataFrame, gw: int, chip: str | None = None
-) -> float:
+) -> XiBreakdown:
+    """Predicted XI points, split into base XI vs the doubled/tripled captain slot.
+
+    The season backtest showed the reported prediction error is not a single
+    level bias: the base XI carries a small (within-noise) mean under-prediction
+    while the captain slot is mean-unbiased but high-variance (±~10 doubled). The
+    memo Outcome shows the split so EV is read against that known structure, not
+    as one opaque total. Applies forward-only; committed memos are untouched.
+    """
     chip = canonical_chip(chip)
     col = f"xpts_gw{gw}"
     by_id = projections.drop_duplicates("id").set_index("id")
+    cap_mult = 3 if chip == "triple_captain" else 2
     if col not in by_id.columns:
-        return 0.0
+        return XiBreakdown(0.0, 0.0, 0.0, cap_mult)
     counted = squad.squad if chip == "bench_boost" else squad.xi
-    total = sum(float(by_id.loc[i, col]) for i in counted)
-    cap_extra = 2 if chip == "triple_captain" else 1
-    return round(total + cap_extra * float(by_id.loc[squad.captain, col]), 2)
+    cap_xpts = float(by_id.loc[squad.captain, col])
+    base_xi = sum(float(by_id.loc[i, col]) for i in counted if i != squad.captain)
+    captain_slot = cap_mult * cap_xpts
+    return XiBreakdown(
+        total=round(base_xi + captain_slot, 2),
+        base_xi=round(base_xi, 2),
+        captain_slot=round(captain_slot, 2),
+        captain_mult=cap_mult,
+    )
+
+
+def predicted_xi_points(
+    squad: OptimizedSquad, projections: pd.DataFrame, gw: int, chip: str | None = None
+) -> float:
+    return predicted_xi_breakdown(squad, projections, gw, chip=chip).total
 
 
 def wildcard_squad(
@@ -454,10 +498,11 @@ def run_gameweek(
     if chip:
         state.chips_used = [*state.chips_used, f"{chip}@{gw}"]
 
+    breakdown = predicted_xi_breakdown(squad, projections, gw, chip=chip)
     result = GWResult(
         gw=gw,
         squad=squad,
-        predicted_xi_pts=predicted_xi_points(squad, projections, gw, chip=chip),
+        predicted_xi_pts=breakdown.total,
         actual_pts=net,
         hits=squad.hits,
         bank=state.bank,
@@ -470,5 +515,8 @@ def run_gameweek(
             zip(projections.drop_duplicates("id")["id"], projections.drop_duplicates("id")["web_name"])
         ),
         chip=chip,
+        base_xi_pts=breakdown.base_xi,
+        captain_slot_pts=breakdown.captain_slot,
+        captain_mult=breakdown.captain_mult,
     )
     return result, state

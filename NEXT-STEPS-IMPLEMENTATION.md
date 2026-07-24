@@ -29,14 +29,17 @@ external factor. Tick items off and move them to `NEXT-STEPS.md`/`STATE.md` as t
 - [ ] **`--propose` should surface a chip suggestion** (e.g. "BB not advised: 2 bench slots
       are non-nailed") so the deadline run considers chips explicitly.
 
-### A2. The one open MODELING defect — level/captain calibration
-- [ ] **Resolve the knowledge.md ⇄ NEXT-STEPS inconsistency**: knowledge.md still lists level
-      calibration `[OPEN]` with an unbuilt "environment-level calibration term"; NEXT-STEPS
-      §2 calls it `[DONE/process]`. Pick one. 20-GW mean error is ~+4.0, concentrated in the
-      doubled-captain slot (Haaland 2/2/2 across GW18-20).
-- [ ] **Build the captain-ceiling / bonus-signal improvement** OR formally close it as
-      "ranking-correct, EV-reporting-only, no model change" with the captain slot logged
-      separately. This is the last standing modeling gap before GW1.
+### A2. The one open MODELING defect — level/captain calibration  ✅ RESOLVED (Path A)
+- [x] **Resolved the knowledge.md ⇄ NEXT-STEPS inconsistency** — both now read `[DONE/process]`.
+      The 20-GW decomposition (`reports/backtest/2025-26/calibration.md`) also corrected the
+      framing: the mean under-prediction lives in the BASE XI (+4.3/GW, within noise t=1.47),
+      NOT the doubled captain, which is mean-UNBIASED (−0.07) and only high-variance.
+- [x] **Formally closed as "ranking-correct, EV-reporting-only, no model change"** — the
+      captain-slot / bonus build was rejected on the numbers (uniform calibration is a proven
+      no-op on picks + the hit-gate; "scale to league level" inoperable, corr +0.06). Captain
+      slot now logged separately in the REPORTING code path (`predicted_xi_breakdown` in
+      `simulate.py`; `write_memo` Outcome line; +1 test), not just the review skill. The one
+      residual signal (starting MIDs +1.2, bonus proxy) left `[WATCH]` for Minutes-v2.
 
 ### A3. Live `/fpl-review` calibration loop
 - [ ] Wire `/fpl-review` to consume `db/projections/` CSVs (predicted) vs FPL actuals and
