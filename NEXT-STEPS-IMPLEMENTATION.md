@@ -18,16 +18,22 @@ external factor. Tick items off and move them to `NEXT-STEPS.md`/`STATE.md` as t
 ## A. Buildable NOW (no network / no season-launch dependency)
 
 ### A1. Chip follow-ups (finish Phase 3b)
-- [ ] **Automatic chip-TIMING in the decision layer.** Mechanics exist; the optimizer still
-      can't *choose* when to chip. Add a chip-EV surface: for each future GW, evaluate
-      TC-best-captain, BB-if-all-15-play, and flag DGW/BGW candidates. Wire into
-      `/fpl-chip-strategy` so the season chip calendar is model-driven, not hand-run.
-- [ ] **DGW/BGW detection** from fixture-diff monitoring (the real WC/FH/BB trigger). The
-      counterfactual showed single-GW chip punts are noise; the value is in doubles/blanks.
-- [ ] **Encode the chip timing rules** (knowledge.md): TC on a standout captain fixture/DGW;
+- [x] **Automatic chip-TIMING in the decision layer.** (shipped: `optimize/chip_timing.py` —
+      `chip_surface` scores every future `xpts_gw{n}` for TC-best-captain / BB-bench-sum with
+      minutes-nailedness, `advise` gives per-chip advise/hold + target GW; wired into
+      `/fpl-chip-strategy` step 3.)
+- [x] **DGW/BGW detection** from fixture-diff monitoring (the real WC/FH/BB trigger). (shipped:
+      `chip_timing.detect_double_blank` — per-GW fixtures-per-team counts → DGW (≥2) / BGW (0)
+      team sets; feeds the WC/FH/BB gates, single-GW punts stay noise.)
+- [x] **Encode the chip timing rules** (knowledge.md): TC on a standout captain fixture/DGW;
       BB only when all 15 are nailed with fixtures; WC/FH only for a 4+ change need or BGW/DGW.
-- [ ] **`--propose` should surface a chip suggestion** (e.g. "BB not advised: 2 bench slots
-      are non-nailed") so the deadline run considers chips explicitly.
+      (shipped: already in the knowledge.md chips entry; now in CODE as `advise()` gates +
+      explicit threshold constants — `TC_STANDOUT_XPTS`, `BB_MIN_EXTRA_EV`, `NAILED_MIN_MINUTES`,
+      `SQUAD_DGW_MIN_DOUBLERS`, `WC_CHANGE_THRESHOLD`, one-per-half via `HALF_BOUNDARY_GW`.)
+- [x] **`--propose` should surface a chip suggestion** (e.g. "BB not advised: 2 bench slots
+      are non-nailed") so the deadline run considers chips explicitly. (shipped: `run.propose`
+      prints a "Chip advice" block — current-half verdicts + a forward EV surface, inventory-aware
+      via `state.chips_used`.)
 
 ### A2. The one open MODELING defect — level/captain calibration
 - [ ] **Resolve the knowledge.md ⇄ NEXT-STEPS inconsistency**: knowledge.md still lists level

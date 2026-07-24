@@ -26,6 +26,7 @@ import pandas as pd
 
 from ..models import projections as proj
 from ..models.team import TeamModel
+from ..optimize.chip_timing import HALF_BOUNDARY_GW
 from ..optimize.milp import CurrentSquad, OptimizedSquad, optimize
 from ..rules.engine import Ruleset
 from .data import SeasonStore
@@ -376,7 +377,8 @@ def wildcard_squad(
     )
 
 
-HALF_BOUNDARY_GW = 19  # 2025/26: chip set 1 = GW1-19, set 2 = GW20-38 (one of each per half)
+# HALF_BOUNDARY_GW lives in optimize.chip_timing (the timing layer owns the chip
+# calendar) and is imported at the top; re-exported here for existing call sites.
 
 
 def _chip_half(gw: int) -> int:
