@@ -4,8 +4,8 @@ Glues the model layers together over the planning horizon from
 config/rules (policies.planning_horizon_gws, policies.horizon_decay):
 
   1. bootstrap + fixtures (live, or --from-snapshot for point-in-time runs)
-  2. minutes model v1 (+ optional priors from --prior-snapshot, + overlays)
-  3. per-90 rates blended with the same prior snapshot
+  2. minutes model v1 (+ optional priors from the prior payload, + overlays)
+  3. per-90 rates blended with the same prior payload
   4. team model: Dixon-Coles if football-data results are on disk and
      penaltyblog is importable, FDR fallback otherwise (labeled per player)
   5. rules-driven scoring map -> per-GW xPts, decayed horizon total, xPts/£m
@@ -13,21 +13,34 @@ config/rules (policies.planning_horizon_gws, policies.horizon_decay):
 Output: DataFrame + CSV under db/projections/ (audit trail for /fpl-review
 calibration: predicted-at-date vs actual).
 
+Two ways to supply the prior, and picking the wrong one silently corrupts every
+row:
+  --prior-snapshot PATH      a bootstrap.json from EARLIER THIS SEASON. Joined
+                             on element `id`, which is only stable WITHIN a
+                             season.
+  --prior-season-csv PATH    a COMPLETED season's vaastav players_raw.csv.
+                             Remapped id-by-`code` through
+                             data/season_bridge.py — the only correct way to
+                             cross a season boundary, because FPL reassigns
+                             every element id at rollover.
+
 CLI:  python -m fpl_claude.models.projections [--from-snapshot YYYY-MM-DD]
-          [--prior-snapshot PATH] [--horizon N] [--overlays PATH.json]
+          [--prior-snapshot PATH | --prior-season-csv PATH]
+          [--horizon N] [--overlays PATH.json]
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
 
-from ..data import football_data
+from ..data import football_data, season_bridge
 from ..data.fpl_api import PROJECT_ROOT, RAW_DIR, get_bootstrap, get_fixtures
 from ..rules.engine import Ruleset
 from . import minutes as minutes_model
@@ -50,14 +63,50 @@ def _num_or_none(value: Any) -> float | None:
         return None
 
 
+def _safe_print(text: str) -> None:
+    """The Windows console is cp1252 and half the Premier League has an accent
+    in his name (Gyokeres, Ekitike, Joao Pedro) — printing the ranked table
+    raised UnicodeEncodeError and killed a run that had already done all the
+    work. Transliterate for the console only; the CSV keeps real names."""
+    encoding = getattr(sys.stdout, "encoding", None) or "utf-8"
+    try:
+        text.encode(encoding)
+    except UnicodeEncodeError:
+        text = text.encode(encoding, errors="replace").decode(encoding)
+    print(text)
+
+
 def _load(from_snapshot: str | None) -> tuple[dict, list[dict]]:
     if from_snapshot:
         day_dir = RAW_DIR / from_snapshot
+        # encoding is explicit: the console default on Windows is cp1252 and the
+        # bootstrap is full of accented names (Gyokeres, Ekitike, Joao Pedro).
         return (
-            json.loads((day_dir / "bootstrap.json").read_text()),
-            json.loads((day_dir / "fixtures.json").read_text()),
+            json.loads((day_dir / "bootstrap.json").read_text(encoding="utf-8")),
+            json.loads((day_dir / "fixtures.json").read_text(encoding="utf-8")),
         )
     return get_bootstrap(), get_fixtures()
+
+
+def _warn_if_ids_reassigned(current: dict, prior: dict) -> None:
+    """A --prior-snapshot from a DIFFERENT season joins garbage to every row.
+
+    Both payloads carry `code` (the permanent player key), so we can detect the
+    mismatch instead of shipping silently wrong projections: if the id->code map
+    disagrees on most shared ids, the snapshot is from another season."""
+    cur = {int(p["id"]): p.get("code") for p in current["elements"] if p.get("code")}
+    old = {int(p["id"]): p.get("code") for p in prior.get("elements", []) if p.get("code")}
+    shared = set(cur) & set(old)
+    if len(shared) < 50:
+        return
+    agree = sum(1 for pid in shared if cur[pid] == old[pid])
+    if agree / len(shared) < 0.9:
+        print(
+            f"WARNING: --prior-snapshot ids match the current bootstrap for only "
+            f"{agree}/{len(shared)} players — this looks like a DIFFERENT season, "
+            f"whose element ids FPL has reassigned. Every prior would be attached "
+            f"to the wrong player. Use --prior-season-csv instead."
+        )
 
 
 def upcoming_gameweeks(bootstrap: dict, horizon: int) -> list[int]:
@@ -227,7 +276,22 @@ def build_projections(
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--from-snapshot", help="db/raw/ date dir (YYYY-MM-DD) instead of live API")
-    parser.add_argument("--prior-snapshot", help="path to a previous season's bootstrap.json")
+    prior_group = parser.add_mutually_exclusive_group()
+    prior_group.add_argument(
+        "--prior-snapshot",
+        help="bootstrap.json from EARLIER THIS SEASON (joined on element id)",
+    )
+    prior_group.add_argument(
+        "--prior-season-csv",
+        help="a COMPLETED season's vaastav players_raw.csv; ids remapped via `code`",
+    )
+    parser.add_argument(
+        "--min-prior-minutes",
+        type=int,
+        default=0,
+        help="with --prior-season-csv: ignore prior rows thinner than this (an "
+             "injured/loaned-out player's row of zeros is absence, not evidence)",
+    )
     parser.add_argument("--horizon", type=int, default=None)
     parser.add_argument(
         "--overlays",
@@ -236,10 +300,22 @@ def main() -> None:
     args = parser.parse_args()
 
     bootstrap, fixtures = _load(args.from_snapshot)
-    prior = json.loads(Path(args.prior_snapshot).read_text()) if args.prior_snapshot else None
+
+    prior = None
+    if args.prior_season_csv:
+        prior = season_bridge.prior_bootstrap_from_vaastav(
+            bootstrap, args.prior_season_csv, min_minutes=args.min_prior_minutes
+        )
+        print(season_bridge.coverage(bootstrap, prior).to_text())
+        print()
+    elif args.prior_snapshot:
+        prior = json.loads(Path(args.prior_snapshot).read_text(encoding="utf-8"))
+        _warn_if_ids_reassigned(bootstrap, prior)
+
     overlays = None
     if args.overlays:
-        overlays = {int(k): v for k, v in json.loads(Path(args.overlays).read_text()).items()}
+        raw_overlays = Path(args.overlays).read_text(encoding="utf-8")
+        overlays = {int(k): v for k, v in json.loads(raw_overlays).items()}
 
     df = build_projections(
         bootstrap,
@@ -255,7 +331,7 @@ def main() -> None:
     df.to_csv(out, index=False)
     print(f"projections written: {out}")
     cols = ["web_name", "team", "position", "price", "xpts_horizon", "xpts_per_m"]
-    print(df[cols].head(20).to_string(index=False))
+    _safe_print(df[cols].head(20).to_string(index=False))
 
 
 if __name__ == "__main__":
