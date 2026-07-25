@@ -1,0 +1,189 @@
+{
+  "n_rows": 29328,
+  "p_start": {
+    "v1": {
+      "log_loss": 0.45412,
+      "brier": 0.11155,
+      "auc": 0.90605,
+      "mean_pred": 0.28559,
+      "base_rate": 0.28311
+    },
+    "v2": {
+      "log_loss": 0.24574,
+      "brier": 0.0759,
+      "auc": 0.95414,
+      "mean_pred": 0.28364,
+      "base_rate": 0.28311
+    }
+  },
+  "p60": {
+    "v1": {
+      "log_loss": 0.38608,
+      "brier": 0.10952,
+      "auc": 0.90521,
+      "mean_pred": 0.27389,
+      "base_rate": 0.26463
+    },
+    "v2": {
+      "log_loss": 0.25233,
+      "brier": 0.07881,
+      "auc": 0.94908,
+      "mean_pred": 0.26608,
+      "base_rate": 0.26463
+    }
+  },
+  "minutes": {
+    "v1": {
+      "mae": 18.7503,
+      "rmse": 26.4526,
+      "bias": 0.7967
+    },
+    "v2": {
+      "mae": 12.3964,
+      "rmse": 21.333,
+      "bias": 0.0553
+    }
+  },
+  "meta": {
+    "seed": 20262027,
+    "train_rows": 67529,
+    "valid_rows": 6292,
+    "train_seasons": [
+      "2022-23",
+      "2023-24",
+      "2024-25"
+    ],
+    "best_iteration": {
+      "p_start": 107,
+      "p_play": 111,
+      "p60": 121,
+      "mins_given_start": 92
+    }
+  },
+  "holdout_season": "2025-26",
+  "cameo_minutes": 18.35,
+  "calibration_v2_p_start": [
+    {
+      "decile": 1,
+      "n": 2933,
+      "mean_pred": 0.003,
+      "actual": 0.0003
+    },
+    {
+      "decile": 2,
+      "n": 2933,
+      "mean_pred": 0.0038,
+      "actual": 0.0
+    },
+    {
+      "decile": 3,
+      "n": 2933,
+      "mean_pred": 0.005,
+      "actual": 0.0027
+    },
+    {
+      "decile": 4,
+      "n": 2932,
+      "mean_pred": 0.0086,
+      "actual": 0.0061
+    },
+    {
+      "decile": 5,
+      "n": 2933,
+      "mean_pred": 0.0309,
+      "actual": 0.0331
+    },
+    {
+      "decile": 6,
+      "n": 2933,
+      "mean_pred": 0.1048,
+      "actual": 0.1207
+    },
+    {
+      "decile": 7,
+      "n": 2932,
+      "mean_pred": 0.2876,
+      "actual": 0.2834
+    },
+    {
+      "decile": 8,
+      "n": 2933,
+      "mean_pred": 0.6138,
+      "actual": 0.6038
+    },
+    {
+      "decile": 9,
+      "n": 2933,
+      "mean_pred": 0.8425,
+      "actual": 0.8445
+    },
+    {
+      "decile": 10,
+      "n": 2933,
+      "mean_pred": 0.9363,
+      "actual": 0.9362
+    }
+  ],
+  "calibration_v2_p60": [
+    {
+      "decile": 1,
+      "n": 2933,
+      "mean_pred": 0.0021,
+      "actual": 0.0003
+    },
+    {
+      "decile": 2,
+      "n": 2933,
+      "mean_pred": 0.0028,
+      "actual": 0.0
+    },
+    {
+      "decile": 3,
+      "n": 2933,
+      "mean_pred": 0.0041,
+      "actual": 0.0024
+    },
+    {
+      "decile": 4,
+      "n": 2932,
+      "mean_pred": 0.0076,
+      "actual": 0.0044
+    },
+    {
+      "decile": 5,
+      "n": 2933,
+      "mean_pred": 0.0264,
+      "actual": 0.031
+    },
+    {
+      "decile": 6,
+      "n": 2933,
+      "mean_pred": 0.0913,
+      "actual": 0.1057
+    },
+    {
+      "decile": 7,
+      "n": 2932,
+      "mean_pred": 0.2591,
+      "actual": 0.2435
+    },
+    {
+      "decile": 8,
+      "n": 2933,
+      "mean_pred": 0.5619,
+      "actual": 0.5503
+    },
+    {
+      "decile": 9,
+      "n": 2933,
+      "mean_pred": 0.7953,
+      "actual": 0.8012
+    },
+    {
+      "decile": 10,
+      "n": 2933,
+      "mean_pred": 0.9102,
+      "actual": 0.9073
+    }
+  ]
+}
