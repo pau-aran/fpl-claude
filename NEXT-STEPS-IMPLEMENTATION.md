@@ -61,14 +61,33 @@ external factor. Tick items off and move them to `NEXT-STEPS.md`/`STATE.md` as t
 - [ ] **ID mapping** FPL ↔ Understat ↔ FBref (seed from FPL-Core-Insights).
 - [ ] **Odds blend** into the team model (Phase 2b): blend market CS/goals into Dixon-Coles.
 
-### A6. Minutes v2
-- [ ] LightGBM on vaastav history with congestion / Euro-week / AFCON features (the current
-      minutes model is a v1 heuristic — our single biggest edge, worth the upgrade).
+### A6. Minutes v2 — DONE ✅
+- [x] **LightGBM minutes model shipped** (`models/minutes_v2.py` + `notebooks/minutes_v2_eval.py`,
+      artifact gitignored under `db/models/`, retrainable with a fixed seed). Four heads
+      (p_start / p_play / p60 / minutes-given-start) on vaastav 2022-23→2024-25, holdout 2025-26,
+      with congestion (rest days, fixtures in prior 7/14d), midweek/Euro-week, AFCON-window and
+      post-international-break features. Wired in behind a `ModelMinutes` hook: no lightgbm or no
+      artifact → byte-identical v1 output, and the news **overlay still overrides everything**.
+      Cold starts are declined by design (no history → v1 prior path), which is the honest answer.
+      **Holdout vs v1:** p_start log loss 0.454→0.246, p60 0.386→0.252, expected-minutes MAE
+      18.75→12.40 (bias 0.80→0.06), within-GW bench-order AUC 0.903→0.946. Wins on every slice
+      that matters — post-international-break 0.600→0.269, long rest 0.506→0.264, the
+      rotation-prone 0.3-0.8 band 0.755→0.530, AFCON window 0.453→0.246. Numbers in
+      `reports/models/minutes-v2.md` + `minutes-v2-metrics.json`; 38 new tests incl. a no-leakage
+      property and overlay-precedence.
 
-### A7. Weekly flagship report — never dry-run
-- [ ] `reports/weekly/` is empty; `team_week.py` has produced zero output. Do a dry-run
-      (websearch-driven multi-competition results + the vaastav data) to validate the builder
-      before GW1, since it's a first-class deliverable.
+### A7. Weekly flagship report — dry-run DONE ✅ (enrichment partial)
+- [x] **Builder validated end-to-end against LIVE 2026/27 data** and fixed: UTF-8 writes (Windows
+      cp1252 was mangling accented names), point-in-time week directory from the snapshot date
+      instead of `date.today()`, pre-season/empty-window handling (opening-run view instead of 20
+      files of "no matches"), the price/ownership movers section the docstring promised but never
+      implemented (degrades cleanly with no prior snapshot), `--out-dir` CLI. First real output
+      committed: `reports/weekly/2026-30/` — all 20 clubs + a real `index.md` (GW1 fixture, opening-5
+      FDR, flags, movers). New offline `tests/test_team_week.py`. Skill updated with what the
+      dry-run proved.
+- [ ] **Enrichment is 8/20** (Arsenal, Aston Villa, Bournemouth, Chelsea, Coventry, Crystal Palace,
+      Everton, Fulham carry sourced pre-season notes; the other 12 are builder skeletons). Finish
+      the remaining 12 on the next `/fpl-team-week-report` run — the format is proven.
 
 ### A8. Continue the backtest (optional, high-signal) — DONE ✅
 - [x] Simulated GW21-24 to close the AFCON window (season **1380, +191** vs baseline; window
@@ -106,8 +125,15 @@ external factor. Tick items off and move them to `NEXT-STEPS.md`/`STATE.md` as t
    now the highest-leverage remaining buildable items; A4 would make the hand-written `plan.md`
    FT-banking/returnee-window path model-derived (the GW17-24 window proved the manual version
    works, +56 edge — worth encoding).
-5. A5/A6/A7 (data breadth, minutes v2, weekly-report dry-run) as capacity allows.
-6. B items the moment a networked session / the 2026/27 season opens.
+5. ~~A6/A7 (minutes v2, weekly-report dry-run)~~ — **DONE** (this session, parallel agents);
+   A5 (data breadth) remains, and it is now unblocked — see below.
+6. **B items are LIVE NOW.** This session reached both `raw.githubusercontent.com` **and**
+   `fantasy.premierleague.com/api` (HTTP 200), and the **2026/27 game is OPEN**: 20 teams
+   (COV/HUL/IPS promoted), 558 elements, 38 events, **GW1 deadline 2026-08-21 17:30 UTC**.
+   That unblocks the first live data run, the `2026-27.yaml` rules verification (the live
+   optimizer refuses to run until `verified_against_official: true`), and the GW1 draft squad.
+   The bootstrap advertises 8 chips (2× wildcard, 2× freehit, 2× bboost, 2× 3xc) — reconcile
+   against the official rules page before trusting it.
 
 ## Backtest reach (as of this session)
 - **24 of 38 GWs simulated** point-in-time: season **1380 vs baseline 1189 (+191)**, 1 hit
