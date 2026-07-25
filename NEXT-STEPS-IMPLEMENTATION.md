@@ -48,8 +48,7 @@ external factor. Tick items off and move them to `NEXT-STEPS.md`/`STATE.md` as t
       residual signal (starting MIDs +1.2, bonus proxy) left `[WATCH]` for Minutes-v2.
 
 ### A3. Live `/fpl-review` calibration loop
-- [ ] Wire `/fpl-review` to consume `db/projections/` CSVs (predicted) vs FPL actuals and
-      emit the calibration log automatically (today it's a manual backtest artifact).
+- [ ] Wire `/fpl-review` to consume `db/projections/` CSVs (predicted) vs FPL actuals and emit the calibration log automatically (today it's a manual backtest artifact).
 
 ### A4. Multi-period transfer path in the MILP (Phase 3b other half)
 - [ ] The "bank FTs toward the returnee window" logic is currently a hand-written `plan.md`
