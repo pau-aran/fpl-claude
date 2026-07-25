@@ -76,6 +76,7 @@ from typing import Any
 
 import pandas as pd
 
+from ..console import enable_utf8_output
 from ..data.fpl_api import PROJECT_ROOT, RAW_DIR, get_bootstrap, get_event_live
 
 # ------------------------------------------------------------------ constants
@@ -930,6 +931,7 @@ def _parse_deadline(raw: str | None) -> datetime | None:
 
 
 def main(argv: Sequence[str] | None = None) -> None:
+    enable_utf8_output()  # the log prints −, ≥ — cp1252 consoles abort on them
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--gw", type=int, required=True, help="gameweek to calibrate")
     parser.add_argument("--actuals", choices=("live", "backtest"), default="live",
