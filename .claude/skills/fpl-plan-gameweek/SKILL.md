@@ -38,6 +38,16 @@ applies it manually; you never touch their FPL account.
    - The optimizer now picks the **XI, captain, vice and bench order on THIS
      week's fixture** (nearest `xpts_gw{n}`), not the multi-week horizon it buys
      the 15 on. Do not re-order the bench by the horizon column by hand.
+   - **Then run the multi-period path** (`optimize.transfer_path.
+     plan_transfer_path`, printed as the "Transfer path" block in `--propose`).
+     The single-period solve answers "best squad this week"; the path answers
+     "which move in WHICH week", and prices the thing the single-period solve
+     cannot see: `roll_gain`, the points banking the free transfer is worth over
+     the horizon. Read the two together — when the path says ROLL and the solver
+     proposes a move, the memo must answer the roll-vs-move number, not ignore
+     it. The path is ADVISORY (it never executes a transfer); its simplifying
+     assumptions ship with every result in `caveats` and belong in the memo when
+     they bind (static prices, no buy-back, no chips, frozen minutes).
 4b. **Manager's Read — write it BEFORE you read the solve (co-equal voice, owner
    directive 2026-07-23).** The optimizer is one input, not the anchor; anchoring to
    the machine and rationalising afterward is the failure mode this prevents. In a few
@@ -104,6 +114,8 @@ applies it manually; you never touch their FPL account.
   due/cold, the named duel(s), any brave-captain or bench-order call and its thesis. Flag
   which calls DEVIATE from the solve so the review can grade the human overlay.
 - **Transfers:** OUT→IN with EV delta and rationale; hits justified against threshold.
+- **Transfer path:** this week's call, the queued 2-3 week steps, and the
+  roll-vs-move number (`roll_gain`) — the model-derived form of `plan.md`.
 - **XI + bench order + captain/vice:** captain EV table.
 - **Chip decision:** use/hold, vs the calendar.
 - **Risk table** (from news sweep) + what we're deliberately fading (the template

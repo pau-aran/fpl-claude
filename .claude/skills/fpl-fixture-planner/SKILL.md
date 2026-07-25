@@ -43,6 +43,16 @@ half: reading the runs, planning paths, and writing the reasoning down.
    GW n run") and check each step is affordable at plausible prices. A path
    that needs a hit must clear the marginal EV threshold per hit — each -4
    judged on its own, never smuggled inside a package.
+   - **Start from the model-derived path**, not a blank page:
+     `optimize.transfer_path.plan_transfer_path` (printed as the "Transfer path"
+     block in the backtest `--propose`) solves the whole horizon at once —
+     squad and transfers per gameweek, free transfers accumulating to the
+     banking cap, bank carried across periods — and returns THIS week's move,
+     the queued forward steps, and `roll_gain`: **what banking the free transfer
+     is worth in points**. Quote that number whenever you roll; it is the
+     argument the memo owes the reader. Then overlay what it cannot see (it
+     freezes prices and minutes, ignores chips, and never re-buys inside the
+     horizon) — its forward steps are a candidate plan, not a commitment.
    The plan is a PERSISTENT artifact (`plan.md` beside the decision memos),
    updated every week: current path, target GWs, funds and FT budget each
    step needs. Any proposed transfer — especially a hit — is checked against
