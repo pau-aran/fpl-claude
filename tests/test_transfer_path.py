@@ -249,6 +249,48 @@ def test_owned_player_missing_from_projections_raises(rules):
         )
 
 
+def _verified(rules: Ruleset) -> Ruleset:
+    """The 2026/27 ruleset with the season-launch verify flags stripped — the same
+    trick tests/test_optimizer.py uses to exercise decide_transfers offline."""
+    verified = Ruleset({**rules.raw, "verified_against_official": True})
+    for section in verified.raw.values():
+        if isinstance(section, dict):
+            section.pop("verify_at_season_launch", None)
+    return verified
+
+
+def test_decide_transfers_follow_path_is_opt_in(rules):
+    """The planner may DRIVE the transfer choice, but only when asked.
+
+    Same returnee frame as the headline case: the single-period optimizer buys
+    the returnee now (his horizon total is the biggest on the board), while the
+    path knows this week's points pay for waiting. Default off => the committed
+    backtest route is unchanged; follow_path=True => the roll.
+    """
+    from fpl_claude.backtest.simulate import SquadState, decide_transfers
+
+    rows = _owned_rows(
+        {8: [8.0, 0.0, 0.0], 13: [8.0, 0.0, 0.0]}, {8: 10.0, 13: 10.0}
+    )
+    rows += [
+        _row(90, "retMID", "MID", "X0", [0.0, 8.0, 8.0], price=10.0),
+        _row(91, "retFWD", "FWD", "X1", [0.0, 8.0, 8.0], price=10.0),
+    ]
+    frame = pd.DataFrame(rows)
+    verified = _verified(rules)
+    state = SquadState(
+        buy_costs=_current(rows, free_transfers=1).buy_costs, bank=0, free_transfers=1
+    )
+
+    default, _audit = decide_transfers(frame, verified, state)
+    assert default.transfers_in  # unchanged behaviour: the single-period solve moves
+
+    planned, audit = decide_transfers(frame, verified, state, follow_path=True)
+    assert planned.transfers_in == [] and planned.transfers_out == []
+    assert audit["path_verdict"] == "roll"
+    assert audit["path_roll_gain"] > 0
+
+
 def test_manager_ban_is_honoured_across_the_whole_path(rules):
     """A banned player must not appear anywhere in the path, not merely this week."""
     rows = _owned_rows({8: [8.0, 0.0, 0.0]})
