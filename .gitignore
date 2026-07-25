@@ -10,3 +10,6 @@ db/backtest/
 
 # fetched external season archives (regenerable via fpl_claude.backtest.fetch)
 db/vaastav/
+
+# agent worktrees the harness checks out inside the repo — not project content
+.claude/worktrees/
