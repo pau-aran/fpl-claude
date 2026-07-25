@@ -10,3 +10,7 @@ db/backtest/
 
 # fetched external season archives (regenerable via fpl_claude.backtest.fetch)
 db/vaastav/
+
+# trained model artifacts — retrainable from the archives with a fixed seed;
+# the committed metrics JSON is what makes the results auditable without them
+db/models/
