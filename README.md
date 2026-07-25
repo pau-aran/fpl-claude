@@ -43,7 +43,7 @@ sweep and decision made from data that existed before that deadline, with no lea
 |---|---|---|---|
 | **GW1-10** — the gate | 624 | 531 | The PLAN §4 backtest gate. Beat the field 7 weeks of 10; back half +68. Top-1% trajectory. |
 | **GW11-16** — the grind | 317 | 279 | Five pipeline defects found and fixed by the weekly review loop, mid-run. |
-| **GW17-24** — AFCON | 439 | 379 | The season's lowest-scoring stretch, ridden on banked free transfers. **Net +56, no chip played.** |
+| **GW17-24** — AFCON | 439 | 379 | The season's lowest-scoring stretch, ridden on banked free transfers. **Net +60, no chip played.** |
 
 The interesting weeks are the ones we lost. GW2's bad hit is what built the hit-EV gate. GW23
 refused a £14.0m Salah buy-back on written arithmetic and scored −6 for it — priced variance,
