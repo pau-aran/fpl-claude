@@ -29,6 +29,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from ..console import enable_utf8_output
 from .fpl_api import RAW_DIR, get_bootstrap
 
 HISTORY_COLUMNS = ["id", "web_name", "now_cost", "cost_change_event", "status"]
@@ -117,6 +118,7 @@ def radar(bootstrap: dict, top_n: int = 15) -> dict[str, pd.DataFrame]:
 
 
 def main() -> None:
+    enable_utf8_output()  # price moves print "4.5 → 4.6"; cp1252 aborts on it
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--from-snapshot", help="db/raw/ date dir instead of live API")
     parser.add_argument("--top", type=int, default=15)

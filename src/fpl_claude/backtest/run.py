@@ -26,6 +26,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from ..console import enable_utf8_output
 from ..optimize.chip_timing import advise, chip_surface, detect_double_blank
 from ..optimize.milp import CurrentSquad, InfeasibleError
 from ..optimize.transfer_path import plan_transfer_path
@@ -327,6 +328,7 @@ def write_memo(
 
 
 def main() -> None:
+    enable_utf8_output()  # memo/proposal lines print "A → B"; cp1252 aborts on it
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", required=True, help="vaastav data root (contains 2025-26/)")
     parser.add_argument("--gw", type=int, required=True)

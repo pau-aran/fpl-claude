@@ -16,6 +16,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 
+from ..console import enable_utf8_output
 from .fpl_api import RAW_DIR, USER_AGENT
 
 FOOTBALL_DATA_DIR = RAW_DIR / "football-data"
@@ -78,6 +79,7 @@ def load_results(paths: list[Path] | None = None) -> pd.DataFrame:
 
 
 def main() -> None:
+    enable_utf8_output()
     if len(sys.argv) > 2 and sys.argv[1] == "fetch":
         for path in fetch(sys.argv[2:]):
             print(f"fetched: {path}")

@@ -27,6 +27,7 @@ from typing import Any
 
 import pandas as pd
 
+from ..console import enable_utf8_output
 from ..data import football_data
 from ..data.fpl_api import PROJECT_ROOT, RAW_DIR, get_bootstrap, get_fixtures
 from ..rules.engine import Ruleset
@@ -225,6 +226,7 @@ def build_projections(
 
 
 def main() -> None:
+    enable_utf8_output()  # player names carry accents; cp1252 misses some of them
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--from-snapshot", help="db/raw/ date dir (YYYY-MM-DD) instead of live API")
     parser.add_argument("--prior-snapshot", help="path to a previous season's bootstrap.json")
