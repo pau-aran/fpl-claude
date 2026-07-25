@@ -21,12 +21,31 @@ applies it manually; you never touch their FPL account.
    at least two public sources (LiveFPL, FPL Review free, FFScout). Big divergence →
    investigate (stale minutes intel? fix overlay and rerun) and record the verdict
    in the memo's "Consensus check" line. Benchmark, never input.
-4. **Optimize:** run the MILP (`fpl_claude.optimize.milp.optimize`) on the
-   projections table — initial-build mode for GW1/wildcard, transfer mode
-   (CurrentSquad with buy costs, bank, free transfers) otherwise. It refuses
-   while the ruleset is unverified: before season-launch verification pass
-   `allow_unverified=True` and label the memo "rules unverified — dry run".
-   Quote its `ev_delta` against `policies.hit_ev_threshold` for any hit.
+4. **Optimize:** run the live CLI — it drives the MILP, applies the hit gate and
+   prints the sanity guards:
+
+   ```bash
+   # GW1 / wildcard (initial build) — newest db/projections/*.csv by default
+   python -m fpl_claude.optimize.run_live --json decisions/gw01_solve.json
+   # later GWs (transfer mode) — squad-state JSON: ids + buy costs (tenths),
+   # bank, free transfers; format documented in run_live.py's docstring
+   python -m fpl_claude.optimize.run_live --squad decisions/squad.json \
+       --lock Saliba --ban "Pedro@Chelsea" --captain Haaland --max-transfers 1 \
+       --json decisions/gw05_solve.json
+   ```
+
+   Overlay flags take **names or ids** (`--lock`, `--ban`, `--force-start`,
+   `--force-bench`, `--captain`, `--vice`, `--max-transfers`); ambiguous names
+   error with the candidates. Quote the `--json` dump's exact numbers in the
+   memo (`ev_delta` against `policies.hit_ev_threshold` for any hit) rather than
+   re-deriving them. Read its three guards before writing the memo: **club
+   usage** (3-per-club concentration), **bench hairs** (every XI-vs-bench margin
+   under 0.2 xPts — rule on each, `--force-start` to pull one), and the
+   **minutes/flag** lists (`neutral` confidence, `low_sample`, FPL flags — at a
+   season open that is most of the squad; every one needs the news sweep).
+   It refuses while the ruleset is unverified: before season-launch
+   verification pass `--allow-unverified` and label the memo "rules unverified
+   — dry run" (the CLI labels its own output DRY RUN).
    - **Before the solve**, write the funding arithmetic of the route you intend
      (sells + bank ≥ buys, and the resulting squad is position-quota-legal). A
      route that doesn't foot cannot be the plan — say so and pick another.
