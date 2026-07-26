@@ -169,7 +169,8 @@ def _print_transfer_path(
         roll_line = f"roll vs move: {path.roll_gain:+.2f} pts over {span} ({better}, {edge})"
     print(f"verdict: {path.verdict.upper()} | {roll_line}")
     print(
-        f"hit gate: {path.hit_gate} | pool: {path.pool_size} players"
+        f"hit gate: {path.hit_gate} | edge floor: {path.edge_floor}"
+        f" | pool: {path.pool_size} players"
         + (" | TIME-LIMITED incumbent" if path.truncated else "")
     )
     steps = pd.DataFrame(
@@ -344,6 +345,10 @@ def main() -> None:
                              "(overrides the decision JSON's chip)")
     parser.add_argument("--propose", action="store_true",
                         help="print the optimizer proposal + fixture outlook and exit; no writes")
+    parser.add_argument("--follow-path", action="store_true",
+                        help="EXPERIMENTAL (A4): let the multi-period planner decide the "
+                             "transfers instead of the single-period solve. Never used for "
+                             "committed results — point it at a scratch --out/--state")
     args = parser.parse_args()
 
     out_dir = Path(args.out)
@@ -381,7 +386,8 @@ def main() -> None:
         return
 
     result, state = run_gameweek(
-        store, args.gw, rules, state, overlays=overlays or None, decision=decision
+        store, args.gw, rules, state, overlays=overlays or None, decision=decision,
+        follow_path=args.follow_path,
     )
 
     result.player_rows.to_csv(out_dir / f"gw{args.gw:02d}_players.csv", index=False)

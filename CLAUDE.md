@@ -28,7 +28,7 @@ This repository *is* the project — everything lives at the repo root.
 
 ## Project Map
 
-- `PLAN.md` — the full application plan; read it before structural changes.
+- `STATE.md` — the session handoff snapshot; read it first, every session.
 - `config/rules/2026-27.yaml` — FPL ruleset (verify vs official site at season launch).
 - `config/sources.yaml` — the curated web/X sources for news sweeps. Use
   WebSearch/WebFetch over these; there is no paid Twitter API — search X content via web search.

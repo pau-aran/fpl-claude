@@ -170,6 +170,42 @@ def test_hit_below_threshold_is_stripped_and_the_move_deferred(rules):
     assert any(90 in m.in_ids for m in path.forward_moves)
 
 
+# ------------------------------------------------------- per-move edge floor
+
+
+def test_churn_under_the_edge_floor_is_stripped(rules):
+    """The Saliba -> Raya class of swap: a hair better on paper (+0.05/GW),
+    positive to a pure maximiser, worthless as a use of a transfer. The
+    unfloored planner takes it — which is exactly the churn A4 was not trusted
+    for — and the floor (on by default) strips it and banks the FT instead."""
+    rows = _owned_rows() + [_row(90, "hair", "MID", "X0", [2.05] * len(GWS))]
+    frame = pd.DataFrame(rows)
+    current = _current(rows, free_transfers=1)
+
+    unfloored = plan_transfer_path(
+        frame, rules, current, allow_unverified=True, move_edge_floor=None
+    )
+    assert unfloored.verdict == "move" and 90 in unfloored.this_week.in_ids
+    assert unfloored.edge_floor == "n/a"
+
+    floored = plan_transfer_path(frame, rules, current, allow_unverified=True)
+    assert floored.verdict == "roll" and floored.this_week.is_roll
+    assert floored.edge_floor.startswith("stripped all")
+    assert "Edge floor" in floored.rationale
+
+
+def test_a_real_edge_clears_the_floor(rules):
+    """A genuine upgrade must pass the churn guard untouched, with its marginal
+    value priced in the gate string (the same shape the hit gate reports)."""
+    rows = _owned_rows() + [_row(90, "real", "MID", "X0", [5.0] * len(GWS))]
+    path = plan_transfer_path(
+        pd.DataFrame(rows), rules, _current(rows, free_transfers=1),
+        allow_unverified=True,
+    )
+    assert path.verdict == "move" and 90 in path.this_week.in_ids
+    assert path.edge_floor.startswith("clear")
+
+
 # ----------------------------------------------------------- degradation paths
 
 
@@ -235,10 +271,13 @@ def test_prune_pool_keeps_owned_and_locked():
 
 
 def test_refuses_unverified_ruleset(rules):
-    assert not rules.is_verified()
+    # The live 2026-27 ruleset is verified now; the guard must still refuse an
+    # unverified one, so build that state explicitly instead of assuming it.
+    unverified = Ruleset({**rules.raw, "verified_against_official": False})
+    assert not unverified.is_verified()
     rows = _owned_rows()
     with pytest.raises(RulesetUnverifiedError, match="unverified"):
-        plan_transfer_path(pd.DataFrame(rows), rules, _current(rows, 1))
+        plan_transfer_path(pd.DataFrame(rows), unverified, _current(rows, 1))
 
 
 def test_owned_player_missing_from_projections_raises(rules):
