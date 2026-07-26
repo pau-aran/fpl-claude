@@ -14,6 +14,8 @@ from pathlib import Path
 
 import requests
 
+from ..console import enable_utf8_output
+
 BASE = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/master/data"
 
 SEASON_FILES = ["players_raw.csv", "fixtures.csv", "teams.csv", "gws/merged_gw.csv"]
@@ -35,6 +37,7 @@ def fetch_season(dest: Path, season: str, files: list[str]) -> None:
 
 
 def main() -> None:
+    enable_utf8_output()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dest", required=True)
     parser.add_argument("--season", default="2025-26")

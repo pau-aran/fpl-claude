@@ -26,6 +26,14 @@ Decomposition of the reported per-GW error (memo Outcome line):
 
 An interpretability re-cut of the same total splits the captain 0+2 instead of
 1+1: non-captain XI (10) + full doubled captain (2x).
+
+The FORWARD-looking counterpart is `fpl_claude.reports.calibration` (backlog A3),
+which /fpl-review runs each week to append a live predicted-vs-actual entry to
+`notebooks/calibration.md`. It deliberately re-implements the statistics here
+rather than importing them, so this script keeps the property its header claims:
+zero dependence on pipeline code, hence valid verbatim forever. Both use the same
+error convention, the same population-std/sample-SE t-test, and the same two cuts
+of the captain slot, so their tables are directly comparable.
 """
 
 from __future__ import annotations

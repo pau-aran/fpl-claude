@@ -34,12 +34,14 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from collections.abc import Mapping
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
 
+from ..console import enable_utf8_output
 from ..data import football_data, season_bridge
 from ..data.fpl_api import PROJECT_ROOT, RAW_DIR, get_bootstrap, get_fixtures
 from ..rules.engine import Ruleset
@@ -148,6 +150,7 @@ def build_projections(
     prior_bootstrap: dict | None = None,
     overlays: dict[int, dict[str, Any]] | None = None,
     horizon: int | None = None,
+    minutes_v2: Mapping[int, minutes_model.ModelMinutes] | None = None,
 ) -> pd.DataFrame:
     rules = ruleset or Ruleset.load()
     horizon = horizon or int(rules.policy("planning_horizon_gws"))
@@ -171,7 +174,7 @@ def build_projections(
     team_games = minutes_model.team_games_played(fixtures)
     priors = minutes_model.priors_from_bootstrap(prior_bootstrap) if prior_bootstrap else None
     minutes_df = minutes_model.estimate_all(
-        bootstrap, team_games, priors=priors, overlays=overlays
+        bootstrap, team_games, priors=priors, overlays=overlays, model=minutes_v2
     ).set_index("id")
     # Overlays are TIME-SCOPED: an entry may carry duration_gws (how many
     # horizon GWs the news covers — 1 for a this-week knock, more for longer
@@ -180,7 +183,9 @@ def build_projections(
     # one-week doubt priced as an 8-GW absence inflated forced-move EV ~4x
     # and drove three phantom sells in four backtest weeks.
     clean_df = (
-        minutes_model.estimate_all(bootstrap, team_games, priors=priors).set_index("id")
+        minutes_model.estimate_all(
+            bootstrap, team_games, priors=priors, model=minutes_v2
+        ).set_index("id")
         if overlays
         else minutes_df
     )
@@ -274,6 +279,7 @@ def build_projections(
 
 
 def main() -> None:
+    enable_utf8_output()  # player names carry accents; cp1252 misses some of them
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--from-snapshot", help="db/raw/ date dir (YYYY-MM-DD) instead of live API")
     prior_group = parser.add_mutually_exclusive_group()

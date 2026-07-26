@@ -28,6 +28,7 @@ from ..models import projections as proj
 from ..models.team import TeamModel
 from ..optimize.chip_timing import HALF_BOUNDARY_GW
 from ..optimize.milp import CurrentSquad, OptimizedSquad, optimize
+from ..optimize.transfer_path import plan_transfer_path
 from ..rules.engine import Ruleset
 from .data import SeasonStore
 
@@ -167,6 +168,7 @@ def decide_transfers(
     state: SquadState,
     max_extra_transfers: int = 1,
     decision: ManagerDecision | None = None,
+    follow_path: bool = False,
 ) -> tuple[OptimizedSquad, dict]:
     """Optimizer proposes; the hit policy and manager overlay dispose.
 
@@ -176,6 +178,17 @@ def decide_transfers(
     (early-season projections are not horizon-stable truth). Gating the whole
     package let a +2.5 hit ride in on a +13 free move (GW2 review); gating at
     net +0.5 would still have passed it (GW3 review).
+
+    `follow_path` (OPT-IN, default OFF — A4) hands the transfer choice to the
+    multi-period planner (`optimize.transfer_path`) instead: its THIS-WEEK step
+    is pinned into the single-period solve (buys locked, sells banned, allowance
+    set to the step's size) so the squad/XI/captain still come from the normal
+    optimizer, but WHICH moves are made — including rolling toward a later
+    window — is the path's call. It is off by default deliberately: every
+    committed backtest result was produced by the single-period route, and the
+    planner's forward steps rest on projections that are provisional past the
+    immediate GW. A manager transfer CAP tighter than the path's step wins, in
+    which case this falls back to the standard route.
 
     Returns (squad, audit) — audit records the gate outcome for the memo.
     """
@@ -188,6 +201,24 @@ def decide_transfers(
     allowance = state.free_transfers + max_extra_transfers
     if d.max_transfers is not None:
         allowance = min(allowance, d.max_transfers)
+
+    if follow_path:
+        path = plan_transfer_path(projections, rules, current, lock=d.lock, ban=d.ban)
+        step = path.this_week
+        if d.max_transfers is None or d.max_transfers >= step.n_moves:
+            result = optimize(
+                projections, rules=rules, current=current, max_transfers=step.n_moves,
+                lock=d.lock | frozenset(step.in_ids),
+                ban=d.ban | frozenset(step.out_ids),
+                force_start=d.start, force_bench=d.bench,
+            )
+            return result, {
+                "hit_gate": path.hit_gate,
+                "hit_marginal": None,
+                "path_verdict": path.verdict,
+                "path_roll_gain": path.roll_gain,
+                "path_rationale": path.rationale,
+            }
     result = optimize(
         projections, rules=rules, current=current, max_transfers=allowance,
         lock=d.lock, ban=d.ban, force_start=d.start, force_bench=d.bench,

@@ -28,19 +28,45 @@ You are fpl-claude. Moneyball rule 3: judge the process, never the variance.
      passes — but a read that is systematically wrong gets its rein pulled back.
 4. Append one row to `decisions/season-log.md`: GW points, average, overall rank,
    rank delta, hits taken, decision-quality notes.
-5. **Calibration:** once models are live, log predicted-vs-actual error per position
-   into `notebooks/calibration.md`; recurring bias (e.g. minutes model too optimistic
-   on rotation-risk defenders) becomes a model TODO. Log our `xpts_gwNN` **and** FPL's
-   own `ep_next` against actual side by side — two independent predictors framing the
-   error. Where FPL's number beat ours on a call, ask what it saw (usually minutes or
-   a set-piece/penalty role) and feed that back into the overlay or a model TODO.
-   **Log the base XI and captain slot separately** (the memo Outcome already prints
-   "Predicted: T = base XI B + captain slot S"; see
-   `reports/backtest/2025-26/calibration.md`). The 20-GW decomposition showed the
-   residual is NOT captain-only: the small mean under-prediction (+4.3/GW) lives in
-   the BASE XI and is within noise (t=1.47, ns), while the DOUBLED captain is
-   mean-unbiased (−0.07) but high-variance — a blank/haul swings the total ±~10 on
-   its own. Record both predicted-vs-actual each week so EV/hit-gate reporting is read
-   against that structure — it distorts reported EV, not the rankings (captaincy
-   20/20), so treat it as a reporting note, not a ranking bias.
+5. **Calibration — RUN IT, don't hand-write it.** Append this gameweek's
+   predicted-vs-actual entry to `notebooks/calibration.md`:
+
+   ```
+   python -m fpl_claude.reports.calibration --gw {NN} [--squad PATH] [--chip NAME]
+   ```
+
+   The predicted side is the `db/projections/{YYYY-MM-DD}.csv` snapshot written
+   **before** that GW's deadline (selected by date, post-deadline files refused and
+   named in the log); the actual side is `event/{NN}/live`; the join key is the FPL
+   player id. Pass `--squad` (a CSV of `id,role` with C/V/XI/bench) so the log can
+   split what we OWNED from the pool at large — without it you only get pool metrics.
+   Backtest weeks use `--actuals backtest --backtest-players reports/backtest/2025-26/gwNN_players.csv`.
+   `--dry-run` prints the section without appending. If it refuses with a
+   `PointInTimeError`, **do not** reach for `--allow-post-deadline` to make it pass —
+   there was no pre-deadline projection, so there is nothing honest to calibrate.
+
+   Then READ the output — the command produces evidence, you produce the judgement:
+   - **Base XI vs captain slot are logged separately** (the memo Outcome prints the
+     same split: "Predicted: T = base XI B + captain slot S"; see
+     `reports/backtest/2025-26/calibration.md`). The 20-GW decomposition showed the
+     residual is NOT captain-only: the small mean under-prediction (+4.3/GW) lives in
+     the BASE XI and is within noise (t=1.47, ns), while the DOUBLED captain is
+     mean-unbiased (−0.07) but high-variance — a blank/haul swings the total ±~10 on
+     its own. Read EV/hit-gate reporting against that structure. It distorts reported
+     EV, not the rankings (captaincy 20/20), so it is a reporting note, not a ranking
+     bias.
+   - **Per position**: a recurring one-sided error (e.g. the minutes model too
+     optimistic on rotation-risk defenders) becomes a model TODO — but only if the
+     `sig 5%` column says the mean is distinguishable from noise. One week is never
+     enough; compare the row against the same row in past sections.
+   - **FPL's `ep_next` is logged beside our `xpts_gwNN`** — two independent predictors
+     framing the error. The log names the players where FPL's number beat ours: ask
+     what it saw (usually minutes, or a set-piece/penalty role) and feed that back
+     into the overlay or a model TODO. It is NaN in the backtest archive; the log says
+     "absent" rather than faking a comparison.
+   - **Owned vs whole pool**: the owned table is what actually cost us points, the
+     pool table is model quality at large. A good pool with a bad squad is a
+     selection problem, not a model problem.
+
+   The log is append-only — never edit or reorder past sections.
 6. End with max 3 lessons that change next week's behavior. No generic lessons.

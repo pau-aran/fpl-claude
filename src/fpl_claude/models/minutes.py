@@ -3,8 +3,8 @@
 Minutes are our edge (CLAUDE.md rule 2): most FPL points are lost to benchings,
 and no off-the-shelf projection lets us override its minutes assumptions with our
 own team-news intelligence. This v1 is a transparent heuristic on FPL API fields;
-the LightGBM upgrade trained on vaastav history replaces `_start_share` and
-`_p60_given_start` in Phase 2b without changing the interface.
+the LightGBM upgrade trained on vaastav history (`minutes_v2.py`) replaces
+`_start_share` and `_p60_given_start` without changing the interface.
 
 Per player we estimate:
   p_start      P(named in the XI)
@@ -12,15 +12,25 @@ Per player we estimate:
   p60          P(plays 60+ minutes)  — gates clean-sheet and full appearance pts
   exp_minutes  expected minutes for one fixture
 
-Two inputs the API can't give us are injected explicitly:
+Three inputs the API can't give us are injected explicitly:
   priors   pre-season (or tiny-sample) start shares, e.g. from last season's
            final bootstrap snapshot via `priors_from_bootstrap`
+  model    v2 `ModelMinutes` per player (see `minutes_v2.MinutesModelV2`), which
+           supersedes the heuristic's start share and minutes shape where it has
+           enough history; absent or None, this file behaves exactly as before
   overlay  per-player overrides written by the news-sweep/plan skills, each one
            carrying a written reason (auditable in the decision memo)
+
+The precedence is deliberate and never changes: **overlay > model > heuristic**.
+A trained model that has never read a press conference does not get to overrule
+a written team-news read (CLAUDE.md rule 4), and availability flags stay an
+explicit multiplier on top of all three because no archive we can train on
+carries historical injury status.
 """
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import Any
 
@@ -40,6 +50,25 @@ FULL_SEASON_GAMES = 38
 DEFAULT_START_MINUTES = 78.0
 DEFAULT_CAMEO_MINUTES = 18.0
 NEUTRAL_START_SHARE = 0.5  # used only when we have neither data nor a prior
+CAMEO_SHARE_OF_NON_STARTS = 0.3  # fringe starters see cameos; nailed players don't
+
+
+@dataclass(frozen=True)
+class ModelMinutes:
+    """One player's trained-model minutes shape, handed to `estimate`.
+
+    Deliberately expressed as SHARES and CONDITIONALS rather than finished
+    probabilities: `estimate` still owns the availability multiplier and the
+    overlay precedence, so a model swap can never quietly bypass either. Lives
+    here rather than in `minutes_v2` so this module never imports lightgbm — and
+    so the v2 file can import it without a cycle.
+    """
+
+    start_share: float          # P(starts | available)
+    cameo_share: float          # P(bench appearance | available)
+    p60_given_start: float      # P(60+ | started)
+    minutes_given_start: float  # E[minutes | started]
+    cameo_minutes: float = DEFAULT_CAMEO_MINUTES
 
 # Prior minutes at which last season's start share is trusted in full. Below
 # it the prior is partial evidence and is regressed toward neutral: 694 minutes
@@ -163,6 +192,7 @@ def estimate(
     prior_start_share: StartSharePrior | float | None = None,
     overlay: dict[str, Any] | None = None,
     current_team_code: int | None = None,
+    model: ModelMinutes | None = None,
 ) -> MinutesEstimate:
     """Minutes estimate for one player for one fixture.
 
@@ -173,6 +203,10 @@ def estimate(
     (older snapshots, hand-built tests); it is then trusted at full weight, as
     before. A `StartSharePrior` additionally carries the minutes and club
     behind that share and is discounted accordingly.
+
+    model:   a v2 `ModelMinutes` for this player, or None for the pure heuristic.
+             With model=None the arithmetic below is the original v1 line for
+             line, which is what keeps the backtest and the test suite stable.
     """
     avail = availability(player)
     if isinstance(prior_start_share, (int, float)):
@@ -180,19 +214,33 @@ def estimate(
     share, confidence = _start_share(
         player, team_games, prior_start_share, current_team_code
     )
+    p60_given_start = _p60_given_start(player)
+    start_minutes = DEFAULT_START_MINUTES
+    cameo_minutes = DEFAULT_CAMEO_MINUTES
+    cameo_share = max(0.0, 1.0 - share) * CAMEO_SHARE_OF_NON_STARTS
+
+    if model is not None:
+        share = max(0.0, min(1.0, float(model.start_share)))
+        cameo_share = max(0.0, min(1.0 - share, float(model.cameo_share)))
+        p60_given_start = max(0.0, min(1.0, float(model.p60_given_start)))
+        start_minutes = max(0.0, min(90.0, float(model.minutes_given_start)))
+        cameo_minutes = max(0.0, min(90.0, float(model.cameo_minutes)))
+        confidence = "model"
+
+
     reason = None
     if overlay is not None:
+        # The overlay speaks to whether he STARTS; how long he lasts once he
+        # does is still the model's (or the heuristic's) business.
         share = max(0.0, min(1.0, float(overlay["start_share"])))
+        cameo_share = max(0.0, 1.0 - share) * CAMEO_SHARE_OF_NON_STARTS
         reason = str(overlay.get("reason", "")) or None
         confidence = "overlay"
 
-    # Bench appearances: fringe starters see cameos; nailed players rarely do.
-    cameo_share = max(0.0, (1.0 - share)) * 0.3
-
     p_start = avail * share
     p_cameo = avail * cameo_share
-    p60 = p_start * _p60_given_start(player)
-    exp_minutes = p_start * DEFAULT_START_MINUTES + p_cameo * DEFAULT_CAMEO_MINUTES
+    p60 = p_start * p60_given_start
+    exp_minutes = p_start * start_minutes + p_cameo * cameo_minutes
     return MinutesEstimate(
         player_id=int(player["id"]),
         p_start=round(p_start, 4),
@@ -209,10 +257,18 @@ def estimate_all(
     team_games: dict[int, int],
     priors: dict[int, StartSharePrior] | None = None,
     overlays: dict[int, dict[str, Any]] | None = None,
+    model: Mapping[int, ModelMinutes] | None = None,
 ) -> pd.DataFrame:
-    """Estimates for every player. team_games: team_id -> PL games played."""
+    """Estimates for every player. team_games: team_id -> PL games played.
+
+    model: player id -> `ModelMinutes`, typically
+    `minutes_v2.MinutesModelV2.predict_gw(...)`. Players missing from the mapping
+    (cold starts, new signings) fall through to the heuristic's prior path, which
+    is the honest answer for a player nobody has minutes data on yet.
+    """
     priors = priors or {}
     overlays = overlays or {}
+    model = model or {}
     # team id -> stable cross-season club code, so a prior earned elsewhere
     # can be spotted (team ids are reassigned between seasons; codes are not).
     team_codes = {int(t["id"]): t.get("code") for t in bootstrap.get("teams", [])}
@@ -224,6 +280,7 @@ def estimate_all(
             priors.get(p["id"]),
             overlays.get(p["id"]),
             current_team_code=team_codes.get(int(p["team"])),
+            model=model.get(p["id"]),
         )
         rows.append(
             {

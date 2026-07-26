@@ -1,7 +1,51 @@
-# Claude Code on the web — environment setup
+# Environments — setup and network reality
 
-State of the remote environment as tested on 2026-07-22, and what to change to
-unblock the season workflows.
+Two environments run this project. **The local Windows workstation reaches every
+data domain; the cloud sandbox does not.** Sections below, newest first.
+
+## Local Windows workstation (tested 2026-07-25)
+
+The owner's machine — and the one difference that matters: **egress is OPEN.**
+Tested live, all `200`:
+
+| Domain | Status |
+|---|---|
+| `fantasy.premierleague.com/api/bootstrap-static/` | **200 — reachable** |
+| `www.football-data.co.uk` (Dixon-Coles training CSVs) | **200 — reachable** |
+| `understat.com` | **200 — reachable** |
+
+So the "first live 2026/27 data run" (NEXT-STEPS §1) and the Dixon-Coles fetch
+are **not blocked here** — they were only ever blocked in the cloud sandbox.
+That item can be run from this machine whenever the owner wants it.
+
+Setup (there is no `session-start.sh` equivalent on Windows — the hook is bash):
+
+```powershell
+# Python: system PATH only has the Microsoft Store stub; miniconda3 is the real one.
+# uv is installed at C:\Users\pau_8\.local\bin\uv.exe
+& 'C:\Users\pau_8\.local\bin\uv.exe' venv --python 3.13 .venv
+$env:UV_LINK_MODE='copy'
+& 'C:\Users\pau_8\.local\bin\uv.exe' pip install -e '.[dev,optimize,models]'
+
+& .\.venv\Scripts\python.exe -m pytest -q                    # 67 passed, 1 skipped
+& .\.venv\Scripts\python.exe -m ruff check src tests notebooks --output-format concise
+```
+
+`uv venv` writes a self-ignoring `.venv/.gitignore`, so the venv never shows up
+in `git status`. Worktrees need their own venv (an editable install resolves to
+the *installing* checkout's `src/`, so a shared venv would silently test the
+wrong tree).
+
+**Lint baseline:** local ruff is **0.16.0**, newer than the sandbox's, and its
+wider default rule set reports **34 pre-existing findings** (B019, RUF046,
+UP017, DTZ011, S110 …) that the "ruff clean" claims in `STATE.md` were made
+against an older version. None are new defects; treat 34 as the floor and only
+require that a change adds none.
+
+## Claude Code on the web — sandbox (tested 2026-07-22)
+
+State of the remote environment, and what to change to unblock the season
+workflows there.
 
 ## What already works (no action needed)
 
@@ -16,11 +60,12 @@ unblock the season workflows.
   research works even while direct fetches are blocked. WebFetch does NOT
   (it goes through the sandbox proxy and gets the same 403s).
 
-## What is blocked (needs a network-policy change)
+## What is blocked in the sandbox (needs a network-policy change)
 
-The environment's egress policy returns 403 for every non-GitHub project
-domain. Fix: in the environment's settings on claude.ai/code, either switch to
-trusted network access or add this allowlist:
+The sandbox's egress policy returns 403 for every non-GitHub project domain
+(*not* an issue on the local workstation above). Fix: in the environment's
+settings on claude.ai/code, either switch to trusted network access or add this
+allowlist:
 
 | Domain | Needed for |
 |---|---|

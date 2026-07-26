@@ -23,6 +23,8 @@ from typing import Any
 
 import requests
 
+from ..console import enable_utf8_output
+
 BASE = "https://fantasy.premierleague.com/api"
 USER_AGENT = "fpl-claude/0.1 (research; contact: repo owner)"
 RATE_LIMIT_SECONDS = 1.0
@@ -115,6 +117,7 @@ def snapshot(snapshot_dir: Path | None = None) -> Path:
 
 
 def main() -> None:
+    enable_utf8_output()
     if len(sys.argv) > 1 and sys.argv[1] == "snapshot":
         path = snapshot()
         print(f"snapshot written: {path}")

@@ -26,7 +26,10 @@ from pathlib import Path
 
 import pandas as pd
 
+from ..console import enable_utf8_output
 from ..optimize.chip_timing import advise, chip_surface, detect_double_blank
+from ..optimize.milp import CurrentSquad, InfeasibleError
+from ..optimize.transfer_path import plan_transfer_path
 from ..rules.engine import Ruleset
 from .data import SeasonStore
 from .overlays import availability_overlays, merge
@@ -132,6 +135,59 @@ def _print_chip_advice(
         print(fwd.to_string(index=False))
 
 
+def _print_transfer_path(
+    rules: Ruleset, state: SquadState, projections, decision: ManagerDecision | None
+) -> None:
+    """Multi-period transfer PATH advisory (A4) — what to do THIS week, what the
+    plan expects to do next, and what BANKING the free transfer is worth.
+
+    This is the model-derived form of the hand-written `plan.md` standing path.
+    Advice only: nothing here writes state or executes a transfer, and it does
+    NOT feed `decide_transfers` — the single-period solve above still owns the
+    recommendation, so committed backtest results are untouched. The two are
+    read together: when the path says ROLL and the solver proposes a move, the
+    roll-vs-move number is exactly the argument the memo has to answer."""
+    d = decision or ManagerDecision()
+    current = CurrentSquad(
+        buy_costs=dict(state.buy_costs), bank=state.bank, free_transfers=state.free_transfers
+    )
+    try:
+        path = plan_transfer_path(
+            projections, rules, current, lock=d.lock, ban=d.ban,
+        )
+    except (InfeasibleError, ValueError) as exc:
+        print(f"\n=== Transfer path (multi-period, advisory) ===\nunavailable: {exc}")
+        return
+
+    span = f"GW{path.gws[0]}-{path.gws[-1]}" if path.horizon_gws > 1 else f"GW{path.gws[0]}"
+    print(f"\n=== Transfer path ({path.horizon_gws}-GW multi-period, advisory) ===")
+    if path.roll_gain is None:
+        roll_line = "roll vs move: n/a (one branch infeasible)"
+    else:
+        better = "roll" if path.roll_gain > 0 else "move"
+        edge = "decisive" if path.decisive else "within noise"
+        roll_line = f"roll vs move: {path.roll_gain:+.2f} pts over {span} ({better}, {edge})"
+    print(f"verdict: {path.verdict.upper()} | {roll_line}")
+    print(
+        f"hit gate: {path.hit_gate} | pool: {path.pool_size} players"
+        + (" | TIME-LIMITED incumbent" if path.truncated else "")
+    )
+    steps = pd.DataFrame(
+        {
+            "gw": [m.gw for m in (path.this_week, *path.forward)],
+            "move": [m.summary for m in (path.this_week, *path.forward)],
+            "hits": [m.hits for m in (path.this_week, *path.forward)],
+            "ft_in": [m.free_transfers_before for m in (path.this_week, *path.forward)],
+            "ft_next": [m.free_transfers_next for m in (path.this_week, *path.forward)],
+            "bank": [m.bank_after / 10 for m in (path.this_week, *path.forward)],
+            "gw_xpts": [m.gw_xpts for m in (path.this_week, *path.forward)],
+        }
+    )
+    print(steps.to_string(index=False))
+    print(f"rationale: {path.rationale}")
+    print("caveats: " + "; ".join(path.caveats))
+
+
 def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
             overlays: dict | None, decision: ManagerDecision | None) -> None:
     """Print the optimizer proposal + multi-GW fixture context. NO state is
@@ -164,6 +220,7 @@ def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
     out_rows["fixtures_next"] = out_rows["team"].map(outlook)
     print(out_rows.to_string())
 
+    _print_transfer_path(rules, state, projections, decision)
     _print_chip_advice(store, gw, rules, state, projections)
 
 
@@ -275,6 +332,7 @@ def write_memo(
 
 
 def main() -> None:
+    enable_utf8_output()  # memo/proposal lines print "A → B"; cp1252 aborts on it
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", required=True, help="vaastav data root (contains 2025-26/)")
     parser.add_argument("--gw", type=int, required=True)

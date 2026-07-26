@@ -41,6 +41,38 @@ opportunity-cost fade (2.10 pts/£m vs Mbeumo's 2.72), tested across five solves
 **Community Shield (ARS v MCI, 16 Aug)** is the only competitive read on which late
 returners actually start, and it lands 5 days before the deadline. Re-solve after it.
 
+## A3 + A4 shipped (2026-07-25, merged to main), both ADVISORY
+
+Two Opus agents in isolated worktrees, merged and independently re-verified by the
+orchestrator. **103 tests green** (was 67); ruff at its 34-finding baseline, zero new.
+
+- **A3 — live `/fpl-review` calibration loop.** `src/fpl_claude/reports/calibration.py` +
+  `python -m fpl_claude.reports.calibration --gw N`; append-only log at `notebooks/calibration.md`;
+  skill step 5 now runs the command instead of describing manual work. Metrics overall / per
+  position / **base-XI vs captain-slot** (the A2 framing), `ep_next` carried side-by-side,
+  owned-squad and whole-pool cuts kept separate. **Point-in-time is enforced, not assumed:** a
+  projections snapshot dated after the deadline is REFUSED (`PointInTimeError`), never silently
+  used, and every rejection is named in the log entry. Verified against the real archive — it
+  reproduces the GW24 memo Outcome line exactly (53.68 = base XI 40.96 + captain slot 12.72).
+  **Unverified:** `--actuals live` has never made a real API call (injected payload only).
+- **A4 — multi-period transfer path.** `src/fpl_claude/optimize/transfer_path.py`: a genuine
+  multi-period MILP (own/xi/buy/sell per player per GW, integer FT banking to the rules cap,
+  cumulative bank so a GW+1 sale funds a GW+2 buy), pruned to ~70 players, ~9s for 5 GWs. New
+  "Transfer path" block in `--propose` prints this-week verdict, the forward path, and what
+  banking an FT is worth. **It does NOT decide transfers:** `decide_transfers(follow_path=True)`
+  is opt-in, default off, no CLI flag — every committed backtest result is byte-identical.
+  **Do not turn it on yet:** its GW25 proposal was a three-move reshape including a
+  `Saliba → Raya` churn, exactly the class the manager overlay has vetoed all season, and it has
+  zero points-scored evidence. Gate it behind a per-move edge floor and re-run GW17-24 first.
+- **Windows console fix** (`src/fpl_claude/console.py`, wired into all 7 CLIs). Found by running
+  A3's CLI for real: it computed the entire calibration, then died on `UnicodeEncodeError`
+  printing `−`/`≥` under cp1252. `run.py` is the same shape — a GW25 proposal prints `Petrović`
+  (U+0107, absent from cp1252), so player names alone would abort a scored gameweek.
+- **`docs/environment.md` corrected:** the local workstation is **not** egress-blocked. FPL API,
+  football-data and Understat all return 200 from the owner's machine; the 403s were always the
+  cloud sandbox's policy. Also records the Windows setup (miniconda + uv venv, one venv per
+  worktree) and the ruff-0.16 baseline of 34 pre-existing findings.
+
 ## Latest: GW21-24 backtest — the AFCON window CLOSED (this session)
 
 Simulated GW21-24 on the point-in-time pipeline, orchestrated with parallel Opus agents (one
@@ -138,18 +170,21 @@ merged clean):**
 
 ### Older backlog (pre-season, still valid)
 
-The three highest-leverage buildable items (A1/A2/A8) are now DONE. Remaining, in order
-(see `NEXT-STEPS-IMPLEMENTATION.md` "Suggested order"):
-1. **A4/A3** — the next buildable frontier: make the multi-period FT-banking / returnee-window
-   transfer path native to the MILP (A4), and wire `/fpl-review` to consume `db/projections/`
-   CSVs for a live calibration loop (A3). The GW17-24 window PROVED the hand-written `plan.md`
-   version works (+56 edge over 8 GWs) — worth encoding so the standing plan is model-derived.
+A1/A2/A8 and now A3/A4 are DONE — the buildable backlog is essentially cleared, but **A4 shipped
+unproven**. In order (see `NEXT-STEPS-IMPLEMENTATION.md` "Suggested order"):
+1. **Prove A4 before trusting it.** Add a per-move minimum-edge floor (and consider lowering
+   `MAX_MOVES_PER_GW`), then re-simulate GW17-24 with `follow_path=True` and compare against the
+   +56 the hand-written `plan.md` path actually made. A model-derived path that churns is worse
+   than the overlay it replaces — its first real proposal already churned.
 2. **Optional backtest continuation** — GW25-26 would fire the FIRST live chip in-sim
    (**TC-Rice on the confirmed Arsenal DGW26**), and GW31 the BGW (a Free Hit/WC trigger). The
    chip mechanics + timing surface are built and waiting for a DGW/BGW to actually play one.
-3. **A5/A6/A7** (data-source clients, Minutes v2 LightGBM, the never-run weekly team report)
-   as capacity allows — then the **B / time-gated** items the moment a networked session or the
-   2026/27 season opens (live data run, season-launch rules verification, automation arming).
+   This doubles as the A4 proving ground and would exercise A3's loop per week.
+3. **A5/A6/A7** (data-source clients, Minutes v2 LightGBM, the never-run weekly team report) —
+   A7 in particular: `reports/weekly/` is still EMPTY and `team_week.py` has produced zero
+   output, yet it is a first-class deliverable per CLAUDE.md.
+4. **B / time-gated** items when the season opens (rules verification, automation arming). The
+   network half is no longer a blocker on this machine — only the season opening is.
 
 ## Backtest scoreboard (2025/26 replay)
 
@@ -206,6 +241,19 @@ The three highest-leverage buildable items (A1/A2/A8) are now DONE. Remaining, i
   changed model). 112 tests green. **Process note: concurrent sessions were checking out
   branches in the same working tree mid-run**, scattering two commits onto foreign branches;
   recovered by cherry-pick, and all pushes now use an explicit refspec.
+- **2026-07-25 (code session — A3 + A4):** branch `claude/a3-a4-calibration-multiperiod`. Two
+  Opus agents in isolated worktrees with hard file-ownership boundaries (A3: `reports/`,
+  `notebooks/`, the review skill; A4: `optimize/`, `backtest/`, the plan/fixture skills), merged
+  clean with no conflicts. Orchestrator re-verified both rather than taking the reports at face
+  value: ran A3's CLI against the committed `gw24_players.csv` (reproduced the memo line exactly,
+  and the point-in-time guard did reject a post-deadline snapshot) and ran A4's `--propose` for
+  GW25 against real vaastav data (9.2s, output as reported). That verification is what surfaced
+  the **cp1252 console defect** — A3's CLI finished its work and then crashed on the way out —
+  fixed repo-wide in `console.py`. 67 → **103 tests**, ruff unchanged. Also corrected the
+  long-standing "network blocked" premise: it is the sandbox's, not this machine's.
+  **Both features are ADVISORY** — `follow_path` default off, live actuals unverified.
+  Housekeeping note: a parallel session on `main` deleted `NEXT-STEPS.md` and created the
+  `claude/a6-*`, `claude/a7-*` and `claude/gw1-*` branches/worktrees; left untouched here.
 
 - **2026-07-24 (GW21-24 session — the AFCON window CLOSED + A1/A2 shipped):** branch
   `claude/simulate-gw-18-19-20-rff52m` (PR #4). Orchestrated parallel Opus agents (per-GW
