@@ -1,4 +1,4 @@
-"""Phase 2 — models. Build-vs-extract split (see PLAN.md §4):
+"""Phase 2 — models. Build-vs-extract split (decided Jul 2026):
 
   minutes.py      BUILT — our edge; heuristic v1, LightGBM upgrade later,
                   news-overlay hook is the whole point

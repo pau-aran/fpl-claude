@@ -14,9 +14,9 @@ Tested live, all `200`:
 | `www.football-data.co.uk` (Dixon-Coles training CSVs) | **200 — reachable** |
 | `understat.com` | **200 — reachable** |
 
-So the "first live 2026/27 data run" (NEXT-STEPS §1) and the Dixon-Coles fetch
+So the first live 2026/27 data run and the Dixon-Coles fetch
 are **not blocked here** — they were only ever blocked in the cloud sandbox.
-That item can be run from this machine whenever the owner wants it.
+(Both have since been run: `db/raw/2026-07-25/` is the first live snapshot.)
 
 Setup (there is no `session-start.sh` equivalent on Windows — the hook is bash):
 

@@ -217,6 +217,7 @@ def decide_transfers(
                 "hit_marginal": None,
                 "path_verdict": path.verdict,
                 "path_roll_gain": path.roll_gain,
+                "path_edge_floor": path.edge_floor,
                 "path_rationale": path.rationale,
             }
     result = optimize(
@@ -479,8 +480,12 @@ def run_gameweek(
     state: SquadState | None,
     overlays: dict[int, dict[str, Any]] | None = None,
     decision: ManagerDecision | None = None,
+    follow_path: bool = False,
 ) -> tuple[GWResult, SquadState]:
     """One full deadline cycle: project -> propose -> manager call -> score.
+
+    `follow_path` hands transfer choice to the multi-period planner (see
+    `decide_transfers`) — EXPERIMENTAL, off for every committed result.
 
     Chips (Phase 3b), all via decision.chip:
       wildcard      unlimited FREE transfers, squad kept; next-GW FT resets to 1.
@@ -514,7 +519,9 @@ def run_gameweek(
                 chips_used=list(pre_state.chips_used),
             )
     else:
-        squad, _ = decide_transfers(projections, rules, state, decision=decision)
+        squad, _ = decide_transfers(
+            projections, rules, state, decision=decision, follow_path=follow_path
+        )
         state = apply_transfers(state, squad, projections, rules)
     # optimize() already fields the XI/captain/bench on THIS week's fixture column
     # (milp._pick_lineup) and honours any force_start/force_bench overlay.

@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/season-2026%2F27-38003c?style=flat-square" alt="Season">
   <img src="https://img.shields.io/badge/backtest-%2B191%20over%2024%20GW-2ea043?style=flat-square" alt="Backtest">
-  <img src="https://img.shields.io/badge/tests-68%20passing-2ea043?style=flat-square" alt="Tests">
+  <img src="https://img.shields.io/badge/season-LIVE%20·%20GW1%20squad%20built-2ea043?style=flat-square" alt="Status">
 </div>
 
 ## Why
@@ -77,7 +77,7 @@ Python 3.11 or newer.
 
 ```bash
 pip install -e ".[dev]"
-pytest -q                                   # 68 tests
+pytest -q
 ```
 
 The model and optimizer layers are extras, installed with the phase that needs them:
@@ -146,40 +146,44 @@ variance. Not a spreadsheet you throw away on Sunday.
 
 ## Status
 
-GW1 of 2026/27 is roughly three weeks out.
+**The build plan is complete and the 2026/27 season is LIVE.** The game opened with real
+prices; the first snapshot is committed (`db/raw/2026-07-25/`), the ruleset is verified
+against the live API, and the opening squad is written up in
+[`decisions/gw01.md`](decisions/gw01.md) — **GW1 deadline 2026-08-21 17:30 UTC**.
 
 | Phase | State | Notes |
 |---|---|---|
 | **0 · Scaffold** | ✅ | Repo, API client, snapshotting, rules YAML, sources YAML, 8 skills |
-| **1 · Data** | 🔶 | Pipelines written; the live pull needs a networked session — see `docs/environment.md` |
-| **2 · Models** | ✅ | Minutes v1, Dixon-Coles, event rates, rules-driven xPts, price radar. **Gate passed** on the 24-GW replay |
-| **3 · Optimizer** | ✅ | MILP squad/XI/captain/transfers/hits; chip mechanics + timing advisory shipped |
-| **3b · Next** | ⬜ | Multi-period transfer path native to the MILP; live calibration loop off `db/projections/` |
-| **4 · Skills live** | ⬜ | Full dry run on live 2026/27 data |
-| **5 · Automation** | ⬜ | Scheduled sessions: Monday reports, daily sweeps, deadline runs, post-GW reviews |
+| **1 · Data** | ✅ | Live FPL API pull running from the owner's machine; first 2026/27 snapshot committed |
+| **2 · Models** | ✅ | Minutes v1 + trained v2, Dixon-Coles, event rates, rules-driven xPts, cross-season prior bridge. **Gate passed** on the 24-GW replay |
+| **3 · Optimizer** | ✅ | MILP squad/XI/captain/transfers/hits; chip mechanics + timing advisory; live deadline CLI with the manager's guards |
+| **3b · Advisory layer** | ✅ | Multi-period transfer path **accepted on evidence**: replaying GW17-24 model-driven scored 438 vs the hand-written 439, churn killed by the per-move edge floor (`reports/backtest/2025-26/a4-followpath-verdict.md`). Live calibration loop shipped (`reports/calibration.py`) |
+| **4 · Skills live** | ✅ | Exercised for real building the GW1 squad: refresh, news sweeps, scouting, the full plan-gameweek pipeline |
+| **5 · Automation** | ⬜ | Scheduled sessions: Monday reports, daily sweeps, deadline runs, post-GW reviews — the one phase left |
 
-Read [`STATE.md`](STATE.md) for the current handoff snapshot, [`PLAN.md`](PLAN.md) for the full
-architecture, and [`NEXT-STEPS-IMPLEMENTATION.md`](NEXT-STEPS-IMPLEMENTATION.md) for the
-buildable backlog.
+What remains is the season itself: re-solve after the Community Shield (16 Aug), the
+T-48h/T-24h/T-2h deadline runs, and 38 weeks of memos. Read [`STATE.md`](STATE.md) for the
+current handoff snapshot.
 
 ## Map
 
 ```
 CLAUDE.md                       the manager's persona and operating rules
-PLAN.md                         full application plan — read before structural changes
 STATE.md                        session handoff: where things stand right now
-config/rules/2026-27.yaml       the FPL ruleset, verified at season launch
+config/rules/2026-27.yaml       the FPL ruleset, verified against the live game
 config/sources.yaml             curated news / strategy / X sources
 src/fpl_claude/
-  data/                         FPL API, football-data, prices, append-only snapshots
-  models/                       minutes · team (Dixon-Coles) · rates · xPts · projections
-  optimize/                     MILP squad optimizer, chip timing
+  data/                         FPL API, football-data, prices, season bridge, snapshots
+  models/                       minutes v1+v2 · team (Dixon-Coles) · rates · xPts · projections
+  optimize/                     MILP squad optimizer, chip timing, transfer path, live CLI
   backtest/                     point-in-time season replay: store, simulator, CLI
-  reports/                      weekly all-team report builder
+  reports/                      weekly all-team report builder, calibration loop
   rules/                        YAML ruleset engine
 decisions/gwNN.md               one memo per gameweek — the season's audit trail
+research/2026-27/               season-open research: market board, fitness, rules audit
 reports/weekly/                 Monday reports on all 20 clubs
 reports/backtest/2025-26/       the replay: memos, reviews, calibration, knowledge.md
+notebooks/                      calibration log + one-off analysis runners
 db/                             DuckDB + raw snapshots, never overwritten
 ```
 

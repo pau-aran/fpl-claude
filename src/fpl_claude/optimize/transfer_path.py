@@ -124,6 +124,17 @@ MAX_MOVES_PER_GW = 3
 # the noise floor the hit-gate work settled on for "not a real edge".
 ROLL_DECISIVE_EDGE = 0.5
 
+# The churn guard: every FIRST-WEEK move must individually be worth at least
+# this many decayed points over the horizon, or it is stripped and the FT stays
+# banked. This is the model-side form of the manager's standing no-churn veto
+# (the Saliba -> Raya class of swap: positive on paper, worthless in practice,
+# and it burns the optionality a banked FT is for). Kept EQUAL to
+# ROLL_DECISIVE_EDGE deliberately: a move the floor strips is by definition
+# inside the roll-vs-move noise band, so the verdict and the rationale can
+# never contradict each other. Pass move_edge_floor=None to disable (the
+# pre-floor behaviour, kept for comparison runs).
+MOVE_EDGE_FLOOR = 0.5
+
 # Wall-clock cap per solve. Three solves (path, roll-forced, move-forced) run per
 # advisory, so the worst case is ~3x this. A time-limited incumbent is accepted
 # and flagged in the caveats — a good path found in 60s beats a proven-optimal
@@ -207,6 +218,7 @@ class TransferPath:
     roll_gain: float | None  # roll_objective - move_objective; >0 => bank the FT
     verdict: str  # "roll" | "move"
     hit_gate: str
+    edge_floor: str  # the per-move churn guard's outcome ("n/a" when disabled)
     pool_size: int
     truncated: bool  # a solve hit SOLVER_TIME_LIMIT_SECONDS (incumbent, not proven optimal)
     rationale: str
@@ -320,6 +332,7 @@ def _solve_path(
     ban: frozenset[int],
     first_move: str | None = None,  # None | "roll" | "move"
     allow_first_hit: bool = True,
+    max_first_moves: int | None = None,
 ) -> _PathSolution:
     """The multi-period MILP itself.
 
@@ -454,6 +467,8 @@ def _solve_path(
         prob += pulp.lpSum(buy[(i, 0)] for i in ids) == 0
     elif first_move == "move":
         prob += pulp.lpSum(buy[(i, 0)] for i in ids) >= 1
+    if max_first_moves is not None:
+        prob += pulp.lpSum(buy[(i, 0)] for i in ids) <= max_first_moves
     if not allow_first_hit:
         prob += hit[0] == 0
 
@@ -524,7 +539,7 @@ def _solve_path(
 
 def _rationale(path_gws: tuple[int, ...], this_week: PlannedMove,
                forward: tuple[PlannedMove, ...], roll_gain: float | None,
-               verdict: str, hit_gate: str, pool_size: int) -> str:
+               verdict: str, hit_gate: str, edge_floor: str, pool_size: int) -> str:
     """The paste-into-a-memo paragraph. States the call, prices the alternative,
     then lists the forward steps — the same shape the hand-written plan.md used."""
     span = f"GW{path_gws[0]}" if len(path_gws) == 1 else f"GW{path_gws[0]}-{path_gws[-1]}"
@@ -561,6 +576,7 @@ def _rationale(path_gws: tuple[int, ...], this_week: PlannedMove,
         else " No further moves planned inside the horizon."
     )
     gate = f" Hit gate: {hit_gate}." if hit_gate != "n/a" else ""
+    gate += f" Edge floor: {edge_floor}." if edge_floor != "n/a" else ""
     tail = (
         f" Derived from a {len(path_gws)}-GW multi-period solve over a {pool_size}-player"
         " pool; forward steps are provisional and re-solved every deadline. A CANDIDATE,"
@@ -605,6 +621,7 @@ def plan_transfer_path(
     lock: frozenset[int] = frozenset(),
     ban: frozenset[int] = frozenset(),
     pool: pd.DataFrame | None = None,
+    move_edge_floor: float | None = MOVE_EDGE_FLOOR,
 ) -> TransferPath:
     """Plan WHICH transfers to make in WHICH gameweek — the advisory entry point.
 
@@ -616,7 +633,11 @@ def plan_transfer_path(
          marginal net gain per hit is checked against `policies.hit_ev_threshold`
          and a failing hit is STRIPPED, mirroring `simulate.decide_transfers` so
          the two layers can never disagree about what a hit is worth;
-      3. the opposite branch of the roll/move question, to price banking.
+      3. the per-move EDGE FLOOR (the churn guard): each first-week move must
+         individually be worth >= `move_edge_floor` decayed points, priced by
+         re-solving with one fewer move allowed; a move under the floor is
+         stripped and the free transfer stays banked;
+      4. the opposite branch of the roll/move question, to price banking.
 
     Returns a TransferPath. Like the rest of `optimize/`, it refuses to run
     against an unverified ruleset unless `allow_unverified=True`.
@@ -657,6 +678,40 @@ def plan_transfer_path(
         else:
             hit_gate = f"kept: net {marginal} >= {threshold}/hit"
 
+    # --- per-move edge floor (the churn guard): strip first-week moves that are
+    # not individually worth the floor, weakest first, by re-solving with one
+    # fewer move allowed. Each surviving move therefore carries a PRICED marginal
+    # value, the same way the hit gate prices hits.
+    edge_floor = "n/a"
+    if move_edge_floor is not None and base.moves[0].n_moves > 0:
+        floor = float(move_edge_floor)
+        stripped = 0
+        marginal = None
+        while base.moves[0].n_moves > 0:
+            fewer = _solve_path(
+                pool, rules, current, periods, lock, ban,
+                allow_first_hit=allow_first_hit,
+                max_first_moves=base.moves[0].n_moves - 1,
+            )
+            truncated = truncated or fewer.truncated
+            marginal = round(base.objective - fewer.objective, 2)
+            if marginal >= floor:
+                break
+            base = fewer
+            stripped += 1
+        n_kept = base.moves[0].n_moves
+        if stripped == 0:
+            edge_floor = f"clear: weakest move worth {marginal} >= {floor}/move"
+        elif n_kept == 0:
+            edge_floor = (
+                f"stripped all {stripped} move(s) — none worth {floor}/move; rolling"
+            )
+        else:
+            edge_floor = (
+                f"stripped {stripped} move(s) under {floor}/move;"
+                f" kept {n_kept} (weakest worth {marginal})"
+            )
+
     # --- price the roll: solve whichever branch the free path did NOT take
     verdict = "roll" if base.moves[0].is_roll else "move"
     other = "move" if verdict == "roll" else "roll"
@@ -689,8 +744,11 @@ def plan_transfer_path(
         roll_gain=roll_gain,
         verdict=verdict,
         hit_gate=hit_gate,
+        edge_floor=edge_floor,
         pool_size=pool_size,
         truncated=truncated,
-        rationale=_rationale(gws, this_week, forward, roll_gain, verdict, hit_gate, pool_size),
+        rationale=_rationale(
+            gws, this_week, forward, roll_gain, verdict, hit_gate, edge_floor, pool_size
+        ),
         caveats=_caveats(periods, truncated),
     )
