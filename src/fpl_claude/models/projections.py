@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections.abc import Mapping
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -100,6 +101,7 @@ def build_projections(
     prior_bootstrap: dict | None = None,
     overlays: dict[int, dict[str, Any]] | None = None,
     horizon: int | None = None,
+    minutes_v2: Mapping[int, minutes_model.ModelMinutes] | None = None,
 ) -> pd.DataFrame:
     rules = ruleset or Ruleset.load()
     horizon = horizon or int(rules.policy("planning_horizon_gws"))
@@ -123,7 +125,7 @@ def build_projections(
     team_games = minutes_model.team_games_played(fixtures)
     priors = minutes_model.priors_from_bootstrap(prior_bootstrap) if prior_bootstrap else None
     minutes_df = minutes_model.estimate_all(
-        bootstrap, team_games, priors=priors, overlays=overlays
+        bootstrap, team_games, priors=priors, overlays=overlays, model=minutes_v2
     ).set_index("id")
     # Overlays are TIME-SCOPED: an entry may carry duration_gws (how many
     # horizon GWs the news covers — 1 for a this-week knock, more for longer
@@ -132,7 +134,9 @@ def build_projections(
     # one-week doubt priced as an 8-GW absence inflated forced-move EV ~4x
     # and drove three phantom sells in four backtest weeks.
     clean_df = (
-        minutes_model.estimate_all(bootstrap, team_games, priors=priors).set_index("id")
+        minutes_model.estimate_all(
+            bootstrap, team_games, priors=priors, model=minutes_v2
+        ).set_index("id")
         if overlays
         else minutes_df
     )

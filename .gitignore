@@ -13,3 +13,7 @@ db/vaastav/
 
 # agent worktrees the harness checks out inside the repo — not project content
 .claude/worktrees/
+
+# trained model artifacts — retrainable from the archives with a fixed seed;
+# the committed metrics JSON is what makes the results auditable without them
+db/models/
