@@ -1,9 +1,45 @@
-# Session State — updated 2026-07-24 (backtest session — AFCON window CLOSED, GW21-24 + A1/A2 shipped)
+# Session State — updated 2026-07-26 (THE SEASON IS LIVE — first real squad built)
 
-*Handoff snapshot. Read this first, then `NEXT-STEPS-IMPLEMENTATION.md` for the buildable
-backlog, `NEXT-STEPS.md` for the road-to-GW1 roadmap, and
-`reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge.
-GW1 deadline ≈ mid-August 2026 (~3 weeks out).*
+*Handoff snapshot. Read this first, then `decisions/gw01.md` for the live squad,
+`NEXT-STEPS-IMPLEMENTATION.md` for the buildable backlog, and
+`reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge.*
+
+## THE BIG CHANGE: we are no longer in backtest — 2026/27 is open
+
+**The FPL API is reachable again** (it was blocked in every prior session; `docs/environment.md`
+is stale on this point). The 2026/27 game is live with real prices.
+
+| | |
+|---|---|
+| **GW1 deadline** | **2026-08-21 17:30 UTC** |
+| Snapshot | `db/raw/2026-07-25/` — 558 players, 20 teams, 380 fixtures |
+| Promoted / relegated | COV, HUL, IPS in; Burnley, West Ham, Wolves out |
+| Prices | **FROZEN until the deadline** — no buy-now pressure, no LiveFPL timing edge |
+| Ruleset | **VERIFIED** against the live API — optimizer unblocked |
+| Squad | `decisions/gw01.md` — iteration 1, committed, **not yet entered by the owner** |
+
+**Rule changes that matter (verified, `research/2026-27/rules-verification.md`):** the
+Assistant Manager chip is GONE; all four chips ×2 (8 total); **BB and TC are playable in
+GW1** while WC/FH open at GW2; AFCON bonus free transfers are gone (this invalidates an
+assumption in the GW18-24 backtest); BPS internals reworked (don't reuse 2025/26 weights).
+
+**Nine of twenty clubs changed manager** — Maresca (MCI), Iraola (LIV), Alonso (CHE),
+De Zerbi (TOT), Glasner (NFO), Sage (CRY), Arbeloa (FUL), Rose (BOU), O'Neil (IPS).
+Minutes priors are unreliable across nearly half the league.
+
+## The GW1 thesis (the season's opening edge)
+
+The 2026 World Cup ended **19 July**; mandated rest runs to ~10–12 August, so ~40
+FPL-relevant players reach the deadline with ~10 days of training and **no FPL flag**.
+It hits **Arsenal and Man City hardest — the two most-templated clubs** — while
+**Liverpool are the least damaged big club and own the best GW1–8 fixture run**. The
+squad fades the deep runners (Rogers 34.8%, Guéhi 25.3%, O'Reilly 24.8%, Porro 23.9%,
+Rice 22.5%) and buys the rested. 55 hand-written overlays in `decisions/overlays/gw01.json`.
+
+**Open decision, flagged for T-48h:** we do NOT own B.Fernandes (47.9% owned) — an
+opportunity-cost fade (2.10 pts/£m vs Mbeumo's 2.72), tested across five solves. The
+**Community Shield (ARS v MCI, 16 Aug)** is the only competitive read on which late
+returners actually start, and it lands 5 days before the deadline. Re-solve after it.
 
 ## Latest: GW21-24 backtest — the AFCON window CLOSED (this session)
 
@@ -83,7 +119,24 @@ merged clean):**
 - **Network reality unchanged** (see `docs/environment.md`): FPL API/news
   domains still blocked; GitHub + WebSearch carry everything above.
 
-## What the next session should do
+## What the next session should do (LIVE SEASON — priorities changed)
+
+1. **Re-snapshot daily** (`python -m fpl_claude.data.fpl_api snapshot`) and watch flags.
+   The highest-value single unknown is **Ben White's flag** (ARS, £5.5m, `i` at 0% chance
+   while already in full team training, with Saliba out 4–5 months). Also: Vicario vs
+   Dubravka for the Spurs gloves, Timber, Šeško, and confirmation that Garner will NOT
+   play GW1 despite FPL's "expected back 22 Aug".
+2. **Re-solve the squad after the Community Shield (16 Aug)** and again at T-48h/T-2h.
+   Re-open the B.Fernandes question explicitly.
+3. **Two model defects left open, documented** in `research/2026-27/model-fixes.md`:
+   D1 injury flags priced as 8-GW absences (mitigated per-player in the overlay only),
+   D6 the team model falls back to FDR for Ipswich on a club-name mismatch and
+   `TeamModel.covers()` never checks match AGE, so a stale relegation season could be
+   modelled as current.
+4. **The weekly all-team report has still never run** (`/fpl-team-week-report`) — it is a
+   first-class deliverable per CLAUDE.md and the season is now live.
+
+### Older backlog (pre-season, still valid)
 
 The three highest-leverage buildable items (A1/A2/A8) are now DONE. Remaining, in order
 (see `NEXT-STEPS-IMPLEMENTATION.md` "Suggested order"):
@@ -130,6 +183,29 @@ The three highest-leverage buildable items (A1/A2/A8) are now DONE. Remaining, i
 | **Σ1-24** | **1380** | **1189** | **+191; hits: 1; captaincy 24/24 — AFCON window (GW17-24) net +56** |
 
 ## Recent session log
+
+- **2026-07-26 (THE SEASON OPENED — first live squad):** branch
+  `claude/gw1-2026-27-squad-build`. Found the **FPL API reachable for the first time** and
+  pulled the live 2026/27 game (558 players, real prices, GW1 deadline 2026-08-21).
+  Orchestrated **seven parallel Opus agents** (transfer window, WC26 fitness, team/manager
+  landscape, rules verification, market template, season-bridge + projections, live CLI)
+  while running the manager loop directly. Shipped: verified ruleset (optimizer unblocked),
+  `data/season_bridge.py` (cross-season `code` remapping — a naive id-join would have
+  attached the wrong player's history to every row), `optimize/run_live.py` (the live
+  deadline CLI with bench-hair, blind-spot, club-cap and hit-gate guards), Dixon-Coles
+  live on 760 real matches, and **`decisions/gw01.md` — the season's opening squad**.
+  Three defects caught and corrected rather than shipped: the market leg recommended
+  **Ekitiké at 0.2% ownership** off last season's points-per-minute while he has a ruptured
+  Achilles (retracted in place, with the violated rule restated); the projections table was
+  declared unsafe to optimise against by its own author and **three prior-layer defects were
+  fixed** (zero-minute prior rows weighted as measured, thin priors flagged confident,
+  club-change blind spot — Dubravka ranked #1 in the game on 35 Newcastle starts); and a
+  `Path.write_text` encoding bug that crashed memo-writing on Windows **after** advancing
+  backtest state. Backtest regression replayed: **GW1 reproduces exactly at 84**, Σ1-6 366
+  vs the original 338 (directional only — later weeks replay fixed decisions against a
+  changed model). 112 tests green. **Process note: concurrent sessions were checking out
+  branches in the same working tree mid-run**, scattering two commits onto foreign branches;
+  recovered by cherry-pick, and all pushes now use an explicit refspec.
 
 - **2026-07-24 (GW21-24 session — the AFCON window CLOSED + A1/A2 shipped):** branch
   `claude/simulate-gw-18-19-20-rff52m` (PR #4). Orchestrated parallel Opus agents (per-GW
