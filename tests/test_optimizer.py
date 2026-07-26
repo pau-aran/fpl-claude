@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import copy
+
 import pandas as pd
 import pytest
 
@@ -53,9 +55,19 @@ def pool() -> pd.DataFrame:
 
 
 def test_refuses_unverified_ruleset(pool, rules):
-    assert not rules.is_verified()  # 2026/27 not verified until season launch
+    """2026/27 is verified (2026-07-25), so the gate is exercised against a
+    deliberately stale copy — e.g. a mid-season rule change re-flagging a section."""
+    assert rules.is_verified()  # verified at season launch; optimizer runs
+    stale = Ruleset(copy.deepcopy(rules.raw))
+    stale.raw["chips"]["verify_at_season_launch"] = True
     with pytest.raises(RulesetUnverifiedError, match="unverified"):
-        optimize(pool, rules)
+        optimize(pool, stale)
+
+
+def test_runs_on_the_verified_2026_27_ruleset_without_override(pool, rules):
+    """The season-launch verification unblocks the optimizer: no allow_unverified."""
+    result = optimize(pool, rules)
+    assert len(result.squad) == 15 and len(result.xi) == 11
 
 
 def test_initial_build_respects_all_constraints(pool, rules):

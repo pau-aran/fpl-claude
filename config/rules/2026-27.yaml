@@ -1,74 +1,113 @@
 # FPL ruleset — season 2026/27
 #
-# FPL changes rules nearly every season (2024/25: transfer banking to 5, assistant
-# manager chip; 2025/26: doubled chip sets, defensive contribution points). Every
-# section below carries `verify_at_season_launch: true` until reconciled against
-# https://fantasy.premierleague.com/help/rules once the 2026/27 game opens.
+# VERIFIED 2026-07-25 against the live game. Primary source of truth is the FPL
+# API bootstrap snapshot db/raw/2026-07-25/bootstrap.json (`game_settings`,
+# `game_config.rules`, `game_config.scoring`, `chips`, `element_types`) — that is
+# machine-truth emitted by FPL itself. Prose-only items (DEFCON thresholds, hit
+# cost, auto-subs, captaincy) cross-checked against premierleague.com and
+# Fantasy Football Scout. See research/2026-27/rules-verification.md for the
+# field-by-field changelog.
+#
 # The rules engine (src/fpl_claude/rules/engine.py) refuses to run the optimizer
 # while any section is unverified, unless explicitly overridden.
 
 season: "2026-27"
-verified_against_official: false
+verified_against_official: true   # was false — verified 2026-07-25, see sources below
+verified_on: "2026-07-25"
+verified_sources:
+  - "db/raw/2026-07-25/bootstrap.json (FPL API: game_settings, game_config, chips, element_types)"
+  - "https://www.premierleague.com/en/news/4679873/all-you-need-to-know-about-changes-to-fpl-for-202627"
+  - "https://www.fantasyfootballscout.co.uk/2026/07/20/fpl-2026-27-5-rule-changes-new-features-announced"
+  - "https://www.premierleague.com/en/news/2174907 (FPL basics: transfers)"
+  - "https://www.draftfantasy.com/blog/fpl-defensive-contributions-2026-27"
 
 budget:
-  verify_at_season_launch: true
-  initial: 100.0          # £m
-  sell_price_rule: "half_profit_rounded_down"   # sell = buy + floor(profit/2)
+  verify_at_season_launch: false
+  initial: 100.0          # £m — CONFIRMED: game_settings.squad_total_spend 1000 / ui_currency_multiplier 10
+  sell_price_rule: "half_profit_rounded_down"   # CONFIRMED: element_sell_at_purchase_price=false, transfers_sell_on_fee=0.5
 
 squad:
-  verify_at_season_launch: true
-  size: 15
-  goalkeepers: 2
-  defenders: 5
-  midfielders: 5
-  forwards: 3
-  max_per_club: 3
+  verify_at_season_launch: false
+  size: 15                # CONFIRMED: game_settings.squad_squadsize
+  goalkeepers: 2          # CONFIRMED: element_types[GKP].squad_select
+  defenders: 5            # CONFIRMED: element_types[DEF].squad_select
+  midfielders: 5          # CONFIRMED: element_types[MID].squad_select
+  forwards: 3             # CONFIRMED: element_types[FWD].squad_select
+  max_per_club: 3         # CONFIRMED: game_settings.squad_team_limit
 
 lineup:
-  verify_at_season_launch: true
-  starting: 11
-  min_goalkeepers: 1
-  min_defenders: 3
-  min_midfielders: 2
-  min_forwards: 1
-  bench_order_matters: true
-  auto_subs: true
+  verify_at_season_launch: false
+  starting: 11            # CONFIRMED: game_settings.squad_squadplay
+  min_goalkeepers: 1      # CONFIRMED: element_types[GKP].squad_min_play (max_play also 1 -> exactly 1)
+  min_defenders: 3        # CONFIRMED: element_types[DEF].squad_min_play
+  min_midfielders: 2      # CONFIRMED: element_types[MID].squad_min_play
+  min_forwards: 1         # CONFIRMED: element_types[FWD].squad_min_play
+  max_defenders: 5        # ADDED — element_types[DEF].squad_max_play (documentation; XI cap implied by squad size)
+  max_midfielders: 5      # ADDED — element_types[MID].squad_max_play
+  max_forwards: 3         # ADDED — element_types[FWD].squad_max_play
+  bench_order_matters: true   # CONFIRMED: auto-subs walk the bench in order (premierleague.com FPL basics)
+  auto_subs: true         # CONFIRMED: unchanged — starter with 0 minutes replaced by first eligible bench player
+  vice_captain: true      # ADDED — game_settings.sys_vice_captain_enabled = true
+  captain_multiplier: 2   # ADDED — captain scores double; armband falls to vice if captain does not feature
 
 transfers:
-  verify_at_season_launch: true
-  free_per_gameweek: 1
-  max_banked: 5            # 2024/25 rule; verify unchanged
-  hit_cost: 4              # points per extra transfer
+  verify_at_season_launch: false
+  free_per_gameweek: 1    # CONFIRMED: 1 FT/GW (premierleague.com FPL basics: transfers)
+  max_banked: 5           # CONFIRMED: game_settings.max_extra_free_transfers=4 -> 1 base + 4 banked = 5
+  hit_cost: 4             # CONFIRMED: -4 pts per extra transfer, unchanged (premierleague.com FPL basics)
+  max_per_gameweek: 20    # ADDED — game_settings.transfers_cap = 20 (hard cap on transfers in one GW)
+  bonus_free_transfers: 0      # CHANGED — no extra December/AFCON free transfers in 2026/27
+                               # (AFCON moves to Jun/Jul 2027; FFS 2026-07-20). 2025/26 granted extras.
 
 chips:
-  verify_at_season_launch: true
-  # 2025/26 ran two sets per half-season (WC/FH/BB/TC each half). Whether 2026/27
-  # repeats this, reverts, or brings back the assistant-manager chip MUST be checked.
-  wildcard: {count: 2, windows: "one_per_half_unverified"}
-  free_hit: {count: "unverified"}
-  bench_boost: {count: "unverified"}
-  triple_captain: {count: "unverified"}
-  assistant_manager: {count: "unverified", note: "existed 2024/25; verify status"}
+  verify_at_season_launch: false
+  # CONFIRMED from bootstrap.chips (8 entries = 2 sets of 4). The assistant-manager
+  # chip does NOT exist in 2026/27: absent from chips[], and every game_config
+  # scoring key mng_* is 0. First set expires at the GW19 deadline (13:30 GMT,
+  # Sat 2 Jan 2027); unused first-half chips do NOT carry over.
+  sets_per_season: 2
   one_chip_per_gameweek: true
+  half_boundary_gw: 19          # first set stops at event 19, second set starts at event 20
+  wildcard:        {count: 2, windows: [[2, 19], [20, 38]]}   # was count 2 / "one_per_half_unverified"
+  free_hit:        {count: 2, windows: [[2, 19], [20, 38]]}   # was "unverified"
+  bench_boost:     {count: 2, windows: [[1, 19], [20, 38]]}   # was "unverified" — NOTE: playable in GW1
+  triple_captain:  {count: 2, windows: [[1, 19], [20, 38]]}   # was "unverified" — NOTE: playable in GW1
+  assistant_manager: {count: 0, note: "REMOVED — not in bootstrap.chips; all mng_* scoring keys are 0"}
 
 scoring:
-  verify_at_season_launch: true
-  appearance: {lt_60_min: 1, gte_60_min: 2}
-  goals: {GKP: 10, DEF: 6, MID: 5, FWD: 4}
+  verify_at_season_launch: false
+  # Every value below CONFIRMED against game_config.scoring in the 2026-07-25
+  # bootstrap snapshot. No scoring value changed from 2025/26.
+  appearance: {lt_60_min: 1, gte_60_min: 2}          # short_play 1 / long_play 2
+  goals: {GKP: 10, DEF: 6, MID: 5, FWD: 4}           # goals_scored
   assists: 3
-  clean_sheet: {GKP: 4, DEF: 4, MID: 1, FWD: 0}
-  goals_conceded_per_2: {GKP: -1, DEF: -1}
+  clean_sheet: {GKP: 4, DEF: 4, MID: 1, FWD: 0}      # clean_sheets
+  goals_conceded_per_2: {GKP: -1, DEF: -1}           # goals_conceded (MID/FWD are 0)
   saves_per_3: 1
-  penalty_save: 5
-  penalty_miss: -2
+  penalty_save: 5                                    # penalties_saved
+  penalty_miss: -2                                   # penalties_missed
   yellow_card: -1
   red_card: -3
   own_goal: -2
-  bonus: [3, 2, 1]
-  defensive_contribution:   # introduced 2025/26; thresholds/points must be verified
-    DEF: {points: 2, threshold: 10, stat: "CBIT"}
-    MID: {points: 2, threshold: 12, stat: "CBIRT"}
-    FWD: {points: 2, threshold: 12, stat: "CBIRT"}
+  bonus: [3, 2, 1]        # CONFIRMED unchanged: top 3 BPS scorers per fixture get 3/2/1
+  bps_reworked: true      # NEW 2026/27 — the BPS *internals* changed (no penalty for being
+                          # tackled; CBI now 1 BPS per 3 actions, was per 2; goalkeeper save
+                          # scoring restructured). The 3-2-1 award structure is unchanged.
+                          # We do not model BPS internals, so this is informational only;
+                          # any future bonus-points model must not reuse 2025/26 BPS weights.
+  defensive_contribution:   # CONFIRMED unchanged for 2026/27 (2 pts, max 2 per match)
+    DEF: {points: 2, threshold: 10, stat: "CBIT"}    # clearances+blocks+interceptions+tackles
+    MID: {points: 2, threshold: 12, stat: "CBIRT"}   # CBIT + ball recoveries
+    FWD: {points: 2, threshold: 12, stat: "CBIRT"}   # game_config.scoring.defensive_contribution.FWD = 2
+    # GKP deliberately absent: game_config.scoring.defensive_contribution.GKP = 0
+
+game_ops:                 # timing mechanics, not scoring — informational
+  verify_at_season_launch: false
+  timezone: "UTC"                      # game_settings.timezone
+  gw1_deadline: "2026-08-21T17:30:00Z" # events[0].deadline_time
+  gameweek_lockdown: "09:00 UK the day after the last match of the GW"  # NEW 2026/27 — was 1h after final whistle
+  provisional_bonus_from_minute: 20    # NEW 2026/27 — live projected bonus published after 20 mins
+  price_changes: "daily at 00:00 UK, net-transfer driven, ±0.1m steps"
 
 policies:                   # our own guardrails, not FPL rules
   hit_ev_threshold: 4.5     # min NET horizon gain (after the -4) required PER hit, judged marginally
