@@ -1,0 +1,49 @@
+# GW1-8 fixture grid (FDR from FPL API, live snapshot 2026-07-25)
+
+| Team | GW1 | GW2 | GW3 | GW4 | GW5 | GW6 | GW7 | GW8 | Sum FDR (1-8) | Sum FDR (1-4) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **LIV** | NEW (A)3 | NFO (H)3 | IPS (A)2 | FUL (H)2 | BOU (A)3 | MCI (H)4 | BRE (A)3 | BHA (H)2 | **22** | 10 |
+| **CRY** | EVE (A)3 | MCI (H)4 | FUL (A)3 | IPS (H)2 | LEE (A)3 | NFO (H)3 | BHA (A)3 | NEW (H)2 | **23** | 12 |
+| **MUN** | HUL (A)2 | IPS (H)2 | EVE (A)3 | MCI (H)4 | FUL (A)3 | TOT (H)3 | LEE (A)3 | BOU (H)3 | **23** | 11 |
+| **NEW** | LIV (H)4 | TOT (A)3 | BOU (H)3 | LEE (A)3 | HUL (H)2 | COV (A)2 | AVL (H)3 | CRY (A)3 | **23** | 13 |
+| **SUN** | IPS (A)2 | FUL (H)2 | BRE (A)3 | ARS (H)4 | MCI (A)5 | BHA (H)2 | BOU (A)3 | LEE (H)2 | **23** | 11 |
+| **ARS** | COV (H)2 | AVL (A)4 | CHE (H)4 | SUN (A)3 | BHA (A)3 | LEE (H)2 | NFO (A)3 | EVE (H)3 | **24** | 13 |
+| **CHE** | FUL (A)3 | BHA (H)2 | ARS (A)5 | HUL (H)2 | BRE (A)3 | BOU (H)3 | EVE (A)3 | TOT (H)3 | **24** | 12 |
+| **COV** | ARS (A)5 | HUL (H)2 | MCI (A)5 | BHA (H)2 | NFO (A)3 | NEW (H)2 | TOT (A)3 | FUL (H)2 | **24** | 14 |
+| **FUL** | CHE (H)4 | SUN (A)3 | CRY (H)3 | LIV (A)4 | MUN (H)4 | IPS (A)2 | HUL (H)2 | COV (A)2 | **24** | 14 |
+| **MCI** | BOU (H)3 | CRY (A)3 | COV (H)2 | MUN (A)4 | SUN (H)2 | LIV (A)4 | IPS (H)2 | AVL (A)4 | **24** | 12 |
+| **NFO** | LEE (H)2 | LIV (A)4 | TOT (H)3 | AVL (A)4 | COV (H)2 | CRY (A)3 | ARS (H)4 | IPS (A)2 | **24** | 13 |
+| **TOT** | BRE (A)3 | NEW (H)2 | NFO (A)3 | EVE (H)3 | AVL (H)3 | MUN (A)4 | COV (H)2 | CHE (A)4 | **24** | 11 |
+| **AVL** | BHA (A)3 | ARS (H)4 | HUL (A)2 | NFO (H)3 | TOT (A)3 | BRE (H)3 | NEW (A)3 | MCI (H)4 | **25** | 12 |
+| **BRE** | TOT (H)3 | LEE (A)3 | SUN (H)2 | BOU (A)3 | CHE (H)4 | AVL (A)4 | LIV (H)4 | HUL (A)2 | **25** | 11 |
+| **BHA** | AVL (H)3 | CHE (A)4 | LEE (H)2 | COV (A)2 | ARS (H)4 | SUN (A)3 | CRY (H)3 | LIV (A)4 | **25** | 11 |
+| **HUL** | MUN (H)4 | COV (A)2 | AVL (H)3 | CHE (A)4 | NEW (A)3 | EVE (H)3 | FUL (A)3 | BRE (H)3 | **25** | 13 |
+| **EVE** | CRY (H)3 | BOU (A)3 | MUN (H)4 | TOT (A)3 | IPS (H)2 | HUL (A)2 | CHE (H)4 | ARS (A)5 | **26** | 13 |
+| **IPS** | SUN (H)2 | MUN (A)4 | LIV (H)4 | CRY (A)3 | EVE (A)3 | FUL (H)2 | MCI (A)5 | NFO (H)3 | **26** | 13 |
+| **LEE** | NFO (A)3 | BRE (H)3 | BHA (A)3 | NEW (H)2 | CRY (H)3 | ARS (A)5 | MUN (H)4 | SUN (A)3 | **26** | 11 |
+| **BOU** | MCI (A)5 | EVE (H)3 | NEW (A)3 | BRE (H)3 | LIV (H)4 | CHE (A)4 | SUN (H)2 | MUN (A)4 | **28** | 14 |
+
+## Strength table (FPL's own team strength ratings)
+
+| Team | Overall H | Overall A | Att H | Att A | Def H | Def A |
+|---|---|---|---|---|---|---|
+| ARS | 4 | 5 | 0 | 0 | 0 | 0 |
+| MCI | 4 | 5 | 0 | 0 | 0 | 0 |
+| CHE | 4 | 4 | 0 | 0 | 0 | 0 |
+| LIV | 4 | 4 | 0 | 0 | 0 | 0 |
+| MUN | 4 | 4 | 0 | 0 | 0 | 0 |
+| AVL | 3 | 4 | 0 | 0 | 0 | 0 |
+| BOU | 3 | 3 | 0 | 0 | 0 | 0 |
+| BRE | 3 | 3 | 0 | 0 | 0 | 0 |
+| CRY | 3 | 3 | 0 | 0 | 0 | 0 |
+| EVE | 3 | 3 | 0 | 0 | 0 | 0 |
+| NFO | 3 | 3 | 0 | 0 | 0 | 0 |
+| TOT | 3 | 3 | 0 | 0 | 0 | 0 |
+| BHA | 2 | 3 | 0 | 0 | 0 | 0 |
+| FUL | 2 | 3 | 0 | 0 | 0 | 0 |
+| LEE | 2 | 3 | 0 | 0 | 0 | 0 |
+| NEW | 2 | 3 | 0 | 0 | 0 | 0 |
+| SUN | 2 | 3 | 0 | 0 | 0 | 0 |
+| COV | 2 | 2 | 0 | 0 | 0 | 0 |
+| HUL | 2 | 2 | 0 | 0 | 0 | 0 |
+| IPS | 2 | 2 | 0 | 0 | 0 | 0 |
