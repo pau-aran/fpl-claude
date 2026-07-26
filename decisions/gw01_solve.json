@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-26T12:54:32+00:00",
+  "generated_at_utc": "2026-07-26T12:58:46+00:00",
   "mode": "initial-build",
   "dry_run": false,
   "dry_run_reason": null,
@@ -14,7 +14,7 @@
   },
   "score_col": "xpts_horizon",
   "xi_score_col": "xpts_gw1",
-  "objective": 247.139,
+  "objective": 246.939,
   "squad": [
     {
       "id": 1,
@@ -68,15 +68,15 @@
       "news": ""
     },
     {
-      "id": 389,
-      "web_name": "Matheus N.",
-      "team": "Man City",
+      "id": 229,
+      "web_name": "Tarkowski",
+      "team": "Everton",
       "position": "DEF",
       "price": 6.0,
       "role": "XI",
-      "xpts_gw": 3.38,
-      "xpts_horizon": 16.44,
-      "ownership_pct": 5.9,
+      "xpts_gw": 3.87,
+      "xpts_horizon": 16.24,
+      "ownership_pct": 10.8,
       "minutes_confidence": "prior",
       "low_sample": false,
       "is_pen_taker": false,
@@ -275,7 +275,7 @@
   "xi": [
     1,
     4,
-    389,
+    229,
     445,
     427,
     397,
@@ -331,26 +331,17 @@
     "bank_m": 0.0,
     "budget_m": 100.0
   },
-  "predicted_xi_xpts": 50.92,
+  "predicted_xi_xpts": 51.41,
   "transfers": null,
   "overlay": {
     "lock": [
       1,
       4,
-      411
+      368
     ],
     "ban": [
-      57,
       61,
-      68,
-      70,
-      79,
-      200,
-      239,
-      250,
-      289,
-      439,
-      512
+      68
     ],
     "force_start": [],
     "force_bench": [],
@@ -361,11 +352,6 @@
   "guards": {
     "max_per_club": 3,
     "club_usage": [
-      {
-        "team": "Man City",
-        "count": 3,
-        "at_cap": true
-      },
       {
         "team": "Man Utd",
         "count": 3,
@@ -382,12 +368,22 @@
         "at_cap": false
       },
       {
+        "team": "Man City",
+        "count": 2,
+        "at_cap": false
+      },
+      {
         "team": "Brentford",
         "count": 1,
         "at_cap": false
       },
       {
         "team": "Coventry City",
+        "count": 1,
+        "at_cap": false
+      },
+      {
+        "team": "Everton",
         "count": 1,
         "at_cap": false
       },
