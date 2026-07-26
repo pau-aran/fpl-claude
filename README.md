@@ -144,27 +144,6 @@ is not. The GW17-24 window was won on refusals the solver wanted to make.
 reasoning — dated, committed, and read back in the post-gameweek review to separate process from
 variance. Not a spreadsheet you throw away on Sunday.
 
-## Status
-
-**The build plan is complete and the 2026/27 season is LIVE.** The game opened with real
-prices; the first snapshot is committed (`db/raw/2026-07-25/`), the ruleset is verified
-against the live API, and the opening squad is written up in
-[`decisions/gw01.md`](decisions/gw01.md) — **GW1 deadline 2026-08-21 17:30 UTC**.
-
-| Phase | State | Notes |
-|---|---|---|
-| **0 · Scaffold** | ✅ | Repo, API client, snapshotting, rules YAML, sources YAML, 8 skills |
-| **1 · Data** | ✅ | Live FPL API pull running from the owner's machine; first 2026/27 snapshot committed |
-| **2 · Models** | ✅ | Minutes v1 + trained v2, Dixon-Coles, event rates, rules-driven xPts, cross-season prior bridge. **Gate passed** on the 24-GW replay |
-| **3 · Optimizer** | ✅ | MILP squad/XI/captain/transfers/hits; chip mechanics + timing advisory; live deadline CLI with the manager's guards |
-| **3b · Advisory layer** | ✅ | Multi-period transfer path **accepted on evidence**: replaying GW17-24 model-driven scored 438 vs the hand-written 439, churn killed by the per-move edge floor (`reports/backtest/2025-26/a4-followpath-verdict.md`). Live calibration loop shipped (`reports/calibration.py`) |
-| **4 · Skills live** | ✅ | Exercised for real building the GW1 squad: refresh, news sweeps, scouting, the full plan-gameweek pipeline |
-| **5 · Automation** | ⬜ | Scheduled sessions: Monday reports, daily sweeps, deadline runs, post-GW reviews — the one phase left |
-
-What remains is the season itself: re-solve after the Community Shield (16 Aug), the
-T-48h/T-24h/T-2h deadline runs, and 38 weeks of memos. Read [`STATE.md`](STATE.md) for the
-current handoff snapshot.
-
 ## Map
 
 ```
