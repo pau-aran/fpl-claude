@@ -126,7 +126,9 @@ def test_minutes_overlay_overrides_with_reason():
 def test_priors_from_previous_season_bootstrap():
     prior_bs = {"elements": [_player(10, 1, 3, starts=38), _player(11, 1, 3, starts=0)]}
     priors = minutes_model.priors_from_bootstrap(prior_bs)
-    assert priors == {10: 1.0}  # no-start players yield no prior
+    # no-start players yield no prior; the survivor carries his evidence with him
+    assert set(priors) == {10}
+    assert priors[10].share == pytest.approx(1.0)
 
 
 # ---------------------------------------------------------------- rates
@@ -148,15 +150,36 @@ def test_rates_per90_and_blending(bootstrap):
     blended = rates_model.blend(current, prior).set_index("id")
     assert blended.loc[10, "xg90"] == pytest.approx(6.0 * shrunk)
 
-    # Zero-minute player with a prior: takes the prior wholesale.
+    # Zero-minute player with a WELL-EVIDENCED prior: takes the prior wholesale.
     zero = _player(50, 1, 4)
     bs2 = {"elements": [zero]}
     cur2 = rates_model.from_bootstrap(bs2)
     prior2 = cur2.copy()
     prior2["xg90"] = 0.5
+    prior2["minutes_sample"] = rates_model.PRIOR_FULL_WEIGHT_MINUTES
     blended2 = rates_model.blend(cur2, prior2).set_index("id")
     assert blended2.loc[50, "xg90"] == pytest.approx(0.5)
-    assert not blended2.loc[50, "low_sample"]  # has a prior -> not flagged
+    assert not blended2.loc[50, "low_sample"]  # full-weight prior -> not flagged
+
+    # ...but a prior ROW is not a prior SAMPLE. The same 0.5 rate backed by NO
+    # minutes (loan abroad, season-long injury, third-choice keeper) is absence
+    # of evidence, not a measured zero-risk 0.5, and must carry no weight.
+    prior_empty = cur2.copy()
+    prior_empty["xg90"] = 0.5
+    prior_empty["minutes_sample"] = 0
+    blended3 = rates_model.blend(cur2, prior_empty).set_index("id")
+    assert blended3.loc[50, "xg90"] == pytest.approx(0.0)
+    assert not blended3.loc[50, "has_prior"]
+    assert blended3.loc[50, "low_sample"]
+
+    # A THIN prior is graded, not believed: half the full-weight minutes earns
+    # roughly half the weight, the rest deferred to the positional baseline.
+    prior_thin = cur2.copy()
+    prior_thin["xg90"] = 0.5
+    prior_thin["minutes_sample"] = rates_model.PRIOR_FULL_WEIGHT_MINUTES // 2
+    blended4 = rates_model.blend(cur2, prior_thin).set_index("id")
+    assert blended4.loc[50, "evidence"] == pytest.approx(0.5)
+    assert blended4.loc[50, "low_sample"]
 
 
 def test_rates_tiny_sample_does_not_explode():

@@ -41,6 +41,33 @@ DEFAULT_START_MINUTES = 78.0
 DEFAULT_CAMEO_MINUTES = 18.0
 NEUTRAL_START_SHARE = 0.5  # used only when we have neither data nor a prior
 
+# Prior minutes at which last season's start share is trusted in full. Below
+# it the prior is partial evidence and is regressed toward neutral: 694 minutes
+# around a fibula fracture is not a read on a first-choice striker, and the old
+# code priced Isak at 5.35 xPts over 8 GWs because it treated it as one.
+# 900' = ten full matches.
+PRIOR_FULL_WEIGHT_MINUTES = 900
+
+# How much of a prior start share survives a summer club change. Last season's
+# minutes are evidence about the PLAYER but not about his place in a new team's
+# pecking order — Dubravka's 35 Newcastle starts made him the highest xPts/£m
+# player in the game as a 37-year-old third-choice Spurs keeper. Kept well
+# above zero because a nailed starter usually does not move to sit on a bench.
+CLUB_CHANGE_PRIOR_RETENTION = 0.5
+
+
+@dataclass(frozen=True)
+class StartSharePrior:
+    """Last season's start share, with the evidence behind it.
+
+    `minutes` grades how much sample the share rests on; `team_code` is the
+    club it was earned at (stable across seasons) so a move can be detected.
+    """
+
+    share: float
+    minutes: int = 0
+    team_code: int | None = None
+
 
 @dataclass(frozen=True)
 class MinutesEstimate:
@@ -49,7 +76,10 @@ class MinutesEstimate:
     p_cameo: float
     p60: float
     exp_minutes: float
-    confidence: str  # "season" (current data), "prior" (injected), "neutral"
+    # "season" (current data), "prior" (full-weight last season), "prior_thin"
+    # (last season, but few minutes behind it), "prior_new_club" (last season,
+    # different club), "neutral" (no evidence), "overlay" (manager override)
+    confidence: str
     overlay_reason: str | None = None
 
     @property
@@ -65,19 +95,52 @@ def availability(player: dict[str, Any]) -> float:
     return DEFAULT_AVAILABILITY.get(player.get("status", "a"), 1.0)
 
 
+def _discount_prior(
+    prior: StartSharePrior, current_team_code: int | None
+) -> tuple[float, str]:
+    """Regress a prior start share toward neutral by how much it is worth here.
+
+    Two independent discounts, because "37 starts last season" can mean very
+    different things:
+
+      * THIN — few minutes behind the share. The share cannot tell a player
+        who was benched from one who was injured, so a fragment of a season is
+        regressed toward neutral rather than believed.
+      * NEW CLUB — the share was earned in a different team's pecking order.
+        Evidence about the player, not about his place in this squad.
+
+    Both are applied, so a thin prior at a new club is discounted twice.
+    """
+    strength = min(1.0, prior.minutes / PRIOR_FULL_WEIGHT_MINUTES) if prior.minutes else 1.0
+    label = "prior" if strength >= 1.0 else "prior_thin"
+    if (
+        prior.team_code is not None
+        and current_team_code is not None
+        and int(prior.team_code) != int(current_team_code)
+    ):
+        strength *= CLUB_CHANGE_PRIOR_RETENTION
+        label = "prior_new_club"
+    share = strength * prior.share + (1 - strength) * NEUTRAL_START_SHARE
+    return min(1.0, share), label
+
+
 def _start_share(
-    player: dict[str, Any], team_games: int, prior: float | None
+    player: dict[str, Any],
+    team_games: int,
+    prior: StartSharePrior | None,
+    current_team_code: int | None = None,
 ) -> tuple[float, str]:
     """Share of team games this player starts, with pre-season fallback."""
     starts = int(player.get("starts") or 0)
     if team_games >= 3:  # enough current-season signal to trust
         return min(1.0, starts / team_games), "season"
     if prior is not None:
+        prior_share, label = _discount_prior(prior, current_team_code)
         if team_games > 0:  # tiny sample: blend current into the prior
             current = starts / team_games
             weight = team_games / 3.0
-            return min(1.0, weight * current + (1 - weight) * prior), "prior"
-        return min(1.0, prior), "prior"
+            return min(1.0, weight * current + (1 - weight) * prior_share), label
+        return prior_share, label
     if team_games > 0:  # tiny sample, no prior: shrink toward neutral, don't
         current = starts / team_games  # let 1 start in 1 game read as p_start 1.0
         weight = team_games / 3.0
@@ -97,16 +160,26 @@ def _p60_given_start(player: dict[str, Any]) -> float:
 def estimate(
     player: dict[str, Any],
     team_games: int,
-    prior_start_share: float | None = None,
+    prior_start_share: StartSharePrior | float | None = None,
     overlay: dict[str, Any] | None = None,
+    current_team_code: int | None = None,
 ) -> MinutesEstimate:
     """Minutes estimate for one player for one fixture.
 
     overlay: {"start_share": float, "reason": str} — an explicit, written-down
     override from team-news intelligence (rotation pattern, presser quote, leak).
+
+    prior_start_share accepts a bare float for callers that only have a share
+    (older snapshots, hand-built tests); it is then trusted at full weight, as
+    before. A `StartSharePrior` additionally carries the minutes and club
+    behind that share and is discounted accordingly.
     """
     avail = availability(player)
-    share, confidence = _start_share(player, team_games, prior_start_share)
+    if isinstance(prior_start_share, (int, float)):
+        prior_start_share = StartSharePrior(share=float(prior_start_share))
+    share, confidence = _start_share(
+        player, team_games, prior_start_share, current_team_code
+    )
     reason = None
     if overlay is not None:
         share = max(0.0, min(1.0, float(overlay["start_share"])))
@@ -134,12 +207,15 @@ def estimate(
 def estimate_all(
     bootstrap: dict[str, Any],
     team_games: dict[int, int],
-    priors: dict[int, float] | None = None,
+    priors: dict[int, StartSharePrior] | None = None,
     overlays: dict[int, dict[str, Any]] | None = None,
 ) -> pd.DataFrame:
     """Estimates for every player. team_games: team_id -> PL games played."""
     priors = priors or {}
     overlays = overlays or {}
+    # team id -> stable cross-season club code, so a prior earned elsewhere
+    # can be spotted (team ids are reassigned between seasons; codes are not).
+    team_codes = {int(t["id"]): t.get("code") for t in bootstrap.get("teams", [])}
     rows = []
     for p in bootstrap["elements"]:
         est = estimate(
@@ -147,6 +223,7 @@ def estimate_all(
             team_games.get(p["team"], 0),
             priors.get(p["id"]),
             overlays.get(p["id"]),
+            current_team_code=team_codes.get(int(p["team"])),
         )
         rows.append(
             {
@@ -163,18 +240,27 @@ def estimate_all(
     return pd.DataFrame(rows)
 
 
-def priors_from_bootstrap(prior_bootstrap: dict[str, Any]) -> dict[int, float]:
+def priors_from_bootstrap(prior_bootstrap: dict[str, Any]) -> dict[int, StartSharePrior]:
     """Start-share priors from a previous season's final bootstrap snapshot.
 
-    Keyed by FPL player id — ids persist across seasons for continuing players;
-    new signings simply have no prior and fall back to neutral (a real unknown
-    the overlay must resolve from news, which is honest).
+    Keyed by CURRENT-season player id (use `data.season_bridge` to remap a raw
+    archive — FPL reassigns ids every season). Players with no prior row simply
+    have no entry and fall back to neutral, a real unknown the overlay must
+    resolve from news, which is honest.
+
+    Each prior carries the minutes behind it and the club they were played for,
+    so `_start_share` can discount evidence that is thin or was earned
+    somewhere else — see `StartSharePrior`.
     """
-    priors: dict[int, float] = {}
+    priors: dict[int, StartSharePrior] = {}
     for p in prior_bootstrap["elements"]:
         starts = int(p.get("starts") or 0)
         if starts:
-            priors[int(p["id"])] = min(1.0, starts / FULL_SEASON_GAMES)
+            priors[int(p["id"])] = StartSharePrior(
+                share=min(1.0, starts / FULL_SEASON_GAMES),
+                minutes=int(p.get("minutes") or 0),
+                team_code=p.get("team_code"),
+            )
     return priors
 
 

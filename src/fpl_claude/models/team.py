@@ -64,15 +64,43 @@ def fdr_expectation(home_fdr: int, away_fdr: int) -> FixtureExpectation:
 # that captains its defenders (2025/26 backtest, GW2). Below it -> FDR fallback.
 MIN_TEAM_MATCHES = 5
 
+# How far back a match still counts as evidence about a club's CURRENT side.
+# A relegated club carries a full season of results that are stale by the time
+# it returns; rating it on those is worse than admitting we don't know, because
+# the squad, division and often the manager have all changed.
+#
+# 330 days, NOT a year-plus: an English season runs Aug-May, so any window
+# wider than ~350 days reaches back through the summer break into the PREVIOUS
+# season's tail. At 400 days Ipswich cleared this test on six matches played in
+# April/May 2025 — the dying weeks of the relegation season that sent them
+# down — which is precisely the evidence the check exists to reject.
+RECENT_WINDOW_DAYS = 330
+
+# Recent matches a club needs before its rating is trusted. Lower than
+# MIN_TEAM_MATCHES: a promoted side that has played three PL games this season
+# is thin, but it is thin evidence about the RIGHT team.
+MIN_RECENT_MATCHES = 3
+
 
 class TeamModel:
     """Dixon-Coles fitted on historical results (columns: date, home, away,
     home_goals, away_goals — FPL team names)."""
 
-    def __init__(self, model, teams: set[str], match_counts: dict[str, int] | None = None):
+    def __init__(
+        self,
+        model,
+        teams: set[str],
+        match_counts: dict[str, int] | None = None,
+        recent_counts: dict[str, int] | None = None,
+    ):
         self._model = model
         self.teams = teams
         self.match_counts = match_counts or {t: MIN_TEAM_MATCHES for t in teams}
+        # Absent recency data, treat the counts as recent — keeps hand-built
+        # models (tests, callers with a bare match_counts) working as before.
+        self.recent_counts = (
+            recent_counts if recent_counts is not None else dict(self.match_counts)
+        )
 
     @classmethod
     def fit(cls, results: pd.DataFrame, xi: float = DEFAULT_XI) -> "TeamModel":
@@ -92,7 +120,13 @@ class TeamModel:
         counts = (
             pd.concat([results["home"], results["away"]]).value_counts().to_dict()
         )
-        return cls(model, set(counts), match_counts=counts)
+        recent = results[
+            results["date"] >= results["date"].max() - pd.Timedelta(days=RECENT_WINDOW_DAYS)
+        ]
+        recent_counts = (
+            pd.concat([recent["home"], recent["away"]]).value_counts().to_dict()
+        )
+        return cls(model, set(counts), match_counts=counts, recent_counts=recent_counts)
 
     def fixture(self, home: str, away: str) -> FixtureExpectation:
         pred = self._model.predict(home, away)
@@ -108,8 +142,23 @@ class TeamModel:
         )
 
     def covers(self, *teams: str) -> bool:
-        """Whether every named team has a USABLE rating: present in the
-        training data with at least MIN_TEAM_MATCHES matches. Promoted teams
-        fail this until ~GW5 — their fixtures use the FDR fallback instead of
-        a rating fitted on one or two results."""
-        return all(self.match_counts.get(t, 0) >= MIN_TEAM_MATCHES for t in teams)
+        """Whether every named team has a USABLE rating.
+
+        Two independent requirements, because a rating can fail in two ways:
+
+          * ENOUGH matches (MIN_TEAM_MATCHES) — a promoted side that opened
+            with one 3-0 win otherwise gets a rating that captains its
+            defenders (2025/26 backtest, GW2);
+          * RECENT matches (MIN_RECENT_MATCHES inside RECENT_WINDOW_DAYS) — a
+            club can clear the count on a full season played two years ago and
+            be modelled as if nothing had changed. Ipswich hit exactly this on
+            the 2026/27 open: relegated in 2025, promoted again, and carrying
+            38 stale matches. Only a name mismatch hid it.
+
+        Teams failing either test use the FDR fallback instead.
+        """
+        return all(
+            self.match_counts.get(t, 0) >= MIN_TEAM_MATCHES
+            and self.recent_counts.get(t, 0) >= MIN_RECENT_MATCHES
+            for t in teams
+        )

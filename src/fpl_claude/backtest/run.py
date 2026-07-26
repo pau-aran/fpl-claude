@@ -266,7 +266,11 @@ def write_memo(
         "",
     ]
     path = out_dir / f"gw{r.gw:02d}.md"
-    path.write_text("\n".join(lines))
+    # encoding is explicit: memos carry accented names and the "->" arrow as
+    # U+2192, and Path.write_text defaults to the platform encoding, so on a
+    # Windows cp1252 console this raised UnicodeEncodeError AFTER the gameweek
+    # had been simulated and the state advanced.
+    path.write_text("\n".join(lines), encoding="utf-8")
     return path
 
 

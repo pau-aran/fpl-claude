@@ -171,6 +171,11 @@ def prior_bootstrap_from_vaastav(
             "code": int(row["code"]),
             "web_name": row.get("web_name"),
             "element_type": int(row["element_type"]),
+            # The club those minutes were played FOR. `team_code` is stable
+            # across seasons (team `id` is not), so the minutes layer can tell
+            # "37 starts, same club" from "37 starts, somewhere else" — the
+            # difference between a nailed starter and an unknown quantity.
+            "team_code": _count(row.get("team_code")) or None,
         }
         element.update({c: _count(row.get(c)) for c in COUNT_COLUMNS})
         element.update({c: _stat(row.get(c)) for c in FLOAT_COLUMNS})

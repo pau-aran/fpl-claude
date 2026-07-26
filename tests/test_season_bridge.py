@@ -176,7 +176,11 @@ def test_output_feeds_the_minutes_and_rates_layers(current_bootstrap, prior_csv)
     prior = prior_bootstrap_from_vaastav(current_bootstrap, prior_csv)
 
     priors = minutes_model.priors_from_bootstrap(prior)
-    assert priors[1] == pytest.approx(30 / 38)  # current id, prior starts
+    # The prior is a StartSharePrior, not a bare float: the share travels with
+    # the minutes behind it and the club it was earned at, so the minutes layer
+    # can discount a thin sample or a move without re-deriving either.
+    assert priors[1].share == pytest.approx(30 / 38)  # current id, prior starts
+    assert priors[1].minutes == 2700
     assert 3 not in priors and 4 not in priors
 
     blended = rates_model.blend(

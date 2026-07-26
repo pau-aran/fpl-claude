@@ -209,6 +209,12 @@
     "reason": "Luke Shaw (Man Utd DEF, PS4.5, 18.1% owned) — not in any World Cup cohort and STARTED the Rosenborg friendly (24 Jul), so fit and involved under Carrick. Held at 0.72 for his long-standing durability record rather than any current flag. Rides the HUL(A)2 + IPS(H)2 opening at PS4.5.",
     "_player": "Shaw (MUN, 4.5)"
   },
+  "389": {
+    "start_share": 0.5,
+    "duration_gws": 8,
+    "reason": "Matheus Nunes (Man City DEF, PS6.0, 5.9% owned) — added on review of the first solve, which selected him while my own O'Reilly entry argued against exactly this player type. Nunes is a converted midfielder playing full-back, and the team-landscape leg is explicit that Maresca's box midfield INVERTS City's full-backs, so the attacking returns his PS6.0 DEF price implies are the ones the system suppresses. Consistency demands the same fade I applied to O'Reilly; he is held at 0.50 rather than 0.38 only because his minutes (as opposed to his attacking output) are less contested — he is not a World Cup returner. Duration 8: this is a structural read on the system, not a fitness transient.",
+    "_player": "Matheus N. (MCI, 6.0)"
+  },
   "358": {
     "start_share": 0.78,
     "duration_gws": 8,

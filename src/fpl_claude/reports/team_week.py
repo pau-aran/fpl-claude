@@ -150,12 +150,12 @@ def build_reports(from_snapshot: str | None = None, out_dir: Path | None = None)
         ]
 
         slug = team["name"].lower().replace(" ", "-").replace("'", "")
-        (week_dir / f"{slug}.md").write_text("\n".join(lines))
+        (week_dir / f"{slug}.md").write_text("\n".join(lines), encoding="utf-8")
         index_lines.append(
             f"| {team['name']} | {len(played)} | {len(upcoming)} | {len(flagged)} |"
         )
 
-    (week_dir / "index.md").write_text("\n".join(index_lines) + "\n")
+    (week_dir / "index.md").write_text("\n".join(index_lines) + "\n", encoding="utf-8")
     return week_dir
 
 

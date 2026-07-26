@@ -23,12 +23,35 @@ URL_TEMPLATE = "https://www.football-data.co.uk/mmz4281/{code}/E0.csv"
 
 # football-data.co.uk team names -> FPL bootstrap `name` values.
 # Names not listed pass through unchanged (most already match).
+#
+# An unmapped name does not raise — it silently becomes a team the model has
+# never heard of, so that club drops to the FDR fallback while looking like a
+# modelling decision. That is exactly what happened to Ipswich on the first
+# 2026/27 run ("Ipswich" here vs "Ipswich Town" in the FPL bootstrap). Use
+# `unmapped_names()` to check a fresh download instead of trusting this dict.
+# Only genuine mismatches belong here: FPL uses the bare "Leeds" and
+# "Newcastle", so "helpfully" expanding those to their full club names silently
+# zeroed Leeds' entire history on first attempt.
 TO_FPL_NAME = {
     "Man United": "Man Utd",
     "Tottenham": "Spurs",
     "Nott'm Forest": "Nott'm Forest",
     "Sheffield United": "Sheffield Utd",
+    "Ipswich": "Ipswich Town",
+    "Hull": "Hull City",
+    "Coventry": "Coventry City",
 }
+
+
+def unmapped_names(results: pd.DataFrame, fpl_team_names: set[str]) -> set[str]:
+    """Result-set club names that match no FPL club after normalisation.
+
+    Relegated clubs legitimately appear here (they have results but no FPL
+    entry). The dangerous case is the reverse — an FPL club whose results are
+    filed under a different spelling — so callers should check both directions.
+    """
+    seen = set(results["home"].dropna()) | set(results["away"].dropna())
+    return seen - fpl_team_names
 
 
 def fetch(season_codes: list[str], out_dir: Path = FOOTBALL_DATA_DIR) -> list[Path]:
