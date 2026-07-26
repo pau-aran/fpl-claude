@@ -1,8 +1,9 @@
 # Session State — updated 2026-07-26 (THE SEASON IS LIVE — first real squad built)
 
-*Handoff snapshot. Read this first, then `decisions/gw01.md` for the live squad,
-`NEXT-STEPS-IMPLEMENTATION.md` for the buildable backlog, and
-`reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge.*
+*Handoff snapshot. Read this first, then `decisions/gw01.md` for the live squad and
+`reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge. The build
+plan is COMPLETE — `PLAN.md` and `NEXT-STEPS-IMPLEMENTATION.md` were retired 2026-07-26;
+what little remains buildable is folded into "Older backlog" below.*
 
 ## THE BIG CHANGE: we are no longer in backtest — 2026/27 is open
 
@@ -42,6 +43,9 @@ opportunity-cost fade (2.10 pts/£m vs Mbeumo's 2.72), tested across five solves
 returners actually start, and it lands 5 days before the deadline. Re-solve after it.
 
 ## A3 + A4 shipped (2026-07-25, merged to main), both ADVISORY
+*(Update 2026-07-26: A4 has since PASSED its acceptance run — see "Older backlog" below
+and `reports/backtest/2025-26/a4-followpath-verdict.md`. The "do not turn it on yet"
+below is preserved as written; the edge floor it asked for now exists and is on.)*
 
 Two Opus agents in isolated worktrees, merged and independently re-verified by the
 orchestrator. **103 tests green** (was 67); ruff at its 34-finding baseline, zero new.
@@ -168,23 +172,26 @@ merged clean):**
 4. **The weekly all-team report has still never run** (`/fpl-team-week-report`) — it is a
    first-class deliverable per CLAUDE.md and the season is now live.
 
-### Older backlog (pre-season, still valid)
+### Older backlog (pre-season) — CLEARED 2026-07-26
 
-A1/A2/A8 and now A3/A4 are DONE — the buildable backlog is essentially cleared, but **A4 shipped
-unproven**. In order (see `NEXT-STEPS-IMPLEMENTATION.md` "Suggested order"):
-1. **Prove A4 before trusting it.** Add a per-move minimum-edge floor (and consider lowering
-   `MAX_MOVES_PER_GW`), then re-simulate GW17-24 with `follow_path=True` and compare against the
-   +56 the hand-written `plan.md` path actually made. A model-derived path that churns is worse
-   than the overlay it replaces — its first real proposal already churned.
+The build plan is complete; `PLAN.md` and `NEXT-STEPS-IMPLEMENTATION.md` were retired
+(deleted) once every A item closed. For the record and for what little remains:
+1. ~~**Prove A4 before trusting it**~~ — **DONE, PASS** (2026-07-26). The per-move edge floor
+   (`MOVE_EDGE_FLOOR`, 0.5 decayed pts) shipped, and GW17-24 was re-simulated with
+   `follow_path=True` from a reconstructed, cross-checked GW17 entry state: **floored path
+   438 vs the hand-written 439** (+59 vs the field's +60), zero hits; unfloored churned every
+   week for 432, so the floor's value is measured at +6. A4 is now an evidence-backed
+   advisory; `follow_path` stays opt-in and the manager keeps the veto. Full verdict and
+   caveats: `reports/backtest/2025-26/a4-followpath-verdict.md`; runner:
+   `notebooks/a4_followpath_gw17_24.py`.
 2. **Optional backtest continuation** — GW25-26 would fire the FIRST live chip in-sim
-   (**TC-Rice on the confirmed Arsenal DGW26**), and GW31 the BGW (a Free Hit/WC trigger). The
-   chip mechanics + timing surface are built and waiting for a DGW/BGW to actually play one.
-   This doubles as the A4 proving ground and would exercise A3's loop per week.
-3. **A5/A6/A7** (data-source clients, Minutes v2 LightGBM, the never-run weekly team report) —
-   A7 in particular: `reports/weekly/` is still EMPTY and `team_week.py` has produced zero
-   output, yet it is a first-class deliverable per CLAUDE.md.
-4. **B / time-gated** items when the season opens (rules verification, automation arming). The
-   network half is no longer a blocker on this machine — only the season opening is.
+   (**TC-Rice on the confirmed Arsenal DGW26**), and GW31 the BGW (a Free Hit/WC trigger).
+   Also the natural second window for A4 plan-stability evidence.
+3. **A5 (data-source clients)** — the one unstarted A item; add breadth as the season demands.
+4. **Automation arming (Phase 5)** — scheduled sessions (daily refresh/news, Monday reports,
+   T-48h/24h/2h deadline runs, post-GW review). Everything it depends on now exists.
+5. **Verify A3's live-actuals path** — `--actuals live` has still never made a real API call;
+   GW1 completing (~22 Aug) is the first honest chance.
 
 ## Backtest scoreboard (2025/26 replay)
 
