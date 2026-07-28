@@ -1,0 +1,397 @@
+{
+ "430": {
+  "start_share": 0.0,
+  "reason": "Erling Haaland (Man City FWD): NO FIXTURE — Man City BLANK in GW34 (OUR PLAYER, our captain-by-default). Man City reached the FA Cup semi-final (4-0 v Liverpool in the quarter-final) and play SOUTHAMPTON at Wembley on the weekend of Sat 25 / Sun 26 April, the exact weekend of GW34. Their league fixture at home to Burnley was REMOVED from GW34 and moved into DGW33 (played in the 21-23 April midweek window) — premierleague.com state this explicitly. This is not a doubt, a rotation call or an injury: it is a structural zero, confirmed publicly on 5-6 April when the quarter-finals resolved, i.e. ~3 weeks before our deadline. start_share 0.0 with duration_gws 1 encodes 'no match this week, clean from GW35'. THIS IS THE HEART OF THE WEEK FOR US: Haaland is the single largest hole a Free Hit repairs, and the armband has nowhere to go inside our own squad without a chip. Data-hygiene: the FA Cup semi-final result (25/26 Apr) and every GW34 scoreline are post-deadline and excluded. Sources: premierleague.com 'Which clubs have a confirmed DGW33 and BGW34 after FA Cup ties' (4624106, ~5-6 Apr) and 'Double Gameweek 33 and Blank Gameweek 34 confirmed for up to eight clubs' (4623958, ~2-3 Apr); thefa.com FA Cup semi-final draw (5 Apr 2026); FFScout 'FPL in 5 minutes: All you need to know about Blank Gameweek 34' (24 Apr).",
+  "duration_gws": 1
+ },
+ "220": {
+  "start_share": 0.0,
+  "reason": "Robert Sanchez (Chelsea GKP): NO FIXTURE — Chelsea BLANK in GW34 (OUR PLAYER). Chelsea beat third-tier Port Vale 7-0 in the FA Cup quarter-final and meet LEEDS UNITED in the semi-final at Wembley on the GW34 weekend; their league game against Brighton was pulled forward into DGW33 (Chelsea doubled v Man Utd and Brighton). Structural zero, confirmed 5-6 April. Note the standing knowledge.md rule this player generated at GW29 ('an unsourced goalkeeper is a banned buy') — the point is moot here: he cannot play. If we do NOT free-hit, the GK slot is a forced transfer. Data-hygiene: the semi-final result and all GW34 outcomes are post-deadline. Sources: premierleague.com 4624106 / 4623958; thefa.com semi-final draw 5 Apr; FFScout BGW34 primer 24 Apr.",
+  "duration_gws": 1
+ },
+ "237": {
+  "start_share": 0.0,
+  "reason": "Enzo Fernandez (Chelsea MID): NO FIXTURE — Chelsea BLANK in GW34 (OUR PLAYER). Same cause as Sanchez: Chelsea are FA Cup semi-finalists (v Leeds, Wembley, 25/26 Apr) and their GW34 league fixture v Brighton was moved into DGW33. Nothing about his fitness or form is in question — pre-deadline previews have Chelsea losing 1-0 at home to Man Utd in that midweek double (Cunha), with no Enzo flag. A pure calendar zero. Data-hygiene: post-deadline results excluded. Sources: premierleague.com 4624106 / 4623958; Sports Mole / football365 Man Utd v Brentford previews 23-24 Apr (Man Utd 'picked up a huge three points away to Chelsea last time out').",
+  "duration_gws": 1
+ },
+ "72": {
+  "start_share": 0.0,
+  "reason": "Marcos Senesi (Bournemouth DEF): NO FIXTURE — Bournemouth BLANK in GW34 (OUR PLAYER). Bournemouth are not in the cup: they blank because their GW34 OPPONENTS, Leeds United, are FA Cup semi-finalists, so the fixture was pulled forward and Bournemouth doubled in GW33 instead ('Leeds and AFC Bournemouth also have two matches in Gameweek 33'). This is the mechanism the manager must understand: a blank is caused by your opponent's cup run as often as your own. Structural zero. Bournemouth sit 7th in pre-deadline reporting, one point above Brentford. Data-hygiene: all GW34 outcomes post-deadline. Sources: premierleague.com 4624106 / 4623958; FFScout BGW34 primer 24 Apr.",
+  "duration_gws": 1
+ },
+ "691": {
+  "start_share": 0.0,
+  "reason": "Dominic Calvert-Lewin (Leeds FWD): NO FIXTURE — Leeds BLANK in GW34 (OUR PLAYER). Leeds knocked West Ham out in the FA Cup quarter-final (the tie after which Ally McCoist made the semi-final draw live from the London Stadium on Sun 5 April) and face Chelsea at Wembley on the GW34 weekend. Their league game v Bournemouth was moved into DGW33. Structural zero. Data-hygiene: the semi-final and all GW34 results are post-deadline. Sources: thefa.com 'See the 2025-26 Emirates FA Cup semi-final draw in full' (5 Apr 2026); premierleague.com 4624106; mancity.com 'City draw Southampton in FA Cup semi-final' (5 Apr).",
+  "duration_gws": 1
+ },
+ "470": {
+  "start_share": 0.0,
+  "reason": "Martin Dubravka (Burnley GKP): NO FIXTURE — Burnley BLANK in GW34 (OUR PLAYER, our bench keeper). Burnley blank for the opponent-side reason: their GW34 game was AWAY AT MAN CITY, and because City are semi-finalists premierleague.com confirm 'Man City's league match against Burnley has been removed from Gameweek 34 and moved into Gameweek 33 instead' — it was played in the 21-23 April midweek window. Structural zero. WITH SANCHEZ ALSO BLANKING, WE HAVE NO PLAYABLE GOALKEEPER IN GW34: that alone forces either the Free Hit or a transfer, and it is the cleanest single argument on the board for the chip. Data-hygiene: all GW34 outcomes post-deadline. Sources: premierleague.com 4624106 / 4623958; FFScout BGW34 primer 24 Apr.",
+  "duration_gws": 1
+ },
+ "82": {
+  "start_share": 0.0,
+  "reason": "Antoine Semenyo (Man City MID): NO FIXTURE — Man City BLANK (not owned; the season's most-transferred-in asset and ~57% owned at GW29). Named here because he is the single biggest EFFECTIVE-OWNERSHIP zero of the week: a very large share of the field is carrying him alongside Haaland into a week where both score nothing, which is precisely why the community reads BGW34 as a levelling week rather than a rank-loss week for us. BAN any model-proposed buy this week. Data-hygiene: post-deadline results excluded. Sources: premierleague.com 4624106; premierleague.com 'Six teams don't play! How to navigate Blank Gameweek 34 in FPL' (4637691, ~22-23 Apr).",
+  "duration_gws": 1
+ },
+ "260": {
+  "start_share": 0.0,
+  "reason": "Marc Guehi (Man City DEF): NO FIXTURE — Man City BLANK. A popular mid-price defender on our own board (£5.2m, horizon 19.29 at GW30) and exactly the sort of asset the archive-blind optimizer will propose buying into a week with no game. BAN. Data-hygiene: post-deadline results excluded. Sources: premierleague.com 4624106 / 4623958.",
+  "duration_gws": 1
+ },
+ "235": {
+  "start_share": 0.0,
+  "reason": "Cole Palmer (Chelsea MID): NO FIXTURE — Chelsea BLANK (FA Cup semi-final v Leeds). £10.6m at GW30 and a recurring optimizer proposal; a hard BAN this week. Data-hygiene: post-deadline results excluded. Sources: premierleague.com 4624106; thefa.com semi-final draw 5 Apr.",
+  "duration_gws": 1
+ },
+ "226": {
+  "start_share": 0.0,
+  "reason": "Trevoh Chalobah (Chelsea DEF): NO FIXTURE — Chelsea BLANK. Listed because he sits high on our xPts-per-million defender board (£5.6m, horizon 18.22) and is a standing buy candidate; this week he is a zero. BAN. Data-hygiene: post-deadline results excluded. Sources: premierleague.com 4624106.",
+  "duration_gws": 1
+ },
+ "151": {
+  "start_share": 0.0,
+  "reason": "Jan Paul van Hecke (Brighton DEF): NO FIXTURE — Brighton BLANK. Brighton are not in the cup either: they blank because their GW34 opponents CHELSEA are semi-finalists, so the fixture was pulled into DGW33. A cheap defender the model likes (£4.4m); BAN this week. Data-hygiene: post-deadline results excluded. Sources: premierleague.com 4624106 / 4623958; FFScout BGW34 primer 24 Apr.",
+  "duration_gws": 1
+ },
+ "5": {
+  "start_share": 0.9,
+  "reason": "Gabriel Magalhaes (Arsenal DEF): THE most-backed asset of Blank Gameweek 34 and one of only nine of our fifteen who even have a fixture (OUR PLAYER). Arsenal are HOME to Newcastle (Sat 25 Apr 17:30 BST, Sky). He is backed by ALL FOUR Fantasy Football Scout Squad panellists — 'Arsenal are one of the favourites for a clean sheet when they host Newcastle United' — and is in premierleague.com's official BGW34 Scout Selection as part of an Arsenal TRIPLE-UP (Raya, Gabriel, Eze). £7.1m. Set-piece threat plus DefCon floor is the stated case. The two honest haircuts: (a) Arsenal have lost BACK-TO-BACK league games to Bournemouth and Man City and have surrendered top spot, so the mood and the defensive form are not what they were; (b) their UEFA CHAMPIONS LEAGUE SEMI-FINAL FIRST LEG away at Atletico Madrid is on WED 29 APRIL, four days after this game — but a centre-back in a clean-sheet-favourite home fixture is the last man Arteta rests, and Arteta's Thursday update was about returns (Saka, Calafiori) not absences beyond Timber and Merino. HOLD/START. Data-hygiene: the confirmed Arsenal XI v Newcastle (lastwordonsports, published 25 Apr, ~19h after the deadline), the result, and Arsenal's UCL semi-final outcome are ALL post-deadline and excluded. Sources: FFScout 'The Scout Squad: Our top picks for FPL Gameweek 34' (23 Apr) + 'FPL Gameweek 34 Scout Picks: Three double-ups in Free Hit XI' (24 Apr); premierleague.com 'Scout Selection: Best Fantasy team for Blank Gameweek 34' (4638940, 24 Apr); FFScout GW34 team news Thursday 23 Apr / Friday 24 Apr; arsenal.com + uefa.com UCL semi-final dates (29 Apr / 5 May).",
+  "duration_gws": 1
+ },
+ "21": {
+  "start_share": 0.85,
+  "reason": "Declan Rice (Arsenal MID): expected to start HOME to Newcastle (Sat 25 Apr 17:30) and one of our nine playing assets (OUR PLAYER). Pre-deadline predicted XIs name him in a midfield three with Odegaard and Zubimendi — 'Arteta may consider rotating his midfield to find more balance after the City defeat, with Odegaard and Rice expected to anchor the middle of the park'. No fitness flag attached to him in Arteta's Thursday 23 April update (the named items were Saka RETURNING, Calafiori RETURNING, Timber OUT, Merino still unavailable). £7.4m at GW30. 0.85 rather than 0.9 carries a single specific tail: the UCL semi-final first leg at Atletico Madrid on Wed 29 April is four days later and Rice is the one Arsenal midfielder Arteta might protect — but with Merino out and the midfield already thin, and Arsenal chasing a title they have just lost the lead in, resting him is the less likely branch. HOLD/START. Data-hygiene: the confirmed XI (25 Apr) and result are post-deadline. Sources: Yahoo Sports / si.com / OneFootball 'Arsenal vs Newcastle predicted lineup and team news' (23-24 Apr); FFScout GW34 team news Thursday 23 Apr; uefa.com UCL semi-final calendar.",
+  "duration_gws": 1
+ },
+ "1": {
+  "start_share": 0.92,
+  "reason": "David Raya (Arsenal GKP): the consensus premium keeper of BGW34 and a genuine BUY candidate for us given BOTH our keepers blank. £6.0m, HOME to Newcastle (Sat 25 Apr 17:30). He is in premierleague.com's official BGW34 Scout Selection (part of the Arsenal triple-up with Gabriel and Eze) and is one of the eight names the FFScout Scout Squad picked FOUR times out of four. Arsenal are the bookmakers' clean-sheet favourite of the round, and Newcastle arrive WITHOUT Anthony Gordon (has not trained all week) and WITHOUT Tino Livramento (injured v Bournemouth, further scan due). 0.92 — as close to nailed as this board gets; keepers do not get rotated for a Wednesday European tie four days out. NOT OWNED: he is the expensive route to a GK; Hermansen (£4.2m, West Ham) is the budget route the Scout Squad also named. Data-hygiene: the confirmed XI and result are post-deadline. Sources: premierleague.com Scout Selection BGW34 (4638940, 24 Apr); FFScout Scout Squad GW34 (23 Apr); FFScout GW34 team news Thu 23 / Fri 24 Apr.",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.85,
+  "reason": "William Saliba (Arsenal DEF): named in every pre-deadline predicted XI for the Newcastle game (Raya; White, Saliba, Gabriel, Hincapie; Odegaard, Zubimendi, Rice; Madueke, Havertz, Eze) with no fitness flag in Arteta's Thursday 23 April update. £6.1m at GW30 — materially cheaper than Gabriel and the same clean sheet. 0.85 rather than 0.90 only for the Atletico Madrid semi-final first leg on Wed 29 April and the fact that Arsenal's back line has just conceded in consecutive defeats. NOT OWNED (sold in the run-in reshape); a legitimate Free Hit defender if the memo wants Arsenal cover cheaper than £7.1m. Data-hygiene: confirmed XI and result post-deadline. Sources: Yahoo Sports / si.com Arsenal v Newcastle predicted lineups 23-24 Apr; FFScout GW34 team news 23 Apr.",
+  "duration_gws": 1
+ },
+ "266": {
+  "start_share": 0.82,
+  "reason": "Eberechi Eze (Arsenal MID): the THIRD leg of the official Scout Selection's Arsenal triple-up for BGW34 (Raya + Gabriel + Eze), HOME to Newcastle (Sat 25 Apr 17:30). He is named in the pre-deadline predicted XI in the front three alongside Madueke and Havertz. The case is fixture and personnel: Newcastle are missing Gordon and Livramento, Arsenal are at home and are the round's clean-sheet favourite, and with Saka only just back in the squad (bench more likely) Eze is the settled creator. 0.82 docks the Champions League semi-final first leg at Atletico on Wed 29 Apr — attacking midfield is precisely where Arteta has the option to manage minutes, and Saka's return adds a competitor. NOT OWNED; a live Free Hit midfielder. Data-hygiene: the confirmed XI and result are post-deadline. Sources: premierleague.com Scout Selection BGW34 (4638940, 24 Apr); Yahoo Sports Arsenal v Newcastle predicted lineup 23-24 Apr; FFScout GW34 team news 23 Apr.",
+  "duration_gws": 1
+ },
+ "17": {
+  "start_share": 0.8,
+  "reason": "Martin Odegaard (Arsenal MID): back in the frame and named in the pre-deadline predicted XI to 'anchor the middle of the park' with Rice, with Zubimendi completing the midfield three, HOME to Newcastle (Sat 25 Apr 17:30). This is a material change from the GW29 picture where he was 'to be assessed' with a knee problem — by late April he is a starter again. 0.80 rather than 0.85 for the standard Arsenal four-days-to-a-UCL-semi-final tail plus a returning player's load management. Not owned; a differential Free Hit midfielder rather than a template one. Data-hygiene: confirmed XI post-deadline. Sources: Yahoo Sports / si.com Arsenal v Newcastle predicted lineups 23-24 Apr.",
+  "duration_gws": 1
+ },
+ "16": {
+  "start_share": 0.3,
+  "reason": "Bukayo Saka (Arsenal MID): RETURNING BUT NOT EXPECTED TO START. Arteta confirmed on Thursday 23 April that 'Saka has returned to the squad', but pre-deadline reporting is explicit that 'his involvement is expected to be measured, with a place on the bench more likely as Arsenal manage his reintegration carefully', and he is NOT in the predicted XI (Madueke, Havertz and Eze are the front three). With a Champions League semi-final first leg at Atletico Madrid on Wed 29 April, the incentive to reintroduce him gently is obvious. 0.30 prices a likely bench cameo. £9.8m at GW30 — an expensive way to buy 25 minutes. BAN as a Free Hit buy; the archive-blind model will keep his status at 'a' and rate him on season-long form. Data-hygiene: the confirmed XI is post-deadline. Sources: FFScout 'FPL Gameweek 34 team news: Thursday's live injury updates' (23 Apr); Yahoo Sports Arsenal v Newcastle predicted lineup 23-24 Apr; premierleague.com 'The Briefing: Arsenal's injury boost, Liverpool's goalkeeper situation and more' (4639292, 24 Apr).",
+  "duration_gws": 1
+ },
+ "8": {
+  "start_share": 0.02,
+  "reason": "Jurrien Timber (Arsenal DEF): OUT. Arteta's Thursday 23 April update, as reported by FFScout and the pre-deadline previews, is unambiguous — 'Timber is out for Arsenal' and 'Jurrien Timber is not in the squad' for the Newcastle game. No return date was published pre-deadline, so duration_gws = 2 is an honest short-multi-week scope rather than a one-week hole; Hincapie and Ben White are the named alternatives in the predicted back four. NOT OWNED (sold at GW28 for Virgil) — but he is a standing optimizer proposal at £6.3m with a strong horizon number, so this is an explicit BAN. Note the through-line: he was also injured in mid-March (forced off v Everton, GW30), so this is a recurring rather than a fresh problem. Data-hygiene: none material. Sources: FFScout GW34 team news Thursday 23 Apr; Yahoo Sports / si.com Arsenal v Newcastle previews 23-24 Apr.",
+  "duration_gws": 2
+ },
+ "22": {
+  "start_share": 0.02,
+  "reason": "Mikel Merino (Arsenal MID): OUT — pre-deadline previews for the Newcastle game state he 'is also unavailable and still progressing in recovery phases'. This is the continuation of the foot surgery he underwent in late January, which our own GW26 overlay already recorded as OUT FOR THE SEASON. A player still described in late April as 'progressing in recovery phases' has no plausible return before GW38, so duration_gws = 5 covers GW34-38 — the safety default here is the LONG scope, because a structural absence that 'recovers' in the horizon is the classic overlay defect. Not owned; BAN any model-proposed buy (the archive-blind model keeps status 'a'). His absence is also the reason Rice and Odegaard are near-locks in Arsenal's midfield. Data-hygiene: none material. Sources: Yahoo Sports / si.com Arsenal v Newcastle predicted lineup and team news 23-24 Apr; our own GW26 overlay entry (Merino foot surgery, out for the season); Arsenal injury reporting (Jan).",
+  "duration_gws": 5
+ },
+ "666": {
+  "start_share": 0.4,
+  "reason": "Viktor Gyokeres (Arsenal FWD): NOT in the pre-deadline predicted XI for the Newcastle game — Kai Havertz is named as the central forward in a front three with Madueke and Eze. £8.8m at GW30 and no longer a Scout Selection name in a week when the Scout tripled up on Arsenal (Raya, Gabriel, EZE, not Gyokeres). 0.40 prices a striker who is fit but out of the predicted first choice, in a squad four days from a Champions League semi-final. Not owned; BAN as a Free Hit buy — paying £8.8m for a 40% start in a one-week chip is the worst shape of risk there is. Data-hygiene: the confirmed XI is post-deadline. Sources: Yahoo Sports Arsenal v Newcastle predicted lineup 23-24 Apr; premierleague.com Scout Selection BGW34 (4638940).",
+  "duration_gws": 1
+ },
+ "485": {
+  "start_share": 0.02,
+  "reason": "Anthony Gordon (Newcastle MID): OUT. FFScout's Thursday 23 April team-news blog and the pre-deadline previews for Arsenal away are explicit: 'Anthony Gordon won't make the game, as he hasn't trained this week, though it's not a serious injury.' A player who has not trained all week 48h before kick-off is a zero, and the 'not serious' framing means the absence is short — duration_gws = 1, with GW35 clean. £7.2m at GW30. Not owned; BAN as a Free Hit buy (he is exactly the name a form model would surface). Data-hygiene: the confirmed Newcastle XI (25 Apr) is post-deadline. Sources: FFScout 'FPL Gameweek 34 team news: Thursday's live injury updates' (23 Apr); Yahoo Sports / si.com Arsenal v Newcastle team news 23-24 Apr.",
+  "duration_gws": 1
+ },
+ "714": {
+  "start_share": 0.75,
+  "reason": "Nick Woltemade (Newcastle FWD): expected to lead the line AWAY at Arsenal (Sat 25 Apr 17:30) in a Newcastle side stripped of Gordon (not trained all week) and Livramento (injured v Bournemouth, further scan due). £6.7m at GW30. With the two named absentees both attacking/wide players, the fit forwards pick themselves — that is the reason this sits at 0.75 despite a hostile fixture. It is also the reason NOT to buy: the Emirates against the round's clean-sheet favourite is the single worst attacking spot on a seven-game board. Not owned; watch-only. Data-hygiene: the confirmed Newcastle XI and result are post-deadline. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr; Yahoo Sports / OneFootball Arsenal v Newcastle previews 23-24 Apr.",
+  "duration_gws": 1
+ },
+ "488": {
+  "start_share": 0.8,
+  "reason": "Bruno Guimaraes (Newcastle MID): available and expected to start AWAY at Arsenal — the nine-week hamstring absence that dominated our GW29-31 planning is long resolved by late April, and no fresh flag attaches to him in FFScout's Thursday 23 April or Friday 24 April blogs (the named Newcastle items are Gordon and Livramento). £6.8m at GW30. 0.80 is a straightforward captain-of-a-mid-table-side number with a small load tail. NOT a Free Hit candidate: Newcastle away at the clean-sheet favourite is a bottom-of-the-board attacking fixture, and the whole point of a one-week chip is to buy the seven best FIXTURES, not the seven best players. Data-hygiene: the confirmed XI and result are post-deadline; so is anything about Newcastle's final league position. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr; Yahoo Sports Arsenal v Newcastle preview 23-24 Apr.",
+  "duration_gws": 1
+ },
+ "373": {
+  "start_share": 0.9,
+  "reason": "Virgil van Dijk (Liverpool DEF): one of the eight names picked by ALL FOUR FFScout Scout Squad panellists for BGW34 and the consensus non-Arsenal premium defender (OUR PLAYER). Liverpool are HOME to Crystal Palace (Sat 25 Apr, 15:00 BST). £6.2m. The stated case: 'a menace at set plays, with clean sheet and defensive contribution (DefCon) point potential also falling in their favour', and he has already scored FOUR times this season. Liverpool are chasing a top-five finish — pre-deadline reporting says 'three wins from their final five outings would seal a top-five finish' after a stoppage-time win at Everton — so there is real motivation and NO European fixture left (Liverpool were eliminated from the Champions League by PSG in the quarter-finals; Man City knocked them out of the FA Cup 4-0). Zero congestion. THE ONE CAUTION, and it is a real one: CRYSTAL PALACE HAVE ALREADY BEATEN LIVERPOOL THREE TIMES THIS SEASON — Community Shield, EFL Cup and the reverse league fixture — so the clean-sheet premise is doing more work than the odds suggest, and knowledge.md's standing caution on pure-CS duel names applies. HOLD/START. Data-hygiene: liverpoolfc.com's 'Confirmed Liverpool line-up v Crystal Palace' (25 Apr) and the result are post-deadline and excluded. Sources: FFScout Scout Squad GW34 (23 Apr) + Scout Picks GW34 (24 Apr); FFScout 'Best Free Hit team for FPL Blank Gameweek 34' (20 Apr); si.com / Yahoo Sports Liverpool v Crystal Palace previews 24 Apr.",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.85,
+  "reason": "Ibrahima Konate (Liverpool DEF): expected to partner Van Dijk HOME to Crystal Palace (Sat 25 Apr 15:00) — the same pairing pre-deadline previews have described as continuing 'largely due to limited alternatives' all season (OUR PLAYER). £5.5m at GW30, materially cheaper than his partner and on the same clean sheet. No fitness flag in FFScout's Thursday 23 April or Friday 24 April blogs; Liverpool's named problems this week are both goalkeepers (Mamardashvili out for weeks, Alisson a muscle doubt), not the back four. Liverpool have NO remaining European or domestic cup commitment — eliminated by PSG in the UCL quarter-final and by Man City in the FA Cup — so rotation pressure is at its season low. 0.85 carries the same Palace-have-beaten-us-three-times caveat as Van Dijk. HOLD/START. Data-hygiene: the confirmed Liverpool XI (25 Apr) and the result are post-deadline. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr; si.com 'Liverpool XI vs Crystal Palace' preview 24 Apr; uefa.com UCL quarter-final results.",
+  "duration_gws": 1
+ },
+ "367": {
+  "start_share": 0.02,
+  "reason": "Giorgi Mamardashvili (Liverpool GKP): OUT and the most clearly datable absence of the round. FFScout's Friday 24 April team-news blog: 'Giorgi Mamardashvili (leg wound) will definitely miss the visit of Crystal Palace this weekend and will be out for weeks beyond it.' 'Weeks' with no return date is a multi-week hole — duration_gws = 3. Not owned; BAN any model-proposed buy. This is the entry that makes the whole Liverpool goalkeeper slot untouchable for a Free Hit. Data-hygiene: the confirmed XI naming his replacement is post-deadline; only Slot's own pre-deadline briefing is used. Sources: FFScout 'FPL Gameweek 34 team news: Friday's live injury updates' (24 Apr); premierleague.com 'The Briefing: Arsenal's injury boost, Liverpool's goalkeeper situation and more' (4639292, 24 Apr).",
+  "duration_gws": 3
+ },
+ "366": {
+  "start_share": 0.3,
+  "reason": "Alisson Becker (Liverpool GKP): a genuine, unresolved DOUBT — and the reason a Liverpool keeper is a BANNED buy this week under the standing rule that 'an unsourced goalkeeper is a banned buy, not a discounted one' (knowledge.md, the Sanchez lesson from GW29). FFScout's Friday 24 April blog: Alisson (muscle) 'is not yet ruled out of Saturday's match, despite not being pictured in full team training on Wednesday. Freddie Woodman would likely start, as hinted by manager Arne Slot.' So the pre-deadline read is: probably not Alisson, probably an untested third-choice, and no certainty either way before 18:30 BST. 0.30 is deliberately wide. The consequence for a Free Hit is decisive — Liverpool's clean sheet is a fine bet through VAN DIJK or KONATE and a terrible one through the goalkeeper slot. Data-hygiene: the confirmed line-up (Woodman starting, 25 Apr) and si.com's 'Untested Goalkeeper Starts' piece are POST-deadline and are named here only to show what was withheld; Slot's pre-deadline hint alone sets this number. Sources: FFScout GW34 team news Friday 24 Apr; premierleague.com The Briefing 4639292 (24 Apr).",
+  "duration_gws": 2
+ },
+ "381": {
+  "start_share": 0.85,
+  "reason": "Mohamed Salah (Liverpool MID): picked THREE times out of four by the FFScout Scout Squad for BGW34 and one of the most-recommended premium attackers of the round, HOME to Crystal Palace (Sat 25 Apr 15:00). ~£14.0m at GW30. Liverpool have no European or cup football left (out of the UCL to PSG, out of the FA Cup to Man City 4-0) and are three wins from sealing a top-five finish, so the motivation and the rotation picture both point the same way for the first time in months. 0.85 keeps a small 33-year-old load tail and the recurring reality that Slot has rotated the front line all season. The counter-argument the memo must weigh: Palace have beaten Liverpool THREE times already this season, and at £14m he consumes a quarter of a Free Hit budget in a week where the value is in £4-7m one-week assets. Data-hygiene: the confirmed XI and result are post-deadline. Sources: FFScout Scout Squad GW34 (23 Apr); FFScout Scout Picks GW34 (24 Apr, doubles up on Liverpool); si.com Liverpool v Crystal Palace preview 24 Apr.",
+  "duration_gws": 1
+ },
+ "382": {
+  "start_share": 0.75,
+  "reason": "Florian Wirtz (Liverpool MID): in the frame to start HOME to Crystal Palace (Sat 25 Apr 15:00) — £8.3m at GW30. FFScout's GW34 Scout Picks double up on Liverpool, and with no European or cup commitment left Slot has a fully available squad and a straight top-five run-in. 0.75 rather than 0.85 is an honest rotation haircut: Liverpool's attacking midfield (Wirtz, Szoboszlai, Gakpo, Jones, Mac Allister, Gravenberch) is the most interchangeable unit in the league and no pre-deadline source pins the exact eleven. Not owned; a plausible but not consensus Free Hit midfielder. Data-hygiene: the confirmed line-up (25 Apr) is post-deadline and is NOT used to sharpen this number — that is exactly the hindsight that would make it falsely precise. Sources: FFScout Scout Picks GW34 (24 Apr); si.com / Yahoo Sports Liverpool v Crystal Palace previews 24 Apr.",
+  "duration_gws": 1
+ },
+ "499": {
+  "start_share": 0.5,
+  "reason": "Alexander Isak (Liverpool FWD): a genuinely UNRESOLVED striker call and a deliberately wide number. £10.3m. Our own board had him almost dormant at GW30 (xpts_gw30 1.26 — a suppressed, barely-playing asset), but by late April he is back in the Liverpool forward picture for the Palace game. I could NOT source a pre-deadline statement separating him from Ekitike for the starting berth: FFScout's Thursday and Friday blogs name Liverpool's goalkeepers as the club's only listed items, and the Scout Squad's three-pick Liverpool name is SALAH, not a striker. 0.50 is the honest price of a two-into-one slot with no pre-deadline resolution. BAN as a Free Hit buy — a £10.3m coin-flip is the worst possible use of a one-week chip. Data-hygiene: the confirmed Liverpool XI of 25 April (which resolves this call) is POST-deadline and is explicitly excluded; naming it here is the audit trail, not the input. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr (no Liverpool forward listed); FFScout Scout Squad GW34 (23 Apr).",
+  "duration_gws": 1
+ },
+ "661": {
+  "start_share": 0.5,
+  "reason": "Hugo Ekitike (Liverpool FWD): the other half of the unresolved Liverpool striker call, priced symmetrically with Isak at 0.50. He was the consensus captain of GW29 at £9.0m; by GW34 he is not a Scout Squad pick and no pre-deadline source I can date confirms him as the starter against Crystal Palace. Two fit strikers, one slot, and nothing published before 18:30 BST that separates them — a wide honest number beats a confident one. Not owned; BAN as a Free Hit buy for the same reason as Isak. Data-hygiene: the 25 April confirmed XI is post-deadline and excluded. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr; FFScout Scout Squad GW34 (23 Apr); si.com Liverpool v Crystal Palace preview 24 Apr.",
+  "duration_gws": 1
+ },
+ "253": {
+  "start_share": 0.85,
+  "reason": "Dean Henderson (Crystal Palace GKP): nailed No.1 AWAY at Liverpool (Sat 25 Apr 15:00). £5.0m at GW30. Palace's headline pre-deadline fact is remarkable and cuts directly against the crowd: they have ALREADY BEATEN LIVERPOOL THREE TIMES THIS SEASON — the Community Shield, the EFL Cup and the reverse Premier League fixture. A keeper facing 25 shots at Anfield is a save-points proposition, not a clean-sheet one. The one rotation tail: Palace's UEFA CONFERENCE LEAGUE SEMI-FINAL FIRST LEG is away to Shakhtar Donetsk (in Krakow) on THU 30 APRIL, five days after this game — far enough away that Glasner has no reason to rest a goalkeeper. Not owned; a cheap contrarian Free Hit keeper if the memo wants save volume rather than a clean sheet. Data-hygiene: the confirmed XI, the result, and everything about Palace's later Conference League run (including the final) are post-deadline and excluded. Sources: si.com / Yahoo Sports Liverpool v Crystal Palace previews 24 Apr; cpfc.co.uk 'UEFA Conference League quarter-finals, semi-finals fixture details confirmed'; uefa.com UECL semi-final dates (30 Apr / 7 May).",
+  "duration_gws": 1
+ },
+ "256": {
+  "start_share": 0.82,
+  "reason": "Daniel Munoz (Crystal Palace DEF): expected to start AWAY at Liverpool (Sat 25 Apr 15:00). £5.9m at GW30 and one of the most attacking full-backs in the league — the profile that survives a hard fixture better than a pure clean-sheet defender. 0.82 docks a modest tail for the Conference League semi-final first leg at Shakhtar on Thu 30 April (five days later, so a real but small factor) and for Glasner's habit of rotating wing-backs across three competitions. Palace have beaten Liverpool three times already this season, which is the reason to look at Palace attackers at all in this fixture. Not owned. Data-hygiene: the confirmed XI and result are post-deadline; Palace's Conference League final is far post-deadline. Sources: si.com / Yahoo Sports Liverpool v Crystal Palace previews 24 Apr; cpfc.co.uk Conference League fixture-detail confirmation; uefa.com UECL calendar.",
+  "duration_gws": 1
+ },
+ "283": {
+  "start_share": 0.8,
+  "reason": "Jean-Philippe Mateta (Crystal Palace FWD): Palace's centre-forward and penalty taker, AWAY at Liverpool (Sat 25 Apr 15:00). £7.5m at GW30. The contrarian case is genuinely strong and fully pre-deadline: Palace have beaten Liverpool THREE times this season already (Community Shield, EFL Cup, reverse league fixture), so the 'Liverpool clean sheet' that the whole Scout Squad is buying through Van Dijk has a specific, datable counter-example attached to it. 0.80 rather than 0.85 for the Conference League semi-final first leg at Shakhtar Donetsk on Thu 30 April. Not owned; a legitimate differential Free Hit forward and one of the few ways to be on the OTHER side of the most-owned fixture of the week. Data-hygiene: the confirmed XI, the result and Palace's eventual Conference League triumph are all post-deadline. Sources: si.com Liverpool v Crystal Palace preview 24 Apr; cpfc.co.uk UECL fixture confirmation; uefa.com UECL semi-final dates.",
+  "duration_gws": 1
+ },
+ "267": {
+  "start_share": 0.78,
+  "reason": "Ismaila Sarr (Crystal Palace MID): expected to start AWAY at Liverpool (Sat 25 Apr 15:00). £6.3m at GW30. Palace's transition threat is the entire basis of their three wins over Liverpool this season, and Sarr is its sharpest expression. 0.78 prices two things honestly: Glasner rotates his front line across the Premier League and the Conference League more than most, and the semi-final first leg at Shakhtar is five days away. Not owned; a differential Free Hit midfielder. Data-hygiene: the confirmed XI and result are post-deadline. Sources: si.com / Yahoo Sports Liverpool v Crystal Palace previews 24 Apr; uefa.com UECL semi-final calendar.",
+  "duration_gws": 1
+ },
+ "449": {
+  "start_share": 0.92,
+  "reason": "Bruno Fernandes (Man Utd MID): THE CAPTAIN OF BLANK GAMEWEEK 34 by consensus, and the single most valuable asset we already own for this week (OUR PLAYER). premierleague.com's official BGW34 Scout Selection hands him the ARMBAND for the home game with Brentford; he is one of the eight names the FFScout Scout Squad picked four times out of four; and FFScout's Free Hit guide notes he 'is now only two Premier League assists away from equalling the record of 20 in a season, having registered at least one Fantasy assist in each of the last six Gameweeks'. Price has risen to £10.3m (from £9.9m at GW29). The rotation picture could not be cleaner: Man Utd are OUT of the FA Cup, have no European football, are 3rd in the table and EIGHT POINTS clear of 6th with a game in hand — they are playing for a finishing position they are close to securing, against a Brentford side missing seven players. The one thing to note is scheduling: the Man Utd v Brentford tie CLOSES the round (football365 describe it as concluding the latest round; one preview URL is dated 27 April), so if we captain him the VICE must be a Saturday certainty that can actually transfer. HOLD / START / STRONG CAPTAIN CANDIDATE. Data-hygiene: the confirmed XIs and result are post-deadline. Sources: premierleague.com 'Scout Selection: Best Fantasy team for Blank Gameweek 34' (4638940, 24 Apr); FFScout Scout Squad GW34 (23 Apr); FFScout 'Best Free Hit team for FPL Blank Gameweek 34' (20 Apr); Sports Mole / football365 Man Utd v Brentford previews 23-24 Apr; FFScout GW34 team news Thu 23 Apr (Carrick presser 17:30 Thursday).",
+  "duration_gws": 1
+ },
+ "119": {
+  "start_share": 0.85,
+  "reason": "Bryan Mbeumo (Man Utd MID): named in the pre-deadline predicted XI HOME to Brentford — 'Lammens; Dalot, Maguire, Heaven, Shaw; Casemiro, Mainoo; Mbeumo, Bruno Fernandes, Amad; Sesko' — against his former club. £8.7m at GW30. Man Utd have no cup or European commitments, sit 3rd and are eight points clear of 6th with a game in hand; Brentford arrive with SEVEN players ruled out (Carvalho, Milambo, Janelt, Rico Henry, DaSilva, Henderson, Furo). 0.85 rather than 0.88 for ordinary front-line rotation in a settled side with nothing to chase. Not owned; a credible Free Hit midfielder and the cheaper Man Utd route than the £10.3m captain. Data-hygiene: the confirmed XIs and result are post-deadline. Sources: Sports Mole 'Predicted XI for Red Devils including Harry Maguire, Amad Diallo decisions' (23-24 Apr); football365 Man Utd v Brentford preview; RotoWire GW34 preview.",
+  "duration_gws": 1
+ },
+ "457": {
+  "start_share": 0.8,
+  "reason": "Casemiro (Man Utd MID): named in the pre-deadline predicted midfield two with Mainoo, HOME to Brentford. £5.6m at GW30 and one of the better points-per-million midfielders on our board — the exact profile a Free Hit wants (a cheap enabler in a good fixture who frees budget for premiums elsewhere). No fitness flag in the pre-deadline previews; Man Utd's named items are Lisandro Martinez SUSPENDED and Leny Yoro possibly returning. 0.80 for the age-related load management visible all season. Data-hygiene: confirmed XI post-deadline. Sources: Sports Mole Man Utd predicted XI 23-24 Apr; football365 preview.",
+  "duration_gws": 1
+ },
+ "733": {
+  "start_share": 0.85,
+  "reason": "Senne Lammens (Man Utd GKP): named as the goalkeeper in the pre-deadline predicted XI HOME to Brentford, a Brentford side missing seven players. £5.0m at GW30. Man Utd have no cup or European fixtures and a settled back line bar Lisandro Martinez's suspension (Maguire and Heaven named as the centre-back pairing, Yoro possibly back). A credible mid-price Free Hit keeper if the memo prefers a clean-sheet-favourite alternative to Raya, but note the fixture closes the round, so his points land last. Data-hygiene: confirmed XI post-deadline. Sources: Sports Mole Man Utd predicted XI 23-24 Apr; football365 Man Utd v Brentford preview.",
+  "duration_gws": 1
+ },
+ "437": {
+  "start_share": 0.0,
+  "reason": "Lisandro Martinez (Man Utd DEF): SUSPENDED — pre-deadline previews for the Brentford game state plainly that he 'is unavailable for Manchester United due to suspension', with Harry Maguire and Ayden Heaven named as the centre-back pairing in his place. The offence plus explicit confirmation the ban applies to this fixture meets the knowledge.md verification standard (a ban needs the offence AND confirmation it is served, not an aggregator headline). duration_gws = 1 covers only the match we can evidence. Not owned; BAN. Data-hygiene: none material. Sources: Sports Mole 'Preview: Manchester United vs Brentford - prediction, team news, lineups' (23-24 Apr); football365 match preview.",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.85,
+  "reason": "Igor Thiago (Brentford FWD): one of the EIGHT most-backed players of BGW34 — picked four times out of four by the FFScout Scout Squad — and one of our nine playing assets (OUR PLAYER). AWAY at Man Utd in the fixture that closes the round. £7.2m at GW30. He is Brentford's nailed No.9 and their entire attacking output; Brentford are 9th, one point behind 7th-placed Bournemouth, with something still to play for. 0.85 rather than 0.88 for the fixture rather than the player: Old Trafford against a settled, motivated, cup-free Man Utd side chasing 3rd is a hard away game, and Brentford's SEVEN absentees (Carvalho knee, Milambo knee, Janelt ankle, Rico Henry thigh, DaSilva knee, Jordan Henderson, Furo groin) thin the supply line badly. HOLD/START, and he is the natural VICE-CAPTAIN only if the memo is happy for the vice to be in the round's last game. Data-hygiene: the confirmed XIs and result are post-deadline. Sources: FFScout Scout Squad GW34 (23 Apr); Sports Mole / football365 Man Utd v Brentford previews 23-24 Apr; RotoWire GW34 preview.",
+  "duration_gws": 1
+ },
+ "120": {
+  "start_share": 0.6,
+  "reason": "Kevin Schade (Brentford MID): a REAL SELECTION DOUBT and a live bench candidate (OUR PLAYER). £6.9m at GW30. He is NOT named in the pre-deadline predicted Brentford XI that I can source for Old Trafford — 'Kelleher; Kayode, Van den Berg, Collins, Lewis-Potter; Yarmoliuk, Jensen; Ouattara...' — although the version I obtained is truncated and does not resolve the full front three, so this is priced as uncertainty rather than exclusion. He carries no injury flag: Brentford's seven named absentees are Carvalho, Milambo, Janelt, Rico Henry, DaSilva, Jordan Henderson and Furo, none of them Schade. 0.60 is deliberately wide and honest — the source is incomplete, not negative. [PROCESS] if he ends up inside a thin XI, this is a hair that must resolve to an explicit start/bench TOKEN in the decision JSON, not prose (the GW27 Calvert-Lewin lesson). Data-hygiene: the confirmed Brentford XI is post-deadline. Sources: Sports Mole / football365 Man Utd v Brentford previews and predicted line-ups 23-24 Apr (Brentford absentee list); FFScout GW34 team news Thu 23 / Fri 24 Apr.",
+  "duration_gws": 1
+ },
+ "101": {
+  "start_share": 0.88,
+  "reason": "Caoimhin Kelleher (Brentford GKP): named as Brentford's goalkeeper in the pre-deadline predicted XI AWAY at Man Utd. £4.8m at GW30. A save-volume rather than clean-sheet proposition at Old Trafford against a side third in the table. Listed mainly as a cheap Free Hit enabler with a poor fixture — i.e. the sort of pick to REJECT: in a seven-fixture week the budget keeper should be in a good defensive spot (Hermansen at home to Everton, £4.2m) rather than merely cheap. Data-hygiene: confirmed XI post-deadline. Sources: Sports Mole / football365 Man Utd v Brentford predicted line-ups 23-24 Apr.",
+  "duration_gws": 1
+ },
+ "83": {
+  "start_share": 0.78,
+  "reason": "Dango Ouattara (Brentford MID): named in the pre-deadline predicted XI AWAY at Man Utd, in a front line thinned by Brentford's seven absentees. £6.0m at GW30. 0.78 is a modest haircut for a wide player in a hard away fixture whose side may set up conservatively. Not owned; a marginal Free Hit option at best — the fixture is the problem, not the player. Data-hygiene: confirmed XI post-deadline. Sources: Sports Mole Man Utd v Brentford predicted line-ups 23-24 Apr; football365 preview.",
+  "duration_gws": 1
+ },
+ "291": {
+  "start_share": 0.88,
+  "reason": "James Tarkowski (Everton DEF): AWAY at West Ham (Sat 25 Apr 15:00) and one of our nine playing assets (OUR PLAYER). £5.7m at GW30. Everton have no cup or European commitment and no fresh defensive flag in FFScout's Thursday 23 April or Friday 24 April blogs, so this is his usual near-nailed number. THE FIXTURE IS THE PROBLEM, NOT THE PLAYER: West Ham are described pre-deadline as having 'tightened up considerably under Nuno Espirito Santo, with two clean sheets in five on home turf', and BOTH SIDES OF THIS GAME ARE ON THE CONSENSUS FREE HIT BOARD (Hermansen and Mavropanos for West Ham; Beto for Everton) — so anyone owning Everton defence and West Ham defence is holding both ends of one 90 minutes. For us the correlation is direct: Tarkowski and Garner are both in this match. [PROCESS] a modest clean-sheet bet away from home, and knowledge.md's caution on pure-CS duel names applies — do not name this as the week's duel. HOLD/START. Data-hygiene: the confirmed XIs and result are post-deadline. Sources: FFScout GW34 team news Thu 23 Apr (Nuno presser 13:30 Thursday, 'West Ham should have a fully fit squad') and Fri 24 Apr; FFScout 'Best Free Hit team for FPL Blank Gameweek 34' (20 Apr).",
+  "duration_gws": 1
+ },
+ "303": {
+  "start_share": 0.8,
+  "reason": "James Garner (Everton MID): expected to start AWAY at West Ham (Sat 25 Apr 15:00) — no flag against him in FFScout's Thursday or Friday GW34 blogs, and Everton have no cup or European fixture (OUR PLAYER). £5.2m at GW30. 0.80 is ordinary midfield rotation risk in a settled side with nothing left to play for beyond position. He is our minimum-spend autosub insurance and, in a week where we can field only NINE players without a chip, that insurance is decisive rather than marginal: every one of our playing nine is effectively a forced starter. Note the correlation with Tarkowski — same match. Data-hygiene: confirmed XIs and result post-deadline. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr.",
+  "duration_gws": 1
+ },
+ "287": {
+  "start_share": 0.88,
+  "reason": "Jordan Pickford (Everton GKP): nailed No.1 AWAY at West Ham (Sat 25 Apr 15:00). £5.6m at GW30. No Everton fitness item appears in FFScout's Thursday or Friday GW34 blogs, and Everton have no cup or European commitment, so rotation risk is minimal. As a Free Hit keeper he is the mid-price alternative to Raya (£6.0m) and Hermansen (£4.2m); the drawback is that his fixture is the SAME one as West Ham's cheap keeper, and the crowd's consensus is that Nuno's West Ham are the better-defending side of the two at the London Stadium right now. Not owned. Data-hygiene: confirmed XIs and result post-deadline. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr; FFScout Best Free Hit team BGW34 (20 Apr).",
+  "duration_gws": 1
+ },
+ "290": {
+  "start_share": 0.85,
+  "reason": "Jarrad Branthwaite (Everton DEF): expected to partner Tarkowski AWAY at West Ham (Sat 25 Apr 15:00). No Everton item in FFScout's Thursday or Friday GW34 blogs. Not owned; a cheaper route to the same clean sheet as Tarkowski if the memo is building a Free Hit defence, though doubling Everton's defence in a game where West Ham are the better-rated defensive side is the wrong end of the fixture. Data-hygiene: confirmed XIs post-deadline. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr; FFScout Best Free Hit team BGW34 (20 Apr).",
+  "duration_gws": 1
+ },
+ "242": {
+  "start_share": 0.75,
+  "reason": "Kiernan Dewsbury-Hall (Everton MID): the differential we flagged at GW29 (£5.0m, ~3-5% owned then), AWAY at West Ham (Sat 25 Apr 15:00). No fitness flag in FFScout's Thursday or Friday GW34 blogs. 0.75 rather than 0.85 reflects that by late April our own board had him materially cooled (xpts_gw30 2.44 against 3.52 for Garner) and that Everton's attacking midfield has rotated; the Scout Squad's three-pick Everton name for BGW34 is BETO, not Dewsbury-Hall. Not owned; a marginal Free Hit option rather than the consensus one. Data-hygiene: confirmed XIs post-deadline. Sources: FFScout Scout Squad GW34 (23 Apr — Beto a three-pick name); FFScout GW34 team news Thu 23 / Fri 24 Apr.",
+  "duration_gws": 1
+ },
+ "679": {
+  "start_share": 0.85,
+  "reason": "Mads Hermansen (West Ham GKP): THE consensus BUDGET GOALKEEPER of Blank Gameweek 34 and the single cheapest way to fill the slot that both our keepers vacate. £4.2m, HOME to Everton (Sat 25 Apr 15:00). FFScout's Free Hit guide names him explicitly: 'partly selected in goal due to budget, but West Ham United have tightened up considerably under Nuno Espirito Santo, with two clean sheets in five on home turf', and he is the goalkeeper in FFScout's GW34 Scout Picks. Nuno confirmed at his Thursday 13:30 press conference that West Ham 'should have a fully fit squad to pick from for the home match with Everton' — the cleanest availability statement any manager gave this week. 0.85 rather than 0.9 for one reason only: I could not source an explicit pre-deadline confirmation that Hermansen rather than Areola is the starter, and knowledge.md's standing rule is that AN UNSOURCED GOALKEEPER IS A BANNED BUY, NOT A DISCOUNTED ONE (the GW29 Sanchez lesson, which cost us a zero). The Scout's selection of him is strong circumstantial evidence but not a team sheet — treat 0.85 as a flag to verify at T-2h, not as a licence. Data-hygiene: the confirmed XI and result are post-deadline. Sources: FFScout 'Best Free Hit team for FPL Blank Gameweek 34' (20 Apr); FFScout 'FPL Gameweek 34 Scout Picks: Three double-ups in Free Hit XI' (24 Apr); FFScout GW34 team news Thursday 23 Apr (Nuno presser).",
+  "duration_gws": 1
+ },
+ "624": {
+  "start_share": 0.88,
+  "reason": "Jarrod Bowen (West Ham FWD/MID): one of the EIGHT names picked four times out of four by the FFScout Scout Squad for BGW34 and a fixture-perfect Free Hit pick. £7.7m, HOME to Everton (Sat 25 Apr 15:00). FFScout's Free Hit guide: 'Bowen has an FPL return in each of his last five HOME games.' Nuno confirmed a FULLY FIT squad at his Thursday 13:30 presser — no doubt attaches to him at all — and West Ham are one of the three clubs FFScout's GW34 Scout Picks double up on (with Liverpool and Spurs), while premierleague.com's Scout Selection draws seven of its eleven from Arsenal, Spurs and West Ham. 0.88 is essentially 'nailed, minus ordinary noise'. NOT OWNED; a primary Free Hit forward/midfielder candidate. Data-hygiene: confirmed XI and result post-deadline. Sources: FFScout Scout Squad GW34 (23 Apr); FFScout Best Free Hit team BGW34 (20 Apr); FFScout Scout Picks GW34 (24 Apr); premierleague.com Scout Selection BGW34 (4638940, 24 Apr); FFScout GW34 team news Thursday 23 Apr.",
+  "duration_gws": 1
+ },
+ "582": {
+  "start_share": 0.82,
+  "reason": "Mohammed Kudus (West Ham MID): expected to start HOME to Everton (Sat 25 Apr 15:00) in a squad Nuno Espirito Santo described at his Thursday 13:30 press conference as FULLY FIT. West Ham are one of the three clubs the FFScout GW34 Scout Picks double up on and supply part of the seven Arsenal/Spurs/West Ham players in premierleague.com's Scout Selection. 0.82 for ordinary front-line rotation in a mid-table side. Not owned; a secondary Free Hit option behind Bowen. Data-hygiene: confirmed XI post-deadline. Sources: FFScout GW34 team news Thursday 23 Apr; FFScout Scout Picks GW34 (24 Apr); premierleague.com Scout Selection BGW34.",
+  "duration_gws": 1
+ },
+ "568": {
+  "start_share": 0.85,
+  "reason": "Pedro Porro (Spurs DEF): one of the EIGHT four-out-of-four Scout Squad picks for BGW34 and, at £5.1m, the best value defensive route on the board. AWAY at WOLVES (Sat 25 Apr 15:00) — and Wolves are RELEGATED, which pre-deadline coverage states flatly ('positioned to profit again at Molineux against relegated Wolverhampton Wanderers'). FFScout's Scout Picks add the form hook: 'after Roberto De Zerbi's arrival, having recently scored against Brighton'. Spurs are one of the three clubs the Scout Picks double up on and supply part of premierleague.com's Arsenal/Spurs/West Ham seven. Spurs have no European or cup commitment. 0.85 rather than 0.9 for De Zerbi's habit of reshaping his back line and for the fact that a nothing-to-play-for away trip in late April is where cameos happen. NOT OWNED; a primary Free Hit defender — the cheapest attacking-defender route into the softest fixture of the round. Data-hygiene: the confirmed XI and result are post-deadline. Sources: FFScout Scout Squad GW34 (23 Apr); FFScout 'FPL Gameweek 34 Scout Picks: Three double-ups in Free Hit XI' (24 Apr); FFScout Best Free Hit team BGW34 (20 Apr).",
+  "duration_gws": 1
+ },
+ "596": {
+  "start_share": 0.78,
+  "reason": "Dominic Solanke (Spurs FWD): picked THREE times out of four by the FFScout Scout Squad for BGW34, AWAY at relegated Wolves (Sat 25 Apr 15:00) — on paper the softest attacking fixture of the seven. Spurs have no European or cup football and are one of the three clubs the Scout Picks double up on. 0.78 rather than 0.85 is an honest haircut on two counts: De Zerbi took over at Tottenham during this season and his centre-forward selection is not something I can pin with a dated pre-deadline source, and Spurs' own injury list this week includes Udogie (likely out) and Vicario (not ready), which signals a squad still being managed. Not owned; a strong but not certain Free Hit forward. Data-hygiene: the confirmed XI and result are post-deadline. Sources: FFScout Scout Squad GW34 (23 Apr); FFScout Scout Picks GW34 (24 Apr); FFScout GW34 team news Thursday 23 Apr (Udogie likely out, Vicario not ready).",
+  "duration_gws": 1
+ },
+ "575": {
+  "start_share": 0.82,
+  "reason": "Micky van de Ven (Spurs DEF): expected to start AWAY at relegated Wolves (Sat 25 Apr 15:00) — the best clean-sheet fixture available at a low price, and Spurs are one of the three clubs FFScout's GW34 Scout Picks double up on. £4.4m at GW30. Spurs have no European or cup commitment. 0.82 docks De Zerbi's back-line churn and the club's live injury list (Udogie likely out, Vicario not ready), neither of which names him. Not owned; the cheap alternative to Porro if the memo wants Spurs defensive exposure without the attacking premium. Data-hygiene: confirmed XI post-deadline. Sources: FFScout Scout Picks GW34 (24 Apr); FFScout GW34 team news Thursday 23 Apr.",
+  "duration_gws": 1
+ },
+ "565": {
+  "start_share": 0.05,
+  "reason": "Guglielmo Vicario (Spurs GKP): OUT — FFScout's Thursday 23 April team-news blog states plainly that 'Tottenham's Udogie is likely out and VICARIO IS NOT READY' for the Wolves game. 'Not ready' with no return date published pre-deadline is at least a two-round issue, so duration_gws = 2. Not owned; BAN — and note the trap: Spurs away at relegated Wolves is the round's best clean-sheet fixture, so an archive-blind optimizer will propose the Spurs No.1 with high confidence and get the wrong man. Data-hygiene: the confirmed Spurs XI is post-deadline. Sources: FFScout 'FPL Gameweek 34 team news: Thursday's live injury updates' (23 Apr).",
+  "duration_gws": 2
+ },
+ "567": {
+  "start_share": 0.7,
+  "reason": "Antonin Kinsky (Spurs GKP): the likely BENEFICIARY of Vicario being 'not ready' (FFScout, Thursday 23 April) for the trip to relegated Wolves (Sat 25 Apr 15:00) — the round's softest clean-sheet fixture at a budget price. 0.70 rather than 0.85 for a specific and honest reason: I could NOT source a pre-deadline statement naming Spurs' starting goalkeeper, only the statement that Vicario is unavailable, and the knowledge.md rule after the GW29 Sanchez zero is that AN UNSOURCED GOALKEEPER IS A BANNED BUY, NOT A DISCOUNTED ONE. So: attractive fixture, unverified starter — treat as WATCH, not buy, unless a team sheet emerges before the deadline. Data-hygiene: the confirmed XI is post-deadline. Sources: FFScout GW34 team news Thursday 23 Apr (Vicario not ready); FFScout Scout Picks GW34 (24 Apr — Spurs doubled up, but through Porro rather than the keeper).",
+  "duration_gws": 1
+ },
+ "628": {
+  "start_share": 0.8,
+  "reason": "Jose Sa (Wolves GKP): Wolves' goalkeeper at home to Spurs (Sat 25 Apr 15:00). WOLVES ARE RELEGATED — stated flatly in pre-deadline coverage ('relegated Wolverhampton Wanderers') — which is the single most important framing for this fixture: a side already down, at home, against a Spurs team the whole community is buying into. That makes Sa a save-volume punt and every Wolves defender a poor clean-sheet bet, but it also raises genuine motivation and selection uncertainty in a relegated squad, which is why 0.80 rather than higher. Not owned; listed as the counterpart to the Porro/Van de Ven/Solanke consensus so the memo can see both ends of the round's softest fixture. Data-hygiene: the confirmed XI and result are post-deadline. Sources: FFScout Scout Picks GW34 (24 Apr, 'relegated Wolverhampton Wanderers'); FFScout GW34 team news Thu 23 / Fri 24 Apr.",
+  "duration_gws": 1
+ },
+ "720": {
+  "start_share": 0.7,
+  "reason": "Tolu Arokodare (Wolves FWD): Wolves' centre-forward at home to Spurs (Sat 25 Apr 15:00) in an already-relegated side. 0.70 prices the specific risk of a relegated club in late April: selection becomes experimental, minutes get spread, and there is no league incentive left. Not owned; BAN as a Free Hit buy — in a seven-fixture week there is no reason to reach into the worst team in the division. Data-hygiene: confirmed XI post-deadline. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr; FFScout Scout Picks GW34 (24 Apr, Wolves relegated).",
+  "duration_gws": 1
+ },
+ "314": {
+  "start_share": 0.85,
+  "reason": "Bernd Leno (Fulham GKP): Fulham's No.1 at home to Aston Villa in the round's OPENING fixture (Sat 25 Apr 12:30 BST, TNT Sports) — the first game after a Friday deadline, which makes Fulham and Villa the two clubs whose team news is freshest and whose points land first. £4.9m at GW30. No Fulham item appears in FFScout's Thursday or Friday GW34 blogs. The fixture is genuinely hard: Villa are in form (Watkins six goals in his last five in all competitions; Rogers returning in each of the last three Gameweeks). A budget Free Hit keeper, but Hermansen at home to Everton is the better-rated defensive spot. Data-hygiene: the confirmed XI and result are post-deadline. Sources: premierleague.com 'Fixture changes announced for April 2026' (4606462) and Saturday 25 April schedule (Fulham v Aston Villa 12:30, TNT); FFScout GW34 team news Thu 23 / Fri 24 Apr; FFScout Best Free Hit team BGW34 (20 Apr).",
+  "duration_gws": 1
+ },
+ "317": {
+  "start_share": 0.85,
+  "reason": "Joachim Andersen (Fulham DEF): Fulham's centre-back at home to Aston Villa (Sat 25 Apr 12:30). £4.5m at GW30 and one of the best pts-per-million defenders on our board all season; he was a named GW29 differential on clean-sheet probability. No Fulham fitness item in FFScout's Thursday or Friday GW34 blogs. 0.85 with no meaningful rotation tail (Fulham have no cup or European football), but the fixture is the caution: Villa arrive with Watkins on six goals in five and a Europa League semi-final to build momentum for. Not owned; a cheap Free Hit defender in a mediocre spot. Data-hygiene: confirmed XI post-deadline. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr; premierleague.com April fixture schedule (FUL v AVL 12:30 Sat 25 Apr).",
+  "duration_gws": 1
+ },
+ "329": {
+  "start_share": 0.8,
+  "reason": "Harry Wilson (Fulham MID): named explicitly in FFScout's BGW34 Free Hit guide — 'Fulham's Harry Wilson (£6.0m) has racked up 91 POINTS IN HOME MATCHES this season' — and this is a HOME game, at 12:30 on Saturday 25 April against Aston Villa. That home/away split is one of the sharpest single stats on the board and exactly the kind of edge a one-week chip should buy. 0.80 rather than 0.85 because Wilson has been an in-and-out starter for Fulham all season (he was a fitness doubt as recently as GW29) and no pre-deadline source names him in the XI; the 91-point figure is a season aggregate, not a start guarantee. Not owned; a genuine value Free Hit midfielder. Data-hygiene: the confirmed XI and result are post-deadline. Sources: FFScout 'Best Free Hit team for FPL Blank Gameweek 34' (20 Apr); FFScout GW34 team news Thu 23 / Fri 24 Apr.",
+  "duration_gws": 1
+ },
+ "64": {
+  "start_share": 0.88,
+  "reason": "Ollie Watkins (Aston Villa FWD): one of the EIGHT four-out-of-four FFScout Scout Squad picks for BGW34 and the in-form striker of the round. £8.6m, AWAY at Fulham in the 12:30 Saturday opener. FFScout's Free Hit guide: 'Watkins has scored SIX GOALS IN HIS LAST FIVE GAMES in all competitions.' The rotation question is real but resolvable: Villa's UEFA EUROPA LEAGUE SEMI-FINAL FIRST LEG is on THU 30 APRIL, five days after this fixture — far enough that Emery has no reason to rest his centre-forward, and Villa are simultaneously chasing a Champions League place. 0.88 prices that five-day gap as a small rather than a large tail. NOT OWNED; a primary Free Hit forward and a live captaincy alternative to B.Fernandes with the advantage that his game kicks off FIRST (12:30 Saturday) rather than last. Data-hygiene: Villa's Europa League semi-final RESULT, and their reaching the final (v Freiburg, Istanbul, 20 May), are POST-deadline and excluded — only the pre-deadline fact that they are in the semi-final and its 30 April date is used. Sources: FFScout Scout Squad GW34 (23 Apr); FFScout 'Best Free Hit team for FPL Blank Gameweek 34' (20 Apr); premierleague.com Scout Selection BGW34 (4638940); uefa.com Europa League semi-final dates (30 Apr / 7 May).",
+  "duration_gws": 1
+ },
+ "47": {
+  "start_share": 0.85,
+  "reason": "Morgan Rogers (Aston Villa MID): named in FFScout's BGW34 Free Hit guide at £7.4m — 'has produced an attacking return in EACH OF THE LAST THREE GAMEWEEKS' — AWAY at Fulham in the 12:30 Saturday opener. Villa are in the best attacking form of any club on the seven-fixture board (Watkins six in five). 0.85 docks a small tail for the Europa League semi-final first leg on Thu 30 April, five days later; Emery rotates his wide players more than his striker, so Rogers carries slightly more risk than Watkins. Not owned; a strong secondary Free Hit midfielder. Data-hygiene: the Europa League semi-final and final results are post-deadline and excluded. Sources: FFScout 'Best Free Hit team for FPL Blank Gameweek 34' (20 Apr); uefa.com UEL semi-final calendar; premierleague.com April fixture schedule.",
+  "duration_gws": 1
+ },
+ "32": {
+  "start_share": 0.85,
+  "reason": "Emiliano Martinez (Aston Villa GKP): Villa's No.1 away at Fulham (Sat 25 Apr 12:30). £5.1m at GW30. No Villa fitness item in FFScout's Thursday or Friday GW34 blogs. The one tail worth pricing is the Europa League semi-final first leg on Thu 30 April — Emery has rotated goalkeepers for domestic cup ties in the past but a five-day gap before a European semi is not a reason to rest a No.1 in a Champions-League-place race. Not owned; a mid-price Free Hit keeper option, though the away fixture is worse than Raya's or Hermansen's. Data-hygiene: the semi-final result and Villa's run to the final are post-deadline. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr; uefa.com UEL semi-final dates.",
+  "duration_gws": 1
+ },
+ "683": {
+  "start_share": 0.85,
+  "reason": "Omar Alderete (Sunderland DEF): EXPLICITLY CONFIRMED AVAILABLE — FFScout's Friday 24 April team-news blog states that 'Omar Alderete is available for Sunderland despite coming off at Villa Park the previous week.' That is a direct, dated, pre-deadline availability clearance, the strongest kind of overlay input there is, and it also confirms Sunderland played AWAY AT ASTON VILLA in the preceding round. £4.1m at GW30 — one of the cheapest starting defenders in the game and, in a seven-fixture week where budget is the binding constraint on a Free Hit, an exceptionally efficient bench-or-XI filler. Sunderland host Nott'm Forest. 0.85 rather than 0.9 only because 'available' is not 'starting'. Data-hygiene: the confirmed XI and result are post-deadline. Sources: FFScout 'FPL Gameweek 34 team news: Friday's live injury updates' (24 Apr); FFScout GW34 team news Thursday 23 Apr (Le Bris presser 13:30 Thursday).",
+  "duration_gws": 1
+ },
+ "670": {
+  "start_share": 0.82,
+  "reason": "Robin Roefs (Sunderland GKP): Sunderland's No.1 at home to Nott'm Forest. £4.8m at GW30. The March hamstring that cost him GW29 is long resolved and no Sunderland goalkeeping item appears in FFScout's Thursday 23 April or Friday 24 April blogs — the only Sunderland item is Alderete's clearance. 0.82 rather than 0.88 because I could not source an explicit pre-deadline confirmation that he, rather than Patterson, starts; per knowledge.md an unsourced keeper is a ban rather than a discount, so this is a WATCH not a buy. Sunderland's game may be the round's Friday-night opener (see the consensus file's schedule notes) — if so, verify before the 18:30 BST deadline. Data-hygiene: the confirmed XI and result are post-deadline. Sources: FFScout GW34 team news Thursday 23 Apr (Le Bris presser 13:30) and Friday 24 Apr.",
+  "duration_gws": 1
+ },
+ "668": {
+  "start_share": 0.85,
+  "reason": "Granit Xhaka (Sunderland MID): Sunderland's midfield anchor at home to Nott'm Forest, with no fitness or rotation flag in FFScout's Thursday 23 April (Le Bris presser 13:30) or Friday 24 April blogs — the only Sunderland item published is Alderete's availability. £5.0m-ish class of asset. Note the contrast with GW29, where Le Bris explicitly rested him on a three-day turnaround: this week Sunderland have had a full week (their previous game was away at Villa Park) and no cup or European commitment, so the load argument that suppressed him then does not apply now. Not owned; a cheap Free Hit midfielder with DefCon appeal. Data-hygiene: the confirmed XI and result are post-deadline. Sources: FFScout GW34 team news Thursday 23 Apr and Friday 24 Apr.",
+  "duration_gws": 1
+ },
+ "515": {
+  "start_share": 0.88,
+  "reason": "Morgan Gibbs-White (Nott'm Forest MID): the FORM PLAYER OF THE ROUND. FFScout's BGW34 Free Hit guide names him at £7.4m and records that he 'registered A HAT-TRICK AND HIS BIGGEST EVER FPL RETURN IN GAMEWEEK 33' — a pre-deadline, fully datable form signal of the strongest kind. Forest travel to Sunderland. Forest have no cup or European commitment, and Nuno Pereira faced the media at 14:30 on Thursday 23 April with no flag attaching to Gibbs-White in FFScout's blog. 0.88. NOT OWNED; a primary Free Hit midfielder and, on form alone, a defensible differential captaincy shout against the B.Fernandes template — though the standing rule (knowledge.md, GW25-29 window) is that a captaincy deviation needs an availability flag AND a >= 0.5 xPts board margin, and 'he hauled last week' is a recency argument, not either of those. Data-hygiene: the confirmed XI and result are post-deadline; GW33's hat-trick is pre-deadline and legitimate. Sources: FFScout 'Best Free Hit team for FPL Blank Gameweek 34' (20 Apr); FFScout GW34 team news Thursday 23 Apr (Pereira presser 14:30).",
+  "duration_gws": 1
+ },
+ "517": {
+  "start_share": 0.85,
+  "reason": "Elliot Anderson (Nott'm Forest MID): expected to start away at Sunderland, and one of the better points-per-million midfielders on our board (£5.5m at GW30, horizon 20.01). No flag in FFScout's Thursday 23 April blog after Pereira's 14:30 press conference. Forest have no cup or European commitment and a full week's rest. 0.85. Not owned; a cheap Free Hit enabler in a neutral fixture — the DefCon-plus-set-pieces profile that makes budget midfielders viable in a blank week. Data-hygiene: confirmed XI and result post-deadline. Sources: FFScout GW34 team news Thursday 23 Apr; FFScout Best Free Hit team BGW34 (20 Apr).",
+  "duration_gws": 1
+ },
+ "502": {
+  "start_share": 0.85,
+  "reason": "Matz Sels (Nott'm Forest GKP): Forest's nailed No.1 away at Sunderland. £4.6m at GW30. No Forest goalkeeping item in FFScout's Thursday 23 April blog (Pereira pressed at 14:30). A cheap Free Hit keeper in a genuinely even fixture between two mid/lower-table sides with nothing pressing to play for. Rank behind Hermansen (home, better-rated defence, £4.2m) and Raya (clean-sheet favourite). Data-hygiene: the confirmed XI and result are post-deadline. Sources: FFScout GW34 team news Thursday 23 Apr.",
+  "duration_gws": 1
+ },
+ "506": {
+  "start_share": 0.85,
+  "reason": "Murillo (Nott'm Forest DEF): Forest's first-choice centre-back away at Sunderland, with no flag in FFScout's Thursday 23 April blog. A cheap, near-nailed defender in a low-scoring fixture — precisely the profile that fills the back of a Free Hit squad without eating budget the premiums need. Not owned. Data-hygiene: confirmed XI post-deadline. Sources: FFScout GW34 team news Thursday 23 Apr (Pereira presser 14:30).",
+  "duration_gws": 1
+ },
+ "508": {
+  "start_share": 0.78,
+  "reason": "Neco Williams (Nott'm Forest DEF): Forest's attacking full-back away at Sunderland. £4.7m at GW30 with a strong horizon number (16.97) on our board. 0.78 rather than 0.85 for ordinary full-back rotation, which Forest have used more than most this season, and because no pre-deadline predicted XI for this fixture is available to me — Forest's only sourced pre-deadline item is that Pereira faced the media at 14:30 on Thursday. Not owned; a budget Free Hit defender with attacking upside. Data-hygiene: confirmed XI post-deadline. Sources: FFScout GW34 team news Thursday 23 Apr.",
+  "duration_gws": 1
+ },
+ "337": {
+  "start_share": 0.72,
+  "reason": "Raul Jimenez (Fulham FWD): Fulham's centre-forward at home to Aston Villa in the Saturday 12:30 opener. £6.2m at GW30. 0.72 rather than 0.8 for two honest reasons: Fulham have rotated their forward line all season, and no pre-deadline predicted XI for this fixture is available to me — FFScout's Thursday and Friday GW34 blogs carry no Fulham item at all, which means 'no news' rather than 'confirmed fit'. The fixture cuts against him too: Villa are the form side of the round. Not owned; a marginal Free Hit forward behind Watkins, Solanke, Thiago and Bowen. Data-hygiene: confirmed XI post-deadline. Sources: FFScout GW34 team news Thu 23 / Fri 24 Apr (no Fulham entry); FFScout Best Free Hit team BGW34 (20 Apr, Wilson named as the Fulham route).",
+  "duration_gws": 1
+ },
+ "299": {
+  "start_share": 0.72,
+  "reason": "Iliman Ndiaye (Everton MID): expected to feature away at West Ham (Sat 25 Apr 15:00). £6.2m at GW30. 0.72 rather than 0.8 because no pre-deadline predicted Everton XI is available to me for this fixture, the Scout Squad's Everton name for BGW34 is BETO (three picks) rather than Ndiaye, and Everton's attacking midfield has rotated through the run-in. No injury flag: FFScout's Thursday and Friday blogs carry no Everton item. Not owned; a marginal Free Hit option. Data-hygiene: confirmed XI post-deadline. Sources: FFScout Scout Squad GW34 (23 Apr); FFScout GW34 team news Thu 23 / Fri 24 Apr.",
+  "duration_gws": 1
+ },
+ "450": {
+  "start_share": 0.65,
+  "reason": "Matheus Cunha (Man Utd MID): scored the only goal of Man Utd's 1-0 win AWAY AT CHELSEA in the DGW33 midweek round ('Matheus Cunha's first-half goal securing a 1-0 victory') — a pre-deadline, datable form event. But he is NOT in the pre-deadline predicted XI for the Brentford game: Sports Mole name 'Mbeumo, Bruno Fernandes, Amad' behind Sesko, with 'Amad Diallo decisions to be made' in the headline. 0.65 prices a scorer competing for a place rather than holding one — an honest middle. £8.0m at GW30. Not owned; BAN as a Free Hit buy at that price on a 65% start. Data-hygiene: the confirmed Man Utd XI and result are post-deadline; the Chelsea goal is pre-deadline and legitimate. Sources: Sports Mole 'Predicted XI for Red Devils including Harry Maguire, Amad Diallo decisions' (23-24 Apr); football365 Man Utd v Brentford preview 23-24 Apr.",
+  "duration_gws": 1
+ },
+ "452": {
+  "start_share": 0.7,
+  "reason": "Amad Diallo (Man Utd MID): named in the pre-deadline predicted XI HOME to Brentford ('Mbeumo, Bruno Fernandes, Amad') but with Sports Mole's own headline flagging 'Amad Diallo decisions to be made' — i.e. the source that names him also says the call is open, with Cunha the alternative. 0.70 is the honest read of a predicted starter carrying a publicly flagged selection question. £6.2m at GW30. Not owned; a cheap Free Hit route into the best-supported attack of the round, but the uncertainty is real. Data-hygiene: confirmed XI post-deadline. Sources: Sports Mole Man Utd predicted XI 23-24 Apr; football365 preview.",
+  "duration_gws": 1
+ },
+ "443": {
+  "start_share": 0.75,
+  "reason": "Luke Shaw (Man Utd DEF): named at left-back in the pre-deadline predicted XI HOME to Brentford (Lammens; Dalot, Maguire, Heaven, Shaw). £4.5m at GW30 — a cheap defender in one of the round's better clean-sheet spots against a Brentford side missing seven players. 0.75 rather than 0.85 for Shaw's long-standing fitness pattern (Carrick has repeatedly listed him among his fitness concerns this season) and because Man Utd's back line is being reshuffled around Lisandro Martinez's suspension. Not owned; a budget Free Hit defender with a caveat. Data-hygiene: confirmed XI post-deadline. Sources: Sports Mole Man Utd predicted XI 23-24 Apr; football365 Man Utd v Brentford preview.",
+  "duration_gws": 1
+ }
+}
