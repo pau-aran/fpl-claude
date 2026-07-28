@@ -46,13 +46,13 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from fpl_claude.backtest import simulate
-from fpl_claude.backtest.data import SeasonStore
-from fpl_claude.backtest.overlays import availability_overlays, merge
-from fpl_claude.backtest.simulate import SquadState, run_gameweek
-from fpl_claude.console import enable_utf8_output
-from fpl_claude.optimize import transfer_path
-from fpl_claude.rules.engine import Ruleset
+from fpl_claude.backtest import simulate  # noqa: E402
+from fpl_claude.backtest.data import SeasonStore  # noqa: E402
+from fpl_claude.backtest.overlays import availability_overlays, merge  # noqa: E402
+from fpl_claude.backtest.simulate import SquadState, run_gameweek  # noqa: E402
+from fpl_claude.console import enable_utf8_output  # noqa: E402
+from fpl_claude.optimize import transfer_path  # noqa: E402
+from fpl_claude.rules.engine import Ruleset  # noqa: E402
 
 REPORTS = ROOT / "reports" / "backtest" / "2025-26"
 WINDOW = range(17, 25)  # GW17..24

@@ -88,12 +88,17 @@ supported is the negative one — **no degradation** — not "+28 of new edge".
   `chance_of_playing` would be speculation dressed as data; the honest fix is that the
   manager scopes it in the overlay, which [`decisions/overlays/gw01.json`](../../decisions/overlays/gw01.json)
   does for every flagged player we care about. **Left open and documented.**
-- **D6 — team-model name matching.** Ipswich falls back to FDR because of a name
-  mismatch (`Ipswich` vs `Ipswich Town`), not by design, and `TeamModel.covers()` counts
-  matches without checking their **age**, so a club with only a stale relegation-season
-  history would be silently modelled as current. For GW1 the FDR fallback on a promoted
-  club is the conservative outcome, so this is not on the critical path — but the age
-  check is a real latent bug. **Left open.**
+- ~~**D6 — team-model name matching.**~~ **FIXED (2026-07-26, after this doc was first
+  written).** Ipswich fell back to FDR because of a name mismatch (`Ipswich` vs
+  `Ipswich Town`), not by design, and `TeamModel.covers()` counted matches without checking
+  their **age**, so a club with only a stale relegation-season history would have been
+  silently modelled as current. Both halves are closed: the football-data name map covers
+  the bare promoted-club names, and `covers()` now requires `MIN_RECENT_MATCHES` inside
+  `RECENT_WINDOW_DAYS` *as well as* `MIN_TEAM_MATCHES`. Pinned by
+  `tests/test_prior_grading.py`. Worth recording the order: fixing the name alone would
+  have been **worse than the bug** — Ipswich would then have been Dixon-Coles rated on the
+  very relegation season that sent them down — and the first attempt at the name map broke
+  Leeds by expanding a club name FPL leaves bare.
 
 ## Incidental bug found and fixed
 
@@ -104,3 +109,4 @@ simulated and the state advanced — a corrupting failure, not a cosmetic one. I
 this very regression run at GW2. Now explicit UTF-8.
 
 **112 tests green, ruff clean on the repo's configured selection.**
+*(Re-verified 2026-07-28: 198 tests green, 1 skipped, ruff clean.)*

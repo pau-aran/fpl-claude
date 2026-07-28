@@ -1,4 +1,4 @@
-# Session State — updated 2026-07-26 (THE SEASON IS LIVE — first real squad built)
+# Session State — updated 2026-07-28 (audit pass; 24 days to the GW1 deadline)
 
 *Handoff snapshot. Read this first, then `decisions/gw01.md` for the live squad and
 `reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge. The build
@@ -152,8 +152,15 @@ merged clean):**
   clean.
 - **Sources refined:** `docs/fpl-sources-reference.md` (field-tested,
   FPL-only, incl. FBref) + 17 vetted X accounts in `config/sources.yaml`.
-- **Network reality unchanged** (see `docs/environment.md`): FPL API/news
-  domains still blocked; GitHub + WebSearch carry everything above.
+- **Network reality is environment-dependent** (see `docs/environment.md`): the owner's
+  **Windows workstation reaches everything** (FPL API, football-data, Understat — this is
+  where the live snapshots come from); the **cloud sandbox still cannot reach the FPL API**
+  (re-verified 2026-07-28: `bootstrap-static` fails to connect). GitHub + WebSearch work in
+  both. **Consequence: any step that needs a fresh snapshot or a re-solve must run on the
+  workstation** — `db/` is gitignored, so a fresh sandbox has no snapshot and no projections
+  CSV at all. Sandbox sessions can do research, reports, code and doc work.
+- **Repo health, re-verified 2026-07-28:** **198 tests pass** (1 skipped), **ruff clean**
+  on the sandbox's configured selection.
 
 ## What the next session should do (LIVE SEASON — priorities changed)
 
@@ -164,13 +171,21 @@ merged clean):**
    play GW1 despite FPL's "expected back 22 Aug".
 2. **Re-solve the squad after the Community Shield (16 Aug)** and again at T-48h/T-2h.
    Re-open the B.Fernandes question explicitly.
-3. **Two model defects left open, documented** in `research/2026-27/model-fixes.md`:
-   D1 injury flags priced as 8-GW absences (mitigated per-player in the overlay only),
-   D6 the team model falls back to FDR for Ipswich on a club-name mismatch and
-   `TeamModel.covers()` never checks match AGE, so a stale relegation season could be
-   modelled as current.
-4. **The weekly all-team report has still never run** (`/fpl-team-week-report`) — it is a
-   first-class deliverable per CLAUDE.md and the season is now live.
+3. **One model defect left open, documented** in `research/2026-27/model-fixes.md`:
+   D1 injury flags priced as 8-GW absences (mitigated per-player in the overlay only).
+   *(D6 — the Ipswich club-name mismatch plus the missing match-AGE check in
+   `TeamModel.covers()` — is **FIXED**: `covers()` now requires `MIN_RECENT_MATCHES`
+   inside `RECENT_WINDOW_DAYS` as well as `MIN_TEAM_MATCHES`, pinned by
+   `tests/test_prior_grading.py`. The GW1 memo's iteration-2 amendment records why the
+   naive name fix alone would have been worse than the bug.)*
+4. **Finish the weekly all-team report.** `/fpl-team-week-report` HAS now run —
+   `reports/weekly/2026-30/` exists with all 20 clubs — but only the **first 8 clubs
+   alphabetically** (Arsenal → Fulham) are enriched with sourced pre-season news. **Twelve
+   are still mechanical FPL-API-only stubs** with `<!-- skill: ... -->` placeholders:
+   Brentford, Brighton, Hull, Ipswich, Leeds, **Liverpool, Man City, Man Utd**, Newcastle,
+   Nott'm Forest, Spurs, Sunderland — which includes three of the clubs the GW1 thesis
+   turns on. `index.md`'s "Biggest FPL takeaways" is also empty. A **2026-W31** report is
+   due as well (Monday cadence; W30 was generated from the 2026-07-25 snapshot).
 
 ### Older backlog (pre-season) — CLEARED 2026-07-26
 
@@ -226,6 +241,22 @@ The build plan is complete; `PLAN.md` and `NEXT-STEPS-IMPLEMENTATION.md` were re
 
 ## Recent session log
 
+- **2026-07-28 (audit pass — no new features, three corrections):** branch
+  `claude/assessment-completion-review-8g9skp`. Read the tree end to end and checked the
+  claims in this file against the code rather than trusting them. **Repo health is good:
+  198 tests pass, 1 skipped; ruff clean.** Three things were wrong and are now fixed:
+  (1) **D6 was recorded as open in two places while the code, and `decisions/gw01.md`'s own
+  iteration-2 amendment, say it is fixed** — `TeamModel.covers()` does check match age and
+  the name map does cover the bare promoted-club names, both pinned by tests; STATE and
+  `model-fixes.md` corrected. (2) **`notebooks/a4_followpath_gw17_24.py` added 7 new ruff
+  E402 findings** against the standing "a change adds none" rule — `# noqa: E402` applied to
+  match `solve_baseline.py`'s convention; ruff is clean again. (3) **"the weekly all-team
+  report has still never run" was stale** — it ran for 2026-W30, but only 8 of 20 clubs are
+  enriched; the item is rewritten as "finish it", naming the 12 stubs. Also re-verified the
+  network split: the cloud sandbox **still cannot reach the FPL API** (`bootstrap-static`
+  fails to connect), and since `db/` is gitignored a fresh sandbox has no snapshot and no
+  projections CSV — so **re-snapshot and re-solve are workstation-only steps**. No model,
+  optimizer or decision output was touched; the GW1 squad is unchanged.
 - **2026-07-26 (THE SEASON OPENED — first live squad):** branch
   `claude/gw1-2026-27-squad-build`. Found the **FPL API reachable for the first time** and
   pulled the live 2026/27 game (558 players, real prices, GW1 deadline 2026-08-21).
