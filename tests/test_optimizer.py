@@ -315,3 +315,81 @@ def test_marginal_hit_gate_keeps_hit_that_nets_threshold(rules):
     assert 98 in result.transfers_in and 99 in result.transfers_in
     assert result.hits == 1
     assert audit["hit_gate"].startswith("kept")
+
+
+LINEUP = {"starting": 11, "min_goalkeepers": 1, "min_defenders": 3,
+          "min_midfielders": 2, "min_forwards": 1}
+
+
+def test_bench_margins_measures_true_swap_cost():
+    """The hair is what starting a benched player COSTS the XI total.
+
+    Squad shaped so the best XI is 1-3-5-2 and the 4th defender is a near-tie
+    with the weakest starting midfielder.
+    """
+    from fpl_claude.optimize.milp import bench_margins
+
+    pos, score = {}, {}
+    for i in range(1, 3):        # GKP 1-2
+        pos[i], score[i] = "GKP", 5.0 - i * 0.5
+    for i in range(3, 8):        # DEF 3-7
+        pos[i], score[i] = "DEF", 5.0 - (i - 3) * 0.5
+    for i in range(8, 13):       # MID 8-12
+        pos[i], score[i] = "MID", 6.0 - (i - 8) * 0.5
+    for i in range(13, 16):      # FWD 13-15
+        pos[i], score[i] = "FWD", 4.0 - (i - 13) * 0.5
+
+    margins = bench_margins(list(range(1, 16)), score, pos, LINEUP)
+    by_player = {m.player: m for m in margins}
+
+    assert len(margins) == 4  # 15 - 11
+    assert all(m.margin >= 0 for m in margins)
+    assert margins == sorted(margins, key=lambda m: m.margin)
+    # The cheapest bench player to field is the one giving up least.
+    cheapest = margins[0]
+    assert cheapest.margin == pytest.approx(
+        max(score[i] for i in by_player) - min(
+            score[i] for i in range(1, 16) if i not in by_player and pos[i] != "GKP"
+        ),
+        abs=0.5,
+    )
+
+
+def test_bench_margins_zero_when_swap_is_free():
+    """Two identically scored players at the same position: the hair is 0.0."""
+    from fpl_claude.optimize.milp import bench_margins
+
+    pos, score = {}, {}
+    for i in range(1, 3):
+        pos[i], score[i] = "GKP", 5.0
+    for i in range(3, 8):
+        pos[i], score[i] = "DEF", 4.0
+    for i in range(8, 13):
+        pos[i], score[i] = "MID", 6.0
+    for i in range(13, 16):
+        pos[i], score[i] = "FWD", 3.0
+
+    margins = bench_margins(list(range(1, 16)), score, pos, LINEUP)
+    assert margins[0].margin == pytest.approx(0.0)
+    # A true coin-flip is exactly the case the manager must be shown.
+    assert margins[0].margin < 0.2
+
+
+def test_bench_margins_agree_with_pick_lineup():
+    """Whoever _pick_lineup benches is who bench_margins reports on."""
+    from fpl_claude.optimize.milp import bench_margins
+
+    pos, score = {}, {}
+    for i in range(1, 3):
+        pos[i], score[i] = "GKP", 5.0 - i * 0.3
+    for i in range(3, 8):
+        pos[i], score[i] = "DEF", 4.7 - (i - 3) * 0.4
+    for i in range(8, 13):
+        pos[i], score[i] = "MID", 6.3 - (i - 8) * 0.6
+    for i in range(13, 16):
+        pos[i], score[i] = "FWD", 4.1 - (i - 13) * 0.7
+
+    ids = list(range(1, 16))
+    xi, _, _, _ = _pick_lineup(ids, score, pos, LINEUP)
+    reported = {m.player for m in bench_margins(ids, score, pos, LINEUP)}
+    assert reported == set(ids) - set(xi)

@@ -28,7 +28,7 @@ import pandas as pd
 
 from ..console import enable_utf8_output
 from ..optimize.chip_timing import advise, chip_surface, detect_double_blank
-from ..optimize.milp import CurrentSquad, InfeasibleError
+from ..optimize.milp import CurrentSquad, InfeasibleError, bench_margins
 from ..optimize.transfer_path import plan_transfer_path
 from ..rules.engine import Ruleset
 from .data import SeasonStore
@@ -190,6 +190,50 @@ def _print_transfer_path(
     print("caveats: " + "; ".join(path.caveats))
 
 
+HAIR_CALL = 0.2  # below this the solver's bench order is a coin-flip: the manager calls it
+HAIR_LIST = 0.35  # below this it is at least worth printing (covers the DEF-CS [WATCH] band)
+
+
+def _print_bench_hairs(squad, projections, gw: int, rules: Ruleset) -> None:
+    """List every near-tie between a benched player and the XI he could displace.
+
+    The standing rule (knowledge.md [PROCESS], from the GW19 and GW22 reviews)
+    is that a sub-0.2 bench margin is not a model opinion, it is a coin-flip,
+    and the manager must decide it explicitly with the duel lens rather than
+    inherit the solver's ordering. It kept being missed by hand — GW22 stranded
+    Tarkowski's 8 on a 0.14 hair nobody had named — so the listing is now
+    mechanical: every hair is SEEN before the deadline, not found in review.
+
+    Printing runs to 0.35 rather than 0.2 to cover the open [WATCH] on widening
+    the band for bimodal defender clean-sheet bets, where the realised spread is
+    much wider than the projected gap. Only the sub-0.2 rows demand a call.
+    """
+    by_id = projections.drop_duplicates("id").set_index("id")
+    col = f"xpts_gw{gw}"
+    if col not in by_id.columns:
+        return
+    score = {int(i): float(by_id.loc[i, col]) for i in squad.squad}
+    pos = {int(i): str(by_id.loc[i, "position"]) for i in squad.squad}
+    margins = bench_margins(list(squad.squad), score, pos, rules.raw["lineup"])
+    hairs = [m for m in margins if m.margin < HAIR_LIST]
+
+    def nm(pid: int) -> str:
+        return f"{by_id.loc[pid, 'web_name']} ({by_id.loc[pid, 'team']} {pos[pid]})"
+
+    print(f"\n=== Bench hairs (margins < {HAIR_LIST}; a CALL is owed under {HAIR_CALL}) ===")
+    if not hairs:
+        print(f"none — every benched player is >= {HAIR_LIST} xPts behind the XI. No call owed.")
+        return
+    for m in hairs:
+        flag = "CALL OWED " if m.margin < HAIR_CALL else "watch     "
+        disp = f"would displace {nm(m.displaces)}" if m.displaces else "displaces >1 (shape change)"
+        print(f"  {flag}{m.margin:5.2f}  start {nm(m.player)} [{score[m.player]:.2f}] — {disp}")
+    print(
+        "  -> for each CALL OWED row: name the duel, decide field-or-bench, and write it in "
+        "the memo. Use decision JSON `start`/`bench` to act; silence is not a decision."
+    )
+
+
 def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
             overlays: dict | None, decision: ManagerDecision | None) -> None:
     """Print the optimizer proposal + multi-GW fixture context. NO state is
@@ -226,6 +270,7 @@ def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
     out_rows["fixtures_next"] = out_rows["team"].map(outlook)
     print(out_rows.to_string())
 
+    _print_bench_hairs(squad, projections, gw, rules)
     _print_transfer_path(rules, state, projections, decision)
     _print_chip_advice(store, gw, rules, state, projections)
 

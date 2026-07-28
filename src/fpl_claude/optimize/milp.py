@@ -139,6 +139,92 @@ def _pick_lineup(
     return xi, captain, vice, bench
 
 
+@dataclass(frozen=True)
+class BenchMargin:
+    """What it would cost, in this GW's xPts, to start a benched player."""
+
+    player: int
+    displaces: int | None  # the XI player the swap pushes out (None if unresolved)
+    margin: float  # >= 0; the XI total given up by making the swap
+
+
+def bench_margins(
+    squad_ids: list[int],
+    score: dict[int, float],
+    pos: dict[int, str],
+    lineup: dict,
+) -> list[BenchMargin]:
+    """Cost of starting each benched player, cheapest first — the "hair" list.
+
+    Written because the discipline it supports kept failing by hand. The rule
+    from the GW19/GW22 reviews is that any bench margin under ~0.2 xPts is a
+    coin-flip the model has no real opinion on, so the manager must look at it
+    and decide with the duel lens instead of letting the solver's arbitrary
+    ordering stand. Twice that cost points: Konaté benched on a 0.06 hair
+    returned 7 (GW19), Tarkowski on an UN-NAMED 0.14 hair returned 8 (GW22).
+    The second one is the reason this is code and not a checklist — the manager
+    only inspected the hair the duel lens had already named, and the one that
+    actually cost points was the one nobody thought to look at.
+
+    The margin is the true swap cost over all legal formations, not a
+    same-position difference: starting a bench forward may displace a defender
+    by changing shape, and the cheapest legal way to fit a player in is what a
+    manager would actually do.
+    """
+
+    def best_total(must_include: int | None) -> tuple[float, list[int]] | None:
+        keepers = sorted((i for i in squad_ids if pos[i] == "GKP"), key=lambda i: -score[i])
+        if not keepers:
+            return None
+        if must_include is not None and pos[must_include] == "GKP":
+            keepers = [must_include] + [i for i in keepers if i != must_include]
+        by_pos = {}
+        for p in ("DEF", "MID", "FWD"):
+            ranked_p = sorted((i for i in squad_ids if pos[i] == p), key=lambda i: -score[i])
+            if must_include is not None and pos[must_include] == p:
+                ranked_p = [must_include] + [i for i in ranked_p if i != must_include]
+            by_pos[p] = ranked_p
+        mins = {
+            "DEF": int(lineup["min_defenders"]),
+            "MID": int(lineup["min_midfielders"]),
+            "FWD": int(lineup["min_forwards"]),
+        }
+        n_out = int(lineup["starting"]) - int(lineup["min_goalkeepers"])
+        best: tuple[float, list[int]] | None = None
+        for d in range(mins["DEF"], len(by_pos["DEF"]) + 1):
+            for m in range(mins["MID"], len(by_pos["MID"]) + 1):
+                f = n_out - d - m
+                if f < mins["FWD"] or f > len(by_pos["FWD"]):
+                    continue
+                picked = by_pos["DEF"][:d] + by_pos["MID"][:m] + by_pos["FWD"][:f]
+                total = score[keepers[0]] + sum(score[i] for i in picked)
+                if best is None or total > best[0]:
+                    best = (total, [keepers[0], *picked])
+        return best
+
+    overall = best_total(None)
+    if overall is None:
+        return []
+    best_xi = set(overall[1])
+    out: list[BenchMargin] = []
+    for pid in squad_ids:
+        if pid in best_xi:
+            continue
+        forced = best_total(pid)
+        if forced is None:
+            continue
+        displaced = [i for i in best_xi if i not in set(forced[1])]
+        out.append(
+            BenchMargin(
+                player=pid,
+                displaces=displaced[0] if len(displaced) == 1 else None,
+                # float noise can make an identical swap read as -1e-15
+                margin=max(0.0, overall[0] - forced[0]),
+            )
+        )
+    return sorted(out, key=lambda b: b.margin)
+
+
 def _solve(
     players: pd.DataFrame,
     rules: Ruleset,
