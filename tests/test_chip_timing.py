@@ -273,3 +273,78 @@ def test_advise_empty_candidates_all_hold():
     # No surface GW in the current half and no change need → every chip holds.
     plan = _advice([_surf(gw=10)], current_gw=25, change_need=0)
     assert {a.verdict for a in plan.values()} == {"hold"}
+
+
+def test_knowable_double_blank_suppresses_unconfirmed_far_gws():
+    """A rearrangement-created double must not steer a chip from 7 GWs away.
+
+    The replay reads an END-OF-SEASON fixture table, so every double and blank
+    the season eventually produces is visible from GW1. Un-gated, the advisor
+    told a GW26 manager to save the triple captain for a GW33 double created by
+    a rearrangement that, per our own point-in-time research, had not been made
+    in February.
+    """
+    from fpl_claude.optimize.chip_timing import GwDoubleBlank, knowable_double_blank
+
+    db = {
+        26: GwDoubleBlank(26, frozenset({"Arsenal"}), frozenset()),
+        31: GwDoubleBlank(31, frozenset(), frozenset({"Arsenal", "Man City"})),
+        33: GwDoubleBlank(33, frozenset({"Man City"}), frozenset()),
+    }
+    kept, suppressed = knowable_double_blank(db, current_gw=26, known_from={26: 24, 31: 24})
+
+    assert 26 in kept  # confirmed at GW24, and inside the near horizon anyway
+    assert 31 in kept  # 5 GWs out but confirmed by research
+    assert 33 not in kept  # 7 GWs out, unconfirmed -> hindsight
+    assert suppressed == [33]
+
+
+def test_knowable_double_blank_admits_near_horizon_without_confirmation():
+    from fpl_claude.optimize.chip_timing import GwDoubleBlank, knowable_double_blank
+
+    db = {29: GwDoubleBlank(29, frozenset({"Everton"}), frozenset())}
+    kept, suppressed = knowable_double_blank(db, current_gw=27, known_from={})
+    assert 29 in kept and suppressed == []
+
+
+def test_knowable_double_blank_admits_once_the_date_arrives():
+    """The same GW33 double becomes usable at GW30, when it was public."""
+    from fpl_claude.optimize.chip_timing import GwDoubleBlank, knowable_double_blank
+
+    db = {33: GwDoubleBlank(33, frozenset({"Man City"}), frozenset())}
+    assert knowable_double_blank(db, 29, {33: 30})[1] == [33]
+    assert 33 in knowable_double_blank(db, 30, {33: 30})[0]
+
+
+def test_knowable_double_blank_keeps_ordinary_gameweeks():
+    """A GW with no anomaly carries nothing to leak and is always kept."""
+    from fpl_claude.optimize.chip_timing import GwDoubleBlank, knowable_double_blank
+
+    db = {35: GwDoubleBlank(35, frozenset(), frozenset())}
+    kept, suppressed = knowable_double_blank(db, 26, {})
+    assert 35 in kept and suppressed == []
+
+
+def test_advise_excludes_unknowable_gws_even_with_a_huge_score():
+    """Stripping the DGW label is not enough — the GW must leave the candidate set.
+
+    A doubling team's xpts_gw column SUMS both fixtures, so an unknowable double
+    still presents as an enormous single-GW captain score and the TC rule
+    re-derives it as a "standout fixture". That is how GW33 kept winning the
+    triple-captain verdict at a GW26 deadline after the flag had been removed.
+    """
+    from fpl_claude.optimize.chip_timing import GwChipSurface, advise
+
+    surface = [
+        GwChipSurface(gw=26, tc_extra=9.9, tc_captain=5, tc_captain_name="Gabriel",
+                      tc_captain_dgw=True, bb_extra=12.4, bb_bench=(1, 2, 3, 4),
+                      bb_nonnailed=1, n_doublers=3, n_blankers=0),
+        GwChipSurface(gw=33, tc_extra=13.5, tc_captain=430, tc_captain_name="Haaland",
+                      tc_captain_dgw=False, bb_extra=14.5, bb_bench=(1, 2, 3, 4),
+                      bb_nonnailed=0, n_doublers=0, n_blankers=0),
+    ]
+    leaky = advise(surface, [], current_gw=26)
+    assert leaky["triple_captain"].target_gw == 33  # the defect, reproduced
+
+    gated = advise(surface, [], current_gw=26, exclude_gws=[33])
+    assert gated["triple_captain"].target_gw == 26

@@ -114,6 +114,56 @@ class GwDoubleBlank:
     bgw_teams: frozenset[Any]
 
 
+# How many gameweeks ahead a DGW/BGW may be trusted WITHOUT point-in-time
+# confirmation. See `knowable_double_blank` for why this gate has to exist at all.
+SCHEDULE_KNOWABLE_GWS = 3
+
+
+def knowable_double_blank(
+    double_blank: Mapping[int, GwDoubleBlank],
+    current_gw: int,
+    known_from: Mapping[int, int] | None = None,
+    horizon: int = SCHEDULE_KNOWABLE_GWS,
+) -> tuple[dict[int, GwDoubleBlank], list[int]]:
+    """Drop doubles/blanks a manager could NOT have known about at `current_gw`.
+
+    THE LEAK THIS CLOSES. A replay reads fixtures from an END-OF-SEASON archive,
+    and `SeasonStore.fixtures_at` returns that same final table for every
+    gameweek — only the `finished` flag is point-in-time. But most doubles and
+    blanks do not exist when the season is published: they are *created* during
+    it, when a cup run or a postponement forces a fixture to be rearranged. So
+    the chip advisor could see every one of them from GW1, and would happily
+    tell a GW26 manager to save the triple captain for a GW33 double that came
+    from a rearrangement not yet made. That is hindsight steering the single
+    highest-leverage decision a chip season has.
+
+    The gate: a DGW/BGW at gameweek `g` is usable only if
+      * `known_from[g] <= current_gw` — research established a date it was public; or
+      * `g - current_gw <= horizon` — near enough that the fixture is already
+        scheduled and televised, so it needs no separate confirmation.
+
+    Returns the filtered map plus the sorted gameweeks that were SUPPRESSED, so
+    callers can print them as unverified rather than hide them. Showing a
+    manager "GW33 may double, unconfirmed at this deadline" is honest; letting
+    it silently pick the chip week is not.
+    """
+    known_from = known_from or {}
+    kept: dict[int, GwDoubleBlank] = {}
+    suppressed: list[int] = []
+    for gw, db in double_blank.items():
+        if not db.dgw_teams and not db.bgw_teams:
+            kept[gw] = db  # nothing anomalous to leak
+            continue
+        confirmed_at = known_from.get(gw)
+        if (confirmed_at is not None and confirmed_at <= current_gw) or (
+            gw - current_gw <= horizon
+        ):
+            kept[gw] = db
+        else:
+            suppressed.append(gw)
+    return kept, sorted(suppressed)
+
+
 def detect_double_blank(
     fixtures: Sequence[Mapping[str, Any]],
     id_to_name: Mapping[int, str] | None = None,
@@ -367,6 +417,7 @@ def advise(
     current_gw: int,
     change_need: int | None = None,
     half_boundary_gw: int = HALF_BOUNDARY_GW,
+    exclude_gws: Sequence[int] = (),
 ) -> dict[str, ChipAdvice]:
     """Apply the timing rule to a chip-EV surface → one verdict per chip.
 
@@ -377,9 +428,20 @@ def advise(
     a standout/DGW captain, BB only on a nailed DGW, WC/FH only on a 4+ change need
     (`change_need`, the reshape magnitude the free-transfer budget CANNOT cover) or
     a BGW/DGW. Default posture is HOLD; the reasons carry the negative form.
+
+    `exclude_gws` drops gameweeks outright — pass the gameweeks
+    `knowable_double_blank` suppressed. Stripping the DGW *flag* is not enough
+    on its own: a doubling team's `xpts_gw{n}` column already SUMS both of its
+    fixtures, so an unknowable double still shows up as a huge single-GW score
+    and the TC verdict re-derives it as a "standout fixture". The gameweek has
+    to leave the candidate set, not just lose its label.
     """
     half = chip_half(current_gw, half_boundary_gw)
-    candidates = [s for s in surface if chip_half(s.gw, half_boundary_gw) == half]
+    excluded = set(exclude_gws)
+    candidates = [
+        s for s in surface
+        if chip_half(s.gw, half_boundary_gw) == half and s.gw not in excluded
+    ]
 
     builders = {
         "triple_captain": lambda: _advise_tc(candidates),

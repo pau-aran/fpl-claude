@@ -1,0 +1,28 @@
+{
+  "_README": [
+    "POINT-IN-TIME SCHEDULE KNOWLEDGE for the 2025/26 replay.",
+    "",
+    "`known_from` maps a gameweek that contains a double or a blank to the EARLIEST",
+    "gameweek by which that anomaly was publicly confirmed. The replay reads fixtures",
+    "from an end-of-season archive, so every rearrangement-created DGW/BGW is visible",
+    "from GW1 — see optimize.chip_timing.knowable_double_blank. Without this file the",
+    "chip advisor picks chip weeks on hindsight.",
+    "",
+    "A gameweek NOT listed here is trusted only inside SCHEDULE_KNOWABLE_GWS (3) of the",
+    "current deadline. Add an entry only with a dated, pre-deadline source.",
+    "",
+    "This is deliberately conservative: when the confirmation date is uncertain, the",
+    "LATER gameweek is recorded, because over-stating what we knew inflates the result."
+  ],
+  "known_from": {
+    "26": 24,
+    "31": 24,
+    "33": 30
+  },
+  "provenance": {
+    "26": "Arsenal + Wolves double. Confirmed in the GW24 research sweep and recorded in plan.md's GW24 close as 'DGW26 CONFIRMED (Arsenal + Wolves)'; the GW26 researcher independently re-derived it from the pre-deadline schedule (Brentford v Arsenal 12 Feb, Wolves v Arsenal 18 Feb). Known from GW24.",
+    "31": "Arsenal, Man City, Crystal Palace and Wolves blank. Recorded in plan.md at the GW24 close as 'BGW31 flagged (Free Hit/WC candidate)'. Known from GW24.",
+    "33": "A Man City / Crystal Palace double created by rearranging the postponed MCI v CRY fixture. NOT knowable in February: the GW28 researcher found (FFScout, 25 Feb) that 'MCI v CRY is still unrescheduled' and a later City/Palace double was only 'seeded'; the GW29 researcher found the community's 'save the chip for the later double' argument is datable only to MID-MARCH, i.e. post-GW29. Recorded as known from GW30 — conservative, and later than any source we hold.",
+    "_no_other_entries": "GW27-30, 32 and 34-38 carry no confirmed anomaly in our sourced research. If a future run needs one, add it WITH a dated source rather than inferring it from the archive."
+  }
+}

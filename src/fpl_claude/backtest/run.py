@@ -27,7 +27,12 @@ from pathlib import Path
 import pandas as pd
 
 from ..console import enable_utf8_output
-from ..optimize.chip_timing import advise, chip_surface, detect_double_blank
+from ..optimize.chip_timing import (
+    advise,
+    chip_surface,
+    detect_double_blank,
+    knowable_double_blank,
+)
 from ..optimize.milp import CurrentSquad, InfeasibleError, bench_margins
 from ..optimize.transfer_path import plan_transfer_path
 from ..rules.engine import Ruleset
@@ -96,8 +101,24 @@ def load_decision(path: Path | None) -> ManagerDecision | None:
     )
 
 
+def _schedule_known_from(out_dir: Path) -> dict[int, int]:
+    """Point-in-time schedule confirmations, keyed GW -> GW it became public.
+
+    Lives beside the season's other artifacts (`schedule_knowledge.json`) rather
+    than in code, because it is sourced research, not logic. Missing file = no
+    confirmations, which is the conservative reading: only the near horizon is
+    trusted.
+    """
+    path = out_dir / "schedule_knowledge.json"
+    if not path.exists():
+        return {}
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    return {int(k): int(v) for k, v in raw.get("known_from", {}).items()}
+
+
 def _print_chip_advice(
-    store: SeasonStore, gw: int, rules: Ruleset, state: SquadState, projections
+    store: SeasonStore, gw: int, rules: Ruleset, state: SquadState, projections,
+    out_dir: Path,
 ) -> None:
     """Chip-timing advisory for the HELD squad (state.buy_costs) — verdicts for
     the current half's chips plus a compact forward EV surface. Advice only:
@@ -107,16 +128,31 @@ def _print_chip_advice(
     wildcard, so only the changes the FT budget can't cover count as a trigger."""
     id_to_name = dict(zip(store.teams["id"], store.teams["name"]))
     double_blank = detect_double_blank(store.fixtures_at(gw), id_to_name)
+    # The archive's fixture table is the FINAL one, so rearrangement-created
+    # doubles/blanks are visible from GW1. Gate them on what was actually public
+    # at this deadline before any of it reaches a chip verdict.
+    double_blank, unknowable = knowable_double_blank(
+        double_blank, gw, known_from=_schedule_known_from(out_dir)
+    )
     held_ids = list(state.buy_costs)
     surface = chip_surface(projections, held_ids, rules.raw["lineup"], double_blank)
     wc_changes = len(wildcard_squad(projections, rules, state).transfers_in)
     change_need = max(0, wc_changes - state.free_transfers)
-    plan = advise(surface, state.chips_used, gw, change_need=change_need)
+    plan = advise(
+        surface, state.chips_used, gw, change_need=change_need, exclude_gws=unknowable
+    )
 
     half = 2 if gw > 19 else 1
     print(f"\n=== Chip advice (held squad; one-of-each-per-half, current half {half}) ===")
     used = ", ".join(state.chips_used) if state.chips_used else "none"
     print(f"inventory used: {used} | uncapped change-need: {change_need}")
+    if unknowable:
+        gws = ", ".join(f"GW{g}" for g in unknowable)
+        print(
+            f"  NOT KNOWABLE at this deadline, excluded from advice: {gws} — the archive's"
+            " fixture table is final, so these doubles/blanks may come from rearrangements"
+            " not yet made. Add a dated source to schedule_knowledge.json to admit one."
+        )
     for chip, adv in plan.items():
         tgt = f"GW{adv.target_gw}" if adv.target_gw is not None else "—"
         print(f"  {chip:<15}{adv.verdict:<7}{tgt:<6} | {adv.reason}")
@@ -235,7 +271,8 @@ def _print_bench_hairs(squad, projections, gw: int, rules: Ruleset) -> None:
 
 
 def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
-            overlays: dict | None, decision: ManagerDecision | None) -> None:
+            overlays: dict | None, decision: ManagerDecision | None,
+            out_dir: Path) -> None:
     """Print the optimizer proposal + multi-GW fixture context. NO state is
     written: this is the 'models propose' half; the manager call comes after."""
     projections = project_gw(store, gw, rules, overlays=overlays)
@@ -272,7 +309,7 @@ def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
 
     _print_bench_hairs(squad, projections, gw, rules)
     _print_transfer_path(rules, state, projections, decision)
-    _print_chip_advice(store, gw, rules, state, projections)
+    _print_chip_advice(store, gw, rules, state, projections, out_dir)
 
 
 def _name(result: GWResult, pid: int) -> str:
@@ -436,7 +473,7 @@ def main() -> None:
     if args.propose:
         if state is None:
             raise SystemExit("--propose needs an existing state.json (GW2 onward)")
-        propose(store, args.gw, rules, state, overlays or None, decision)
+        propose(store, args.gw, rules, state, overlays or None, decision, out_dir)
         return
 
     result, state = run_gameweek(

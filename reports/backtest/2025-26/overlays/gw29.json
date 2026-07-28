@@ -1,0 +1,322 @@
+{
+ "430": {
+  "start_share": 0.5,
+  "reason": "Erling Haaland (Man City FWD): the season's first genuine COIN-FLIP on our captaincy anchor (OUR PLAYER). He MISSED GW28 entirely — City won 1-0 at Leeds without him (Semenyo 45') — with an undisclosed knock, and he MISSED TRAINING ON MONDAY 2 Mar. Guardiola's pre-match presser (Tue 3 Mar, before the 18:00 deadline): the issue is 'not a big issue' and 'Erling feels much better, but yesterday we didn't train and now we have training and will decide today' — i.e. the call is made after Tuesday afternoon training, essentially AT or AFTER our deadline. HOME to Nott'm Forest (MCI v NFO, Wed 4 Mar 19:30) is the softest fixture on the board and exactly the game he would want; against that, City's next two are a hard FA Cup 5th-round tie AWAY at Newcastle (Sat 7 Mar 20:00) and the UCL R16 first leg (10-11 Mar), so Pep has every incentive to protect him one more week. The market has already moved: The Scout LEFT HIM OUT of the GW29 Scout Selection entirely and captained Semenyo instead, premierleague.com's MW29 predicted line-ups list him as a doubt and note 'Guardiola often prefers the partnership of Semenyo and Marmoush up front when Haaland is unavailable', and he is NOT the poll leader for the first time in months (FFScout captaincy poll: Ekitike ~24%, Haaland 19.5%, Semenyo 16.6%). 0.5 is the honest number — 'not a big issue' + 'feels much better' + a soft home fixture pulls up, a missed match, a missed training day and an undecided late fitness test pull down; anything more confident would be smuggled. CAPTAINCY: this is an AVAILABILITY flag, not form, so the shield/no-recency-switch rule does NOT protect the armband here — the GW23 precedent (priced 0.70 on a datable flag, captained anyway, played 17' for 2 pts) is the cautionary case. Price ~PS14.6-14.8m and drifting (was PS14.9 at GW25). Data-hygiene: the CONFIRMED Man City XI for Wed 4 Mar (which I saw, and which post-dates the deadline by ~25h), the match result, and the FFScout 5 Mar 'Haaland blank' note are ALL post-deadline and excluded — only the Tue 3 Mar Guardiola presser, the GW28 absence and the pre-deadline predicted line-ups inform this number. Sources: Guardiola presser 3 Mar (mancity.com / Sports Mole / FOX Sports / OneFootball); premierleague.com 'Predicted line-ups MW29' + 'Scout Selection GW29' + 'Who is the best FPL captain for GW29' (2-3 Mar); FFScout GW29 team news 3 Mar; 3addedminutes GW29 injury news.",
+  "duration_gws": 1
+ },
+ "82": {
+  "start_share": 0.88,
+  "reason": "Antoine Semenyo (Man City MID): THE consensus GW29 buy and the Scout's captain (BUY/WATCH candidate — not ours, and note we already hold Haaland so this would be a City double). Nailed since his January PS64m move from Bournemouth: he scored the 45th-minute winner at Leeds in GW28 and premierleague.com make him City's top-scoring player since the move (5 goals + 1 assist, 54 pts from GW22 — some 20 clear of Haaland's 34 in the same window). Ownership has exploded to ~57%, price risen PS7.8 (GW25) -> PS8.2-8.3m. HOME to Nott'm Forest (Wed 4 Mar 19:30), and with Haaland doubtful premierleague.com note Pep's fallback is 'Semenyo and Marmoush up front'. He is handed the armband in the GW29 Scout Selection with B.Fernandes as vice, and sits 3rd in the FFScout captaincy poll (16.6%). 0.88 not 0.92: City are three days from a hard FA Cup tie at Newcastle and Pep rotates wide/forward roles more than most, but nothing datable flags him. THE CATCH FOR US: he BLANKS in BGW31 alongside Haaland and our Arsenal triple — buying him deepens the blank exposure, and premierleague.com's own counter-argument (4597972, pre-deadline) is that City's next three opponents are all bottom-six AND City still owe a rearranged home game v Crystal Palace that is 'likely to lead to a Double Gameweek later in the season'. Data-hygiene: the Wed 4 Mar confirmed XI, result and the FFScout 5 Mar 'Semenyo scores again' note are post-deadline and excluded. Sources: premierleague.com 'Scout Selection GW29' / 'The Scout's GW29 transfer radar' / 'Should you buy Man City players despite BGW31' (4597972) / 'Is Semenyo now a better pick than Haaland' (4592438); FFScout captaincy poll 3 Mar.",
+  "duration_gws": 1
+ },
+ "21": {
+  "start_share": 0.62,
+  "reason": "Declan Rice (Arsenal MID): a REAL, DATABLE FITNESS DOUBT for the midweek round (OUR PLAYER). He ASKED TO COME OFF in the 76th minute of Arsenal's 2-1 win over Chelsea on Sunday 1 Mar (GW28); reporting pre-deadline describes it as muscle tightness / a fatigue issue rather than a structural injury. Arteta, pre-match presser Tue 3 Mar: 'I hope so. He was much better today. We haven't trained much as we only have two days to prepare for the game. Hopefully he's going to be better tomorrow.' FFScout's Tuesday team-news blog logs him simply as 'much better'. AWAY at Brighton (BHA v ARS, Wed 4 Mar 19:30). 0.62 prices a genuinely unresolved call: 'I hope so' + 'much better' is optimistic, but a self-requested substitution with a muscle issue, only two days of preparation, Zubimendi/Nwaneri as ready cover, and Arsenal five points clear with an easy FA Cup tie at Mansfield on Sat 7 Mar (where the rotation would normally land) all argue Arteta can afford to leave him out. Pre-deadline predicted XIs are split — si.com / paininthearsenal still name him in a 4-2-3-1 alongside Zubimendi. HOLD, do not churn a PS7.5 anchor on a 1-week knock (the GW19 precedent: benched Rice on a precautionary knee, he returned 17 the following week) — but he is a BENCH candidate for the XI if the solver's margin is thin. He also BLANKS in BGW31. Data-hygiene: the confirmed Arsenal XI at Brighton (arsenal.com 'Mosquera starts away to Brighton', published ~25h after our deadline) and the result are EXCLUDED; so is the later 14 Mar Arsenal-Everton round. Sources: Arteta presser 3 Mar via Sports Mole 'triple Arsenal injury boost' / si.com / Yahoo; FFScout GW29 team news 3 Mar; 3addedminutes GW29 injury news.",
+  "duration_gws": 1
+ },
+ "6": {
+  "start_share": 0.72,
+  "reason": "William Saliba (Arsenal DEF): available-but-not-certain into the maximum-rotation midweek (OUR PLAYER). AWAY at Brighton (Wed 4 Mar 19:30), 72h after the 2-1 win over Chelsea. The positives are pre-deadline and solid: Arsenal are FIVE POINTS CLEAR at the top and this is a title-race away game they will take seriously, their FA Cup 5th-round tie is away at Mansfield on Sat 7 Mar (a tie Arteta will make 'wholesale changes' for, so the rotation lands THERE, not here), there is NO European fixture in this week at all (UCL R16 first legs are 10-11 Mar), and the pre-deadline predicted XIs (si.com / paininthearsenal, 3-4 Mar) still list him in the back four with Timber, Gabriel and Hincapie. The negatives are the honest reason this is 0.72 and not 0.85: Arteta's own 'we haven't trained much as we only have two days to prepare' framing, a spate of niggles out of the Chelsea game, Mosquera fit and available as a like-for-like CB, and one Arsenal.com press-conference report I could NOT reliably date to this round claiming Saliba missed a Sunday Chelsea game with a training knock and was 'touch and go... a matter of days' for a Wednesday night — UNVERIFIED, so it widens the number rather than setting it. LOCK-ish HOLD (refuse the standing Saliba->Timber churn, we own both); he BLANKS in BGW31. Data-hygiene: arsenal.com's confirmed 'Mosquera starts away to Brighton' team-news post and the match result are POST-deadline and excluded — they are exactly the kind of hindsight that would have made this number falsely precise. Sources: Arteta presser 3 Mar (Sports Mole / Yahoo / arsenal.com); FFScout GW29 team news 3 Mar; si.com 'Brighton vs Arsenal preview, predictions and lineups' 3-4 Mar; thefa.com FA Cup R5 draw 16 Feb.",
+  "duration_gws": 1
+ },
+ "8": {
+  "start_share": 0.78,
+  "reason": "Jurrien Timber (Arsenal DEF): expected to start AWAY at Brighton (Wed 4 Mar 19:30) but carrying the same 48-72h congestion risk as the rest of the Arsenal back line (OUR PLAYER). He is named in every pre-deadline predicted XI I can source (si.com / paininthearsenal, 3-4 Mar: Raya; Timber, Saliba, Gabriel, Hincapie), no injury was attached to him in Arteta's Tue 3 Mar six-player update (the named items were Rice, Odegaard, Havertz, White out, Raya fit) and FFScout's Tuesday blog does not flag him. 0.78 rather than 0.85 is a pure rotation haircut: two days' preparation, Mosquera and Hincapie both fit and competing across the back four, and an FA Cup tie at Mansfield three days later that Arteta will rotate for. Of our Arsenal triple he is the CLEANEST of the three this week (Rice has a datable knock, Saliba an unverified one). HOLD; BLANKS in BGW31 — with Saliba, Rice and Haaland that is four of our best assets blanking, which is the chip question, not a GW29 question. Data-hygiene: the confirmed Brighton XI + result are post-deadline; so is Timber's LATER injury (forced off in the 37th minute of Arsenal's 2-0 win over Everton on 14 March, GW30) which I saw while researching and which must NOT touch this week's number. Sources: Arteta presser 3 Mar (Sports Mole / Yahoo); FFScout GW29 team news 3 Mar; si.com preview 3-4 Mar.",
+  "duration_gws": 1
+ },
+ "5": {
+  "start_share": 0.8,
+  "reason": "Gabriel (Arsenal DEF): nailed CB in the pre-deadline predicted XI AWAY at Brighton (Wed 4 Mar), PS7.1 (GW25) -> ~PS7.2m and one of the five most-owned players in the game per premierleague.com's BGW31 primer. No flag in Arteta's Tue 3 Mar update. NOT OWNED and NOT a buy for us: we are at the 3-per-club Arsenal cap (Saliba/Timber/Rice), so any Gabriel entry requires an Arsenal sale first, and he blanks in BGW31 with the rest. 0.80 carries the same two-days-to-prepare rotation haircut as his partners. Listed here because he is the named alternative captain/defender the crowd weighs against our own Arsenal bloc and because his BGW31 status is identical to ours. Data-hygiene: the confirmed Brighton XI is post-deadline and excluded. Sources: si.com / paininthearsenal predicted XI 3-4 Mar; premierleague.com 'Why some of your players don't have a match in GW31' (4593685, pre-deadline).",
+  "duration_gws": 1
+ },
+ "1": {
+  "start_share": 0.9,
+  "reason": "David Raya (Arsenal GKP): FIT and starting AWAY at Brighton (Wed 4 Mar) — FFScout's Tuesday 3 Mar team-news blog logs Arsenal as 'Rice much better, RAYA FIT, White out, Odegaard and Havertz to be assessed', which is the only explicit fitness confirmation Arsenal gave for a starter this week. PS5.9 (GW25) -> ~PS6.0m. NOT OWNED (we run Roefs/Dubravka) and not a live buy at the Arsenal cap, but relevant because he is a top-10-owned asset who BLANKS in BGW31 and because keepers are the cheapest way the crowd is de-risking that blank. Data-hygiene: the confirmed XI is post-deadline. Sources: FFScout GW29 team news 3 Mar; premierleague.com BGW31 primer (4593685).",
+  "duration_gws": 1
+ },
+ "26": {
+  "start_share": 0.8,
+  "reason": "Martin Zubimendi (Arsenal MID): the direct BENEFICIARY if Rice does not make it (WATCH, not owned). Named in the pre-deadline predicted XI as the double pivot alongside Rice (si.com / paininthearsenal, 3-4 Mar) and with Odegaard's knee flare-up and Merino long-term out after foot surgery, Arsenal's central midfield is thin enough that Zubimendi starts whether Rice plays or not — that is why 0.80 sits ABOVE the number I have given Rice. PS5.2m at GW25, the cheapest route onto Arsenal's midfield. Not actionable for us at the 3-per-club cap, and he blanks in BGW31. Data-hygiene: confirmed XI post-deadline. Sources: si.com preview 3-4 Mar; FFScout GW29 team news 3 Mar (Odegaard to be assessed); Arsenal injury reporting (Merino foot surgery, sustained 25 Jan).",
+  "duration_gws": 1
+ },
+ "17": {
+  "start_share": 0.25,
+  "reason": "Martin Odegaard (Arsenal MID): a heavy doubt for the Brighton trip. FFScout's Tuesday 3 Mar blog lists him as 'to be assessed' alongside Havertz, and the club's injury picture through this period is headlined by a knee problem that has proved more persistent than expected. He is not in the pre-deadline predicted XI (Eze/Trossard/Saka named behind Gyokeres). 0.25 rather than 0.0 because 'to be assessed' is not 'ruled out' and the default on ambiguity is AVAILABLE — but the direction is clear. Not owned, no action; BAN any model-proposed buy (the archive-blind model keeps status 'a'). Data-hygiene: his later ruling-out for the Champions League tie v Bayer Leverkusen (mid-March) is post-deadline and excluded. Sources: FFScout GW29 team news 3 Mar; Arsenal injury reporting (knee).",
+  "duration_gws": 1
+ },
+ "20": {
+  "start_share": 0.5,
+  "reason": "Leandro Trossard (Arsenal MID): a RETURNING doubt. He is named in the pre-deadline predicted XI at Brighton (si.com / paininthearsenal 3-4 Mar), but a same-window Arsenal.com press-conference report has him coming back from a muscle problem 'in a matter of days' — I could not pin that quote to this exact presser, so it is treated as directional only. 0.5 is deliberately wide and honest. Not owned; no action. Data-hygiene: the confirmed Brighton XI is post-deadline. Sources: arsenal.com press-conference reports (early Mar, exact date UNVERIFIED); si.com preview 3-4 Mar.",
+  "duration_gws": 1
+ },
+ "16": {
+  "start_share": 0.78,
+  "reason": "Bukayo Saka (Arsenal MID): in the pre-deadline predicted XI at Brighton (Wed 4 Mar) with no flag in Arteta's Tue 3 Mar update. PS9.9m. 0.78 is the standard Arsenal two-days-to-prepare haircut plus the fact that Arteta explicitly described the front line as his thinnest area this season — which cuts both ways (fewer alternatives = more likely to start, but also more reason to manage him before the Mansfield cup tie and the UCL R16). Not owned, not a buy at the Arsenal cap, and blanks in BGW31. Data-hygiene: confirmed XI post-deadline. Sources: si.com / paininthearsenal predicted XI 3-4 Mar; FFScout 3 Mar.",
+  "duration_gws": 1
+ },
+ "666": {
+  "start_share": 0.75,
+  "reason": "Viktor Gyokeres (Arsenal FWD): named as the No.9 in the pre-deadline predicted XI at Brighton (3-4 Mar). PS8.7m at GW25. si.com's own preview headline for this fixture flags a striker change as a live possibility, and with Havertz absent Arsenal's centre-forward options are thin — 0.75 balances the two. Not owned; no action (Arsenal cap + BGW31 blank). Data-hygiene: confirmed XI post-deadline. Sources: si.com 'Arsenal XI vs Brighton' 3-4 Mar; FFScout 3 Mar (Havertz to be assessed).",
+  "duration_gws": 1
+ },
+ "7": {
+  "start_share": 0.4,
+  "reason": "Riccardo Calafiori (Arsenal DEF): NOT in the pre-deadline predicted XI at Brighton (Hincapie named at left-back alongside Saliba/Gabriel/Timber) and the subject of one of Arteta's named 3 Mar updates (headline: 'Arteta's update on Rice, Calafiori and Mosquera'). 0.4 prices a fit-but-rotational squad defender in a congested week where Arteta has four-plus options across the back line. BAN any auto buy-back (we sold him GW19; the churn rule plus the Arsenal 3-cap plus the BGW31 blank all point the same way). Data-hygiene: confirmed XI post-deadline. Sources: arsenal.com 'Arteta's update on Rice, Calafiori and Mosquera' (3 Mar); si.com preview 3-4 Mar.",
+  "duration_gws": 1
+ },
+ "449": {
+  "start_share": 0.9,
+  "reason": "Bruno Fernandes (Man Utd MID): the SAFEST premium start on the board this week and the Scout's named VICE-CAPTAIN (OUR PLAYER). AWAY at Newcastle (NEW v MUN, Wed 4 Mar 20:15) against a side in freefall — Newcastle have lost five of their last six, were beaten 3-2 at home by Everton in GW28, and are WITHOUT their captain Bruno Guimaraes (hamstring, out until after the March break). Fernandes 'put on a fantastic display' in United's 2-1 home win over Crystal Palace in GW28 and leads the entire league for big-chance involvement since GW22 (three big chances plus eight created = 11). Crucially for a midweek round, MAN UTD ARE OUT OF THE FA CUP: they have NO fixture on the 6-8 Mar cup weekend, so their next game after Newcastle is GW30 on 14 Mar — a nine-day gap and effectively ZERO rotation incentive. Carrick's only fitness concerns are defensive (Maguire, Shaw). PS9.7 (GW25) -> ~PS9.9m. He is 4th in the FFScout captaincy poll and is the natural armband fail-safe if Haaland fails his fitness test. HOLD / START; note he does NOT blank in BGW31 — he is part of the answer to it. Data-hygiene: the Wed 4 Mar confirmed XIs (incl. Newcastle's) and the result are post-deadline and excluded. Sources: premierleague.com 'Scout Selection GW29' + 'Who is the best FPL captain for GW29' (2-3 Mar); Sports Mole 'Newcastle vs Man Utd preview' 3 Mar; lastwordonsports Man Utd predicted XI 4 Mar; thefa.com FA Cup R5 draw 16 Feb.",
+  "duration_gws": 1
+ },
+ "488": {
+  "start_share": 0.02,
+  "reason": "Bruno Guimaraes (Newcastle MID): OUT — a MULTI-WEEK absence, and the single most important duration call this week (OUR PLAYER if still held). He tore a hamstring at the end of Newcastle's 2-1 win at Tottenham on 10 FEBRUARY and pre-deadline reporting (premierleague.com 'Guimaraes out until April: what are Newcastle's stats without him', plus Howe's own updates) has him sidelined UNTIL AFTER THE MARCH INTERNATIONAL BREAK — i.e. he misses GW29, GW30 and BGW31, with GW32 the earliest plausible return. He missed the Everton game (GW28) and did not travel with the squad; he was also reported to have contracted mumps on his return from rehab in Brazil, adding downside to the timeline rather than upside. duration_gws = 3 encodes exactly that (GW29-31 suppressed, clean estimate from GW32) — this is the field's whole purpose and pricing him as a one-week hole would be the classic defect. SELL if still owned: a three-gameweek dead slot cannot be carried into a BGW31 build-up where we already have four blanking assets. 0.02, not 0.0, only because the default on ambiguity is available. Data-hygiene: his ACTUAL return (a second-half substitute in a 2-1 home defeat to Bournemouth in April, a nine-week absence) and Newcastle's subsequent cup/European exits are POST-deadline and excluded; only the 10 Feb injury, the 'out until after the March international break' reporting and his GW28 absence are used. Sources: premierleague.com 4592470 (Feb); nufcblog 11 Feb; Sports Mole Newcastle injury news (Feb); Sports Mole 'Newcastle vs Man Utd preview' 3 Mar.",
+  "duration_gws": 3
+ },
+ "670": {
+  "start_share": 0.2,
+  "reason": "Robin Roefs (Sunderland GKP): a HEAVY DOUBT and a live hole in our XI (OUR PLAYER). He picked up a HAMSTRING problem stretching for a save AWAY AT BOURNEMOUTH in GW28 — an on-camera, pre-deadline event — and Sunderland's pre-match bulletins for the Leeds trip (Sunderland Echo 'Sunderland suffer major injury blows ahead of Leeds United clash', 3 Mar; LiveScore Sunderland daily news 3 Mar) run a long absentee list: Mukiele (calf), Brobbey (groin), Cirkin (hamstring), Reinildo (knee), Mundle (hamstring), Ta Bi (ankle), with Le Bris also saying Xhaka's three-day turnaround was 'too short for him to start'. Away at Leeds (LEE v SUN, Tue 3 Mar 19:30 — 90 minutes after our deadline). I could NOT source a Le Bris quote explicitly ruling Roefs out before 18:00, so this is priced as a heavy doubt (0.2) rather than a confirmed zero — a wide honest number beats a confident one. If we still own him, the memo needs a GK answer this week: Dubravka is the bench keeper and plays at Everton the same night. duration_gws = 2 prices a hamstring as at least a two-round issue with no published timeline. Data-hygiene: the CONFIRMED Sunderland XI at Elland Road (January signing Melker Ellborg making his full debut, Simon Moore on the bench) is POST-deadline and is excluded from this number — it is named here only so the audit trail shows what was withheld. Sources: Sunderland Echo 3 Mar; LiveScore Sunderland daily 3 Mar; thefootballfaithful / lastwordonsports Sunderland preview 3 Mar.",
+  "duration_gws": 2
+ },
+ "470": {
+  "start_share": 0.88,
+  "reason": "Martin Dubravka (Burnley GKP): No.1, AWAY at Everton (EVE v BUR, Tue 3 Mar 19:30). In the pre-deadline predicted XI (Dubravka; Humphreys, Worrall, Esteve, Pires; Ugochukwu, Ward-Prowse; Hannibal, Foster, Anthony; Flemming); Burnley's only fresh doubts are Marcus Edwards (training knock) with Broja and Cullen still out. Scott Parker's side are 19th, eight points adrift, and came off a chaotic 4-3 home defeat to Brentford in GW28 — a bad CS spot but a certain start, and Burnley have NO FA Cup tie, so no rotation pressure at all. OUR BENCH KEEPER normally, but with Roefs a hamstring doubt he is suddenly the likely starting GK — a save-points-not-clean-sheet proposition at a ground where Everton have kept three straight clean sheets against Burnley. Data-hygiene: the confirmed XI and result (KO 90 minutes after the deadline) are excluded. Sources: thefootballfaithful / lastwordonsports / goodisonnews Everton v Burnley previews 3 Mar; FFScout GW29 team news 3 Mar.",
+  "duration_gws": 1
+ },
+ "291": {
+  "start_share": 0.9,
+  "reason": "James Tarkowski (Everton DEF): the LOWEST rotation risk in our squad this week (OUR PLAYER). Nailed CB in Everton's pre-deadline predicted XI HOME to Burnley (EVE v BUR, Tue 3 Mar 19:30): Pickford; O'Brien, Tarkowski, Branthwaite, Mykolenko; Garner, Gueye; McNeil, Dewsbury-Hall, Ndiaye; Barry. Everton's only absentees are Grealish (foot), Alcaraz and Coleman — none of them defenders. The decisive rotation point: EVERTON ARE OUT OF THE FA CUP, so after Tuesday their next fixture is GW30 on 14 March — an ELEVEN-DAY gap, which is the single strongest 'no reason to rest anyone' signal on the board in a round defined by rotation. Moyes' side arrive on a clinical 3-2 win at Newcastle (GW28) and face a Burnley team that has conceded the second-most goals in the league over the last six gameweeks; Everton have kept clean sheets in each of their last three PL meetings with Burnley. [PROCESS] this is the cleanest named prime-CS/duel bet of the week — if the solver benches him on a <0.2 xpts hair, pull force_start (the standing rule after the GW19/GW22 stings), while noting the CS-flavoured duel caution in knowledge.md. HOLD. Data-hygiene: the confirmed XI and result (KO 19:30, 90 min post-deadline) are excluded. Sources: lastwordonsports 'Everton team news and predicted lineup v Burnley' 3 Mar; thefootballfaithful 3 Mar; goodisonnews 3 Mar; thefa.com FA Cup R5 draw 16 Feb (Everton absent).",
+  "duration_gws": 1
+ },
+ "303": {
+  "start_share": 0.85,
+  "reason": "James Garner (Everton MID): in Everton's pre-deadline predicted XI in the double pivot alongside Gueye, HOME to Burnley (Tue 3 Mar 19:30), with no injury or suspension surfaced (OUR PLAYER). Same rotation logic as Tarkowski: Everton have NO FA Cup tie and an eleven-day gap to GW30, so there is no congestion reason to rest anyone. He is our min-spend autosub insurance and this week that insurance matters more than usual — with Roefs a doubt, Haaland a coin-flip and Rice a knock, the bench needs to fire. 0.85 rather than 0.9 only for ordinary midfield rotation. Data-hygiene: confirmed XI and result post-deadline. Sources: lastwordonsports / thefootballfaithful Everton previews 3 Mar.",
+  "duration_gws": 1
+ },
+ "242": {
+  "start_share": 0.85,
+  "reason": "Kiernan Dewsbury-Hall (Everton MID): the WEEK'S HEADLINE DIFFERENTIAL and a genuine value BUY candidate at PS4.9 (GW25) -> ~PS5.0m. Both the Scout's GW29 transfer radar AND FFScout's GW29 differentials piece lead on him: ~3-5% owned, Everton's top FPL performer since he returned to the XI in GW24 (27-28 pts, 1 goal 2 assists in that window) and the club's leading attacking returner this season (5 goals, 5 assists). He is in the pre-deadline predicted XI as the No.10 HOME to Burnley (Tue 3 Mar), a side that has conceded the second-most goals (14) over the last six gameweeks — and he is selected in the official GW29 Scout Selection. Everton have NO FA Cup tie (eleven-day gap to GW30), so no rotation risk. For us he is the cheap non-blanking body that BGW31 planning wants: Everton play in GW31. Buy on the numbers (pts-per-million), not the hype. Data-hygiene: the Tue 3 Mar confirmed XI and result are post-deadline. Sources: premierleague.com 'The Scout's GW29 transfer radar' + 'Scout Selection GW29' (2-3 Mar); FFScout 'GW29 differentials: 3 low-owned picks' 3 Mar; lastwordonsports Everton XI 3 Mar.",
+  "duration_gws": 1
+ },
+ "287": {
+  "start_share": 0.9,
+  "reason": "Jordan Pickford (Everton GKP): named in the official GW29 Scout Selection (PS5.6m) HOME to bottom-three Burnley (Tue 3 Mar 19:30) — the Scout doubled up on Everton at both ends. Nailed No.1, no flag, and Everton have NO FA Cup tie so there is zero congestion reason to rotate. A live BUY candidate for us if Roefs' hamstring rules him out and the memo needs a keeper who also PLAYS IN BGW31 (Everton have a GW31 fixture). Data-hygiene: confirmed XI and result post-deadline. Sources: premierleague.com 'Scout Selection GW29' 2-3 Mar; lastwordonsports Everton XI 3 Mar.",
+  "duration_gws": 1
+ },
+ "419": {
+  "start_share": 0.02,
+  "reason": "Jack Grealish (Everton MID): OUT with a foot injury — listed among Everton's absentees (with Alcaraz and Coleman) in every pre-deadline preview for the Burnley game (3 Mar). No published return date, so duration_gws = 3 as an honest multi-week scope rather than a one-week hole. Not owned; BAN any model-proposed buy. Data-hygiene: none material. Sources: thefootballfaithful / lastwordonsports / goodisonnews Everton v Burnley previews 3 Mar.",
+  "duration_gws": 3
+ },
+ "72": {
+  "start_share": 0.88,
+  "reason": "Marcos Senesi (Bournemouth DEF): super-nailed and rotation-proof this week (OUR PLAYER). In Bournemouth's pre-deadline predicted XI HOME to Brentford (BOU v BRE, Tue 3 Mar 19:30): Petrovic; Jimenez, Hill, Senesi, Truffert; Christie, Scott; Adli, Tavernier, Brooks; Kroupi. BOURNEMOUTH ARE OUT OF THE FA CUP — no fixture on the 6-8 Mar cup weekend, so their next game after Tuesday is GW30 on 14 Mar, an eleven-day gap and no congestion incentive whatsoever. Iraola's side are 9th on 39 points, unbeaten in eight, and Brentford have to travel 48h after a 4-3 win at Burnley. No suspension surfaced. [PROCESS] a named prime-CS bet alongside Tarkowski — if the solver benches him on a <0.2 hair, weigh force_start (with the standing caution that pure-CS duel names have a mixed record). HOLD. Data-hygiene: the confirmed XI and result (KO 90 min after the deadline) are excluded. Sources: thefootballfaithful / FFScout 'Bournemouth v Brentford predicted line-ups + FPL team news' 3 Mar; thefa.com FA Cup R5 draw 16 Feb (Bournemouth absent).",
+  "duration_gws": 1
+ },
+ "374": {
+  "start_share": 0.8,
+  "reason": "Ibrahima Konate (Liverpool DEF): expected to start AWAY at Wolves (WOL v LIV, Tue 3 Mar 20:15) — pre-deadline previews are explicit that 'Van Dijk and Konate are expected to continue in central defence, largely due to limited alternatives', and he is in Liverpool's predicted XI (Alisson; Frimpong, Konate, Van Dijk, Robertson; Gravenberch, Mac Allister; Gakpo, Szoboszlai, Salah; Ekitike). The rotation caveat that keeps this at 0.80 and not 0.87 is specific and real: LIVERPOOL PLAY WOLVES AGAIN THREE DAYS LATER in the FA Cup 5th round (Fri 6 Mar), and Slot has a full-strength squad for the first time in months — the same-opponent double-header is precisely where a manager splits his XI. Wolves are bottom-half with the league's weakest attack, so the CS spot is good if he plays. HOLD if owned. Data-hygiene: the confirmed XI and result (KO 20:15, post-deadline) are excluded. Sources: lastwordonsports 'Wolves predicted lineup v Liverpool' 3 Mar; anfieldindex Liverpool XI 3 Mar; si.com 'Wolves v Liverpool preview' 3 Mar; thefa.com FA Cup R5 draw 16 Feb.",
+  "duration_gws": 1
+ },
+ "373": {
+  "start_share": 0.85,
+  "reason": "Virgil van Dijk (Liverpool DEF): the form defender in the game and a serious BUY candidate — PS5.9 (GW25) -> ~PS6.1m and, per allaboutfpl's GW29 transfer piece, comfortably the highest-scoring defender over the last seven gameweeks (50 pts: 3 goals, 1 assist, 2 clean sheets). He scored in the 5-2 demolition of West Ham in GW28 and is named in the official GW29 Scout Selection, AWAY at Wolves (Tue 3 Mar 20:15). Pre-deadline previews have him and Konate continuing 'due to limited alternatives'. 0.85 docks the same Wolves-again-in-the-FA-Cup-on-Friday rotation tail. Relevant to us as a non-blanking BGW31 defender (Liverpool play GW31) if the memo needs to rotate out of an Arsenal CB. Data-hygiene: confirmed XI and result post-deadline. Sources: premierleague.com 'Scout Selection GW29' 2-3 Mar; allaboutfpl GW29 transfer tips 2-3 Mar; anfieldindex / lastwordonsports previews 3 Mar.",
+  "duration_gws": 1
+ },
+ "661": {
+  "start_share": 0.85,
+  "reason": "Hugo Ekitike (Liverpool FWD): THE CONSENSUS CAPTAIN of GW29 and the most-backed alternative to a doubtful Haaland (BUY/WATCH, not owned). He tops the FFScout captaincy poll (~24%, ahead of Haaland 19.5% and Semenyo 16.6%) and other trackers put him higher still (~38%); premierleague.com's AI/predicted-points board has him first on ~6.0-6.1 predicted points, marginally ahead of Salah. Form: he opened the scoring after five minutes in Liverpool's 5-2 win over West Ham in GW28 and hauled 15 in GW27 (goal, 2 assists, 3 bonus). Fixture: AWAY at bottom-half Wolves (Tue 3 Mar 20:15), then Spurs and Brighton before BGW31 — the softest attacking run on the board, and Liverpool PLAY in BGW31. He is in the Scout Selection and the predicted XI. PS8.9 (GW25) -> ~PS9.0m. 0.85 rather than 0.9 for the Wolves-again-on-Friday FA Cup double-header rotation tail. This is the buy the crowd is making WITH the BGW31 problem in mind, and it is fundable-shaped for us only via a premium sale. Data-hygiene: the Tue 3 Mar confirmed XI and result are post-deadline. Sources: FFScout captaincy poll + 'Who is the best captain for FPL GW29' 3 Mar; premierleague.com 'Scout Selection GW29' / 'Who is the best FPL captain for GW29' 2-3 Mar; squawka AI captain picks GW29; allaboutfpl GW29 tips.",
+  "duration_gws": 1
+ },
+ "381": {
+  "start_share": 0.78,
+  "reason": "Mohamed Salah (Liverpool MID): named in the pre-deadline predicted XI AWAY at Wolves (Tue 3 Mar 20:15) and the second-best AI captain pick behind team-mate Ekitike (~6.0 predicted points). ~PS14.0m. 0.78 keeps a genuine minutes-management tail: Liverpool face Wolves again in the FA Cup on Friday 6 Mar and Slot has a fully fit squad for the first time in months, which is exactly when he rests a 33-year-old across a same-opponent double-header. Our standing refusal to fund a PS14m buy HOLDS (no route without tearing down two slots; the board outprojects him). Data-hygiene: the confirmed XI and result are post-deadline; his much later (April) injury saga is likewise excluded. Sources: anfieldindex / lastwordonsports Liverpool XI 3 Mar; squawka AI captain picks GW29; FFScout captaincy poll 3 Mar.",
+  "duration_gws": 1
+ },
+ "387": {
+  "start_share": 0.75,
+  "reason": "Dominik Szoboszlai (Liverpool MID): in the pre-deadline predicted XI at Wolves (Tue 3 Mar 20:15). PS6.7-7.0m. 0.75 is a deliberate rotation haircut: with a fully fit Liverpool squad (Slot's first in months) and the SAME OPPONENT again in the FA Cup on Friday 6 Mar, the midfield three is where Slot has the most interchangeable options (Gravenberch, Mac Allister, Wirtz, Jones all competing). Sold at GW24 — the churn rule bars a re-buy without new information, and a two-games-in-four-days rotation risk is not new information in his favour. Data-hygiene: confirmed XI and result post-deadline. Sources: anfieldindex Liverpool XI 3 Mar; lastwordonsports Wolves v Liverpool 3 Mar.",
+  "duration_gws": 1
+ },
+ "136": {
+  "start_share": 0.85,
+  "reason": "Igor Thiago (Brentford FWD): nailed No.9 and in-form, AWAY at Bournemouth (BOU v BRE, Tue 3 Mar 19:30) — OUR PLAYER and the live VICE-CAPTAIN candidate if Haaland fails his fitness test. He scored in Brentford's chaotic 4-3 win at Burnley in GW28 (25'), the same game in which Damsgaard scored twice, and he is named in the pre-deadline predicted XI (Kelleher; Kayode, Ajer, Van den Berg, Henry; Yarmoliuk, Henderson; Ouattara, Damsgaard, Schade; Thiago). The rotation caveat that keeps this at 0.85: Brentford DO have an FA Cup 5th-round tie (away at West Ham, 6-8 Mar), so Keith Andrews has a three-days-later cup game — but a first-choice striker on a scoring run at a 48h turnaround is a start, not a rest. Bournemouth are unbeaten in eight and 9th, so the fixture is neutral-to-hard rather than soft. HOLD/START; Brentford PLAY in BGW31. Data-hygiene: the confirmed XI and result (KO 90 min post-deadline) are excluded. Sources: FFScout 'Bournemouth v Brentford predicted line-ups + FPL team news' 3 Mar; thefootballfaithful 3 Mar; thefa.com FA Cup R5 draw 16 Feb.",
+  "duration_gws": 1
+ },
+ "120": {
+  "start_share": 0.82,
+  "reason": "Kevin Schade (Brentford MID): named in FFScout's GW29 differentials piece (3 Mar) as a low-owned pick with 'explosive potential within Brentford's strong fixture swing', and in the pre-deadline predicted XI AWAY at Bournemouth (Tue 3 Mar 19:30). PS7.0m. 0.82 docks a small tail for the 48h turnaround plus Brentford's FA Cup tie at West Ham on the following weekend. A BGW31-safe attacking mid (Brentford play in GW31) — relevant if the memo wants to pre-position out of blanking assets cheaply. Data-hygiene: confirmed XI and result post-deadline. Sources: FFScout 'GW29 differentials: 3 low-owned picks' 3 Mar; thefootballfaithful Bournemouth v Brentford preview 3 Mar.",
+  "duration_gws": 1
+ },
+ "691": {
+  "start_share": 0.85,
+  "reason": "Dominic Calvert-Lewin (Leeds FWD): starting and NAMED AS A GW29 DIFFERENTIAL (OUR PLAYER). He is in Leeds' pre-deadline predicted XI HOME to Sunderland (LEE v SUN, Tue 3 Mar 19:30) — Darlow; Justin, Rodon, Struijk; Bogle, Ampadu, Gruev, Gudmundsson; Stach, Calvert-Lewin, Aaronson — and FFScout's GW29 differentials piece flags him for combining 'penalties, goal threat and a favourable Leeds run'. The opponent is a Sunderland side missing SIX-plus players (Mukiele calf, Brobbey groin, Cirkin hamstring, Reinildo knee, Mundle hamstring, Ta Bi ankle) and, on the pre-deadline evidence, their first-choice keeper Roefs (hamstring). Leeds DO have an FA Cup tie (home to Norwich, 6-8 Mar) but that is the game Farke rotates for, not this one; Farke himself serves a touchline suspension. PS5.9m. HOLD; Leeds PLAY in BGW31, so he is one of the few assets we own that is already part of the blank-gameweek answer. Data-hygiene: the confirmed XIs and result (KO 90 min post-deadline) are excluded. Sources: thefootballfaithful / lastwordonsports / Sports Mole Leeds v Sunderland previews 3 Mar; FFScout GW29 differentials 3 Mar; thefa.com FA Cup R5 draw 16 Feb.",
+  "duration_gws": 1
+ },
+ "343": {
+  "start_share": 0.85,
+  "reason": "Pascal Struijk (Leeds DEF): in the pre-deadline predicted back three HOME to Sunderland (Tue 3 Mar 19:30), with Farke saying he expects both Justin and Rodon available despite doubts — i.e. the defence is intact. PS4.3m, one of the cheapest starting PL defenders. Sunderland arrive with a stripped-out squad and (on the pre-deadline evidence) a reserve keeper. A cheap BGW31-PLAYING defender, which is the property the crowd is starting to pay for. Data-hygiene: confirmed XI and result post-deadline. Sources: thefootballfaithful / lastwordonsports Leeds v Sunderland previews 3 Mar.",
+  "duration_gws": 1
+ },
+ "668": {
+  "start_share": 0.3,
+  "reason": "Granit Xhaka (Sunderland MID): an explicit, datable pre-deadline ROTATION call — Le Bris confirmed Xhaka had NOT suffered a fresh injury but that 'three days after the last game was too short for him to start' ahead of Leeds away (Tue 3 Mar 19:30). This is the single clearest illustration of the GW29 thesis: managers are resting players on the 48-72h turnaround for load, not injury. 0.3 leaves room for a bench cameo. Not owned; no action. Data-hygiene: the confirmed Sunderland XI is post-deadline. Sources: Le Bris pre-match remarks via lastwordonsports / thefootballfaithful Sunderland previews 3 Mar; Sunderland Echo 3 Mar.",
+  "duration_gws": 1
+ },
+ "694": {
+  "start_share": 0.02,
+  "reason": "Nordi Mukiele (Sunderland DEF): OUT with a calf injury — named on Sunderland's pre-match absentee list for Leeds away (3 Mar) alongside Brobbey (groin), Cirkin (hamstring), Reinildo (knee), Mundle (hamstring) and Ta Bi (ankle). No published return date, so duration_gws = 3 as an honest multi-week scope. Not owned; BAN any model-proposed buy (he has appeared on our optimizer's cheap-defender lists before). Data-hygiene: none material. Sources: Sunderland Echo 'Sunderland suffer major injury blows ahead of Leeds United clash' 3 Mar; thefootballfaithful Sunderland preview 3 Mar.",
+  "duration_gws": 3
+ },
+ "237": {
+  "start_share": 0.82,
+  "reason": "Enzo Fernandez (Chelsea MID): expected to start AWAY at Aston Villa (AVL v CHE, Wed 4 Mar 19:30) — named in the pre-deadline predicted XI (Sanchez; James, Fofana, Chalobah, Gusto; Santos, Caicedo; Palmer, Fernandez, Garnacho; Joao Pedro), with Palmer restored alongside him (OUR PLAYER). Chelsea are shorthanded rather than rotating: Pedro Neto is SUSPENDED (red card v Arsenal in GW28), Mudryk is a long-term suspension, and the back line has injuries to Colwill and Cucurella, with Fofana returning from his own ban. Rotation risk exists — Chelsea have an FA Cup tie at Wrexham on the 6-8 Mar weekend — but that is exactly the fixture Maresca will rotate FOR, and Villa away in a top-four race is not. 0.82 keeps the same one-of-Fernandez/Caicedo/James rest tail that has been live for this side all season. HOLD; Chelsea PLAY in BGW31, which makes him part of the answer to the blank rather than part of the problem. Data-hygiene: the Wed 4 Mar confirmed XI and result are post-deadline and excluded. Sources: lastwordonsports 'Chelsea team news & predicted lineup v Aston Villa' 4 Mar; thefootballfaithful Villa v Chelsea preview 3-4 Mar; premierleague.com 'Predicted line-ups MW29'; thefa.com FA Cup R5 draw 16 Feb.",
+  "duration_gws": 1
+ },
+ "235": {
+  "start_share": 0.85,
+  "reason": "Cole Palmer (Chelsea MID): 'expected to start alongside Enzo Fernandez and Alejandro Garnacho, supporting striker Joao Pedro' in the pre-deadline predicted XI AWAY at Villa (Wed 4 Mar 19:30). PS10.4m at GW25 and heavily sold through his injury year, so a re-entry is a value question, not a name question — and Chelsea's FA Cup tie at Wrexham three days later is a rotation risk that lands on the cup, not the league. 0.85. Not owned; watch-only, but he plays in BGW31. Data-hygiene: confirmed XI and result post-deadline. Sources: lastwordonsports Chelsea XI 4 Mar; thefootballfaithful Villa v Chelsea preview 3-4 Mar.",
+  "duration_gws": 1
+ },
+ "236": {
+  "start_share": 0.0,
+  "reason": "Pedro Neto (Chelsea MID): SUSPENDED — sent off against Arsenal in GW28 (Sun 1 Mar) and pre-deadline previews are explicit that he 'will miss just this clash and be back for the next league outing', i.e. a one-match ban served at Aston Villa (Wed 4 Mar). duration_gws = 1 accordingly. This is a verified suspension (offence + the club preview confirming the ban is being served), meeting the knowledge.md standard rather than an aggregator headline. Not owned; BAN. Data-hygiene: none material. Sources: thefootballfaithful / lastwordonsports Villa v Chelsea previews 3-4 Mar; premierleague.com 'Predicted line-ups MW29' (Fofana returns as Neto departs).",
+  "duration_gws": 1
+ },
+ "224": {
+  "start_share": 0.05,
+  "reason": "Marc Cucurella (Chelsea DEF): OUT — pre-deadline previews for Villa away (Wed 4 Mar) state Chelsea's 'back line is hit with injuries to Levi Colwill and Marc Cucurella' plus the recently recalled Caleb Wiley, which is why Gusto and Chalobah are named in the predicted XI. No published return date, so duration_gws = 3 as an honest multi-week scope rather than a one-week hole. Not owned; BAN any model-proposed buy. Data-hygiene: none material. Sources: thefootballfaithful / lastwordonsports Villa v Chelsea previews 3-4 Mar.",
+  "duration_gws": 3
+ },
+ "226": {
+  "start_share": 0.8,
+  "reason": "Trevoh Chalobah (Chelsea DEF): named in the pre-deadline predicted back four AWAY at Villa (Wed 4 Mar), a start forced by the Colwill/Cucurella injuries and Fofana's return from suspension. PS5.7m. 0.80 keeps a tail for Chelsea's FA Cup tie at Wrexham on 6-8 Mar and for Maresca's habitual back-line churn. He appears near the top of our DEF board on xpts-per-million and PLAYS in BGW31 — a live alternative if the memo trims an Arsenal CB. Data-hygiene: confirmed XI post-deadline. Sources: lastwordonsports Chelsea XI 4 Mar; thefootballfaithful preview 3-4 Mar.",
+  "duration_gws": 1
+ },
+ "249": {
+  "start_share": 0.85,
+  "reason": "Joao Pedro (Chelsea FWD): named as the lone striker in Chelsea's pre-deadline predicted XI AWAY at Villa (Wed 4 Mar 19:30). PS7.5m. With Neto suspended and the squad thinned by injuries, his path to a start is clear; the FA Cup tie at Wrexham three days later is where Maresca will rest people. 0.85. Not owned; a BGW31-playing forward and therefore a candidate for the blank-gameweek reshape if the memo moves off Haaland. Data-hygiene: confirmed XI and result post-deadline. Sources: lastwordonsports Chelsea XI 4 Mar; thefootballfaithful preview 3-4 Mar.",
+  "duration_gws": 1
+ },
+ "54": {
+  "start_share": 0.02,
+  "reason": "John McGinn (Aston Villa MID): OUT — premierleague.com's MW29 predicted line-ups state plainly that he 'has been out with a knee injury since a defeat to Everton in January and is not available to face Chelsea' (Wed 4 Mar). An injury dating to January with no return date is a multi-week hole, so duration_gws = 3. Not owned; BAN any model-proposed buy (this is exactly the archive-blind 'status a' trap). Data-hygiene: none material. Sources: premierleague.com 'Predicted line-ups for Premier League teams in Matchweek 29' (2-3 Mar).",
+  "duration_gws": 3
+ },
+ "47": {
+  "start_share": 0.85,
+  "reason": "Morgan Rogers (Aston Villa MID): in Villa's pre-deadline predicted XI HOME to Chelsea (Wed 4 Mar 19:30) — Martinez; Cash, Konsa, Mings, Maatsen; Onana, Douglas Luiz; Bailey, Buendia, Rogers; Watkins — with McGinn out. PS7.6m and a recurring name on the community's 'buy before BGW31' lists because VILLA PLAY in GW31 and have no FA Cup or European tie on the 6-8 Mar weekend (an eleven-day gap to GW30, so no rotation pressure at all). Villa arrive off a 2-0 defeat at Wolves in GW28. Not owned; a credible non-blanking MID buy candidate. Data-hygiene: confirmed XI and result post-deadline. Sources: thefootballfaithful / sportsgambler Villa v Chelsea previews 3-4 Mar; premierleague.com 'Predicted line-ups MW29'; thefa.com FA Cup R5 draw 16 Feb (Villa absent).",
+  "duration_gws": 1
+ },
+ "64": {
+  "start_share": 0.85,
+  "reason": "Ollie Watkins (Aston Villa FWD): named as Villa's centre-forward in the pre-deadline predicted XI HOME to Chelsea (Wed 4 Mar 19:30). PS8.7m. Villa have NO FA Cup tie and therefore an eleven-day gap after this game — no rotation incentive. A named alternative captain earlier in the season and a BGW31-playing forward, so he is on the shortlist of Haaland replacements if the memo decides to solve the blank early. Data-hygiene: confirmed XI and result post-deadline. Sources: thefootballfaithful Villa v Chelsea preview 3-4 Mar; thefa.com FA Cup R5 draw 16 Feb.",
+  "duration_gws": 1
+ },
+ "119": {
+  "start_share": 0.88,
+  "reason": "Bryan Mbeumo (Man Utd MID): nailed and rotation-free AWAY at Newcastle (Wed 4 Mar 20:15) — named in the pre-deadline predicted XI (Lammens; Dalot, Yoro, Heaven, Mazraoui; Casemiro, Mainoo; Mbeumo, Fernandes, Cunha; Sesko). MAN UTD HAVE NO FA CUP TIE, so their next game is GW30 on 14 Mar: a nine-day gap and no congestion reason to rest anyone. The opponent is a Newcastle side that has lost five of its last six and is without captain Bruno Guimaraes. PS8.5m. Deferred by us at GW24 in favour of B.Fernandes (right by +8 on the week); he remains the cheaper Man Utd route and PLAYS in BGW31. Data-hygiene: the Wed 4 Mar confirmed XIs and result are post-deadline. Sources: lastwordonsports 'Manchester United team news & predicted lineup v Newcastle' 4 Mar; Sports Mole preview 3 Mar; thefa.com FA Cup R5 draw 16 Feb.",
+  "duration_gws": 1
+ },
+ "457": {
+  "start_share": 0.8,
+  "reason": "Casemiro (Man Utd MID): named in the pre-deadline predicted midfield two with Mainoo, AWAY at Newcastle (Wed 4 Mar 20:15). PS5.6m and one of the better points-per-million midfielders on our board. No fitness flag; Carrick's only concerns are Maguire and Shaw. Man Utd have no cup tie and a nine-day gap after this game. 0.80 for the age-related load management that has been visible all season. Plays in BGW31. Data-hygiene: confirmed XI post-deadline. Sources: lastwordonsports Man Utd XI 4 Mar; FFScout GW29 team news 3 Mar (Carrick hopeful on Maguire and Shaw).",
+  "duration_gws": 1
+ },
+ "714": {
+  "start_share": 0.3,
+  "reason": "Nick Woltemade (Newcastle FWD): ILL — FFScout's Tuesday 3 Mar team-news blog lists Newcastle as 'Woltemade ill, Ramsey fit, Livramento ahead of schedule' ahead of the Man Utd game (Wed 4 Mar 20:15). An illness 24-48h before kick-off usually means a bench role at best. 0.3. Not owned; BAN any model-proposed buy this week. Data-hygiene: the confirmed Newcastle XI (Wed 4 Mar) is post-deadline and excluded. Sources: FFScout GW29 team news 3 Mar.",
+  "duration_gws": 1
+ },
+ "485": {
+  "start_share": 0.82,
+  "reason": "Anthony Gordon (Newcastle MID): expected to start HOME to Man Utd (Wed 4 Mar 20:15) — Newcastle are the most injury-hit squad in the round (Bruno Guimaraes hamstring until after the March break, Schar, Krafth, Miley all missing the Everton game, Livramento only 'ahead of schedule', Woltemade ill), so the fit attackers pick themselves. PS7.3m. Newcastle DO have a heavy FA Cup tie (home to Man City, Sat 7 Mar 20:00) three days later, which is the one argument for a rest — but with the squad this thin Howe has little choice. Newcastle have lost five of their last six. Not owned; plays in BGW31. Data-hygiene: the confirmed Newcastle XI and result are post-deadline. Sources: FFScout GW29 team news 3 Mar; Sports Mole 'Newcastle vs Man Utd preview' 3 Mar; thefa.com FA Cup R5 draw 16 Feb.",
+  "duration_gws": 1
+ },
+ "329": {
+  "start_share": 0.35,
+  "reason": "Harry Wilson (Fulham MID): a genuine pre-deadline DOUBT. He got a goal and an assist in Fulham's 2-1 win over Tottenham on Sunday 1 Mar (GW28) but was WITHDRAWN with an ankle issue, and Marco Silva said the club will assess him 'over the coming days' before a final decision ahead of West Ham at home (FUL v WHU, Wed 4 Mar 19:30). FFScout's Tuesday blog logs Fulham as 'late decisions to be made, Wilson a doubt'. PS6.0-6.1m. allaboutfpl's GW29 transfer piece advises waiting for Silva's pre-match press conference before buying and calls him 'an easy hold' if already owned — a clean statement of the community read. 0.35 prices 'doubt + late decision' honestly. Data-hygiene: the Wed 4 Mar confirmed XI and result are post-deadline. Sources: FFScout GW29 team news 3 Mar; Sports Mole 'Late call on Wilson: predicted Fulham XI v West Ham' 3 Mar; allaboutfpl GW29 transfer tips 2-3 Mar.",
+  "duration_gws": 1
+ },
+ "317": {
+  "start_share": 0.88,
+  "reason": "Joachim Andersen (Fulham DEF): CONFIRMED FIT and a named GW29 differential. He missed the weekend win over Spurs through illness, but Marco Silva said pre-deadline: 'Joachim Andersen will be back, 100% sure.' He is in Fulham's predicted XI HOME to West Ham (Wed 4 Mar 19:30) — Leno; Tete, Andersen, Bassey, Sessegnon; Berge, Iwobi; Chukwueze, Smith Rowe, Bobb; Jimenez. FFScout's GW29 differentials piece names him for clean-sheet probability over the next three fixtures at ~4.7% ownership; PS4.6m at GW25 makes him one of the best pts-per-million defenders available. Fulham DO have an FA Cup tie (home to Southampton, 6-8 Mar) but a manager who has just declared a player '100% sure' to return is not resting him. He PLAYS in BGW31. A serious BUY candidate for us if the memo needs a cheap non-blanking defender. Data-hygiene: the confirmed XI and result are post-deadline. Sources: Marco Silva presser via FFScout GW29 differentials 3 Mar; Sports Mole predicted Fulham XI 3 Mar; thefootballfaithful Fulham v West Ham preview 3-4 Mar.",
+  "duration_gws": 1
+ },
+ "314": {
+  "start_share": 0.88,
+  "reason": "Bernd Leno (Fulham GKP): 'will start in goal behind a defensive line bolstered by the return of Joachim Andersen' in the pre-deadline preview of Fulham v West Ham (Wed 4 Mar 19:30). PS4.9m, no flag, and Fulham PLAY in BGW31. A cheap BGW31-safe keeper candidate if Roefs' hamstring forces a move. Data-hygiene: confirmed XI post-deadline. Sources: thefootballfaithful / Sports Mole Fulham v West Ham previews 3 Mar.",
+  "duration_gws": 1
+ },
+ "97": {
+  "start_share": 0.3,
+  "reason": "Evanilson (Bournemouth FWD): a DOUBT and, on the pre-deadline evidence, not expected to start. He came off the bench against Sunderland in GW28, scored, and had to be withdrawn minutes later with a 'dead leg'; pre-deadline previews for the Brentford game (Tue 3 Mar 19:30) call him 'a major doubt' and say he is 'not expected to start ahead of Eli Junior Kroupi'. 0.3. Not owned; BAN any model-proposed buy this week. Data-hygiene: the confirmed XI and result are post-deadline. Sources: thefootballfaithful / FFScout Bournemouth v Brentford previews 3 Mar.",
+  "duration_gws": 1
+ },
+ "100": {
+  "start_share": 0.8,
+  "reason": "Eli Junior Kroupi (Bournemouth FWD): the BENEFICIARY of Evanilson's dead leg — named as Bournemouth's centre-forward in the pre-deadline predicted XI HOME to Brentford (Tue 3 Mar 19:30), with previews stating Evanilson 'is not expected to start ahead of Eli Junior Kroupi'. PS4.7m, a cheap enabler on a side unbeaten in eight and sitting 9th. Bournemouth have NO FA Cup tie (eleven-day gap to GW30) so no rotation pressure, and they PLAY in BGW31. Data-hygiene: confirmed XI post-deadline. Sources: thefootballfaithful / FFScout Bournemouth v Brentford previews 3 Mar.",
+  "duration_gws": 1
+ },
+ "67": {
+  "start_share": 0.88,
+  "reason": "Djordje Petrovic (Bournemouth GKP): named in the pre-deadline predicted XI HOME to Brentford (Tue 3 Mar 19:30). PS4.5m, no flag, Bournemouth have no FA Cup tie and no congestion, and they PLAY in BGW31. The cheapest BGW31-safe keeper on the board and therefore a live answer to the Roefs hamstring problem. Data-hygiene: confirmed XI and result post-deadline. Sources: thefootballfaithful / FFScout Bournemouth v Brentford previews 3 Mar.",
+  "duration_gws": 1
+ },
+ "411": {
+  "start_share": 0.3,
+  "reason": "Nico O'Reilly (Man City DEF): a DOUBT alongside Haaland — he came off in City's 1-0 win at Leeds (GW28) with an ankle problem and, per premierleague.com's MW29 predicted line-ups and FFScout's Tuesday blog, is 'to be assessed after training' with Foden or Matheus Nunes lined up to replace him. Guardiola (Tue 3 Mar) grouped him with Haaland: the call is made after Tuesday afternoon training, i.e. at or after our 18:00 deadline. 0.3. Not owned; no action, but he is why City's defensive assets carry an unusual amount of noise this week. Data-hygiene: the Wed 4 Mar confirmed City XI and the FFScout 5 Mar 'O'Reilly latest' note are post-deadline and excluded. Sources: Guardiola presser 3 Mar (mancity.com / Sports Mole); premierleague.com 'Predicted line-ups MW29'; FFScout GW29 team news 3 Mar.",
+  "duration_gws": 1
+ },
+ "407": {
+  "start_share": 0.75,
+  "reason": "Matheus Nunes (Man City DEF): selected in the OFFICIAL GW29 SCOUT SELECTION (PS5.4m) precisely BECAUSE of the Haaland/O'Reilly doubts — the Scout doubled up on City with Nunes and Semenyo for the home game with Nott'm Forest (Wed 4 Mar 19:30), and premierleague.com's MW29 predicted line-ups name him among the replacements if O'Reilly cannot go. 0.75 rather than higher because he is a rotation pick by definition and City face a hard FA Cup tie at Newcastle on Sat 7 Mar and the UCL R16 on 10-11 Mar. He BLANKS in BGW31 — a one-week punt, not a structure buy. Data-hygiene: the confirmed City XI and result are post-deadline. Sources: premierleague.com 'Scout Selection GW29' + 'Predicted line-ups MW29' (2-3 Mar); FFScout GW29 team news 3 Mar.",
+  "duration_gws": 1
+ },
+ "413": {
+  "start_share": 0.55,
+  "reason": "Omar Marmoush (Man City MID): the direct HAALAND CONTINGENCY. premierleague.com's MW29 predicted line-ups state that 'Guardiola often prefers the partnership of Antoine Semenyo and Omar Marmoush up front when Haaland is unavailable' — so his start probability is effectively the complement of Haaland's, which is why 0.55 sits just above the 0.5 I have given Haaland. PS8.3m at GW25 and heavily out of favour, so this is a one-week rotation punt at best, not a buy — and he BLANKS in BGW31. Listed so the memo can see the mechanism behind the City coin-flip. Data-hygiene: the Wed 4 Mar confirmed XI and result are post-deadline and excluded. Sources: premierleague.com 'Predicted line-ups for Premier League teams in Matchweek 29' (2-3 Mar); Guardiola presser 3 Mar.",
+  "duration_gws": 1
+ },
+ "414": {
+  "start_share": 0.65,
+  "reason": "Phil Foden (Man City MID): premierleague.com's MW29 predicted line-ups name him as the likely replacement for the injured O'Reilly HOME to Nott'm Forest (Wed 4 Mar 19:30). PS8.3m. 0.65 — a genuine start route opened by an injury, but Foden's minutes under Pep have been the least predictable in the squad all season (we refused him at GW22 for exactly this reason and he got 45 minutes and 1 point). He BLANKS in BGW31. No action. Data-hygiene: confirmed XI and result post-deadline. Sources: premierleague.com 'Predicted line-ups MW29' (2-3 Mar).",
+  "duration_gws": 1
+ },
+ "502": {
+  "start_share": 0.85,
+  "reason": "Matz Sels (Nott'm Forest GKP): nailed No.1 AWAY at Man City (Wed 4 Mar 19:30) — a bad clean-sheet spot but a high save-volume one, and Forest have NO FA Cup tie so there is no rotation pressure. PS4.6m. Forest are in the bottom six and lost 2-1 at Brighton in GW28. Relevant as a cheap BGW31-PLAYING keeper. Data-hygiene: confirmed XI and result post-deadline. Sources: si.com / sportsgambler Man City v Forest previews 3-4 Mar; thefa.com FA Cup R5 draw 16 Feb (Forest absent).",
+  "duration_gws": 1
+ },
+ "178": {
+  "start_share": 0.72,
+  "reason": "Danny Welbeck (Brighton FWD): in form but in the round's most explicitly rotation-flagged squad. He scored in BOTH of Brighton's last two wins (2-0 at Brentford in GW27, 2-1 at home to Nott'm Forest on Sunday 1 Mar) and earned a new contract on the back of it — but FFScout's Tuesday 3 Mar blog records Brighton as 'Ayari could be an option, HURZELER TO FRESHEN THINGS UP' ahead of Arsenal at home (Wed 4 Mar 19:30), and pre-deadline previews have Milner dropping out for Baleba and Wieffer a doubt. Mitoma and Gruda have also been missing. PS6.2m. 0.72 is the honest price of a manager publicly signalling changes on a 72h turnaround. Not owned; watch-only. Brighton have no FA Cup tie and PLAY in BGW31. Data-hygiene: the Wed 4 Mar confirmed XI and result are post-deadline. Sources: FFScout GW29 team news 3 Mar; si.com / sportskeeda Brighton v Arsenal previews 3-4 Mar.",
+  "duration_gws": 1
+ },
+ "151": {
+  "start_share": 0.75,
+  "reason": "Jan Paul van Hecke (Brighton DEF): named in the pre-deadline predicted back four HOME to Arsenal (Wed 4 Mar 19:30). PS4.5m and near the top of our cheap-DEF board on horizon points. The haircut to 0.75 is explicit and sourced: FFScout's Tuesday blog has 'Hurzeler to freshen things up' and previews flag Wieffer's incomplete game v Forest pushing Veltman into the back line — a rotating defence in a 72h turnaround. Brighton PLAY in BGW31. Data-hygiene: confirmed XI post-deadline. Sources: FFScout GW29 team news 3 Mar; sportskeeda / si.com Brighton v Arsenal previews 3-4 Mar.",
+  "duration_gws": 1
+ },
+ "257": {
+  "start_share": 0.0,
+  "reason": "Maxence Lacroix (Crystal Palace DEF): SUSPENDED — sent off at Old Trafford in Palace's 2-1 GW28 defeat to Man Utd, and pre-deadline previews for the Spurs trip (TOT v CRY, Thu 5 Mar 20:00) state he 'is unavailable after his red card', with Chadi Riad expected to come into the back three. The exact ban LENGTH is UNVERIFIED from pre-deadline sources, so duration_gws = 1 covers only the game we can evidence. Not owned; BAN. NOTE: Palace also BLANK in BGW31, so he is doubly irrelevant to our board. Data-hygiene: the Thu 5 Mar confirmed XI and result are post-deadline; Palace's own presser did not take place until Wednesday, AFTER our deadline. Sources: Sports Mole / Yahoo Spurs v Crystal Palace previews 3-4 Mar; FFScout GW29 team news 3 Mar (Glasner and Tudor not before the cameras until Wednesday).",
+  "duration_gws": 1
+ },
+ "569": {
+  "start_share": 0.0,
+  "reason": "Cristian Romero (Spurs DEF): SUSPENDED — pre-deadline previews for Spurs v Crystal Palace (Thu 5 Mar 20:00) state he 'will serve the final match of his suspension' following his red card against Manchester United. Offence plus explicit confirmation the ban is being served meets the knowledge.md verification standard. duration_gws = 1 (it is the last match of the ban, so he is clean from GW30). Not owned; BAN this week only. Data-hygiene: the Thu 5 Mar confirmed XI is post-deadline. Sources: Sports Mole 'Spurs vs Crystal Palace preview' 3-4 Mar; lastwordonsports Tottenham team news 5 Mar.",
+  "duration_gws": 1
+ },
+ "575": {
+  "start_share": 0.85,
+  "reason": "Micky van de Ven (Spurs DEF): named in Tottenham's pre-deadline predicted XI HOME to Crystal Palace (Thu 5 Mar 20:00), a back three forced by Romero's suspension and Spence's calf problem. PS4.5m. Spurs are 16th, four points above the drop, winless in ten league games — a poor CS bet but a certain start, and Spurs have no FA Cup tie so no congestion. CAUTION for point-in-time work: Spurs and Palace are the LAST game of the round and neither Tudor nor Glasner faced the cameras until WEDNESDAY, after our Tuesday 18:00 deadline — so every Thursday-game overlay here is priced on previews only, and I have widened accordingly. Spurs PLAY in BGW31. Data-hygiene: the Thu 5 Mar confirmed XI, result and both Wednesday pressers are post-deadline and excluded. Sources: Sports Mole / lastwordonsports Spurs v Palace previews 3-5 Mar; FFScout GW29 team news 3 Mar (pressers not until Wednesday).",
+  "duration_gws": 1
+ },
+ "624": {
+  "start_share": 0.85,
+  "reason": "Jarrod Bowen (West Ham FWD): expected to start AWAY at Fulham (Wed 4 Mar 19:30). premierleague.com's MW29 predicted line-ups note 'West Ham have no fresh injury concerns and Nuno Espirito Santo will want to keep things as similar as possible' — an explicit low-rotation signal, and one of the few clubs to give one. PS7.7m. West Ham DO have an FA Cup tie (home to Brentford, 6-8 Mar) but a settled manager with no injuries is not resting his best forward at Craven Cottage. They arrive off a 5-2 hammering at Liverpool in GW28. West Ham PLAY in BGW31. Data-hygiene: confirmed XI and result post-deadline. Sources: premierleague.com 'Predicted line-ups for Premier League teams in Matchweek 29' (2-3 Mar); thefootballfaithful Fulham v West Ham preview 3-4 Mar.",
+  "duration_gws": 1
+ }
+}
