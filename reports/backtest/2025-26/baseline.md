@@ -1,4 +1,4 @@
-# 2025/26 Backtest Baseline — Official FPL Averages, GW1-24
+# 2025/26 Backtest Baseline — Official FPL Averages, GW1-29
 
 Benchmark for the fpl-claude backtest: the official average manager score per gameweek
 (the "Average" shown on the FPL site), plus the official highest GW score, for
@@ -36,6 +36,11 @@ Values cross-verified against independent web sources where snippets were availa
 | 22 | 40 | 111 | not found | Deadline 2026-01-17 (round 17-19 Jan, straddling the AFCON final). FPL API mirror (verified, highest 111). Derby round: the ~74% Haaland captaincy blanked; returnees Mbeumo/Bruno hit on debut-back. |
 | 23 | 44 | 115 | not found | Deadline 2026-01-24 (round 24-26 Jan). FPL API mirror (verified, highest 115). Salah's return round (started at Bournemouth); Haaland benched by Pep (17', UCL rotation) — the ~7M captaincy stung. |
 | 24 | 55 | 126 | not found | Deadline 2026-01-31 (13:30 UTC; round 31 Jan-2 Feb). FPL API mirror (verified, highest 126). The AFCON window's close — averages recover; the Man Utd returnees (Mbeumo/B.Fernandes) the template entry. |
+| 25 | 58 | 147 | not found | FPL API mirror (olbauday/FPL-Core-Insights `gameweek_summaries.csv`, re-fetched 2026-07-28).
+| 26 | 58 | 138 | not found | FPL API mirror (olbauday/FPL-Core-Insights `gameweek_summaries.csv`, re-fetched 2026-07-28).
+| 27 | 45 | 117 | not found | FPL API mirror (olbauday/FPL-Core-Insights `gameweek_summaries.csv`, re-fetched 2026-07-28).
+| 28 | 53 | 125 | not found | FPL API mirror (olbauday/FPL-Core-Insights `gameweek_summaries.csv`, re-fetched 2026-07-28).
+| 29 | 54 | 143 | not found | FPL API mirror (olbauday/FPL-Core-Insights `gameweek_summaries.csv`, re-fetched 2026-07-28).
 
 **Average-manager 24-GW cumulative total (sum of official GW averages): 1189 points.**
 *(23-GW was 1134; GW24 adds 55.)*

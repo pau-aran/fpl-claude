@@ -23,7 +23,29 @@ in the decision memo.*
   suspended — the ban was a mis-sourced aggregator headline (knowledge.md
   [PROCESS]). Harmless: we sold him for the productive-slot upgrade, not the ban.
 
-## Current state — after GW24 (the AFCON window CLOSED)
+## Current state — after GW29 (the chip window)
+
+- Bank **£0.2m** | **3 FT for GW30** | season **1674 pts (+217 — a season high)** | 1 hit
+  all season | captaincy 27/29 (two deliberate deviations, both recorded).
+- **Squad:** Dúbravka, Sánchez (GK); Virgil, Senesi, Tarkowski, Konaté, Gabriel (DEF);
+  B.Fernandes, Enzo, Rice, Schade, Garner (MID); Haaland, Thiago, Calvert-Lewin (FWD).
+- **Chips: TRIPLE CAPTAIN SPENT (GW26, on Gabriel across the Arsenal double — the wrong
+  Arsenal player; Rice would have paid +21). Wildcard, Free Hit and Bench Boost ALL still
+  banked.**
+- **BGW31 is SOLVED without a chip.** Twelve of fifteen play; a legal 1-4-4-2 is fieldable.
+  The Timber → Virgil move at GW28 closed it five weeks early and was an upgrade on its own
+  merits. The advisor's FH@31 recommendation is deliberately overridden — a chip that
+  rescues one slot is a chip wasted.
+- **Window GW25-29: 294 v 268 (+26).** 63/56/36/70/69 against 58/58/45/53/54.
+- **Active path into GW30:** hold Gabriel/Rice/Haaland through the blank (covered); bank is
+  the binding constraint at £0.2m — it pushed us into an unverified keeper at GW29, so
+  rebuilding a buffer outranks a marginal upgrade. Watch: Roefs' replacement (Sánchez is
+  not confirmed first-choice), Rice's muscle tightness, Haaland's undisclosed knock.
+- **Live threads:** a Man City / Crystal Palace double is *seeded* for a later GW but was
+  NOT knowable in February — it is gated in `schedule_knowledge.json` and must not steer a
+  chip until a dated source admits it.
+
+## Superseded — after GW24 (the AFCON window CLOSED)
 
 - Bank **£0.7m** | **4 FT for GW25** (spent 2 at GW24) | season **1380 pts (+191)** | 1 hit
   all season | captaincy 24/24.

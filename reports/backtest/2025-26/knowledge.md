@@ -276,3 +276,53 @@ or REMOVES points here; superseded/disproven points are deleted, not archived
 - No historical injury flags exist: consecutive-blank proxy + researched news
   overlays stand in; keeper competitions encoded as probabilistic splits.
 - Improvements apply forward only; completed GWs are never rerun.
+
+
+## GW25-29 window — new rules (2026-07-28)
+
+- [PROCESS] **Bench a doubt, don't sell it.** A player priced 0.4-0.7 is a BENCH decision,
+  not a SELL decision, whenever we hold a spare FT and a bench slot. Benching is reversible
+  and free; selling spends an FT, pays the spread, and turns a 40% downside into a permanent
+  zero. Origin: GW25 sold Bruno G. at 0.60 with 4 FT in hand — he started and returned 11
+  (−8). Vindicated GW29: Haaland held at 0.50 and Rice benched at 0.62, both correctly.
+  Sell a doubt only below ~0.3, when the absence is duration-scoped past this GW, or when
+  the slot is genuinely dead.
+- [PROCESS] **A captaincy switch needs a margin, not just a direction.** Deviating from the
+  shield requires an availability flag AND a board margin of >= 0.5 xPts on the single-GW
+  column. Origin: GW25 switched on a +0.30 margin and lost 2; GW29 switched on a +1.07
+  margin with a 0.50-priced captain and gained 12. The rule is 1-for-1 at separating a
+  justified deviation from a coin-flip dressed as an argument.
+- [PROCESS] **Multiplier chips are a variance decision, not a mean decision.** For a chip
+  that multiplies ONE player, rank candidates by the shape of the return distribution. A
+  defender's projection is concentrated in a step function (clean sheet or not); an
+  attacker's is continuous. When the mean margin between a defender and an attacking asset
+  is under ~1.5 xPts, the multiplier goes on the attacker. Origin: TC@GW26 on Gabriel
+  (9.90) over Rice (8.91) — Gabriel 7, Rice 14. Cost −21, the season's largest single
+  decision cost, and the memo had named the exact failure mode before playing it.
+- [PROCESS] **Every CALL OWED bench hair must resolve to a TOKEN in the decision JSON, not
+  prose in the reasoning.** A hair whose verdict exists only in the memo text is UNRESOLVED.
+  Origin: GW27's memo concluded "Calvert-Lewin should not start" and shipped without a
+  `start`/`bench` field; he started and scored 2 while Casemiro (5) and Konaté (9) sat
+  (−7). This is the GW19 failure repeated by the manager who wrote the rule and built the
+  tooling — detection was never the gap, encoding was.
+- [PROCESS] **An unsourced goalkeeper is a banned buy, not a discounted one.** A keeper's
+  return is binary — 90 minutes or 0, no cameo — so rotation risk cannot be priced down the
+  way it can for outfielders. Origin: GW29 bought Sánchez without confirming him as
+  Chelsea's starter (the GW28 researcher had explicitly flagged the gap); he played 0.
+  Autosub covered it, so the cost was small and the lesson cheap.
+- [PROCESS] **Count the blank before reshaping for it.** The optimizer prices a BGW as N
+  dead assets; the real cost is the number of XI slots you cannot fill. GW27 counted 11 of
+  15 playing in BGW31 = 10 legal starters = ONE empty slot ~4 pts, fixable with one
+  transfer — against a solver proposal of four transfers whose buys blanked in GW31
+  themselves. GW28 closed the whole problem with a single move that was an upgrade anyway,
+  and BOTH the Wildcard and Free Hit stayed banked.
+- [DONE] **Vice selection is a real decision.** Twice this window the captain recorded 0
+  minutes (Haaland GW28) or was correctly demoted, and the vice carried the week
+  (B.Fernandes 13 -> 26). From GW29 the vice is chosen for NAILEDNESS, not ceiling, and gets
+  written reasoning like the captain.
+- [WATCH] The DEF-clean-sheet bench band now has evidence pointing both ways: benched
+  defenders hauled at GW19 and GW22, but a force-started defender blanked at GW25
+  (Tarkowski 2 while Calvert-Lewin scored 7 on the bench). The widening to ~0.3 stays OPEN.
+- [WATCH] Base-XI calibration over GW25-29 ran +10.2, −8.9, −14.1, +28.2, +29.7 — mean
+  +9.0 and highly dispersed, well above the season-long within-noise figure. Re-run
+  `notebooks/calibration_analysis.py` before the next window.

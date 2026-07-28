@@ -1,4 +1,4 @@
-# Session State — updated 2026-07-28 (audit pass; 24 days to the GW1 deadline)
+# Session State — updated 2026-07-28 (backtest GW25-29 run; 24 days to the GW1 deadline)
 
 *Handoff snapshot. Read this first, then `decisions/gw01.md` for the live squad and
 `reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge. The build
@@ -77,7 +77,53 @@ orchestrator. **103 tests green** (was 67); ruff at its 34-finding baseline, zer
   cloud sandbox's policy. Also records the Windows setup (miniconda + uv venv, one venv per
   worktree) and the ruff-0.16 baseline of 34 pre-existing findings.
 
-## Latest: GW21-24 backtest — the AFCON window CLOSED (this session)
+## Latest: backtest GW25-29 — the chip window (this session)
+
+Ran five more replay gameweeks with five parallel Opus researchers (one per GW, point-in-time
+news + consensus) while running the manager loop directly. **294 v 268 (+26); season 1674 v
+1457 — edge +217, a season high.** 1 hit all season. **The first chip of the season was
+played (TC@GW26)**; Wildcard, Free Hit and Bench Boost are all still banked.
+
+| GW | Ours | Avg | Note |
+|---|---|---|---|
+| 25 | 63 | 58 | Saliba→Gabriel for the double; first captaincy deviation in 25 GWs (−2) |
+| 26 | 56 | 58 | **TRIPLE CAPTAIN** on Gabriel — Rice would have paid **+21** |
+| 27 | 36 | 45 | Roll to the FT cap; bench-hair lever written but not pulled (−7) |
+| 28 | 70 | 53 | Timber→Virgil closes BGW31; Haaland 0 minutes, vice returned 26 |
+| 29 | 69 | 54 | Second captaincy deviation, +12 |
+
+**Four defects found and fixed, three of them latent in the committed archive:**
+
+1. **Chip history was erased by any transfer.** `apply_transfers` rebuilt `SquadState`
+   without `chips_used`, so the first gameweek after a chip would hand the chip back.
+   Never bit in 24 GWs because no chip had been played; GW26 was the first.
+2. **A POINT-IN-TIME LEAK steering chip timing.** `fixtures_at` returns the END-OF-SEASON
+   fixture table for every GW, so rearrangement-created doubles/blanks are visible from GW1.
+   At GW26 the advisor wanted the triple captain saved for a GW33 double built on a Man City
+   / Palace rearrangement our own research says had not been made. Fixed with
+   `chip_timing.knowable_double_blank` + `reports/backtest/2025-26/schedule_knowledge.json`
+   (one dated source per admitted GW) and `advise(exclude_gws=...)` — the flag alone was not
+   enough, because a doubler's `xpts_gw` column already SUMS both fixtures.
+3. **Transfers were paired by sorted id, not position** — GW24's memo recorded
+   "Mateta → B.Fernandes" (FWD→MID). Four archive memos corrected against the committed CSVs.
+4. **The `<0.2` bench-hair rule was manual and kept failing** — now computed and printed
+   mechanically by `--propose` (`milp.bench_margins`).
+
+**Six new decision rules** in `knowledge.md` (bench-a-doubt-don't-sell; captaincy switches
+need a ≥0.5 margin AND a flag; multiplier chips are a variance decision; every CALL OWED
+hair must resolve to a JSON token not prose; an unsourced goalkeeper is a banned buy; count
+the blank before reshaping for it).
+
+**The most expensive lesson: TC@26 went on Gabriel (9.90) over Rice (8.91) and the memo had
+already named the exact failure mode** — tripling a centre-back is a bet on two clean
+sheets. Arsenal drew both legs. Gabriel 7, Rice 14; −21.
+
+**And an honest process failure of my own at GW27:** the memo concluded Calvert-Lewin should
+not start and the decision file shipped without the override. He started (2) while Casemiro
+(5) and Konaté (9) sat. **Not re-run** — re-deciding after seeing the scores is the one leak
+the harness exists to prevent.
+
+## Earlier: GW21-24 backtest — the AFCON window CLOSED
 
 Simulated GW21-24 on the point-in-time pipeline, orchestrated with parallel Opus agents (one
 per GW for the point-in-time news replay + consensus; two more for the A1/A2 code tasks).
