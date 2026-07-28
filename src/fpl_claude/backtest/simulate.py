@@ -274,7 +274,48 @@ def apply_transfers(
         free_transfers=min(cap, free_left + 1),  # next GW's budget
         points_total=state.points_total,
         hits_total=state.hits_total,
+        # chips_used MUST be carried: it defaults to [] on a fresh SquadState, so
+        # omitting it here silently erased the whole chip history on the next GW
+        # that made a transfer, and `_assert_chip_available` would then re-allow a
+        # chip already spent. Latent until GW26 — the first chip of the run.
+        chips_used=list(state.chips_used),
     )
+
+
+def pair_transfers(
+    transfers_out: list[int], transfers_in: list[int], positions: dict[int, str]
+) -> list[tuple[int, int]]:
+    """Pair sold players with bought players BY POSITION, for display only.
+
+    `OptimizedSquad` carries transfers as two independently sorted id lists,
+    because a solve is a set swap: it never decides that *this* sale funded
+    *that* buy. Zipping the two lists therefore paired by ascending id, which
+    crosses positions as soon as a week makes two moves — the GW24 memo recorded
+    "Mateta → B.Fernandes" (a forward replaced by a midfielder) and GW8/GW10/GW13
+    the same way. Those are moves FPL cannot execute, printed in the season's
+    audit trail.
+
+    A squad's position counts are invariant across a transfer window, so the
+    multiset of positions sold always equals the multiset bought and this pairing
+    is total. Within one position two moves are still interchangeable — that
+    ambiguity is real and presentational, not a claim about funding.
+    """
+    by_pos: dict[str, list[int]] = {}
+    for pid in transfers_in:
+        by_pos.setdefault(positions.get(pid, "?"), []).append(pid)
+    pairs: list[tuple[int, int]] = []
+    unmatched: list[int] = []
+    for pid in transfers_out:
+        bucket = by_pos.get(positions.get(pid, "?"))
+        if bucket:
+            pairs.append((pid, bucket.pop(0)))
+        else:
+            unmatched.append(pid)
+    # Defensive: only reachable if position data is missing for some id, in which
+    # case fall back to the old arbitrary pairing rather than dropping the move.
+    leftovers = [p for bucket in by_pos.values() for p in bucket]
+    pairs.extend(zip(unmatched, leftovers))
+    return pairs
 
 
 def _autosub(
@@ -550,7 +591,16 @@ def run_gameweek(
         autosubs=subs,
         effective_captain=eff_captain,
         player_rows=player_rows,
-        transfers=list(zip(squad.transfers_out, squad.transfers_in)),
+        transfers=pair_transfers(
+            squad.transfers_out,
+            squad.transfers_in,
+            dict(
+                zip(
+                    projections.drop_duplicates("id")["id"],
+                    projections.drop_duplicates("id")["position"],
+                )
+            ),
+        ),
         names=dict(
             zip(projections.drop_duplicates("id")["id"], projections.drop_duplicates("id")["web_name"])
         ),

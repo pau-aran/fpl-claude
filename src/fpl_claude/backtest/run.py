@@ -38,6 +38,7 @@ from .simulate import (
     ManagerDecision,
     SquadState,
     decide_transfers,
+    pair_transfers,
     project_gw,
     run_gameweek,
     wildcard_squad,
@@ -203,8 +204,12 @@ def propose(store: SeasonStore, gw: int, rules: Ruleset, state: SquadState,
 
     print(f"=== GW{gw} PROPOSAL (nothing saved) ===")
     if squad.transfers_in:
-        for o, i in zip(squad.transfers_out, squad.transfers_in):
-            print(f"transfer: {nm(o)} ({by_id.loc[o, 'team']}) -> {nm(i)} ({by_id.loc[i, 'team']})")
+        pos = by_id["position"].to_dict()
+        for o, i in pair_transfers(squad.transfers_out, squad.transfers_in, pos):
+            print(
+                f"transfer: {nm(o)} ({by_id.loc[o, 'team']} {pos[o]})"
+                f" -> {nm(i)} ({by_id.loc[i, 'team']} {pos[i]})"
+            )
         print(f"hits: {squad.hits} | ev_delta vs roll: {squad.ev_delta} | gate: {audit['hit_gate']}")
     else:
         print("transfers: roll")

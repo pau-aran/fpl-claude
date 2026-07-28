@@ -186,3 +186,64 @@ def test_chip_one_per_half_enforced():
     _assert_chip_available("triple_captain", 25, state)
     # A different chip in the same half -> allowed.
     _assert_chip_available("bench_boost", 12, state)
+
+
+def test_apply_transfers_carries_chip_history(rules):
+    """A transfer must not erase which chips have been spent.
+
+    `apply_transfers` builds a fresh SquadState, and `chips_used` defaults to []
+    — so omitting it wiped the whole chip history on the next gameweek that made
+    a transfer, and `_assert_chip_available` would then hand back a chip already
+    played. Latent for 24 GWs because the committed run never played one.
+    """
+    from fpl_claude.backtest.simulate import _assert_chip_available, apply_transfers
+    from fpl_claude.optimize.milp import OptimizedSquad
+
+    pool = _pool()
+    state = _worst_squad_state(pool)
+    state.chips_used = ["triple_captain@26"]
+    owned = list(state.buy_costs)
+    incoming = int(pool[~pool["id"].isin(owned)].iloc[0]["id"])
+    by_id = pool.set_index("id")
+    outgoing = min(owned, key=lambda i: by_id.loc[i, "price"])
+
+    squad = OptimizedSquad(
+        squad=[*(i for i in owned if i != outgoing), incoming],
+        xi=[], bench=[], captain=incoming, vice=incoming, cost=0, hits=0, objective=0.0,
+        transfers_in=[incoming], transfers_out=[outgoing],
+    )
+    after = apply_transfers(state, squad, pool, rules)
+
+    assert after.chips_used == ["triple_captain@26"]
+    # And the rule it feeds still bites: same chip, same half stays blocked.
+    with pytest.raises(ValueError, match="already used"):
+        _assert_chip_available("triple_captain", 29, after)
+
+
+def test_pair_transfers_never_crosses_positions():
+    """Transfers are displayed as out → in pairs; the pair must be legal.
+
+    The pairing used to be `zip(sorted(out), sorted(in))`, i.e. by ascending id,
+    which crossed positions whenever a week made two moves. GW24's memo recorded
+    "Mateta → B.Fernandes" — a forward replaced by a midfielder, a move FPL
+    cannot execute — in the season's audit trail.
+    """
+    from fpl_claude.backtest.simulate import pair_transfers
+
+    positions = {283: "FWD", 387: "MID", 449: "MID", 691: "FWD"}
+    pairs = pair_transfers([283, 387], [449, 691], positions)
+
+    assert {(o, i) for o, i in pairs} == {(387, 449), (283, 691)}
+    assert all(positions[o] == positions[i] for o, i in pairs)
+
+
+def test_pair_transfers_handles_two_moves_in_one_position():
+    from fpl_claude.backtest.simulate import pair_transfers
+
+    positions = {1: "DEF", 2: "DEF", 3: "DEF", 4: "DEF", 5: "MID", 6: "MID"}
+    pairs = pair_transfers([1, 2, 5], [3, 4, 6], positions)
+
+    assert len(pairs) == 3
+    assert all(positions[o] == positions[i] for o, i in pairs)
+    assert {o for o, _ in pairs} == {1, 2, 5}
+    assert {i for _, i in pairs} == {3, 4, 6}
