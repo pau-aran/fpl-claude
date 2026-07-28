@@ -11,6 +11,7 @@ import pandas as pd
 import pytest
 
 from fpl_claude.backtest.simulate import (
+    ManagerDecision,
     SquadState,
     canonical_chip,
     predicted_xi_breakdown,
@@ -247,3 +248,62 @@ def test_pair_transfers_handles_two_moves_in_one_position():
     assert all(positions[o] == positions[i] for o, i in pairs)
     assert {o for o, _ in pairs} == {1, 2, 5}
     assert {i for _, i in pairs} == {3, 4, 6}
+
+
+def test_free_hit_reverts_squad_and_bank_but_keeps_the_chip_spent(rules, monkeypatch):
+    """Free Hit is the only chip that must UNDO itself, and nothing tested it.
+
+    Semantics: unlimited free transfers for this GW only; next GW the squad and
+    bank revert to what they were before, and the free-transfer count rolls as
+    if no transfer had been made. The one thing that must NOT revert is the
+    record that the chip was spent — that is the failure mode `apply_transfers`
+    already had once.
+    """
+    from fpl_claude.backtest import simulate as sim
+    from fpl_claude.backtest.simulate import run_gameweek
+
+    pool = _pool()
+    monkeypatch.setattr(sim, "project_gw", lambda *a, **k: pool)
+    before = _worst_squad_state(pool)
+    before.free_transfers = 2
+    squad_before = dict(before.buy_costs)
+    bank_before = before.bank
+
+    store = _StubStore(
+        {int(i): 2 for i in pool["id"]}, {int(i): 90 for i in pool["id"]}
+    )
+    result, after = run_gameweek(
+        store, 1, rules, before, decision=ManagerDecision(chip="free_hit")
+    )
+
+    # The temp squad really was rebuilt for the week (that is the point of the chip)...
+    assert len(result.squad.transfers_in) >= 2
+    assert result.chip == "free_hit"
+    # ...but the persistent state is untouched apart from the FT roll and the record.
+    assert after.buy_costs == squad_before
+    assert after.bank == bank_before
+    assert after.free_transfers == 3  # rolled as if no transfer was made
+    assert after.hits_total == before.hits_total
+    assert after.chips_used == ["free_hit@1"]
+
+
+def test_wildcard_keeps_the_new_squad_and_resets_free_transfers(rules, monkeypatch):
+    """The mirror of the Free Hit test: a wildcard's squad PERSISTS."""
+    from fpl_claude.backtest import simulate as sim
+    from fpl_claude.backtest.simulate import run_gameweek
+
+    pool = _pool()
+    monkeypatch.setattr(sim, "project_gw", lambda *a, **k: pool)
+    before = _worst_squad_state(pool)
+    squad_before = dict(before.buy_costs)
+    store = _StubStore(
+        {int(i): 2 for i in pool["id"]}, {int(i): 90 for i in pool["id"]}
+    )
+    result, after = run_gameweek(
+        store, 1, rules, before, decision=ManagerDecision(chip="wildcard")
+    )
+
+    assert after.buy_costs != squad_before  # kept, unlike a free hit
+    assert set(after.buy_costs) == set(result.squad.squad)
+    assert after.hits_total == before.hits_total  # every wildcard transfer is free
+    assert after.chips_used == ["wildcard@1"]
