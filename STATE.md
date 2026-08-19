@@ -195,10 +195,18 @@ merged clean):**
    new first-choice keepers at Ipswich (Scherpen), Hull (Tzolakis), Coventry (Rushworth).
    **Any player who joined after 25 July is invisible to the current build.** Re-snapshot as
    the first act of the next session with API access.
-6. **Two model defects still open**, documented in `research/2026-27/model-fixes.md`: D1
+6. **Horizon question settled (2026-08-19, `notebooks/gw01_horizon_sensitivity.py`):** the
+   owner asked whether to optimise 3 GWs instead of 8 for the opener. **Keep 8.** The 0.85
+   decay already puts 53% of the objective in GW1-3 / 66% in GW1-4; tightening the decay to
+   0.70 moves nobody; and a **5-GW captaincy-aware window reproduces the committed XI exactly
+   (11/11, Haaland captain)** — the overlay has already delivered what a shorter horizon would.
+   Truncating to 3 GWs is actively harmful: the eight duration-3 World Cup fades fill 100% of a
+   3-GW window vs 38% of an 8-GW one, so it amplifies the very calls the Community Shield
+   refuted. **If a formal change is ever wanted, 5 GWs is the number** — and it changes nothing.
+7. **Two model defects still open**, documented in `research/2026-27/model-fixes.md`: D1
    injury flags priced as 8-GW absences (mitigated per-player in the overlay only). D6 is
    FIXED and pinned by tests.
-7. **The weekly all-team report has still never run** (`/fpl-team-week-report`) — a
+8. **The weekly all-team report has still never run** (`/fpl-team-week-report`) — a
    first-class deliverable per CLAUDE.md, and the season is now live.
 
 ### Older backlog (pre-season) — CLEARED 2026-07-26
