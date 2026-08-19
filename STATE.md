@@ -168,10 +168,12 @@ merged clean):**
 
 **The GW1 squad is FINAL and committed. The owner must enter it before Fri 21 Aug 18:30 BST.**
 
-1. **T-2h check (Fri 21 Aug ~16:30 UTC)** — three items, listed in `decisions/gw01.md`
-   §"Open items". Only one can still invalidate a pick: **if Ipswich sign a striker**, the
-   £4.5m bench forward (Walle Egeli) is likely displaced. Also re-confirm Raya against
-   Arsenal's post-snapshot Meslier signing, and check for fresh flags on the six XI premiums.
+1. **T-2h check (Fri 21 Aug ~16:30 UTC)** — now routine only. The X/community sweep
+   (`consensus/gw01.md`) closed both substantive open items the same day: Meslier was signed
+   **9 July as Raya's back-up** (pre-snapshot, never a risk) and Ipswich's striker business was
+   also done pre-snapshot (Emersonn £24m, 8 Jul) with Walle Egeli still in the predicted XI.
+   What remains is a flag check on the six XI premiums — **Tarkowski first**, as he is the one
+   hold graded on absence of news rather than positive confirmation.
 2. **A T-2h re-solve is worth doing if the owner can run the pipeline locally.** This session
    could NOT run `optimize.run_live`: `db/` is gitignored (fresh clone) and the sandbox's
    egress proxy blocks the FPL API, Wikipedia and every FPL site. Both changes made were bench
@@ -278,7 +280,25 @@ The build plan is complete; `PLAN.md` and `NEXT-STEPS-IMPLEMENTATION.md` were re
   missed all of pre-season yet are now expected to start, and O'Reilly started outright. Recorded
   as a calibration miss rather than argued away; no squad exposure to it. Also flagged the largest
   known unknown: the 25 July snapshot predates Bruno Guimarães→Arsenal and five other confirmed
-  moves, so post-window signings are invisible to this build.
+  moves, so post-window signings are invisible to this build. **Then ran the X/Twitter leg on
+  request (`consensus/gw01.md`)** — the vetted `sources.yaml` accounts via web search, no paid
+  API. It confirmed 11 of 15 picks at STRONG grade, **closed both open items** (see above),
+  strengthened two holds (Calvert-Lewin is Leeds' confirmed penalty #1 — already inside his
+  xG90, so correctly no `pen_boost`; Szoboszlai's deep pivot is where DefCon accrues and the
+  market backs him for it), and found **independent elite corroboration for the two biggest
+  calls**: the World Cup Fantasy winner published a "no Bruno" GW1 team and former champion
+  Simon March's reveal is "Raya but no Arsenal defenders". Three findings recorded rather than
+  acted on: (a) **João Pedro (~48%) was a named-fade omission** in the memo, now added — a
+  price call, 2.42 pts/£m vs Calvert-Lewin's 2.70; the squad's template deviation is ~180
+  percentage points of faded ownership; (b) **a real critique of our bench policy** — elite
+  managers are carrying TWO PLAYING keepers so a Bench Boost can be fired without first
+  spending an FT on a playing No.2, and with chips doubled in 2026/27 that flexibility is worth
+  more than it was; logged for `/fpl-chip-strategy`, not a GW1 change; (c) a **2025/26
+  dated-data trap** — the Crellin DGW/BGW posts that surface in search name Wolves and Burnley
+  and describe *last* season; no 2026/27 blank or double is confirmed yet, so chip strategy did
+  not need re-running. Also recorded a new 2026/27 mechanic: **price changes now happen at
+  midnight UK time**, and the game will publish its own price-proximity page post-deadline,
+  which may displace the LiveFPL entry in `sources.yaml`.
 
 - **2026-07-26 (THE SEASON OPENED — first live squad):** branch
   `claude/gw1-2026-27-squad-build`. Found the **FPL API reachable for the first time** and
