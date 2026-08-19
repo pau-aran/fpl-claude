@@ -1,4 +1,4 @@
-# Session State — updated 2026-07-26 (THE SEASON IS LIVE — first real squad built)
+# Session State — updated 2026-08-19 (**GW1 SQUAD FINAL — awaiting owner entry**)
 
 *Handoff snapshot. Read this first, then `decisions/gw01.md` for the live squad and
 `reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge. The build
@@ -7,8 +7,13 @@ what little remains buildable is folded into "Older backlog" below.*
 
 ## THE BIG CHANGE: we are no longer in backtest — 2026/27 is open
 
-**The FPL API is reachable again** (it was blocked in every prior session; `docs/environment.md`
-is stale on this point). The 2026/27 game is live with real prices.
+**The FPL API is reachable from the owner's machine, NOT from the cloud sandbox.** The
+2026-07-26 session reached it and over-generalised; the 2026-08-19 session got a 403 at the
+egress proxy for `fantasy.premierleague.com`, and every FPL site (FFScout, OneFPL, premierleague.com)
+plus Wikipedia is blocked there too. `docs/environment.md` has this right: the 403s are the
+sandbox's policy, not the workstation's. **In a sandbox session, web search is the only news
+route and `db/` will be absent (it is gitignored), so the optimizer cannot be run** — plan
+around it. The 2026/27 game is live with real prices.
 
 | | |
 |---|---|
@@ -17,7 +22,7 @@ is stale on this point). The 2026/27 game is live with real prices.
 | Promoted / relegated | COV, HUL, IPS in; Burnley, West Ham, Wolves out |
 | Prices | **FROZEN until the deadline** — no buy-now pressure, no LiveFPL timing edge |
 | Ruleset | **VERIFIED** against the live API — optimizer unblocked |
-| Squad | `decisions/gw01.md` — iteration 1, committed, **not yet entered by the owner** |
+| Squad | `decisions/gw01.md` — **FINAL (iteration 3, 2026-08-19)**, committed, **not yet entered by the owner** |
 
 **Rule changes that matter (verified, `research/2026-27/rules-verification.md`):** the
 Assistant Manager chip is GONE; all four chips ×2 (8 total); **BB and TC are playable in
@@ -35,12 +40,16 @@ FPL-relevant players reach the deadline with ~10 days of training and **no FPL f
 It hits **Arsenal and Man City hardest — the two most-templated clubs** — while
 **Liverpool are the least damaged big club and own the best GW1–8 fixture run**. The
 squad fades the deep runners (Rogers 34.8%, Guéhi 25.3%, O'Reilly 24.8%, Porro 23.9%,
-Rice 22.5%) and buys the rested. 55 hand-written overlays in `decisions/overlays/gw01.json`.
+Rice 22.5%) and buys the rested. 56 hand-written overlays in `decisions/overlays/gw01.json`.
 
-**Open decision, flagged for T-48h:** we do NOT own B.Fernandes (47.9% owned) — an
-opportunity-cost fade (2.10 pts/£m vs Mbeumo's 2.72), tested across five solves. The
-**Community Shield (ARS v MCI, 16 Aug)** is the only competitive read on which late
-returners actually start, and it lands 5 days before the deadline. Re-solve after it.
+**Both T-48h open decisions are now CLOSED (2026-08-19, see `decisions/gw01.md`).**
+The **Community Shield (ARS 3-0 MCI, 16 Aug)** was played and graded. **B.Fernandes stays
+faded** — the team news ("undisputed starter at number 10") only confirms an assumption the
+overlay had already made at 0.88, so nothing moved the 2.10-vs-2.72 pts/£m arithmetic; the
+hedge improved instead, because Mbeumo is now playing as Man Utd's **striker** with Šeško
+injured. **Szoboszlai→Thiago was tested and refused** — priced on the solve's own post-overlay
+scale Thiago is 18.64 vs 16.82, i.e. +1.82 for £1.0m and *worse* per million, and funding it
+needs Tarkowski→N.Williams, netting the package to a rounding error (−0.73 to +0.98).
 
 ## A3 + A4 shipped (2026-07-25, merged to main), both ADVISORY
 *(Update 2026-07-26: A4 has since PASSED its acceptance run — see "Older backlog" below
@@ -155,22 +164,40 @@ merged clean):**
 - **Network reality unchanged** (see `docs/environment.md`): FPL API/news
   domains still blocked; GitHub + WebSearch carry everything above.
 
-## What the next session should do (LIVE SEASON — priorities changed)
+## What the next session should do
 
-1. **Re-snapshot daily** (`python -m fpl_claude.data.fpl_api snapshot`) and watch flags.
-   The highest-value single unknown is **Ben White's flag** (ARS, £5.5m, `i` at 0% chance
-   while already in full team training, with Saliba out 4–5 months). Also: Vicario vs
-   Dubravka for the Spurs gloves, Timber, Šeško, and confirmation that Garner will NOT
-   play GW1 despite FPL's "expected back 22 Aug".
-2. **Re-solve the squad after the Community Shield (16 Aug)** and again at T-48h/T-2h.
-   Re-open the B.Fernandes question explicitly.
-3. **Two model defects left open, documented** in `research/2026-27/model-fixes.md`:
-   D1 injury flags priced as 8-GW absences (mitigated per-player in the overlay only),
-   D6 the team model falls back to FDR for Ipswich on a club-name mismatch and
-   `TeamModel.covers()` never checks match AGE, so a stale relegation season could be
-   modelled as current.
-4. **The weekly all-team report has still never run** (`/fpl-team-week-report`) — it is a
-   first-class deliverable per CLAUDE.md and the season is now live.
+**The GW1 squad is FINAL and committed. The owner must enter it before Fri 21 Aug 18:30 BST.**
+
+1. **T-2h check (Fri 21 Aug ~16:30 UTC)** — three items, listed in `decisions/gw01.md`
+   §"Open items". Only one can still invalidate a pick: **if Ipswich sign a striker**, the
+   £4.5m bench forward (Walle Egeli) is likely displaced. Also re-confirm Raya against
+   Arsenal's post-snapshot Meslier signing, and check for fresh flags on the six XI premiums.
+2. **A T-2h re-solve is worth doing if the owner can run the pipeline locally.** This session
+   could NOT run `optimize.run_live`: `db/` is gitignored (fresh clone) and the sandbox's
+   egress proxy blocks the FPL API, Wikipedia and every FPL site. Both changes made were bench
+   slots decided on team news; the XI arithmetic came from the committed solve plus
+   `notebooks/gw01_final_overlay_scale.py` (a ~1.7%-accurate reconstruction of the solve's
+   overlay transform). Nothing is expected to move — but that would be verification, not
+   assumption.
+3. **Post-GW1 review (`/fpl-review`, ~24 Aug)** and grade the World Cup fade explicitly. It
+   split: the Raya call and the rested-buys leg were validated in the Community Shield, but
+   the fade **over-corrected on the returners' minutes** — Rice (0.52), Saka (0.50),
+   Guéhi (0.50) and O'Reilly (0.38) are all now expected to start, and O'Reilly started the
+   Shield outright. Log the depth-of-cut miss in `notebooks/calibration.md`. The duration-3
+   scoping was right; the depth was not. **Rice is a GW2-4 buy candidate**, gated on whether
+   he holds a place now Bruno Guimarães has joined Arsenal.
+4. **GW1 completing is the first honest chance to verify A3's `--actuals live` path**, which
+   has still never made a real API call.
+5. **The snapshot is 2026-07-25 and the window has moved.** Confirmed since: Bruno Guimarães
+   (NEW→ARS £75m), Tzolis (→ARS £34m), Meslier (LEE→ARS free), Andrey Santos (CHE→MUN), and
+   new first-choice keepers at Ipswich (Scherpen), Hull (Tzolakis), Coventry (Rushworth).
+   **Any player who joined after 25 July is invisible to the current build.** Re-snapshot as
+   the first act of the next session with API access.
+6. **Two model defects still open**, documented in `research/2026-27/model-fixes.md`: D1
+   injury flags priced as 8-GW absences (mitigated per-player in the overlay only). D6 is
+   FIXED and pinned by tests.
+7. **The weekly all-team report has still never run** (`/fpl-team-week-report`) — a
+   first-class deliverable per CLAUDE.md, and the season is now live.
 
 ### Older backlog (pre-season) — CLEARED 2026-07-26
 
@@ -225,6 +252,33 @@ The build plan is complete; `PLAN.md` and `NEXT-STEPS-IMPLEMENTATION.md` were re
 | **Σ1-24** | **1380** | **1189** | **+191; hits: 1; captaincy 24/24 — AFCON window (GW17-24) net +56** |
 
 ## Recent session log
+
+- **2026-08-19 (GW1 FINAL — the squad the season actually starts with):** branch
+  `claude/final-team-selection-sapt1l`. T-55h from the deadline. **The FPL API is blocked again**
+  — it is the *sandbox's* egress policy, not the owner's machine (`docs/environment.md` is right,
+  STATE was over-optimistic in generalising from the 2026-07-26 session), and `db/` is gitignored,
+  so this was a fresh clone with no snapshot and no projections CSV. The optimizer could not be
+  re-run. Ran the news sweep entirely through web search instead, and did the decision arithmetic
+  against the three committed artefacts (`gw01_solve.json`, `overlays/gw01.json`,
+  `projections-run.md`) via a new **reconstruction of the solve's overlay transform**
+  (`notebooks/gw01_final_overlay_scale.py` — reproduces the committed post-overlay horizon values
+  to within 1.7%, four of five inside 0.8%). **Two changes, both bench, both forced by team news:**
+  **Heaton→Dubravka** (Heaton has a hamstring injury from the PSG friendly, out ~3 weeks — a
+  flagged dead slot; Dubravka taken purely as the £4.0m slot with the best residual cover, with the
+  iteration-2 artifact ban explicitly *not* reversed) and **Obi→Walle Egeli** (Obi is loan-listed
+  and 4th-choice; Egeli is in Ipswich's predicted XI at home to Sunderland, against a market that
+  holds Kusi-Asare, a substitute with 0g0a last season). **XI, captain (Haaland), vice (Mbeumo) and
+  the predicted 51.41 all unchanged** — both changes are outside the XI. **Two open questions
+  closed:** the B.Fernandes fade stands (news only confirmed an assumption already priced at 0.88;
+  Mbeumo now plays striker, so the hedge improved), and Szoboszlai→Thiago was tested and refused
+  (+1.82 for £1.0m, worse per million, and the funding leg nets it to a rounding error). **The
+  Community Shield graded the season's opening thesis and it split:** Raya validated exactly
+  (started, clean sheet, "masterclass") and Gabriel played 90 with Saliba and Timber both out, but
+  the fade **over-corrected on the returners' minutes** — Rice/Saka/Zubimendi were benched having
+  missed all of pre-season yet are now expected to start, and O'Reilly started outright. Recorded
+  as a calibration miss rather than argued away; no squad exposure to it. Also flagged the largest
+  known unknown: the 25 July snapshot predates Bruno Guimarães→Arsenal and five other confirmed
+  moves, so post-window signings are invisible to this build.
 
 - **2026-07-26 (THE SEASON OPENED — first live squad):** branch
   `claude/gw1-2026-27-squad-build`. Found the **FPL API reachable for the first time** and
