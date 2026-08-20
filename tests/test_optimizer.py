@@ -315,3 +315,21 @@ def test_marginal_hit_gate_keeps_hit_that_nets_threshold(rules):
     assert 98 in result.transfers_in and 99 in result.transfers_in
     assert result.hits == 1
     assert audit["hit_gate"].startswith("kept")
+
+
+def test_spend_cap_binds_below_the_rules_budget(pool, rules):
+    """`budget` caps SPEND without touching the ruleset: the money still exists,
+    we just decline to spend the tail of it (the owner's '£100m if needed' call)."""
+    full = optimize(pool, rules, allow_unverified=True)
+    capped = optimize(pool, rules, allow_unverified=True, budget=full.cost - 30)
+    assert capped.cost <= full.cost - 30
+    assert capped.objective <= full.objective  # a tighter feasible set never scores more
+
+
+def test_spend_cap_above_the_rules_budget_raises(pool, rules):
+    """A cap can only tighten spend. Asking to spend £105m is a bug, not a plan."""
+    rules_budget = int(rules.raw["budget"]["initial"] * 10)
+    with pytest.raises(ValueError, match="exceeds the rules budget"):
+        optimize(pool, rules, allow_unverified=True, budget=rules_budget + 1)
+    with pytest.raises(ValueError, match="must be positive"):
+        optimize(pool, rules, allow_unverified=True, budget=0)

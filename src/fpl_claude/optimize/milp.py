@@ -149,11 +149,12 @@ def _solve(
     ban: frozenset[int] = frozenset(),
     force_start: frozenset[int] = frozenset(),
     force_bench: frozenset[int] = frozenset(),
+    budget: int | None = None,
 ) -> OptimizedSquad:
     shape = rules.squad_shape()
     lineup = rules.raw["lineup"]
     max_per_club = int(rules.raw["squad"]["max_per_club"])
-    budget = int(rules.raw["budget"]["initial"] * 10)
+    budget = int(rules.raw["budget"]["initial"] * 10) if budget is None else budget
     hit_cost = float(rules.raw["transfers"]["hit_cost"])
 
     ids = list(players["id"])
@@ -289,6 +290,7 @@ def optimize(
     force_start: frozenset[int] = frozenset(),
     force_bench: frozenset[int] = frozenset(),
     xi_score_col: str | None = None,
+    budget: int | None = None,
 ) -> OptimizedSquad:
     """Optimal squad from a projections table.
 
@@ -306,6 +308,13 @@ def optimize(
     hard-fixture one on a bigger horizon total (backtest GW10). Pass
     xi_score_col=score_col to opt out. force_start/force_bench are the manager's
     XI overlay for reads the model can't see (backtest GW13 depleted defence).
+
+    budget (initial build only, API tenths) caps SPEND below the rules budget.
+    The last million buys very little — the frontier flattens long before £100.0m
+    — while unspent money is a real option on the next few deadlines. Capping
+    spend prices that option explicitly instead of letting the solver burn the
+    budget because it is there. It can only tighten the constraint: a cap above
+    the rules budget is a request to spend money we do not have, and raises.
     """
     rules = rules or Ruleset.load()
     if not rules.is_verified() and not allow_unverified:
@@ -315,6 +324,15 @@ def optimize(
             "launch, or pass allow_unverified=True for a dry run and label the output"
         )
     _check_columns(projections, score_col)
+    if budget is not None:
+        rules_budget = int(rules.raw["budget"]["initial"] * 10)
+        if budget > rules_budget:
+            raise ValueError(
+                f"budget cap {budget} exceeds the rules budget {rules_budget} — "
+                "the cap can only tighten spend, never invent it"
+            )
+        if budget <= 0:
+            raise ValueError(f"budget cap must be positive, got {budget}")
     players = projections.drop_duplicates(subset="id")
     if current is not None:
         missing = set(current.buy_costs) - set(players["id"])
@@ -325,12 +343,12 @@ def optimize(
 
     result = _solve(
         players, rules, score_col, current, max_transfers, lock, ban,
-        force_start, force_bench,
+        force_start, force_bench, budget=budget,
     )
     if current is not None:
         baseline = _solve(
             players, rules, score_col, current, max_transfers=0,
-            force_start=force_start, force_bench=force_bench,
+            force_start=force_start, force_bench=force_bench, budget=budget,
         )
         result = OptimizedSquad(
             **{

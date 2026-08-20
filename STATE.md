@@ -1,4 +1,4 @@
-# Session State — updated 2026-07-26 (THE SEASON IS LIVE — first real squad built)
+# Session State — updated 2026-08-20 (GW1 FINAL — iteration 3, the T-35h re-solve)
 
 *Handoff snapshot. Read this first, then `decisions/gw01.md` for the live squad and
 `reports/backtest/2025-26/knowledge.md` for the distilled decision knowledge. The build
@@ -7,8 +7,13 @@ what little remains buildable is folded into "Older backlog" below.*
 
 ## THE BIG CHANGE: we are no longer in backtest — 2026/27 is open
 
-**The FPL API is reachable again** (it was blocked in every prior session; `docs/environment.md`
-is stale on this point). The 2026/27 game is live with real prices.
+**The FPL API is reachable from the owner's machine** (`docs/environment.md` has this right).
+It is **NOT reachable from a cloud sandbox** — the egress proxy answers 403 to CONNECT for
+`fantasy.premierleague.com`, and every FPL news domain (fantasyfootballscout, onefpl, even
+wikipedia) is blocked to WebFetch too. `notebooks/provision_from_vaastav.py` is the fallback:
+it rebuilds `bootstrap.json` + `fixtures.json` + the team-model results from the vaastav
+mirror on raw.githubusercontent.com, which IS allowed. WebSearch works and is the only news
+channel there. The 2026/27 game is live with real prices.
 
 | | |
 |---|---|
@@ -17,7 +22,8 @@ is stale on this point). The 2026/27 game is live with real prices.
 | Promoted / relegated | COV, HUL, IPS in; Burnley, West Ham, Wolves out |
 | Prices | **FROZEN until the deadline** — no buy-now pressure, no LiveFPL timing edge |
 | Ruleset | **VERIFIED** against the live API — optimizer unblocked |
-| Squad | `decisions/gw01.md` — iteration 1, committed, **not yet entered by the owner** |
+| Squad | `decisions/gw01.md` — **iteration 3, FINAL, ready to enter** (iterations 1-2 archived in the same file) |
+| Snapshot (live) | `db/raw/2026-08-20/` — 567 players; team news current to **2026-08-03**, prices frozen |
 
 **Rule changes that matter (verified, `research/2026-27/rules-verification.md`):** the
 Assistant Manager chip is GONE; all four chips ×2 (8 total); **BB and TC are playable in
@@ -37,10 +43,13 @@ It hits **Arsenal and Man City hardest — the two most-templated clubs** — wh
 squad fades the deep runners (Rogers 34.8%, Guéhi 25.3%, O'Reilly 24.8%, Porro 23.9%,
 Rice 22.5%) and buys the rested. 55 hand-written overlays in `decisions/overlays/gw01.json`.
 
-**Open decision, flagged for T-48h:** we do NOT own B.Fernandes (47.9% owned) — an
-opportunity-cost fade (2.10 pts/£m vs Mbeumo's 2.72), tested across five solves. The
-**Community Shield (ARS v MCI, 16 Aug)** is the only competitive read on which late
-returners actually start, and it lands 5 days before the deadline. Re-solve after it.
+**RESOLVED at iteration 3 (2026-08-20).** The Community Shield (ARS v MCI, 16 Aug) was
+played and the thesis HELD — Rice, Saka, Guéhi, Zubimendi, Merino and Eze all failed to
+start it. Two calls moved against us and were corrected on the evidence: O'Reilly DID start
+(0.38 → 0.60) and Gyökeres did NOT (0.78 → 0.55, Havertz played the nine). And the
+B.Fernandes fade EXPIRED: on a 5-GW horizon the gap closed from ~0.8-1.0 to **0.064
+objective points**, so at 48.6% ownership we now own him rather than pay a 49% EO premium
+for a rounding error.
 
 ## A3 + A4 shipped (2026-07-25, merged to main), both ADVISORY
 *(Update 2026-07-26: A4 has since PASSED its acceptance run — see "Older backlog" below
@@ -155,22 +164,55 @@ merged clean):**
 - **Network reality unchanged** (see `docs/environment.md`): FPL API/news
   domains still blocked; GitHub + WebSearch carry everything above.
 
-## What the next session should do (LIVE SEASON — priorities changed)
+## GW1 iteration 3 — what was decided (2026-08-20, T-35h)
 
-1. **Re-snapshot daily** (`python -m fpl_claude.data.fpl_api snapshot`) and watch flags.
-   The highest-value single unknown is **Ben White's flag** (ARS, £5.5m, `i` at 0% chance
-   while already in full team training, with Saliba out 4–5 months). Also: Vicario vs
-   Dubravka for the Spurs gloves, Timber, Šeško, and confirmation that Garner will NOT
-   play GW1 despite FPL's "expected back 22 Aug".
-2. **Re-solve the squad after the Community Shield (16 Aug)** and again at T-48h/T-2h.
-   Re-open the B.Fernandes question explicitly.
-3. **Two model defects left open, documented** in `research/2026-27/model-fixes.md`:
-   D1 injury flags priced as 8-GW absences (mitigated per-player in the overlay only),
-   D6 the team model falls back to FDR for Ipswich on a club-name mismatch and
-   `TeamModel.covers()` never checks match AGE, so a stale relegation season could be
-   modelled as current.
-4. **The weekly all-team report has still never run** (`/fpl-team-week-report`) — it is a
-   first-class deliverable per CLAUDE.md and the season is now live.
+**Squad (£100.0m, bank £0.0m, 4-4-2, Haaland C / B.Fernandes V, no chip):**
+Kelleher, Heaton / Tarkowski, **Gvardiol**, **Calafiori**, Thiaw, O'Shea /
+**B.Fernandes**, Semenyo, Mbeumo, Schade, Crooks / Haaland, Calvert-Lewin, Neave.
+Predicted GW1 XI **52.39** (base 46.19 + captain 6.20 doubled); 5-GW objective **190.658**.
+
+- **Horizon 5, not 8** (owner instruction). On identical data the two horizons share only
+  9 of 15: the 5-GW view buys **B.Fernandes** (Man Utd's HUL-away + IPS-home opener is the
+  softest pair in the league and it expires) and drops Gabriel, João Pedro and Wirtz. Mean
+  effect is small — the club-level H5/H8 ratio spans 0.747-0.777 around a neutral 0.764 —
+  so the horizon does not re-rank the league, it flips players across the budget knife-edge.
+- **Spend was swept, not assumed** (owner instruction). New `optimize(budget=...)` /
+  `run_live --max-spend` + `notebooks/gw01_spend_frontier.py`. Verdict: **spend the £100.0m.**
+  The frontier is flat-free at ~1.05 decayed 5-GW points per £1.0m banked with no knee, the
+  XI-only column agrees (so it is not a bench artefact), and locking this XI and re-solving
+  for the cheapest legal 15 returns **£100.0m exactly, infeasible at £99.5m** — the bench is
+  already at FPL's price floor (4.0+4.0+4.5+4.5).
+- **Overlay iteration 3**: `decisions/overlays/gw01-it3.json`, 63 entries (56 carried, 14
+  revised, 7 new), built by `notebooks/build_overlay_gw01_it3.py`. Biggest calls: Guéhi
+  0.50→0.30 (against our own model, which had him the best defender in the game), Gvardiol
+  NEW 0.85, Calafiori NEW 0.80, Doku 0.00 (calf in the Shield, **no FPL flag**), Lacroix
+  0.15→0.80 (his Chelsea move completed, so the July fade had expired).
+- **Reproduce:** `python notebooks/provision_from_vaastav.py --out-date 2026-08-20` then
+  `python -m fpl_claude.models.projections --from-snapshot 2026-08-20 --prior-season-csv
+  db/vaastav/2025-26/players_raw.csv --horizon 5 --overlays decisions/overlays/gw01-it3.json`.
+
+## What the next session should do
+
+1. **T-2h final check (2026-08-21, ~15:30 UTC).** The two lines that would move the squad
+   are named in `decisions/gw01.md` §8. If B.Fernandes is out or rested, **V4 is already
+   solved** (−0.06 objective): Gabriel, Wirtz, Thiago, Obi, McConnell in for Bruno, Schade,
+   Calvert-Lewin, O'Shea, Neave.
+2. **Post-GW1 review** (`/fpl-review`, ~24 Aug). This is also the **first honest chance to
+   verify A3's `--actuals live` path**, which has still never made a real API call — and it
+   cannot be verified from a cloud sandbox, only from the owner's machine.
+3. **GW2 is the Liverpool entry** per the standing plan: they own the best GW1-5 run
+   (summed FDR 13) but GW1 is Newcastle away, their worst. Targets in order: Wirtz, Gakpo,
+   Virgil. Man Utd's opener expires after GW2 — reassess Bruno/Mbeumo then.
+4. **Two model defects still open** in `research/2026-27/model-fixes.md`: D1 (injury flags
+   priced as horizon-long absences) and D2/D3 (thin/zero-minute priors). D2 has a live cost
+   now: **Isak** projects 11.69 over five gameweeks off a 694-minute prior while being
+   Liverpool's predicted nine and penalty taker. He is unpriced, not rejected.
+5. **`/fpl-team-week-report` has still never run** — first-class deliverable per CLAUDE.md.
+6. **D6 note:** the recency guard works. Ipswich clears MIN_TEAM_MATCHES on 38 matches from
+   2024/25 and is correctly rejected on MIN_RECENT_MATCHES, so all three promoted clubs sit
+   on the FDR fallback. Also worth knowing: a shared per-season download cache silently fed
+   the team model two copies of one season on the first provisioning attempt — the bug is
+   fixed and documented in `provision_from_vaastav.py`.
 
 ### Older backlog (pre-season) — CLEARED 2026-07-26
 
@@ -226,6 +268,29 @@ The build plan is complete; `PLAN.md` and `NEXT-STEPS-IMPLEMENTATION.md` were re
 
 ## Recent session log
 
+- **2026-08-20 (GW1 ITERATION 3 — the deadline re-solve, 5-GW horizon):** branch
+  `claude/gw1-team-threadhole-redo-pc5rqd`. Owner instruction: redo the GW1 squad on a
+  **5-gameweek** horizon and stop assuming the full £100.0m. Both were done as measurements,
+  not assertions. **Horizon:** on identical data the 5-GW and 8-GW squads share 9 of 15; the
+  5-GW view buys **B.Fernandes** (Man Utd's soft, expiring opener) and drops Gabriel, João
+  Pedro and Wirtz — while the club-level H5/H8 ratio only spans 0.747-0.777, so the effect is
+  marginal, not a re-ranking. **Spend:** shipped `optimize(budget=...)` +
+  `run_live --max-spend` + `notebooks/gw01_spend_frontier.py`, swept £100.0m→£95.0m, and the
+  answer is spend it — ~1.05 decayed points per £1.0m banked with no knee, and locking the XI
+  makes £99.5m INFEASIBLE because the bench is already at FPL's price floor. **News:** the
+  Community Shield gate iteration 2 set was played and the World Cup thesis HELD (Rice, Saka,
+  Guéhi, Zubimendi, Merino, Eze all did not start); two calls were corrected against us
+  (O'Reilly started, Gyökeres did not); Doku picked up a calf injury *in* that match and
+  carries **no FPL flag**. 63-entry overlay iteration 3, each with a written reason.
+  **Environment:** the FPL API and every FPL news domain are egress-blocked in the cloud
+  sandbox — built `notebooks/provision_from_vaastav.py` (mirror → bootstrap/fixtures +
+  football-data-shaped results), validated by reproducing the committed 8-GW top-30 ordering
+  to within 2-4%. Two defects caught in my own work rather than shipped: a shared download
+  cache fed the team model two copies of one season (which let relegated Ipswich clear the
+  recency guard), and the mirror's `players_raw.csv` carries LAST season's stats against
+  CURRENT ids, so every accumulated column is zeroed and the prior supplied separately.
+  **200 tests green** (2 new for the spend cap); ruff unchanged — 23 findings introduced and
+  all 23 fixed before commit.
 - **2026-07-26 (THE SEASON OPENED — first live squad):** branch
   `claude/gw1-2026-27-squad-build`. Found the **FPL API reachable for the first time** and
   pulled the live 2026/27 game (558 players, real prices, GW1 deadline 2026-08-21).

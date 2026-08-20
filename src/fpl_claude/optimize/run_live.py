@@ -9,6 +9,9 @@ instead of re-deriving them.
 
 Two modes:
   initial build   no --squad: the GW1 / wildcard case, a 15 within the budget.
+                  `--max-spend` caps spend BELOW the rules budget: the last
+                  million buys very little, and the unspent remainder banks as
+                  an option on the next few deadlines.
   transfer mode   --squad PATH: buys/sells priced through Ruleset.sell_price(),
                   hits charged past the free transfers, and the MARGINAL hit
                   gate applied (a hit must beat the best hit-free solve by
@@ -51,6 +54,7 @@ CLI:
   python -m fpl_claude.optimize.run_live [--projections PATH] [--squad PATH]
       [--lock TOK,...] [--ban TOK,...] [--force-start TOK,...]
       [--force-bench TOK,...] [--captain TOK] [--vice TOK] [--max-transfers N]
+      [--max-spend 96.5]
       [--hair-threshold 0.2] [--flags PATH | --no-flags] [--json PATH]
       [--season 2026-27] [--allow-unverified]
 
@@ -265,6 +269,7 @@ def solve(
     max_transfers: int | None = None,
     max_extra_transfers: int = 1,
     allow_unverified: bool = False,
+    budget: int | None = None,
 ) -> tuple[OptimizedSquad, dict[str, Any]]:
     """Optimizer proposes; the hit policy disposes. Returns (squad, audit).
 
@@ -277,6 +282,7 @@ def solve(
     kwargs = {
         "rules": rules, "lock": lock, "ban": ban, "force_start": force_start,
         "force_bench": force_bench, "allow_unverified": allow_unverified,
+        "budget": budget,
     }
     if current is None:
         return optimize(projections, current=None, **kwargs), {
@@ -457,6 +463,7 @@ def build_decision(
     sources: dict[str, Any],
     dry_run: bool,
     hair_threshold: float,
+    spend_cap: int | None = None,
 ) -> dict[str, Any]:
     """The full decision as plain data — printed, and dumped by --json so the
     memo quotes exact numbers instead of re-deriving them."""
@@ -492,6 +499,8 @@ def build_decision(
     if current is None:
         budget = round(float(rules.raw["budget"]["initial"]) * 10)
         spend = squad.cost
+        # The bank is what the RULES budget leaves, never what a self-imposed
+        # spend cap leaves: capping spend does not burn the difference, it banks it.
         bank = budget - spend
     else:
         budget = None
@@ -544,6 +553,7 @@ def build_decision(
             "spend_m": round(spend / 10, 1),
             "bank_m": round(bank / 10, 1),
             "budget_m": round(budget / 10, 1) if budget is not None else None,
+            "spend_cap_m": round(spend_cap / 10, 1) if spend_cap is not None else None,
         },
         "predicted_xi_xpts": round(
             sum(xi_score[i] for i in squad.xi) + xi_score[squad.captain], 2
@@ -606,8 +616,13 @@ def print_decision(decision: dict[str, Any]) -> None:
         f"vice: {d['vice']['web_name']} ({d['vice']['team']})"
     )
     budget = f" of £{money['budget_m']}m" if money["budget_m"] is not None else ""
+    cap = (
+        f" (spend capped at £{money['spend_cap_m']}m)"
+        if money.get("spend_cap_m") is not None
+        else ""
+    )
     _out(
-        f"squad value £{money['squad_value_m']}m | spend £{money['spend_m']}m{budget} | "
+        f"squad value £{money['squad_value_m']}m | spend £{money['spend_m']}m{budget}{cap} | "
         f"bank £{money['bank_m']}m | predicted XI xPts {d['predicted_xi_xpts']} "
         f"(captain doubled) | objective {d['objective']}"
     )
@@ -700,6 +715,9 @@ def build_parser() -> argparse.ArgumentParser:
                    help="hard cap on transfers (0 = roll)")
     p.add_argument("--max-extra-transfers", type=int, default=1,
                    help="hits the solver may consider beyond free transfers (default 1)")
+    p.add_argument("--max-spend", type=float, default=None,
+                   help="initial build only: cap squad SPEND at this many £m "
+                        "(<= the rules budget). The unspent remainder banks.")
     p.add_argument("--hair-threshold", type=float, default=BENCH_HAIR_THRESHOLD,
                    help=f"bench-hair margin in xPts (default {BENCH_HAIR_THRESHOLD})")
     p.add_argument("--flags", default=None,
@@ -738,6 +756,10 @@ def main(argv: list[str] | None = None) -> None:
                 "(stale squad file, or a departed player — fix the squad JSON)"
             )
 
+    spend_cap = round(args.max_spend * 10) if args.max_spend is not None else None
+    if spend_cap is not None and current is not None:
+        raise SystemExit("--max-spend applies to an initial build only (no --squad)")
+
     flags_path = None
     if not args.no_flags:
         flags_path = Path(args.flags) if args.flags else latest_bootstrap()
@@ -750,6 +772,7 @@ def main(argv: list[str] | None = None) -> None:
             max_transfers=args.max_transfers,
             max_extra_transfers=args.max_extra_transfers,
             allow_unverified=args.allow_unverified,
+            budget=spend_cap,
         )
     except RulesetUnverifiedError as exc:
         raise SystemExit(f"{exc}\n\nRe-run with --allow-unverified for a labelled dry run.")
@@ -775,6 +798,7 @@ def main(argv: list[str] | None = None) -> None:
         },
         dry_run=args.allow_unverified and not rules.is_verified(),
         hair_threshold=args.hair_threshold,
+        spend_cap=spend_cap,
     )
 
     print_decision(decision)
