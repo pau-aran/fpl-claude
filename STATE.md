@@ -12,8 +12,8 @@ were retired 2026-07-26; what little remains buildable is folded into "Older bac
 | **GW1** | **PLAYED** (21–23 Aug). Ours **~48** (verified floor 41) — predicted 51.41 |
 | **GW2** | **PLAYED** (28–31 Aug). Ours **~97** (verified floor 80) — predicted 50.3, 0 transfers |
 | **GW3 deadline** | **2026-09-04 17:30 UTC / 18:30 BST** — memo written, `decisions/gw03.md` |
-| GW3 decision | **1 transfer — Thiaw → De Cuyper** (bank 1 FT → 2 FT), XI otherwise unchanged, C Haaland / V Mbeumo, no chip. Mbeumo→Liverpool-fullback leg of the queued paired move **DEFERRED**, not executed (see `gw03.md` §1.2) |
-| Squad | 15/15 as entered for GW1, one swap pending GW3 entry · **£0.0m bank at last transfer · 2 FT → 2 FT (post-swap) · all 8 chips unused** |
+| GW3 decision | **ROLL — 0 transfers** (2 FT → 3 FT into GW4), XI unchanged, C Haaland / V Mbeumo, no chip. The queued Thiaw→De Cuyper swap was **REVERSED after a fuller fixture-horizon check** (see below); the Mbeumo→Liverpool-fullback leg stays **DEFERRED** (see `gw03.md` §2) |
+| Squad | 15/15 as entered for GW1 · **£0.0m bank at last transfer · 2 FT → 3 FT into GW4 · all 8 chips unused** |
 | Managers registered | 8,945,344 at the GW1 deadline |
 | Season 2026/27 | Arsenal are the defending champions; COV, HUL, IPS promoted |
 
@@ -29,6 +29,17 @@ worth a look, but did not change any decision).
 **This session (2026-09-01) also recovered and merged `claude/gw1-analysis-gw2-decisions-6s4n4f`**
 — a complete GW1 review + GW2 decision memo that had been written (2026-08-26) but never merged
 to `main`. It is now the foundation for everything in this file.
+
+**The GW3 memo's first draft recommended Thiaw → De Cuyper and was corrected before entry,
+same session, on the owner's challenge.** The queued swap was built on a two-gameweek fixture
+comparison (Brighton's GW3-4 run beats Newcastle's) carried forward from the GW2 memo without
+re-checking it further out. It doesn't hold: Newcastle get a genuinely good back-to-back at
+GW5-6 (Hull H, Coventry A, both FDR2) while Brighton's run turns hard from GW5 (Arsenal H,
+FDR4) and stays hard through GW8 — over GW3-8, Newcastle's run (16) is easier than Brighton's
+(18). Combined with Thiaw's actual GW2 (clean sheet, nailed, no flag), the swap reverses:
+**hold Thiaw, 0 transfers, bank to 3 FT.** Full corrected reasoning in `decisions/gw03.md` §1.
+The lesson: a "the fixture run turns" case needs checking past the specific window it's being
+cited for, every time — not just when someone asks.
 
 ## NETWORK: the FPL API is BLOCKED again in the cloud sandbox
 
@@ -262,10 +273,11 @@ merged clean):**
    projections, then `run_live --propose` to check GW3's single move (and the deferred
    Mbeumo leg) against real numbers, and `python -m fpl_claude.reports.calibration --gw 2`
    to finally log a real calibration entry — none exists for GW1 or GW2 yet.
-2. **Confirm the GW3 transfer at T-2h — De Cuyper's live price is the whole question.**
-   `decisions/gw03.md` §1.1 sets an explicit Plan B: execute Thiaw→De Cuyper if he's £5.0m or
-   below, hold Thiaw and roll both FT if he's priced higher. Also re-check for a late flag on
-   Raya/Gabriel/Tarkowski(→sold)/Semenyo/Mbeumo/Haaland.
+2. **Confirm the GW3 roll at T-2h.** The decision is 0 transfers (see the correction note
+   above and `decisions/gw03.md` §1); re-check for a late flag on
+   Raya/Gabriel/Thiaw/Semenyo/Mbeumo/Haaland. Re-check De Cuyper's fixture case once Brighton's
+   fixtures beyond GW8 are known — his run turns hard GW5-8 on the current grid, so he is not
+   an obvious buy again until that changes.
 3. **Re-open the deferred Mbeumo→Liverpool-fullback leg at GW4** with two more data points in
    hand: did Mbeumo produce away at Everton (GW3, a genuine difficulty test vs GW2's home game
    against a promoted side), and can the pipeline finally run a real solve? See `gw03.md` §1.2
@@ -358,17 +370,20 @@ The build plan is complete; `PLAN.md` and `NEXT-STEPS-IMPLEMENTATION.md` were re
   reliably surfaces contaminated results** (swapped club names, stale dates, conflicting
   scorelines) and needs multi-source cross-checking as standing practice, not a one-off catch.
   Also identified a new, unmodelled points category: **DefCon (defensive contribution)**,
-  live this season and affecting four owned defenders. For GW3, executed the self-funding,
-  well-evidenced half of the standing paired-move plan (**Thiaw → De Cuyper**, 1 FT) and
-  **deliberately deferred** the other half (Mbeumo → a Liverpool fullback) — Man Utd's
-  attacking front three looked genuinely dangerous in GW2 (Bruno Fernandes hat-trick, Mbeumo
-  goal), which complicates rather than confirms the fixture-run sell thesis, and neither leg's
-  price was verifiable from this sandbox; banked the FT to GW4 instead of hand-solving an
-  unpriced two-way swap. Captain Haaland again (home to a winless, 0-goals-for Coventry);
-  vice changed to Mbeumo on kickoff order. Triple Captain named and declined again (a real
-  cost this time, logged as process-pass/outcome-cost, not an error). Shipped
-  `reports/reviews/2026-27/gw02.md`, `decisions/gw03.md`, `decisions/overlays/gw03.{json,md}`,
-  and this file's updates.
+  live this season and affecting four owned defenders. For GW3, first drafted a transfer
+  (Thiaw → De Cuyper, taking the self-funding half of the standing paired-move plan and
+  **deliberately deferring** the other half — Mbeumo → a Liverpool fullback — since Man Utd's
+  front three looked genuinely dangerous in GW2, complicating rather than confirming that
+  leg's fixture-run sell thesis, and neither leg's price was verifiable from this sandbox).
+  **Corrected before the memo was finalized**, on the owner's challenge: the Thiaw→De Cuyper
+  case rested on a two-gameweek fixture comparison carried forward from the GW2 memo without
+  checking further out; over GW3-8 Newcastle's run (16) is actually easier than Brighton's
+  (18), which turns hard from GW5. Reversed to **hold Thiaw, 0 transfers, roll to 3 FT** — see
+  the correction note above and `decisions/gw03.md` §1. Captain Haaland again (home to a
+  winless, 0-goals-for Coventry); vice changed to Mbeumo on kickoff order. Triple Captain
+  named and declined again (a real cost this time, logged as process-pass/outcome-cost, not
+  an error). Shipped `reports/reviews/2026-27/gw02.md`, `decisions/gw03.md`,
+  `decisions/overlays/gw03.{json,md}`, and this file's updates.
 
 - **2026-08-26 (GW1 REVIEWED, GW2 DECIDED — the first live result):** branch
   `claude/gw1-analysis-gw2-decisions-6s4n4f`. First session since 2026-07-26; GW1 had been
