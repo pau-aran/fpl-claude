@@ -1,7 +1,7 @@
-# Session State — updated 2026-08-26 (GW1 PLAYED — first live result on the board)
+# Session State — updated 2026-09-01 (GW2 PLAYED — a big week, held on zero transfers)
 
-*Handoff snapshot. Read this first, then `decisions/gw02.md` for the live decision,
-`reports/reviews/2026-27/gw01.md` for the GW1 retro, and `decisions/season-log.md` for the
+*Handoff snapshot. Read this first, then `decisions/gw03.md` for the live decision,
+`reports/reviews/2026-27/gw02.md` for the GW2 retro, and `decisions/season-log.md` for the
 running scoreboard. The build plan is COMPLETE — `PLAN.md` and `NEXT-STEPS-IMPLEMENTATION.md`
 were retired 2026-07-26; what little remains buildable is folded into "Older backlog" below.*
 
@@ -10,15 +10,25 @@ were retired 2026-07-26; what little remains buildable is folded into "Older bac
 | | |
 |---|---|
 | **GW1** | **PLAYED** (21–23 Aug). Ours **~48** (verified floor 41) — predicted 51.41 |
-| **GW2 deadline** | **2026-08-28 17:30 UTC / 18:30 BST** — memo written, `decisions/gw02.md` |
-| GW2 decision | **ROLL the FT** (0 transfers → 2 FT), XI unchanged, C Haaland / V Szoboszlai, no chip |
-| Squad | 15/15 as entered for GW1 · **£0.0m bank · 1 FT → 2 FT · all 8 chips unused** |
+| **GW2** | **PLAYED** (28–31 Aug). Ours **~97** (verified floor 80) — predicted 50.3, 0 transfers |
+| **GW3 deadline** | **2026-09-04 17:30 UTC / 18:30 BST** — memo written, `decisions/gw03.md` |
+| GW3 decision | **1 transfer — Thiaw → De Cuyper** (bank 1 FT → 2 FT), XI otherwise unchanged, C Haaland / V Mbeumo, no chip. Mbeumo→Liverpool-fullback leg of the queued paired move **DEFERRED**, not executed (see `gw03.md` §1.2) |
+| Squad | 15/15 as entered for GW1, one swap pending GW3 entry · **£0.0m bank at last transfer · 2 FT → 2 FT (post-swap) · all 8 chips unused** |
 | Managers registered | 8,945,344 at the GW1 deadline |
 | Season 2026/27 | Arsenal are the defending champions; COV, HUL, IPS promoted |
 
 **The owner confirmed on 2026-08-26 that the committed `decisions/gw01.md` iteration-2 squad
-is the team that was actually entered.** The prior "not yet entered" line in this file is
-resolved.
+is the team that was actually entered** — this also settled, in this session, that two other
+GW1-build branches (`claude/final-team-selection-sapt1l`, `claude/gw1-team-threadhole-redo-pc5rqd`)
+were parallel exploratory re-solves that independently converged on the *same* squad and the
+same predicted total (51.41) without changing anything; they were left unmerged as redundant
+rather than reconciled — safe to delete in a future cleanup, nothing of value in them beyond
+what's already here (their consensus/gw01.md X-sweep and two open-item closes could still be
+worth a look, but did not change any decision).
+
+**This session (2026-09-01) also recovered and merged `claude/gw1-analysis-gw2-decisions-6s4n4f`**
+— a complete GW1 review + GW2 decision memo that had been written (2026-08-26) but never merged
+to `main`. It is now the foundation for everything in this file.
 
 ## NETWORK: the FPL API is BLOCKED again in the cloud sandbox
 
@@ -75,6 +85,33 @@ and ignored the team; new constraint written into `gw02.md` §2.4).
 zero about positional classification. **A positional-classification sweep is now a standing
 step in the scout pass**, and it drives the queued GW3 move.
 
+## GW2: the roll was vindicated twice — on the rule, and on the result
+
+**Predicted 50.3 (hand-derived, no pipeline) = base XI 44.3 + captain slot 6.0. Actual
+floor 80 / central ~97 = base ~85 + captain slot ~12.** Biggest week of the season: a Haaland
+brace (captained), a Wirtz goal+assist, goals from Mbeumo/Schade/Tarkowski, three clean
+sheets (Raya, Gabriel, Thiaw), zero transfers. Full detail: `reports/reviews/2026-27/gw02.md`.
+
+- **The declined Thiaw→De Cuyper swap graded PASS on real results, not just on the rule.**
+  Thiaw kept a clean sheet and scored (floor 8) away at Tottenham; De Cuyper did not score in
+  Brighton's 4-3 home loss to Chelsea (verified against two independently-sourced match
+  reports, after a single AI-search snippet falsely claimed he scored — see the new finding
+  below). The GW1 Bournemouth-ban rule now has two independent confirmations.
+- **Captaincy 2/2.** No recency override after GW1's blank; Haaland delivered.
+- **Triple Captain was named and declined again** (COV(H) FDR2 flagged in the GW2 memo as
+  the next candidate, not yet a DGW) — this one had a real cost (~10-12 pts left on the
+  table by a brace that would have tripled) and is logged as **process-PASS, outcome-cost**:
+  the discipline that stopped a chip firing on GW1's blank is the same discipline that held
+  through GW2's haul. Both are true; neither overrides the other.
+- **New finding: search-engine contamination is real and recurring** when researching a
+  fictional future season via web search — swapped club names, stale dates, conflicting
+  scorelines for the same match. Caught this time only because every claim was cross-checked
+  against ≥2 independently-sourced reports before being written down. Now a standing practice,
+  not just a one-off habit — see `reports/reviews/2026-27/gw02.md` §4 and Lesson 3.
+- **New model gap identified: DefCon (defensive contribution) points are completely
+  unmodelled.** Four owned defenders (Tarkowski, Gabriel, Thiaw, Semenyo) plausibly earn them
+  every week and the projections pipeline has no term for it. Add it alongside D1/D6 below.
+
 ## THE PROCESS FAILURE — read this before doing anything else
 
 `decisions/gw01.md` committed in writing to a **T-48h re-solve**, a **Community Shield check
@@ -86,6 +123,12 @@ deadline.
 
 We did not miss the deadline. We missed every checkpoint we set ourselves before it.
 **Arming the scheduled sessions (Phase 5) is now the highest-value item in the repo.**
+
+*(Update 2026-09-01: the checkpoint-missing failure specifically has NOT recurred — GW2's
+T-48h memo ran on schedule (26 Aug for a 28 Aug deadline) and this GW3 memo runs at T-3 days
+for a 4 Sept deadline. The underlying blocker — no live pipeline in the cloud sandbox, three
+gameweeks running — has NOT been fixed and is now the more urgent half of this finding; see
+`reports/reviews/2026-27/gw02.md` Lesson 1.)*
 
 **Rule changes that matter (verified, `research/2026-27/rules-verification.md`):** the
 Assistant Manager chip is GONE; all four chips ×2 (8 total); **WC/FH open at GW2** (both are
@@ -211,29 +254,37 @@ merged clean):**
 - **Network reality unchanged** (see `docs/environment.md`): FPL API/news
   domains still blocked; GitHub + WebSearch carry everything above.
 
-## What the next session should do (T-48h to T-2h, GW2 deadline Fri 28 Aug 17:30 UTC)
+## What the next session should do (T-3 to T-2h, GW3 deadline Fri 4 Sept 17:30 UTC)
 
-1. **Run it from the owner's machine if at all possible.** Everything below is degraded from
-   the cloud (see NETWORK above). From the local machine: `python -m fpl_claude.data.fpl_api
-   snapshot`, rebuild projections, then `run_live --propose` to check the roll against real
-   numbers, and `python -m fpl_claude.reports.calibration --gw 1` to log GW1 properly.
-2. **Confirm the GW2 roll at T-2h.** The decision is 0 transfers; the things that would
-   overturn it are a late flag on Raya/Gabriel/Tarkowski/Haaland, or De Cuyper pricing past
-   ~£4.9m (at which point funding, not the fixture rule, binds). Friday line-ups also answer
-   whether **Guéhi is still playing central midfield** for City.
-3. **Fill the two open cells** in `decisions/season-log.md` — GW1 average and overall rank —
-   from the API, without editing the row's history.
-4. **Solve the GW3 paired move properly** (2 FT): Thiaw → De Cuyper, and Mbeumo out of Man
-   Utd into the third Liverpool slot (Kerkez/Frimpong). Man Utd's IPS(H) is their last soft
-   fixture until GW8. The **1 September transfer window close** lands between GW2 and GW3 —
-   re-check all fifteen for club moves.
-5. **Two model defects still open**, documented in `research/2026-27/model-fixes.md`: D1
-   injury flags priced as 8-GW absences; D6 `TeamModel.covers()` never checks match AGE.
-   Add a third: **the model has no positional-classification feature** — it cannot see that a
-   £4.5m defender is playing left wing. That is now a measured, not theoretical, cost.
+1. **Run it from the owner's machine if at all possible.** Three gameweeks running with no
+   live pipeline in the cloud sandbox — see NETWORK above and the updated PROCESS FAILURE
+   note. From the local machine: `python -m fpl_claude.data.fpl_api snapshot`, rebuild
+   projections, then `run_live --propose` to check GW3's single move (and the deferred
+   Mbeumo leg) against real numbers, and `python -m fpl_claude.reports.calibration --gw 2`
+   to finally log a real calibration entry — none exists for GW1 or GW2 yet.
+2. **Confirm the GW3 transfer at T-2h — De Cuyper's live price is the whole question.**
+   `decisions/gw03.md` §1.1 sets an explicit Plan B: execute Thiaw→De Cuyper if he's £5.0m or
+   below, hold Thiaw and roll both FT if he's priced higher. Also re-check for a late flag on
+   Raya/Gabriel/Tarkowski(→sold)/Semenyo/Mbeumo/Haaland.
+3. **Re-open the deferred Mbeumo→Liverpool-fullback leg at GW4** with two more data points in
+   hand: did Mbeumo produce away at Everton (GW3, a genuine difficulty test vs GW2's home game
+   against a promoted side), and can the pipeline finally run a real solve? See `gw03.md` §1.2
+   for the full reasoning on why it was deferred rather than executed by hand this week.
+4. **Fill the open cells** in `decisions/season-log.md` — GW1/GW2 average score and overall
+   rank — from the API, without editing either row's history.
+5. **Three model defects now open**, documented in `research/2026-27/model-fixes.md` (D1, D6)
+   and `reports/reviews/2026-27/gw02.md` (new): D1 injury flags priced as 8-GW absences; D6
+   `TeamModel.covers()` never checks match AGE; **D7 (new) — DefCon (defensive contribution)
+   points are completely unmodelled**, and four owned defenders plausibly earn them every
+   week. Also still open: **no positional-classification feature** (De Cuyper/Guéhi class).
 6. **The weekly all-team report has still never run** (`/fpl-team-week-report`) — a
    first-class deliverable per CLAUDE.md, and the season is live. `reports/weekly/2026-30/`
    holds the pre-season club files to build on.
+7. **Write a standing multi-source-verification step into the news-sweep skill** — two
+   independent research passes this session hit real search-engine contamination (stale
+   real-world seasons bleeding into "2026/27" queries; see `gw02.md` §4). The practice of
+   cross-checking single-source claims caught it this time; make it explicit in the skill
+   rather than relying on each session to reinvent it.
 
 ### Older backlog (pre-season) — CLEARED 2026-07-26
 
@@ -288,6 +339,36 @@ The build plan is complete; `PLAN.md` and `NEXT-STEPS-IMPLEMENTATION.md` were re
 | **Σ1-24** | **1380** | **1189** | **+191; hits: 1; captaincy 24/24 — AFCON window (GW17-24) net +56** |
 
 ## Recent session log
+
+- **2026-09-01 (GW2 REVIEWED, GW3 DECIDED):** branch `claude/gw2-review-gw3-planning-o324da`.
+  Started by recovering `claude/gw1-analysis-gw2-decisions-6s4n4f` — the GW1 review + GW2
+  decision work described in the entry below had been written on 2026-08-26 but **never
+  merged to `main`**; fast-forward merged it as the foundation (198 tests green after).
+  Confirmed, while investigating, that two other GW1-build branches independently converged
+  on the already-committed iteration-2 squad and its exact 51.41 prediction — left unmerged as
+  redundant rather than reconciled (see "Where the season actually is" above). **The FPL API
+  was blocked again** (confirmed via a live `curl` 403 and a `PointInTimeError` from the
+  calibration CLI); GW2's reconstruction ran on two parallel WebSearch research agents (match
+  results, GW3 news sweep) instead. **GW2 ~97 (floor 80) vs a predicted 50.3 — the biggest
+  week of the season**, off zero transfers: Haaland brace (C), Wirtz goal+assist, goals from
+  Mbeumo/Schade/Tarkowski, three clean sheets. The declined Thiaw→De Cuyper swap graded PASS
+  on real results (Thiaw CS+goal; De Cuyper unscored in a lost fixture) — after catching and
+  rejecting a false "De Cuyper scored" claim that only one of several sources made, a concrete
+  instance of the session's other finding: **web search for a fictional future season
+  reliably surfaces contaminated results** (swapped club names, stale dates, conflicting
+  scorelines) and needs multi-source cross-checking as standing practice, not a one-off catch.
+  Also identified a new, unmodelled points category: **DefCon (defensive contribution)**,
+  live this season and affecting four owned defenders. For GW3, executed the self-funding,
+  well-evidenced half of the standing paired-move plan (**Thiaw → De Cuyper**, 1 FT) and
+  **deliberately deferred** the other half (Mbeumo → a Liverpool fullback) — Man Utd's
+  attacking front three looked genuinely dangerous in GW2 (Bruno Fernandes hat-trick, Mbeumo
+  goal), which complicates rather than confirms the fixture-run sell thesis, and neither leg's
+  price was verifiable from this sandbox; banked the FT to GW4 instead of hand-solving an
+  unpriced two-way swap. Captain Haaland again (home to a winless, 0-goals-for Coventry);
+  vice changed to Mbeumo on kickoff order. Triple Captain named and declined again (a real
+  cost this time, logged as process-pass/outcome-cost, not an error). Shipped
+  `reports/reviews/2026-27/gw02.md`, `decisions/gw03.md`, `decisions/overlays/gw03.{json,md}`,
+  and this file's updates.
 
 - **2026-08-26 (GW1 REVIEWED, GW2 DECIDED — the first live result):** branch
   `claude/gw1-analysis-gw2-decisions-6s4n4f`. First session since 2026-07-26; GW1 had been
